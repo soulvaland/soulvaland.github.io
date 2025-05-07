@@ -136,7 +136,10 @@ const sectionAudioPlayer  = document.getElementById('sectionAudioPlayer');
 let touchStartX = 0;
 let touchEndX = 0;
 const swipeThreshold = 50; // Minimum horizontal distance (pixels) to be considered a swipe
-
+function getNumericSectionId(sectionId) {
+    const order = sections.map(s => String(s.id));
+    return order.indexOf(String(sectionId));     // 0‑based, -1 if not found
+}
 /* === All functions from the original <script> block go here === */
 function renderSection(sectionId) {
   const section = sections.find(s => s.id == sectionId);
@@ -672,10 +675,7 @@ getSidebarLinks().forEach(link => {
  * @param {string|number} sectionId - The ID of the section.
  * @returns {number} A numeric representation for comparison.
  */
-function getNumericSectionId(sectionId) {
-    const order = sections.map(s => String(s.id));
-    return order.indexOf(String(sectionId));     // 0‑based, -1 if not found
-}
+
 
 
 /**
