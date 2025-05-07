@@ -534,7 +534,7 @@ function renderSection(sectionId) {
 
   contentHtml += `</div>`;
   contentArea.innerHTML = contentHtml;
-
+	if (window.enhanceKeyTerms) enhanceKeyTerms(contentArea);
   if (section.id === 3) {
       injectTimeline();
   }
