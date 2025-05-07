@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Training for Elementary Teachers</title>
+
+    <!-- External libraries (unchanged) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Your stylesheet & script -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-gray-100">
+    <!-- Audio element must stay high in the DOM so JS can always find it -->
+    <audio id="sectionAudioPlayer"></audio>
+
+    <div class="flex h-screen overflow-hidden">
+      <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white shadow-lg transform -translate-x-full md:relative md:translate-x-0 flex flex-col no-print">
+           <div class="flex items-center justify-between p-4 border-b"> <h1 class="text-xl font-semibold text-gray-800">AI Training</h1> <button id="closeSidebarBtn" class="text-gray-600 md:hidden"> <i class="fas fa-times text-xl"></i> </button> </div>
+           <nav class="flex-1 overflow-y-auto p-4 space-y-2">
+              <a href="#" data-section="1" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100" aria-current="page">1. Welcome!</a>
+              <a href="#" data-section="2" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">2. What is AI?</a>
+              <a href="#" data-section="3" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">3. AI Through Time</a>
+              <a href="#" data-section="4" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">4. How AI Learns</a>
+              <a href="#" data-section="5" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">5. Talking to AI: Prompting</a>
+              <a href="#" data-section="6" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">6. Your AI Toolkit</a>
+              <a href="#" data-section="7" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">7. AI in Your Workflow</a>
+              <a href="#" data-section="8" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">8. Benefits & Challenges</a>
+              <a href="#" data-section="9" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">9. Playing it Safe</a>
+              <a href="#" data-section="10" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">10. Getting Started</a>
+              <a href="#" data-section="11" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100">11. Wrap-up & Next Steps</a>
+              <a href="#" data-section="final-quiz" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100 font-medium">Final Quiz</a>
+              <a href="#" data-section="certificate" class="sidebar-link block px-4 py-2 text-gray-700 rounded-md hover:bg-gray-100 font-medium">Certificate</a>
+          </nav>
+           <div class="p-4 border-t"> <button id="resetModuleBtn" class="w-full px-4 py-2 text-sm text-center text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"> Reset Module </button> </div>
+      </aside>
+
+      <div class="flex-1 flex flex-col overflow-hidden">
+           <header class="bg-white shadow-sm border-b no-print"> <div class="flex items-center justify-between p-4"> <button id="openSidebarBtn" class="text-gray-600 focus:outline-none md:hidden"> <i class="fas fa-bars text-xl"></i> </button> <h2 id="sectionTitle" class="text-xl font-semibold text-gray-800 flex-1 text-center md:text-left ml-4 md:ml-0"> Loading... </h2> </div> </header> <main id="contentArea" class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6 space-y-6"> <div class="bg-white p-8 rounded-lg shadow space-y-6"> <p>Loading content...</p> </div> </main> <footer class="bg-white p-4 border-t no-print"> <div class="flex justify-between"> <button id="prevBtn" class="px-6 py-2 text-white bg-sky-500 rounded-md hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed"> <i class="fas fa-arrow-left mr-2"></i> Previous </button> <button id="nextBtn" class="px-6 py-2 text-white bg-sky-500 rounded-md hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed border-2 border-transparent"> Next <i class="fas fa-arrow-right ml-2"></i> </button> </div> </footer>
+      </div>
+  </div>
+
+  <div id="quizModal" class="fixed inset-0 z-40 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden p-4 no-print"> <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] flex flex-col"> <div class="p-4 border-b flex justify-between items-center"> <h3 id="quizTitle" class="text-lg font-semibold">Section Quiz</h3> </div> <div id="quizContent" class="p-6 overflow-y-auto quiz-options space-y-4"> </div> <div class="p-4 border-t bg-gray-50 flex justify-end space-x-3"> <button id="resetQuizBtn" class="px-4 py-2 text-sm text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300">Reset Quiz</button> <button id="submitQuizBtn" class="px-4 py-2 text-sm text-white bg-sky-500 rounded-md hover:bg-sky-600">Submit Answers</button> <button id="closeQuizBtn" class="px-4 py-2 text-sm text-white bg-sky-500 rounded-md hover:bg-sky-600 hidden">Close Quiz</button> </div> </div> </div>
+
+    <!-- External JS (loads after the markup is parsed) -->
+    <script src="script.js" defer></script>
+</body>
+</html>
