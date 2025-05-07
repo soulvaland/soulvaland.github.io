@@ -520,9 +520,9 @@ getSidebarLinks().forEach(link => {
         e.preventDefault();
         const linkElement = e.target.closest('a'); // Get the link element itself
         const sectionId = linkElement.getAttribute('data-section');
-        const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
-		if (numericLinkSectionId === -1) return; // unknown link
-        const numericTargetId = getNumericSectionId(sectionId);
+		const numericTargetId       = getNumericSectionId(sectionId);
+		if (numericTargetId === -1) return;        // unknown link
+		const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked)
 
         // Check if the link is actually enabled before navigating
         if (!linkElement.classList.contains('disabled-link') && numericTargetId <= numericHighestUnlocked) {
@@ -683,9 +683,9 @@ function getNumericSectionId(sectionId) {
  * @param {string|number} newlyUnlockedId - The ID of the section that might be newly unlocked.
  */
 function updateHighestUnlocked(newlyUnlockedId) {
-    const numericCurrentHighest = getNumericSectionId(state.highestSectionUnlocked);
-	if (numericLinkSectionId === -1) return; // unknown link
-    const numericNewlyUnlocked = getNumericSectionId(newlyUnlockedId);
+	const numericCurrentHighest = getNumericSectionId(state.highestSectionUnlocked);
+	const numericNewlyUnlocked  = getNumericSectionId(newlyUnlockedId);
+	if (numericNewlyUnlocked === -1) return;  // unknown id
 
     if (numericNewlyUnlocked > numericCurrentHighest) {
         state.highestSectionUnlocked = newlyUnlockedId;
@@ -699,11 +699,10 @@ function updateHighestUnlocked(newlyUnlockedId) {
  * Updates the visual and accessibility state of sidebar links based on progress.
  */
 function updateSidebarAccess() {
-    const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
-	if (numericLinkSectionId === -1) return; // unknown link
-    getSidebarLinks().forEach(link => {
-        const linkSectionId = link.getAttribute('data-section');
-        const numericLinkSectionId = getNumericSectionId(linkSectionId);
+		const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
+		getSidebarLinks().forEach(link => {
+		const linkSectionId       = link.getAttribute('data-section');
+		const numericLinkSectionId = getNumericSectionId(linkSectionId);
 
         if (numericLinkSectionId <= numericHighestUnlocked) {
             // Unlock the link
