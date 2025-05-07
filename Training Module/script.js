@@ -276,7 +276,7 @@ function renderSection(sectionId) {
     case '2':
       contentHtml += `
         <p>Think of AI as creating computer systems that can perform tasks typically requiring human intelligence. This might make you wonder: how is that different from the regular software we use every day? And if AI can mimic human intelligence, does that mean all AI is the same?</p>
-        <p>Let's clarify these points. A helpful starting analogy is to imagine a data-def="A smart assistant, in this AI context, refers to a system designed to perform specific tasks or provide services by processing user input and leveraging learned patterns, often employing natural language processing and machine learning techniques.">smart assistant</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
+        <p>Let's clarify these points. A helpful starting analogy is to imagine a <span class="key-term" data-def="A smart assistant, in this AI context, refers to a system designed to perform specific tasks or provide services by processing user input and leveraging learned patterns, often employing natural language processing and machine learning techniques.">smart assistant</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
 
         <div class="reveal-container mt-4">
           <details>
