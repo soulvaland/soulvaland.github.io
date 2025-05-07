@@ -338,8 +338,12 @@ body {
 
 /* Key term styles */
 .key-term {
-    font-weight: 600;
-    color: #4338ca; /* indigo-700 */
+  font-weight: 600;
+  color: #4338ca;           /* indigo‑700 */
+  cursor: help;             /* shows on desktop */
+  background: none;
+  border: 0;
+  padding: 0;
 }
 .key-term[title] {
     cursor: help; /* Change cursor to indicate more info available */

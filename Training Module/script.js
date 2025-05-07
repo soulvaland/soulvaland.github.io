@@ -160,6 +160,96 @@ function renderSection(sectionId) {
   contentHtml += audioButtonHtml;
   contentHtml += `<h3 class="text-2xl font-semibold mb-4 text-sky-700">${section.title}</h3>`;
   contentHtml += `<div class="readable-content space-y-4">`;
+  // 1. Create (or reuse) a single tooltip balloon that will be reused for every term
+  let tooltip = document.getElementById('tooltip');
+  if (!tooltip) {
+    tooltip = document.createElement('div');
+    tooltip.id = 'tooltip';
+    tooltip.setAttribute('role', 'dialog');      // a11y: announce as pop‑up
+    tooltip.setAttribute('aria-hidden', 'true'); // hidden until opened
+    document.body.appendChild(tooltip);
+  }
+
+  // --- State -------------------------------------------------------------
+  let openBtn = null; // the .key‑term currently showing the tooltip
+
+  // 2. Helpers ------------------------------------------------------------
+  function positionTooltip(btn) {
+    const rect = btn.getBoundingClientRect();
+    const tipRect = tooltip.getBoundingClientRect();
+    const gap = 8; // px between the button and the balloon
+
+    // Prefer above the term, otherwise below
+    let top = rect.top - gap - tipRect.height;
+    if (top < 0) {
+      top = rect.bottom + gap;
+    }
+    const left = rect.left + rect.width / 2;
+    tooltip.style.top = `${top + window.scrollY}px`;
+    tooltip.style.left = `${left + window.scrollX}px`;
+    tooltip.style.transform = 'translate(-50%, 0)';
+  }
+
+  function openTooltip(btn) {
+    openBtn = btn;
+    tooltip.textContent = btn.dataset.tooltip || btn.getAttribute('title') || '';
+    tooltip.setAttribute('data-show', ''); // CSS toggles visibility
+    tooltip.removeAttribute('aria-hidden');
+    positionTooltip(btn);
+  }
+
+  function closeTooltip() {
+    if (!openBtn) return;
+    tooltip.removeAttribute('data-show');
+    tooltip.setAttribute('aria-hidden', 'true');
+    openBtn = null;
+  }
+
+  // 3. Progressive enhancement: turn any <span class="key-term"> into an accessible <button>
+  function enhanceKeyTerms(root = document) {
+    root.querySelectorAll('.key-term').forEach(el => {
+      // already upgraded
+      if (el.tagName === 'BUTTON') return;
+
+      const definition = el.getAttribute('title') || el.dataset.tooltip;
+      const btn = document.createElement('button');
+      btn.className = 'key-term';
+      if (definition) btn.dataset.tooltip = definition;
+      btn.setAttribute('aria-haspopup', 'dialog');
+      btn.innerHTML = el.innerHTML; // keep inner content intact
+      el.replaceWith(btn);
+    });
+  }
+
+  // 4. Global listeners ---------------------------------------------------
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.key-term');
+    if (!btn) {
+      closeTooltip();
+      return;
+    }
+    // toggle behaviour: open or close the same term
+    if (openBtn === btn) {
+      closeTooltip();
+    } else {
+      openTooltip(btn);
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeTooltip();
+  });
+
+  // 5. Initialise once DOM is ready, then observe content swaps ----------
+  document.addEventListener('DOMContentLoaded', () => {
+    enhanceKeyTerms();
+
+    // Whenever the training module swaps out #contentArea, upgrade new terms
+    const target = document.getElementById('contentArea');
+    if (!target) return;
+    const mo = new MutationObserver(() => enhanceKeyTerms(target));
+    mo.observe(target, { childList: true, subtree: true });
+  });
 
   switch (String(section.id)) {
     case '1':
@@ -186,8 +276,7 @@ function renderSection(sectionId) {
     case '2':
       contentHtml += `
         <p>Think of AI as creating computer systems that can perform tasks typically requiring human intelligence. This might make you wonder: how is that different from the regular software we use every day? And if AI can mimic human intelligence, does that mean all AI is the same?</p>
-        <p>Let's clarify these points. A helpful starting analogy is to imagine a <span class="key-term">smart assistant*</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
-        <p class="text-xs text-gray-600 mt-1 mb-3">*A smart assistant, in this AI context, refers to a system designed to perform specific tasks or provide services by processing user input and leveraging learned patterns, often employing natural language processing and machine learning techniques.</p>
+        <p>Let's clarify these points. A helpful starting analogy is to imagine a data-def="A smart assistant, in this AI context, refers to a system designed to perform specific tasks or provide services by processing user input and leveraging learned patterns, often employing natural language processing and machine learning techniques.">smart assistant</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
 
         <div class="reveal-container mt-4">
           <details>
