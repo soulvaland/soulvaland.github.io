@@ -659,6 +659,7 @@ getSidebarLinks().forEach(link => {
   window.addEventListener('beforeunload', stopAudio);
 
   loadState();
+  updateSidebarAccess();     // ← NEW: apply greyed‑out style immediately
   navigateToSection(state.currentSectionId);
 });
 
