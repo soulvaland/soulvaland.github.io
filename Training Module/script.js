@@ -121,7 +121,6 @@ const openSidebarBtn      = document.getElementById('openSidebarBtn');
 const closeSidebarBtn     = document.getElementById('closeSidebarBtn');
 const contentArea         = document.getElementById('contentArea');
 const sectionTitle        = document.getElementById('sectionTitle');
-const sidebarLinks        = document.querySelectorAll('.sidebar-link');
 const prevBtn             = document.getElementById('prevBtn');
 const nextBtn             = document.getElementById('nextBtn');
 const quizModal           = document.getElementById('quizModal');
@@ -202,8 +201,11 @@ function renderSection(sectionId) {
         <p>While AI feels very current, its roots go back further than you might think! Understanding this brief history helps appreciate how we got here.</p>
         <p><strong>A Quick Journey Through Time:</strong></p>
         <div id="interactive-timeline-placeholder" class="my-6">
-            {/* Timeline will be injected here by JS */}
         </div>
+		<p id="section-3-unlock" class="text-center text-gray-600 italic mt-4">
+			Please click on an era …
+		</p>
+
         <p class="mt-6">The pace of change in AI is rapid, making continuous learning and adaptation important for everyone!</p>`;
       break;
     case '4':
@@ -453,6 +455,9 @@ function renderSection(sectionId) {
   updateNavButtons();
   updateSidebarActive();
 }
+function getSidebarLinks() {
+    return document.querySelectorAll('.sidebar-link');
+}
 
 /* === NEW: Swipe Gesture Handler Functions === */
 function handleTouchStart(event) {
@@ -510,12 +515,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (openSidebarBtn) openSidebarBtn.addEventListener('click', () => sidebar.classList.remove('-translate-x-full'));
   if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', () => sidebar.classList.add('-translate-x-full'));
 // Inside DOMContentLoaded
-sidebarLinks.forEach(link => {
+getSidebarLinks().forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const linkElement = e.target.closest('a'); // Get the link element itself
         const sectionId = linkElement.getAttribute('data-section');
         const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
+		if (numericLinkSectionId === -1) return; // unknown link
         const numericTargetId = getNumericSectionId(sectionId);
 
         // Check if the link is actually enabled before navigating
@@ -666,11 +672,10 @@ sidebarLinks.forEach(link => {
  * @returns {number} A numeric representation for comparison.
  */
 function getNumericSectionId(sectionId) {
-    if (sectionId === 'certificate') return 13;
-    if (sectionId === 'final-quiz') return 12;
-    const numId = parseInt(sectionId, 10);
-    return isNaN(numId) ? 0 : numId; // Return 0 for invalid IDs
+    const order = sections.map(s => String(s.id));
+    return order.indexOf(String(sectionId));     // 0‑based, -1 if not found
 }
+
 
 /**
  * Updates the highest unlocked section if the new one is further along.
@@ -678,6 +683,7 @@ function getNumericSectionId(sectionId) {
  */
 function updateHighestUnlocked(newlyUnlockedId) {
     const numericCurrentHighest = getNumericSectionId(state.highestSectionUnlocked);
+	if (numericLinkSectionId === -1) return; // unknown link
     const numericNewlyUnlocked = getNumericSectionId(newlyUnlockedId);
 
     if (numericNewlyUnlocked > numericCurrentHighest) {
@@ -693,7 +699,8 @@ function updateHighestUnlocked(newlyUnlockedId) {
  */
 function updateSidebarAccess() {
     const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
-    sidebarLinks.forEach(link => {
+	if (numericLinkSectionId === -1) return; // unknown link
+    getSidebarLinks().forEach(link => {
         const linkSectionId = link.getAttribute('data-section');
         const numericLinkSectionId = getNumericSectionId(linkSectionId);
 
@@ -896,8 +903,11 @@ function updateTimelineDetails(eventId, eventDetails) {
     if (!state.timelineInteractedS3) {
         state.timelineInteractedS3 = true;
         saveState();
+		const notice = document.querySelector('#section-3-unlock');
+		if (notice) notice.remove();        // removes “please explore timeline” text
+		updateNavButtons();                 // so the NEXT button lights up
+
         if (state.currentSectionId === 3) {
-            renderSection(state.currentSectionId);
         }
     }
   } else {
@@ -941,7 +951,7 @@ function updateNavButtons() {
 }
 
 function updateSidebarActive() {
-  sidebarLinks.forEach(link => {
+  getSidebarLinks().forEach(link => {
     const sectionId = link.getAttribute('data-section');
     if (sectionId == String(state.currentSectionId)) {
       link.classList.add('active');
@@ -1170,7 +1180,7 @@ function submitQuiz() {
 if (currentQuizId === 'final-quiz') {
     state.finalQuizCompleted = true;
     state.quizResults[currentQuizId] = result;
-    console.log(`Final Quiz Completed! Score: <span class="math-inline">\{score\}/</span>{quizData.length}.`);
+    console.log(`Final Quiz Completed! Score: ${score}/${quizData.length}.`);
     // --- NEW: Unlock certificate section upon final quiz completion ---
     updateHighestUnlocked('certificate');
     // --- End of new code ---
