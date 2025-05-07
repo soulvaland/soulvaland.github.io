@@ -215,13 +215,13 @@ function renderSection(sectionId) {
 		el.dataset.definition       // ① recognise data-definition
 			|| el.dataset.tooltip
 			|| el.getAttribute('title');
-      const btn = document.createElement('button');
-      btn.className = 'key-term';
-      if (definition) btn.dataset.tooltip = definition;
-      btn.setAttribute('aria-haspopup', 'dialog');
-      btn.innerHTML = el.innerHTML; // keep inner content intact
-      el.replaceWith(btn);
-    });
+    const btn = document.createElement('button');
+    btn.className = 'key-term';
+    if (definition) btn.dataset.tooltip = definition;  // ② always copy
+    btn.setAttribute('aria-haspopup', 'dialog');
+    btn.innerHTML = el.innerHTML; // keep inner content intact
+    el.replaceWith(btn);
+  });
   }
 
   // 4. Global listeners ---------------------------------------------------
