@@ -160,7 +160,7 @@ function renderSection(sectionId) {
   contentHtml += audioButtonHtml;
   contentHtml += `<h3 class="text-2xl font-semibold mb-4 text-sky-700">${section.title}</h3>`;
   contentHtml += `<div class="readable-content space-y-4">`;
-  // 1. Create (or reuse) a single tooltip balloon that will be reused for every term
+  
   let tooltip = document.getElementById('tooltip');
   if (!tooltip) {
     tooltip = document.createElement('div');
@@ -211,7 +211,10 @@ function renderSection(sectionId) {
       // already upgraded
       if (el.tagName === 'BUTTON') return;
 
-      const definition = el.getAttribute('title') || el.dataset.tooltip;
+	const definition =
+		el.dataset.definition       // ① recognise data-definition
+			|| el.dataset.tooltip
+			|| el.getAttribute('title');
       const btn = document.createElement('button');
       btn.className = 'key-term';
       if (definition) btn.dataset.tooltip = definition;
