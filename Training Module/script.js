@@ -111,7 +111,8 @@ let state = {
   quizResults      : {},
   finalQuizCompleted: false,
   userName         : '',
-  timelineInteractedS3: false
+  timelineInteractedS3: false, // From previous update
+  highestSectionUnlocked: 1 // NEW: Start with section 1 unlocked
 };
 
 /* === Cached DOM nodes === */
@@ -508,9 +509,60 @@ function handleTouchEnd(event) {
 document.addEventListener('DOMContentLoaded', () => {
   if (openSidebarBtn) openSidebarBtn.addEventListener('click', () => sidebar.classList.remove('-translate-x-full'));
   if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', () => sidebar.classList.add('-translate-x-full'));
-  sidebarLinks.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const sectionId = e.target.closest('a').getAttribute('data-section'); navigateToSection(sectionId); }); });
+// Inside DOMContentLoaded
+sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const linkElement = e.target.closest('a'); // Get the link element itself
+        const sectionId = linkElement.getAttribute('data-section');
+        const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
+        const numericTargetId = getNumericSectionId(sectionId);
+
+        // Check if the link is actually enabled before navigating
+        if (!linkElement.classList.contains('disabled-link') && numericTargetId <= numericHighestUnlocked) {
+             navigateToSection(sectionId);
+        } else {
+            console.log(`Section ${sectionId} is locked.`);
+            // Optional: Add a visual cue like a slight shake or tooltip?
+        }
+    });
+});
   if (prevBtn) prevBtn.addEventListener('click', () => { const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId)); if (currentIndex > 0) navigateToSection(sections[currentIndex - 1].id); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId)); const currentSection = sections[currentIndex]; let canProceed = true; if (currentSection && currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) { canProceed = false; if (currentSection.id === 3 && !state.timelineInteractedS3) canProceed = false; } if (currentSection && currentSection.id === 'final-quiz' && !state.finalQuizCompleted) { canProceed = false; } if (currentIndex < sections.length - 1 && canProceed) { navigateToSection(sections[currentIndex + 1].id); } else if (!canProceed) { if (currentSection && currentSection.quiz) { if (currentSection.id === 3 && !state.timelineInteractedS3) { alert(`Please explore the timeline in "${currentSection.title}" before proceeding.`); } else { alert(`Please complete the quiz for "${currentSection.title}" before proceeding.`); } } else if (currentSection && currentSection.id === 'final-quiz') { alert(`Please complete the Final Quiz before proceeding to the certificate.`); } } });
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId));
+    const currentSection = sections[currentIndex];
+    let canProceed = true; // Assume true initially
+
+    // Check if current section requires a completed quiz (existing logic)
+    if (currentSection && currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) {
+      canProceed = false;
+      if (currentSection.id === 3 && !state.timelineInteractedS3) canProceed = false;
+    }
+    // Check if trying to proceed from final quiz without completing it
+    if (currentSection && currentSection.id === 'final-quiz' && !state.finalQuizCompleted) {
+      canProceed = false;
+    }
+
+    // If okay to proceed and not the last section
+    if (currentIndex < sections.length - 1 && canProceed) {
+        const nextSection = sections[currentIndex + 1];
+        if (nextSection) {
+            // Unlock the *next* section before navigating
+            updateHighestUnlocked(nextSection.id);
+            navigateToSection(nextSection.id);
+        }
+    } else if (!canProceed) { // Show alerts if cannot proceed (existing logic)
+         if (currentSection && currentSection.quiz) {
+             if (currentSection.id === 3 && !state.timelineInteractedS3) {
+                 alert(`Please explore the timeline in "${currentSection.title}" before proceeding.`);
+             } else {
+                 alert(`Please complete the quiz for "${currentSection.title}" before proceeding.`);
+             }
+         } else if (currentSection && currentSection.id === 'final-quiz') {
+             alert(`Please complete the Final Quiz before proceeding to the certificate.`);
+         }
+    }
+});
   if (submitQuizBtn) submitQuizBtn.addEventListener('click', submitQuiz);
   if (resetQuizBtn) resetQuizBtn.addEventListener('click', resetQuiz);
   if (closeQuizBtn) closeQuizBtn.addEventListener('click', closeQuiz);
@@ -529,7 +581,8 @@ document.addEventListener('DOMContentLoaded', () => {
           } else if (target.matches('#generateCertBtn')) {
       generateCertificate();
           } else if (target.matches('#beginModuleBtn')) {
-      navigateToSection(2);
+			navigateToSection(2);
+			updateHighestUnlocked(2); // Unlock section 2
           } else if (target.matches('.sim-prompt-submit')) {
       event.preventDefault();
                const responseTargetId = target.getAttribute('data-response-target');
@@ -607,22 +660,85 @@ document.addEventListener('DOMContentLoaded', () => {
 // Make sure all previous helper functions are included here.
 // For brevity, I'm only showing the new swipe functions and the modified DOMContentLoaded.
 // The full script would include all previous functions.
+/**
+ * Converts section IDs (numbers or strings like 'final-quiz') into comparable numeric values.
+ * @param {string|number} sectionId - The ID of the section.
+ * @returns {number} A numeric representation for comparison.
+ */
+function getNumericSectionId(sectionId) {
+    if (sectionId === 'certificate') return 13;
+    if (sectionId === 'final-quiz') return 12;
+    const numId = parseInt(sectionId, 10);
+    return isNaN(numId) ? 0 : numId; // Return 0 for invalid IDs
+}
 
+/**
+ * Updates the highest unlocked section if the new one is further along.
+ * @param {string|number} newlyUnlockedId - The ID of the section that might be newly unlocked.
+ */
+function updateHighestUnlocked(newlyUnlockedId) {
+    const numericCurrentHighest = getNumericSectionId(state.highestSectionUnlocked);
+    const numericNewlyUnlocked = getNumericSectionId(newlyUnlockedId);
+
+    if (numericNewlyUnlocked > numericCurrentHighest) {
+        state.highestSectionUnlocked = newlyUnlockedId;
+        console.log(`Highest section unlocked updated to: ${state.highestSectionUnlocked}`);
+        saveState(); // Save the updated state
+        updateSidebarAccess(); // Update the sidebar visuals/accessibility
+    }
+}
+
+/**
+ * Updates the visual and accessibility state of sidebar links based on progress.
+ */
+function updateSidebarAccess() {
+    const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
+    sidebarLinks.forEach(link => {
+        const linkSectionId = link.getAttribute('data-section');
+        const numericLinkSectionId = getNumericSectionId(linkSectionId);
+
+        if (numericLinkSectionId <= numericHighestUnlocked) {
+            // Unlock the link
+            link.classList.remove('disabled-link');
+            link.removeAttribute('tabindex');
+            link.removeAttribute('aria-disabled');
+            link.style.pointerEvents = ''; // Re-enable pointer events if previously disabled
+            // Ensure href allows navigation (it should be '#' by default)
+            if (link.getAttribute('href') === 'javascript:void(0);') {
+                link.setAttribute('href', '#');
+            }
+        } else {
+            // Lock the link
+            link.classList.add('disabled-link');
+            link.setAttribute('tabindex', '-1'); // Remove from tab order
+            link.setAttribute('aria-disabled', 'true'); // Accessibility
+            link.style.pointerEvents = 'none'; // Explicitly disable pointer events
+            // Optionally disable href completely
+            // link.setAttribute('href', 'javascript:void(0);');
+        }
+    });
+    // Also update the active state (which might have been overridden by disabled)
+    updateSidebarActive();
+}
 function loadState() {
   const savedState = localStorage.getItem('aiTeacherTrainingState');
   if (savedState) {
     try {
       const parsedState = JSON.parse(savedState);
       state = {
-        ...state,
-        ...parsedState,
+        ...state, // Default state values
+        ...parsedState, // Overwrite with saved values
         quizResults: parsedState.quizResults || {},
-        timelineInteractedS3: parsedState.timelineInteractedS3 || false
+        timelineInteractedS3: parsedState.timelineInteractedS3 || false,
+        highestSectionUnlocked: parsedState.highestSectionUnlocked || 1 // Load or default to 1
       };
     } catch (e) {
       console.error("Failed to parse saved state, resetting.", e);
       localStorage.removeItem('aiTeacherTrainingState');
+      state.highestSectionUnlocked = 1; // Ensure default on error
     }
+  } else {
+     state.highestSectionUnlocked = 1; // Ensure default if no saved state
   }
 }
 function saveState() {
@@ -638,14 +754,16 @@ function resetModule() {
   if (userConfirmed) {
     stopAudio();
     localStorage.removeItem('aiTeacherTrainingState');
-    state = {
+    state = { // Reset to initial state structure
       currentSectionId : 1,
       quizResults      : {},
       finalQuizCompleted: false,
       userName         : '',
-      timelineInteractedS3: false
+      timelineInteractedS3: false,
+      highestSectionUnlocked: 1 // Reset progress
     };
-    navigateToSection(1);
+    navigateToSection(1); // Navigate back to start
+    updateSidebarAccess(); // Update sidebar visuals immediately
     const certOutput = document.getElementById('certificateOutput');
     if (certOutput) certOutput.classList.add('hidden');
   }
@@ -1049,20 +1167,37 @@ function submitQuiz() {
     completed: true,
     answers: { ...currentQuizAnswers } 
   };
-  if (currentQuizId === 'final-quiz') {
+if (currentQuizId === 'final-quiz') {
     state.finalQuizCompleted = true;
-    state.quizResults[currentQuizId] = result; 
-    console.log(`Final Quiz Completed! Score: ${score}/${quizData.length}.`);
-  } else {
-    state.quizResults[currentQuizId] = result; 
-    console.log(`Section ${currentQuizId} Quiz Completed! Score: ${score}/${quizData.length}.`);
-  }
-  saveState(); 
-  submitQuizBtn.classList.add('hidden');
-  resetQuizBtn.classList.remove('hidden'); 
-  closeQuizBtn.classList.remove('hidden'); 
-  renderSection(state.currentSectionId); 
-  updateNavButtons(); 
+    state.quizResults[currentQuizId] = result;
+    console.log(`Final Quiz Completed! Score: <span class="math-inline">\{score\}/</span>{quizData.length}.`);
+    // --- NEW: Unlock certificate section upon final quiz completion ---
+    updateHighestUnlocked('certificate');
+    // --- End of new code ---
+} else {
+    state.quizResults[currentQuizId] = result;
+    console.log(`Section ${currentQuizId} Quiz Completed! Score: <span class="math-inline">\{score\}/</span>{quizData.length}.`);
+     // --- Optional: Unlock next section immediately upon section quiz completion ---
+     // Find the index of the current quiz section
+     // const currentQuizIndex = sections.findIndex(s => String(s.id) === String(currentQuizId));
+     // if (currentQuizIndex !== -1 && currentQuizIndex < sections.length - 1) {
+     //     const nextSectionAfterQuiz = sections[currentQuizIndex + 1];
+     //     updateHighestUnlocked(nextSectionAfterQuiz.id);
+     // }
+     // Note: Current logic unlocks on clicking 'Next', which might be preferred.
+     // Uncomment above if you want unlocking upon quiz submission instead.
+}
+
+saveState(); // Save progress
+
+// Update UI (existing code)
+submitQuizBtn.classList.add('hidden');
+resetQuizBtn.classList.remove('hidden');
+closeQuizBtn.classList.remove('hidden');
+
+renderSection(state.currentSectionId); // Re-render current section
+updateNavButtons(); // Update navigation buttons
+updateSidebarAccess(); // Ensure sidebar reflects potential unlocking
 }
 
 function resetQuiz() {
