@@ -276,7 +276,7 @@ function renderSection(sectionId) {
     case '2':
       contentHtml += `
         <p>Think of AI as creating computer systems that can perform tasks typically requiring human intelligence. This might make you wonder: how is that different from the regular software we use every day? And if AI can mimic human intelligence, does that mean all AI is the same?</p>
-        <p>Let's clarify these points. A helpful starting analogy is to imagine a <span class="key-term" data-def="A smart assistant, in this AI context, refers to a system designed to perform specific tasks or provide services by processing user input and leveraging learned patterns, often employing natural language processing and machine learning techniques.">smart assistant</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
+        <p>Let's clarify these points. A helpful starting analogy is to imagine a <span class="key-term" role="button" tabindex="0" data-def="A system that uses learned patterns (e.g. NLP) to help with specific tasks, such as answering questions or drafting text.">smart&nbsp;assistant</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
 
         <div class="reveal-container mt-4">
           <details>
@@ -285,7 +285,7 @@ function renderSection(sectionId) {
           </details>
         </div>
 
-        <p class="mt-4">This leads to another important distinction. The AI you'll interact with most often, and the primary focus of this module, is known as <span class="key-term" data-def="AI models designed for one task (e.g. image captioning).">Narrow AI</span>. This means it's designed for specific tasks, like translating languages, recommending movies, or generating text based on your prompts. It excels in its particular domain but doesn't possess broad, human-like general intelligence. The concept of <span class="key-term" role="button" tabindex="0" data-definition="A not-yet‑achieved form of AI that would match or exceed human intelligence across **any** domain or task.">Artificial&nbsp;General&nbsp;Intelligence&nbsp;(AGI)</span> is still largely theoretical and not what we're working with in these practical tools.</p>`;
+        <p class="mt-4">This leads to another important distinction. The AI you'll interact with most often, and the primary focus of this module, is known as <span class="key-term" data-def="AI models designed for one task (e.g. image captioning).">Narrow AI</span>. This means it's designed for specific tasks, like translating languages, recommending movies, or generating text based on your prompts. It excels in its particular domain but doesn't possess broad, human-like general intelligence. The concept of <span class="key-term" role="button" tabindex="0" data-def="A not-yet‑achieved form of AI that would match or exceed human intelligence across **any** domain or task.">Artificial&nbsp;General&nbsp;Intelligence&nbsp;(AGI)</span> is still largely theoretical and not what we're working with in these practical tools.</p>`;
         contentHtml += `<div class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200"><h4 class="font-semibold text-indigo-700 mb-2">🤔 Think About It:</h4><p class="text-sm text-indigo-600">How does understanding the distinction between Narrow AI and AGI change your perception of current AI tools?</p></div>`;
       break;
     case '3':
@@ -348,7 +348,7 @@ function renderSection(sectionId) {
       break;
     case '6':
       contentHtml += `
-        <p>The world of AI tools can seem overwhelming! Instead of focusing on specific brand names (which change rapidly), let's understand the main <span class="key-term" role="button" tabindex="0" data-definition="Broad groups such as Content Creation, Idea Generation, Assessment Aids and Accessibility Tools.">categories</span> of tools relevant to educators.</p>
+        <p>The world of AI tools can seem overwhelming! Instead of focusing on specific brand names (which change rapidly), let's understand the main <span class="key-term" role="button" tabindex="0" data-def"Broad groups such as Content Creation, Idea Generation, Assessment Aids and Accessibility Tools.">categories</span> of tools relevant to educators.</p>
         <p><strong>Common AI Tool Categories for Your Teacher Toolkit:</strong></p>
         <div class="grid md:grid-cols-2 gap-6 mt-4">
           <div class="p-5 bg-sky-50 border border-sky-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -422,7 +422,7 @@ function renderSection(sectionId) {
                      <details class="reveal-container"> <summary>Equity & Access (Digital Divide)</summary> <div class="reveal-content">Unequal access to AI tools, internet connectivity, or necessary training can widen existing equity gaps among students and staff.</div> </details>
           </div>
         </div>
-        <p>Approach AI as a powerful but flawed <span class="key-term" role="button" tabindex="0" data-definition="A supportive AI tool that helps you complete a task but still relies on your direction and judgement.">assistant</span>. Leverage its speed and pattern-finding abilities, but always apply your <span class="key-term">professional judgment</span>, <span class="key-term">critical thinking</span>, and <span class="key-term">ethical compass</span>. You remain the expert on your students and your classroom context.</p>
+        <p>Approach AI as a powerful but flawed <span class="key-term" role="button" tabindex="0" data-def="A supportive AI tool that helps you complete a task but still relies on your direction and judgement.">assistant</span>. Leverage its speed and pattern-finding abilities, but always apply your <span class="key-term">professional judgment</span>, <span class="key-term">critical thinking</span>, and <span class="key-term">ethical compass</span>. You remain the expert on your students and your classroom context.</p>
         <div class="my-6 p-4 bg-orange-50 rounded-lg text-center border border-orange-200 shadow-sm">
           <img src="https://i.imgur.com/EPfm2wG.png" alt="Scale balancing AI benefits and risks" class="mx-auto rounded shadow max-w-full h-auto mb-2" style="max-height: 150px;" onerror="this.style.display='none'; this.onerror=null;">
           <p class="text-sm text-orange-600 font-medium mt-2">A balanced understanding leads to more effective and responsible AI integration.</p>
@@ -466,7 +466,7 @@ function renderSection(sectionId) {
         </ol>
         <p><strong>Mindset Matters:</strong></p>
         <ul class="list-disc list-inside ml-4 space-y-2 text-gray-700">
-          <li>Aim for <span class="key-term" role="button" tabindex="0" data-definition="Using AI to enhance (not replace) your own skills and efficiency.">augmentation</span>, not automation</li>
+          <li>Aim for <span class="key-term" role="button" tabindex="0" data-def="Using AI to enhance (not replace) your own skills and efficiency.">augmentation</span>, not automation</li>
           <li>Embrace <span class="key-term">curiosity</span>. Find reliable EdTech resources</li>
           <li>Prioritize <span class="key-term">ethics and student well-being</span></li>
           <li>Collaborate! Talk to colleagues</li>
