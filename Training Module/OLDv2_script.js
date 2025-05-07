@@ -94,6 +94,9 @@ const quizzes = {
       ]
     }
   ],
+  // ... other quizzes remain the same, but "Correct!" phrasing can be varied similarly.
+  // For brevity, I'll only show changes for quiz 2 & 3 here.
+  // Remember to vary "Correct!" in other quizzes (4 through 10, and final-quiz)
    4: [ { q: "Match the AI learning concepts (from our baking analogy) to their descriptions:", type: 'matching', items: [ { id: 'data', term: "Data" }, { id: 'algo', term: "Algorithm" }, { id: 'learn', term: "Learning Process" } ], options: [ { id: 'desc1', text: "The step-by-step instructions or 'recipe' the AI follows." }, { id: 'desc2', text: "The vast amount of information or 'ingredients' the AI trains on." }, { id: 'desc3', text: "Refining the results based on examples, like adjusting seasoning in a recipe." } ], answer: { 'data': 'desc2', 'algo': 'desc1', 'learn': 'desc3' }, correctFeedback: "Excellent! You've correctly matched the core concepts of AI learning.", incorrectFeedback: "Not quite right. Review the analogies: Data is the ingredients, Algorithms are the recipe, and Learning is the process of refining based on tasting/examples." }, { q: "What is the core process AI uses to 'learn' from data?", type: 'mc', options: ["Developing emotions", "Memorizing every single data point", "Recognizing patterns and relationships", "Randomly guessing answers"], answer: 2, feedback: ["Current AI doesn't develop emotions or consciousness; its learning is mathematical.", "While AI processes vast data, its strength lies in identifying patterns, not just memorizing individual pieces of information.", "You got it! AI learning is essentially sophisticated pattern recognition – finding connections and correlations within the data it's trained on.", "AI uses algorithms, not random guessing, to find patterns and make predictions based on data."] }, { q: "True or False: An AI needs to 'understand' a concept like a human does to generate text about it.", type: 'tf', answer: false, correctFeedback: "That's right! AI operates on patterns in language and data. It can generate grammatically correct and contextually relevant text about topics without having true comprehension or consciousness.", incorrectFeedback: "That's a common misconception! AI excels at pattern matching in language. It can write about photosynthesis without actually 'understanding' biology like a person does." } ],
   5: [ { q: "To get the most helpful response from an AI assistant for a classroom task, your prompt should ideally be:", type: 'mc', options: ["Very short and open-ended", "Filled with complex academic jargon", "Clear, specific, and provide context (like grade level)", "Written entirely in questions"], answer: 2, feedback: ["While sometimes useful for broad brainstorming, very short prompts often lead to generic results for specific tasks.", "Using overly complex language might confuse the AI or lead to outputs that aren't practical. Clear, simple language is usually better.", "Precisely! Providing clarity (what you want), specificity (details), and context (audience, subject) helps the AI generate a much more targeted and useful response.", "While questions can be part of a prompt, commands (like 'Generate,' 'List,' 'Explain') combined with context are often more effective."] }, { q: "If your first prompt doesn't give the desired result, what's a good next step?", type: 'mc', options: ["Assume the AI tool is broken", "Give up on using AI for that task", "Rephrase the prompt, adding more detail or changing the perspective", "Ask the AI why it gave a bad answer"], answer: 2, feedback: ["It's unlikely the tool is completely broken. The issue is often the prompt itself.", "Don't give up easily! Prompting is often an iterative process.", "Yes, that's the way! Refining your prompt is key. Try adding more context, being more specific, asking for a different format, or even telling the AI what *not* to include.", "While you can sometimes ask for clarification, actively refining your own prompt based on the output is usually more productive."] }, { q: "Telling the AI to respond 'as a helpful librarian' or 'in the style of a pirate' is an example of specifying what element in a prompt?", type: 'mc', options: ["The Goal", "The Format", "The Persona or Role", "The Data Source"], answer: 2, feedback: ["The goal is *what* you want (e.g., list books), not *how* the AI should act.", "The format is the structure (e.g., bullet points), not the AI's character.", "Spot on! Assigning a persona or role can influence the tone, style, and sometimes even the content of the AI's response.", "The data source is what the AI learned from, not an instruction you typically give in a prompt."] } ],
   6: [ { q: "A teacher uses an AI tool to generate different opening hooks for a lesson on fractions. Which category does this primarily fall into?", type: 'mc', options: ["Accessibility Tools", "Assessment & Feedback Aids", "Content Creation Aids", "Idea Generation / Brainstorming"], answer: 3, feedback: ["Accessibility tools usually focus on overcoming barriers like reading difficulties.", "Assessment tools help evaluate learning, not typically generate initial lesson ideas.", "While it involves creating content, the main purpose here is exploring different creative starting points.", "Correct! Using AI to come up with various creative options or starting points for a lesson is a great example of idea generation."] }, { q: "Why is it important to check the privacy policy of an AI tool before using it for school-related tasks?", type: 'mc', options: ["To see if it offers discounts for teachers", "To understand how it handles user data and ensure compliance with school policies", "To find out who programmed the AI", "To learn advanced prompting techniques"], answer: 1, feedback: ["Discounts are nice, but privacy is the critical factor here.", "Absolutely. Privacy policies explain how your data (and potentially student data, if applicable and allowed) is collected, used, and protected. This is crucial for meeting ethical and legal obligations.", "The programmers' identities aren't usually relevant to safe use.", "Prompting techniques are learned through practice and resources, not typically detailed in privacy policies."] }, { q: "True or False: All AI tools within the same category (e.g., Content Creation) work exactly the same way and produce identical results.", type: 'tf', answer: false, correctFeedback: "Indeed! Different AI models and tools, even within the same category, have unique strengths, weaknesses, training data, and interfaces. Results can vary significantly.", incorrectFeedback: "Not quite. Even tools designed for similar tasks can differ greatly in their capabilities, the quality of their output, and how they respond to prompts. It's often worth trying a couple of options if one isn't working well." } ],
@@ -111,7 +114,7 @@ let state = {
   quizResults      : {},
   finalQuizCompleted: false,
   userName         : '',
-  timelineInteractedS3: false
+  timelineInteractedS3: false // Added for Section 3 quiz visibility
 };
 
 /* === Cached DOM nodes === */
@@ -132,10 +135,6 @@ const closeQuizBtn        = document.getElementById('closeQuizBtn');
 const resetModuleBtn      = document.getElementById('resetModuleBtn');
 const sectionAudioPlayer  = document.getElementById('sectionAudioPlayer');
 
-/* === NEW: Variables for Swipe Gesture === */
-let touchStartX = 0;
-let touchEndX = 0;
-const swipeThreshold = 50; // Minimum horizontal distance (pixels) to be considered a swipe
 
 /* === All functions from the original <script> block go here === */
 function renderSection(sectionId) {
@@ -156,10 +155,11 @@ function renderSection(sectionId) {
   let contentHtml = `<div class="bg-white p-8 rounded-lg shadow space-y-6">`;
   contentHtml += audioButtonHtml;
   contentHtml += `<h3 class="text-2xl font-semibold mb-4 text-sky-700">${section.title}</h3>`;
-  contentHtml += `<div class="readable-content space-y-4">`;
+  contentHtml += `<div class="readable-content space-y-4">`; // Wrapper for main content
 
+  // --- SECTION SPECIFIC CONTENT ---
   switch (String(section.id)) {
-    case '1':
+    case '1': // Welcome
       contentHtml += `
         <p class="text-lg">Welcome, educators, to your introduction to Artificial Intelligence in the classroom!</p>
         <p>Feeling curious, excited, or maybe even a little apprehensive about AI? That's perfectly normal! This module is designed to demystify AI, explore its potential as a helpful tool for elementary teachers, and empower you to use it effectively and ethically.</p>
@@ -180,7 +180,7 @@ function renderSection(sectionId) {
                  <button id="beginModuleBtn" class="px-8 py-3 text-lg text-white bg-green-600 rounded-md hover:bg-green-700 shadow-md transition duration-150 ease-in-out"> Begin Module <i class="fas fa-arrow-right ml-2"></i> </button>
         </div>`;
       break;
-    case '2':
+    case '2': // What is AI? - Updated with narrative bridge and smart assistant definition
       contentHtml += `
         <p>Think of AI as creating computer systems that can perform tasks typically requiring human intelligence. This might make you wonder: how is that different from the regular software we use every day? And if AI can mimic human intelligence, does that mean all AI is the same?</p>
         <p>Let's clarify these points. A helpful starting analogy is to imagine a <span class="key-term">smart assistant*</span> that learns from countless examples to help with specific jobs. It's not about conscious robots; it's about specialized tools that operate differently from traditional programs.</p>
@@ -196,16 +196,16 @@ function renderSection(sectionId) {
         <p class="mt-4">This leads to another important distinction. The AI you'll interact with most often, and the primary focus of this module, is known as <span class="key-term">Narrow AI</span>. This means it's designed for specific tasks, like translating languages, recommending movies, or generating text based on your prompts. It excels in its particular domain but doesn't possess broad, human-like general intelligence. The concept of <span class="key-term">Artificial General Intelligence (AGI)</span> – an AI with the intellectual capabilities of a human across a wide range of tasks – is still largely theoretical and not what we're working with in these practical tools.</p>`;
         contentHtml += `<div class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200"><h4 class="font-semibold text-indigo-700 mb-2">🤔 Think About It:</h4><p class="text-sm text-indigo-600">How does understanding the distinction between Narrow AI and AGI change your perception of current AI tools?</p></div>`;
       break;
-    case '3':
+    case '3': // AI Through Time - "Pace of change" paragraph moved
       contentHtml += `
         <p>While AI feels very current, its roots go back further than you might think! Understanding this brief history helps appreciate how we got here.</p>
         <p><strong>A Quick Journey Through Time:</strong></p>
         <div id="interactive-timeline-placeholder" class="my-6">
             {/* Timeline will be injected here by JS */}
         </div>
-        <p class="mt-6">The pace of change in AI is rapid, making continuous learning and adaptation important for everyone!</p>`;
+        <p class="mt-6">The pace of change in AI is rapid, making continuous learning and adaptation important for everyone!</p>`; // "Pace of change" paragraph moved here
       break;
-    case '4':
+    case '4': // How AI Learns
       contentHtml += `
         <p>So, how does AI *actually* learn? It's less like human understanding and more like incredibly sophisticated <span class="key-term">pattern recognition</span>.</p>
         <p><strong>Let's revisit our baking analogy with interactive definitions:</strong></p>
@@ -222,7 +222,7 @@ function renderSection(sectionId) {
              <p class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg"> <strong class="block font-semibold">Crucial Distinction:</strong> This pattern matching isn't the same as human understanding, reasoning, or consciousness. An AI can write about empathy without feeling it, or discuss scientific concepts without truly comprehending the underlying principles. It's mimicking patterns it learned from human-generated text. </p>`;
         contentHtml += `<div class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200"><h4 class="font-semibold text-indigo-700 mb-2">🤔 Reflection Prompt:</h4><p class="text-sm text-indigo-600">Consider a recent task where you learned something new. How does the AI 'learning process' (Data, Algorithm, Learning) compare to your own learning experience?</p></div>`;
       break;
-    case '5':
+    case '5': // Talking to AI: Prompting
       contentHtml += `
         <p>Getting useful results from AI often depends heavily on how you ask! Your instructions, or <span class="key-term">prompts</span>, are the key to unlocking the AI's potential for your specific needs.</p>
         <p>Think of it as communicating with a very capable, very literal assistant who needs clear directions. The better your prompt, the better the result.</p>
@@ -251,7 +251,7 @@ function renderSection(sectionId) {
         </div>`;
         contentHtml += `<div class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200"><h4 class="font-semibold text-indigo-700 mb-2">🤔 Think About It:</h4><p class="text-sm text-indigo-600">Think of a recent classroom activity. How could you use the C.R.A.F.T. method (as detailed above) to design a prompt for an AI to help you prepare for it?</p></div>`;
       break;
-    case '6':
+    case '6': // Your AI Toolkit - Punctuation for "Use for:" lines (no full stop)
       contentHtml += `
         <p>The world of AI tools can seem overwhelming! Instead of focusing on specific brand names (which change rapidly), let's understand the main <span class="key-term">categories</span> of tools relevant to educators.</p>
         <p><strong>Common AI Tool Categories for Your Teacher Toolkit:</strong></p>
@@ -259,22 +259,22 @@ function renderSection(sectionId) {
           <div class="p-5 bg-sky-50 border border-sky-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
             <h4 class="font-semibold text-sky-700 mb-2"><i class="fas fa-pencil-alt mr-2 fa-fw"></i>Content Creation Aids</h4>
             <p class="text-sm text-gray-700">These tools excel at generating text based on your prompts. Think of them as writing assistants.</p>
-            <p class="text-xs text-gray-500 mt-1"><em>Use for: Drafting lesson outlines, generating varied practice questions, writing initial email drafts, creating newsletter snippets, simplifying complex text</em></p>
+            <p class="text-xs text-gray-500 mt-1"><em>Use for: Drafting lesson outlines, generating varied practice questions, writing initial email drafts, creating newsletter snippets, simplifying complex text</em></p> {/* No full stop */}
           </div>
           <div class="p-5 bg-lime-50 border border-lime-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
             <h4 class="font-semibold text-lime-700 mb-2"><i class="fas fa-lightbulb mr-2 fa-fw"></i>Idea Generation & Brainstorming</h4>
             <p class="text-sm text-gray-700">Stuck for ideas? AI can be a fantastic brainstorming partner, offering diverse perspectives and starting points.</p>
-            <p class="text-xs text-gray-500 mt-1"><em>Use for: Finding creative lesson hooks, brainstorming project themes, generating writing prompts, suggesting discussion questions, exploring different ways to explain a concept</em></p>
+            <p class="text-xs text-gray-500 mt-1"><em>Use for: Finding creative lesson hooks, brainstorming project themes, generating writing prompts, suggesting discussion questions, exploring different ways to explain a concept</em></p> {/* No full stop */}
           </div>
           <div class="p-5 bg-amber-50 border border-amber-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
             <h4 class="font-semibold text-amber-700 mb-2"><i class="fas fa-tasks mr-2 fa-fw"></i>Assessment & Feedback Aids</h4>
             <p class="text-sm text-gray-700">Some AI tools can assist with creating assessment materials or providing initial feedback (always review carefully!).</p>
-            <p class="text-xs text-gray-500 mt-1"><em>Use for: Generating multiple-choice or T/F questions, creating rubric templates, suggesting feedback criteria, providing grammar/spelling checks (with caution on meaning)</em></p>
+            <p class="text-xs text-gray-500 mt-1"><em>Use for: Generating multiple-choice or T/F questions, creating rubric templates, suggesting feedback criteria, providing grammar/spelling checks (with caution on meaning)</em></p> {/* No full stop */}
           </div>
           <div class="p-5 bg-violet-50 border border-violet-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
             <h4 class="font-semibold text-violet-700 mb-2"><i class="fas fa-universal-access mr-2 fa-fw"></i>Accessibility Tools</h4>
             <p class="text-sm text-gray-700">AI significantly enhances tools that support diverse learners and communication needs.</p>
-            <p class="text-xs text-gray-500 mt-1"><em>Use for: Text-to-speech (reading text aloud), speech-to-text (dictation), real-time translation, simplifying complex language for readability</em></p>
+            <p class="text-xs text-gray-500 mt-1"><em>Use for: Text-to-speech (reading text aloud), speech-to-text (dictation), real-time translation, simplifying complex language for readability</em></p> {/* No full stop */}
           </div>
         </div>
         <div class="reveal-container mt-6">
@@ -291,7 +291,7 @@ function renderSection(sectionId) {
         </div>`;
         contentHtml += `<div class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200"><h4 class="font-semibold text-indigo-700 mb-2">🤔 Reflection Point:</h4><p class="text-sm text-indigo-600">Reflect on one potential benefit of AI that excites you for your classroom, and one challenge that you feel is most important to address proactively. How might you start to leverage that benefit while mitigating the challenge?</p></div>`;
       break;
-    case '7':
+    case '7': // AI in Your Workflow
       contentHtml += `
         <p>Let's see the difference prompting makes! Instead of just showing examples, try simulating an AI interaction below. Click 'Submit' for each prompt to see a potential AI response.</p>
         <hr class="my-6 border-gray-300">
@@ -306,7 +306,7 @@ function renderSection(sectionId) {
              <div class="mb-6"> <h5 class="font-semibold mb-2">Attempt 2: Detailed (CRAFT) Prompt</h5> <div class="sim-prompt-box"> <code>Write a short, friendly paragraph for our weekly 2nd-grade classroom newsletter reminding families about the upcoming field trip to the City Zoo next Friday, May 10th. Mention they need signed permission slips returned by Wednesday, May 8th, and should pack a lunch and drink. Keep the tone positive.</code> </div> <button data-response-target="response-s2-detailed" class="sim-submit-btn sim-prompt-submit">Submit Detailed Prompt</button> <div id="response-s2-detailed" class="sim-response-box"> <strong class="block mb-2">Simulated AI Response:</strong> <p>Just a friendly reminder that our exciting 2nd-grade field trip to the City Zoo is coming up next Friday, May 10th! Please make sure your child returns their signed permission slip by this Wednesday, May 8th, so they can join the fun. Also, remember to pack a yummy lunch and drink for them on the day of the trip. We can't wait for our animal adventure!</p> <em>(Critique: Includes all necessary details in a suitable tone.)</em> </div> </div>
              <p class="mt-6 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg"> <strong class="block font-semibold"><i class="fas fa-lightbulb mr-1"></i> Key Takeaway:</strong> Notice how adding specific details (Context, Role, Action, Format, Target) significantly improves the quality and usefulness of the AI's response. Remember to always review and personalize any AI-generated text before using it! </p>`;
       break;
-    case '8':
+    case '8': // Benefits & Challenges
       contentHtml += `
         <p>Embracing AI means understanding both its bright possibilities and its potential pitfalls. A balanced perspective is key to using it wisely.</p>
         <p><strong>Weighing the Pros and Cons for Educators (Click each item to learn more):</strong></p>
@@ -333,7 +333,7 @@ function renderSection(sectionId) {
           <p class="text-sm text-orange-600 font-medium mt-2">A balanced understanding leads to more effective and responsible AI integration.</p>
         </div>`;
       break;
-    case '9':
+    case '9': // Playing it Safe - Punctuation for main checklist (periods), Safer/Risky (no periods)
       contentHtml += `
         <p>Using AI effectively goes hand-in-hand with using it <span class="key-term">responsibly</span> and <span class="key-term">ethically</span>. Protecting students and upholding professional standards must always be the priority.</p>
         <p><strong>Your Safety & Ethics Checklist:</strong></p>
@@ -358,7 +358,7 @@ function renderSection(sectionId) {
         </div>`;
         contentHtml += `<div class="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-200"><h4 class="font-semibold text-indigo-700 mb-2">🤔 Consider This:</h4><p class="text-sm text-indigo-600">Imagine you want to use an AI tool to help brainstorm scenarios for a social skills lesson. How would you phrase your prompt to get useful ideas while strictly adhering to student privacy guidelines (i.e., not using any PII)?</p></div>`;
       break;
-    case '10':
+    case '10': // Getting Started - Punctuation for "Practical Steps" (periods), "Mindset Matters" (no periods)
       contentHtml += `
         <p>Feeling ready to dip your toes into using AI? Excellent! The best approach is <span class="key-term">thoughtful experimentation</span>, starting small and building confidence.</p>
         <p><strong>Practical Steps for Getting Started:</strong></p>
@@ -381,7 +381,7 @@ function renderSection(sectionId) {
           <p class="text-sm text-green-600 font-medium mt-2">Start small, stay critical, adhere to policy, and focus on augmenting your practice.</p>
         </div>`;
       break;
-    case '11':
+    case '11': // Wrap-up & Next Steps - Punctuation for "Recap" list (no periods)
       contentHtml += `
         <p class="text-lg font-semibold text-green-700">Module Complete! You've taken a significant step in understanding AI in education.</p>
         <p>We've journeyed from the basic definition of AI and its history to practical ways it can assist in your elementary classroom, emphasizing the crucial importance of ethical and responsible use.</p>
@@ -424,12 +424,16 @@ function renderSection(sectionId) {
     default:
       contentHtml += `<p>Content loading error.</p>`;
   }
+  // --- END SECTION SPECIFIC CONTENT ---
 
-  contentHtml += `</div>`;
+  contentHtml += `</div>`; // Close readable content div
 
+  // Add 'Take Quiz' button if applicable
   if (section.quiz && section.id !== 'final-quiz' && section.id !== 'certificate') {
     contentHtml += `<hr class="my-8 border-gray-300">`;
     contentHtml += `<h4 class="text-lg font-semibold mb-4 text-center text-gray-700">Check Your Understanding</h4>`;
+
+    // Section 3 Quiz Visibility Logic
     if (section.id === 3 && !state.timelineInteractedS3) {
         contentHtml += `<p class="text-center text-gray-600 italic mt-4">Please click on an era in the timeline above to learn more and unlock the quiz.</p>`;
     } else {
@@ -442,75 +446,26 @@ function renderSection(sectionId) {
     }
   }
 
-  contentHtml += `</div>`;
+  contentHtml += `</div>`; // Close bg-white container
   contentArea.innerHTML = contentHtml;
 
+  // Inject timeline if Section 3
   if (section.id === 3) {
-      injectTimeline();
+      injectTimeline(); // This function now contains updated timeline content
   }
 
   updateNavButtons();
   updateSidebarActive();
 }
 
-/* === NEW: Swipe Gesture Handler Functions === */
-function handleTouchStart(event) {
-    // Only capture start if on mobile and touch is on content area or sidebar itself
-    if (window.innerWidth < 768) { // md breakpoint
-        // Check if the touch is on the open sidebar button; if so, let the button handle it
-        if (openSidebarBtn && openSidebarBtn.contains(event.target)) {
-            return;
-        }
-        touchStartX = event.changedTouches[0].screenX;
-    }
-}
-
-function handleTouchMove(event) {
-    if (window.innerWidth < 768 && touchStartX !== 0) { // Only track if touch started
-        touchEndX = event.changedTouches[0].screenX;
-        // Optional: Could add logic here to prevent vertical scroll if a horizontal swipe is clearly detected
-        // For example, if Math.abs(touchEndX - touchStartX) > Math.abs(event.changedTouches[0].screenY - initialY)
-        // event.preventDefault();
-    }
-}
-
-function handleTouchEnd(event) {
-    if (window.innerWidth < 768 && touchStartX !== 0) { // md breakpoint and touch has started
-        const swipeDistance = touchEndX - touchStartX;
-        const sidebarIsOpen = !sidebar.classList.contains('-translate-x-full');
-
-        // Swipe Right to Open
-        if (swipeDistance > swipeThreshold && !sidebarIsOpen) {
-            // Check if the touch started near the left edge of the screen
-            // This makes opening more intentional, adjust `edgeThreshold` as needed
-            const edgeThreshold = 50; // pixels from the left edge
-            if (touchStartX < edgeThreshold) {
-                 sidebar.classList.remove('-translate-x-full');
-                 console.log("Swiped right to open sidebar");
-            }
-        }
-        // Swipe Left to Close
-        else if (swipeDistance < -swipeThreshold && sidebarIsOpen) {
-            // Check if the touch happened on the sidebar itself or started on the sidebar
-            // For simplicity, we can allow closing by swiping left anywhere if it's open,
-            // or be more specific if needed (e.g., if (sidebar.contains(event.target) || touch started on sidebar))
-            sidebar.classList.add('-translate-x-full');
-            console.log("Swiped left to close sidebar");
-        }
-    }
-    // Reset touch coordinates
-    touchStartX = 0;
-    touchEndX = 0;
-}
-
-
 /* === Event listeners (DOMContentLoaded) === */
 document.addEventListener('DOMContentLoaded', () => {
+  // Attach static listeners
   if (openSidebarBtn) openSidebarBtn.addEventListener('click', () => sidebar.classList.remove('-translate-x-full'));
   if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', () => sidebar.classList.add('-translate-x-full'));
   sidebarLinks.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const sectionId = e.target.closest('a').getAttribute('data-section'); navigateToSection(sectionId); }); });
   if (prevBtn) prevBtn.addEventListener('click', () => { const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId)); if (currentIndex > 0) navigateToSection(sections[currentIndex - 1].id); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId)); const currentSection = sections[currentIndex]; let canProceed = true; if (currentSection && currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) { canProceed = false; if (currentSection.id === 3 && !state.timelineInteractedS3) canProceed = false; } if (currentSection && currentSection.id === 'final-quiz' && !state.finalQuizCompleted) { canProceed = false; } if (currentIndex < sections.length - 1 && canProceed) { navigateToSection(sections[currentIndex + 1].id); } else if (!canProceed) { if (currentSection && currentSection.quiz) { if (currentSection.id === 3 && !state.timelineInteractedS3) { alert(`Please explore the timeline in "${currentSection.title}" before proceeding.`); } else { alert(`Please complete the quiz for "${currentSection.title}" before proceeding.`); } } else if (currentSection && currentSection.id === 'final-quiz') { alert(`Please complete the Final Quiz before proceeding to the certificate.`); } } });
+  if (nextBtn) nextBtn.addEventListener('click', () => { const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId)); const currentSection = sections[currentIndex]; let canProceed = true; if (currentSection && currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) { canProceed = false; if (currentSection.id === 3 && !state.timelineInteractedS3) canProceed = false; /* Ensure timeline interaction for S3 quiz */ } if (currentSection && currentSection.id === 'final-quiz' && !state.finalQuizCompleted) { canProceed = false; } if (currentIndex < sections.length - 1 && canProceed) { navigateToSection(sections[currentIndex + 1].id); } else if (!canProceed) { if (currentSection && currentSection.quiz) { if (currentSection.id === 3 && !state.timelineInteractedS3) { alert(`Please explore the timeline in "${currentSection.title}" before proceeding.`); } else { alert(`Please complete the quiz for "${currentSection.title}" before proceeding.`); } } else if (currentSection && currentSection.id === 'final-quiz') { alert(`Please complete the Final Quiz before proceeding to the certificate.`); } } });
   if (submitQuizBtn) submitQuizBtn.addEventListener('click', submitQuiz);
   if (resetQuizBtn) resetQuizBtn.addEventListener('click', resetQuiz);
   if (closeQuizBtn) closeQuizBtn.addEventListener('click', closeQuiz);
@@ -575,53 +530,29 @@ document.addEventListener('DOMContentLoaded', () => {
        });
    }
 
-  // Click outside to close sidebar (existing)
-  document.addEventListener('click', (event) => {
-    if (window.innerWidth < 768) { // md breakpoint
-        const openSidebarBtn = document.getElementById('openSidebarBtn'); // Ensure this is the correct ID
-        if (sidebar && !sidebar.classList.contains('-translate-x-full')) { // If sidebar is open
-            const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickOnOpenButton = openSidebarBtn && openSidebarBtn.contains(event.target);
-            if (!isClickInsideSidebar && !isClickOnOpenButton) {
-                sidebar.classList.add('-translate-x-full');
-            }
-        }
-    }
-  });
-
-  // --- NEW: Add Swipe Event Listeners ---
-  // We'll attach to document.body for broad capture on mobile.
-  // Could be refined to specific elements like `contentArea` or `sidebar` if needed.
-  document.body.addEventListener('touchstart', handleTouchStart, { passive: true }); // passive:true if not calling preventDefault
-  document.body.addEventListener('touchmove', handleTouchMove, { passive: true });  // passive:true if not calling preventDefault
-  document.body.addEventListener('touchend', handleTouchEnd);
-
-
+  document.addEventListener('click', (event) => { if (window.innerWidth < 768) { const sidebar = document.getElementById('sidebar'); const openSidebarBtn = document.getElementById('openSidebarBtn'); if (sidebar && !sidebar.classList.contains('-translate-x-full')) { const isClickInsideSidebar = sidebar.contains(event.target); const isClickOnOpenButton = openSidebarBtn && openSidebarBtn.contains(event.target); if (!isClickInsideSidebar && !isClickOnOpenButton) { sidebar.classList.add('-translate-x-full'); } } } });
   window.addEventListener('beforeunload', stopAudio);
 
   loadState();
   navigateToSection(state.currentSectionId);
 });
 
-// --- Helper Functions (loadState, saveState, resetModule, injectTimeline, etc. are the same as before) ---
-// Make sure all previous helper functions are included here.
-// For brevity, I'm only showing the new swipe functions and the modified DOMContentLoaded.
-// The full script would include all previous functions.
-
+// --- Helper Functions ---
 function loadState() {
   const savedState = localStorage.getItem('aiTeacherTrainingState');
   if (savedState) {
     try {
       const parsedState = JSON.parse(savedState);
       state = {
-        ...state,
-        ...parsedState,
+        ...state, // Default state values
+        ...parsedState, // Overwrite with saved values
         quizResults: parsedState.quizResults || {},
-        timelineInteractedS3: parsedState.timelineInteractedS3 || false
+        timelineInteractedS3: parsedState.timelineInteractedS3 || false // Ensure this is loaded
       };
     } catch (e) {
       console.error("Failed to parse saved state, resetting.", e);
       localStorage.removeItem('aiTeacherTrainingState');
+      // state remains as defined initially
     }
   }
 }
@@ -638,7 +569,7 @@ function resetModule() {
   if (userConfirmed) {
     stopAudio();
     localStorage.removeItem('aiTeacherTrainingState');
-    state = {
+    state = { // Reset to initial state structure
       currentSectionId : 1,
       quizResults      : {},
       finalQuizCompleted: false,
@@ -654,6 +585,8 @@ function resetModule() {
 function injectTimeline() {
   const placeholder = document.getElementById('interactive-timeline-placeholder');
   if (!placeholder) return;
+
+  // Updated eventDetails with more definitions and links
   const eventDetails = {
     event1: {
       id: "event1", year: "1950s", title: "Foundational Ideas",
@@ -706,12 +639,13 @@ function injectTimeline() {
       factoid: "Did you know? The 'Transformer' architecture, introduced in 2017, is the foundation for many of today's most powerful large language models, including GPT and Gemini."
     }
   };
+
   placeholder.innerHTML = `
     <div class="timeline-container-enhanced">
       <div class="timeline-line"></div>
       <div class="timeline-items-wrapper hide-scrollbar needs-swipe-hint">
         <div class="timeline-items" id="timeline-items-container">
-        </div>
+          </div>
       </div>
     </div>
     <div id="details-container" class="details-section">
@@ -721,8 +655,10 @@ function injectTimeline() {
       <div id="details-factoid"></div>
     </div>
   `;
+
   const timelineItemsContainer = document.getElementById('timeline-items-container');
   if (!timelineItemsContainer) return;
+
   Object.values(eventDetails).forEach(event => {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'timeline-item group';
@@ -731,6 +667,8 @@ function injectTimeline() {
     itemDiv.addEventListener('click', () => updateTimelineDetails(event.id, eventDetails));
     timelineItemsContainer.appendChild(itemDiv);
   });
+
+  // Optionally, select the first timeline item by default
   if (Object.keys(eventDetails).length > 0) {
     updateTimelineDetails(Object.keys(eventDetails)[0], eventDetails);
   }
@@ -742,9 +680,10 @@ function updateTimelineDetails(eventId, eventDetails) {
   const detailsContent = document.getElementById('details-content');
   const detailsMilestones = document.getElementById('details-milestones');
   const detailsFactoid = document.getElementById('details-factoid');
+
   if (details && detailsTitle && detailsContent && detailsMilestones && detailsFactoid) {
     detailsTitle.textContent = details.title + ` (${details.year})`;
-    detailsContent.innerHTML = details.content;
+    detailsContent.innerHTML = details.content; // Use innerHTML to render links and spans
     detailsMilestones.innerHTML = '';
     if (details.milestones && details.milestones.length > 0) {
       const milestonesTitleEl = document.createElement('h4');
@@ -755,7 +694,7 @@ function updateTimelineDetails(eventId, eventDetails) {
       list.className = 'milestones-list text-sm';
       details.milestones.forEach(milestone => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `<i class="${milestone.icon || 'fa-solid fa-star'}"></i> ${milestone.text}`;
+        listItem.innerHTML = `<i class="${milestone.icon || 'fa-solid fa-star'}"></i> ${milestone.text}`; // Use innerHTML for links
         list.appendChild(listItem);
       });
       detailsMilestones.appendChild(list);
@@ -767,6 +706,7 @@ function updateTimelineDetails(eventId, eventDetails) {
       factoidP.innerHTML = `<i class="fa-solid fa-circle-info mr-2"></i> ${details.factoid}`;
       detailsFactoid.appendChild(factoidP);
     }
+
     document.querySelectorAll('.timeline-item').forEach(item => {
       item.classList.remove('active');
       if (item.getAttribute('data-id') === eventId) {
@@ -775,13 +715,18 @@ function updateTimelineDetails(eventId, eventDetails) {
     });
     const detailsContainer = document.getElementById('details-container');
     if(detailsContainer) detailsContainer.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Logic for Section 3 quiz visibility
     if (!state.timelineInteractedS3) {
         state.timelineInteractedS3 = true;
         saveState();
+        // Re-render the current section to update quiz button visibility
+        // This is a simple way; a more targeted DOM update could also be used.
         if (state.currentSectionId === 3) {
             renderSection(state.currentSectionId);
         }
     }
+
   } else {
     console.error("Could not find all elements needed to update timeline details.");
   }
@@ -790,34 +735,49 @@ function updateTimelineDetails(eventId, eventDetails) {
 function updateNavButtons() {
   const currentIndex = sections.findIndex(s => String(s.id) == String(state.currentSectionId));
   prevBtn.disabled = currentIndex === 0;
+
   const currentSection = sections[currentIndex];
   let canProceed = true;
+
   if (currentSection) {
+    // Check if quiz is required and not completed
     if (currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) {
       canProceed = false;
+      // Specifically for Section 3, also check if timeline has been interacted with if quiz isn't completed
       if (currentSection.id === 3 && !state.timelineInteractedS3) {
         canProceed = false;
       }
     }
+    // Check for final quiz completion before certificate
     if (currentSection.id === 'final-quiz' && !state.finalQuizCompleted) {
       canProceed = false;
     }
+    // Special handling for navigating from section 10 to 11 (Wrap-up)
+    // If section 10 quiz is done, allow proceeding to 11.
     if (state.currentSectionId === 10 && state.quizResults[10]?.completed) {
         canProceed = true;
     }
+    // If on section 11, allow proceeding to final-quiz (no quiz on 11)
     if (state.currentSectionId === 11) {
         canProceed = true;
     }
+
+
   }
+
+
   nextBtn.classList.toggle('hidden', state.currentSectionId === 1 || state.currentSectionId === 'certificate');
   prevBtn.classList.toggle('hidden', state.currentSectionId === 1);
+
   const previousSectionIndex = currentIndex > 0 ? currentIndex -1 : -1;
   const previousSection = previousSectionIndex !== -1 ? sections[previousSectionIndex] : null;
+  // Highlight next button if the previous section's quiz was just completed and next is not disabled
   const shouldHighlight = previousSection &&
                           previousSection.quiz &&
                           state.quizResults[previousSection.id]?.completed &&
-                          canProceed && 
-                          currentIndex < sections.length - 1; 
+                          canProceed && // Only highlight if we can actually proceed
+                          currentIndex < sections.length - 1; // And not on the last section
+
   nextBtn.classList.toggle('highlight-next', shouldHighlight);
   nextBtn.disabled = currentIndex === sections.length - 1 || !canProceed;
 }
@@ -837,20 +797,24 @@ function updateSidebarActive() {
 function navigateToSection(sectionId) {
   stopAudio();
   removeAudioPrefetch();
+
   const targetSectionId = String(sectionId);
   const targetIndex = sections.findIndex(s => String(s.id) === targetSectionId);
+
   if (targetIndex < 0) {
     console.error("Target section not found:", targetSectionId);
     return;
   }
+
   state.currentSectionId = sections[targetIndex].id;
-  renderSection(state.currentSectionId);
+  renderSection(state.currentSectionId); // This will re-render content, including quiz button logic
   saveState();
+
   if (window.innerWidth < 768 && !sidebar.classList.contains('-translate-x-full')) {
     sidebar.classList.add('-translate-x-full');
   }
-  contentArea.scrollTop = 0;
-  nextBtn.classList.remove('highlight-next');
+  contentArea.scrollTop = 0; // Scroll to top of new content
+  nextBtn.classList.remove('highlight-next'); // Remove highlight after navigation
 }
 
 let currentQuizId = null;
@@ -864,21 +828,25 @@ function openQuiz(quizId) {
     console.error("Quiz data not found for:", quizId);
     return;
   }
+
   const section = sections.find(s => String(s.id) == String(quizId));
   const title = quizId === 'final-quiz' ? "Final Quiz" : `Section ${quizId}: ${section?.title} Quiz`;
   quizTitle.textContent = title;
   quizContent.innerHTML = '';
   quizAttempted = false;
-  currentQuizAnswers = {};
+  currentQuizAnswers = {}; // Reset answers for the current attempt
+
   quizData.forEach((q, index) => {
     const questionId = `q-${quizId}-${index}`;
     const questionElement = document.createElement('div');
     questionElement.id = questionId;
     questionElement.className = 'mb-6 p-4 border border-gray-200 rounded-lg bg-white shadow-sm';
     questionElement.innerHTML = `<p class="font-medium mb-3 text-gray-800">${index + 1}. ${q.q}</p>`;
+
     const optionsElement = document.createElement('div');
     optionsElement.className = 'space-y-2';
     const inputName = `q${index}`;
+
     if (q.type === 'mc' || q.type === 'ordering_mc') {
       q.options.forEach((option, optIndex) => {
         const optionId = `${questionId}-opt${optIndex}`;
@@ -902,6 +870,7 @@ function openQuiz(quizId) {
         </label>`;
     } else if (q.type === 'matching') {
       let selectOptionsHtml = `<option value="">-- Select a match --</option>`;
+      // Shuffle options for matching to avoid easy guessing if terms/options are in order
       const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
       shuffledOptions.forEach(opt => {
         selectOptionsHtml += `<option value="${opt.id}">${opt.text}</option>`;
@@ -918,44 +887,61 @@ function openQuiz(quizId) {
       });
     }
     questionElement.appendChild(optionsElement);
+
     const feedbackElement = document.createElement('div');
     feedbackElement.id = `feedback-${index}`;
     feedbackElement.className = 'mt-4 text-sm';
     questionElement.appendChild(feedbackElement);
+
     if (quizId === 'final-quiz' && q.sectionLink) {
         const remediationElement = document.createElement('div');
         remediationElement.id = `remediation-${index}`;
-        remediationElement.className = 'mt-2 text-sm hidden';
+        remediationElement.className = 'mt-2 text-sm hidden'; // Initially hidden
         questionElement.appendChild(remediationElement);
     }
     quizContent.appendChild(questionElement);
   });
+
   submitQuizBtn.classList.remove('hidden');
   resetQuizBtn.classList.remove('hidden');
   closeQuizBtn.classList.add('hidden');
   quizModal.classList.remove('hidden');
-  quizContent.scrollTop = 0;
+  quizContent.scrollTop = 0; // Scroll to top of quiz
   prefetchNextAudio(quizId);
 }
 
 function submitQuiz() {
-  if (quizAttempted && currentQuizId !== 'final-quiz') return; 
+  if (quizAttempted && currentQuizId !== 'final-quiz') return; // Allow re-submission for final quiz for retakes
+  if (quizAttempted && currentQuizId === 'final-quiz' && !state.quizResults['final-quiz']?.retake) {
+      // If final quiz was already submitted and not explicitly a retake, don't re-process unless reset
+      // This logic might need adjustment based on how retakes are handled.
+      // For now, let's assume a retake implies quiz was reset.
+  }
+
+
   const quizData = quizzes[currentQuizId];
   let score = 0;
   let allAnswered = true;
   let firstUnansweredIndex = -1;
+
   quizData.forEach((q, index) => {
     const selectedAnswer = currentQuizAnswers[index];
     const feedbackEl = document.getElementById(`feedback-${index}`);
     const remediationEl = document.getElementById(`remediation-${index}`);
-    feedbackEl.innerHTML = ''; 
-    feedbackEl.className = 'mt-4 text-sm'; 
-    if (remediationEl) remediationEl.classList.add('hidden'); 
+    feedbackEl.innerHTML = ''; // Clear previous feedback
+    feedbackEl.className = 'mt-4 text-sm'; // Reset class
+    if (remediationEl) remediationEl.classList.add('hidden'); // Hide remediation link
+
     const questionElement = document.getElementById(`q-${currentQuizId}-${index}`);
+    // Clear previous visual feedback from options
     questionElement.querySelectorAll('label, select').forEach(el => el.classList.remove('answer-correct', 'answer-incorrect', 'border-red-400'));
+    // Re-enable inputs for this check, will be disabled again after
     questionElement.querySelectorAll('input, select').forEach(inp => inp.disabled = false);
+
+
     let isCorrect = false;
     let isQuestionAnswered = true;
+
     if (q.type === 'mc' || q.type === 'tf' || q.type === 'ordering_mc') {
       if (selectedAnswer === undefined) {
         isQuestionAnswered = false;
@@ -968,14 +954,15 @@ function submitQuiz() {
         }
       }
     } else if (q.type === 'matching') {
-      isCorrect = true; 
+      isCorrect = true; // Assume correct until a mismatch
       if (!selectedAnswer || Object.keys(selectedAnswer).length < q.items.length || Object.values(selectedAnswer).some(val => !val)) {
         isQuestionAnswered = false;
         feedbackEl.textContent = 'Please make a selection for each item.';
+        // Highlight unanswered selects for matching questions
         q.items.forEach((item, itemIndex) => {
             const selectEl = questionElement.querySelector(`#q-${currentQuizId}-${index}-match${itemIndex}`);
             if (selectEl && (!selectedAnswer || !selectedAnswer[item.id])) {
-                selectEl.classList.add('border-red-400'); 
+                selectEl.classList.add('border-red-400'); // Add a visual cue for missing selection
             } else if (selectEl) {
                 selectEl.classList.remove('border-red-400');
             }
@@ -989,22 +976,27 @@ function submitQuiz() {
             selectEl.classList.add('answer-correct');
           } else {
             selectEl.classList.add('answer-incorrect');
-            isCorrect = false; 
+            isCorrect = false; // Mark as incorrect if any match is wrong
           }
         });
       }
     }
+
     if (!isQuestionAnswered) {
       allAnswered = false;
       feedbackEl.className = 'mt-4 text-sm text-red-600 font-medium';
       if (firstUnansweredIndex === -1) firstUnansweredIndex = index;
-      return; 
+      return; // Skip feedback generation for this question if not answered
     }
+
+    // Disable inputs now that feedback is being shown
     questionElement.querySelectorAll('input, select').forEach(inp => inp.disabled = true);
+
     if (isCorrect) {
       score++;
       let feedbackText = q.correctFeedback || '';
       if ((q.type === 'mc' || q.type === 'ordering_mc') && q.feedback && q.feedback.length > q.answer) {
+        // Use specific feedback for the correct option if available
         feedbackText = q.feedback[q.answer];
       }
       feedbackEl.innerHTML = `<span class="feedback-title text-green-700">Correct!</span> ${feedbackText}`;
@@ -1012,16 +1004,19 @@ function submitQuiz() {
     } else {
       let feedbackText = '';
       if ((q.type === 'mc' || q.type === 'ordering_mc') && typeof selectedAnswer === 'number' && q.feedback && q.feedback.length > selectedAnswer) {
+        // Use specific feedback for the chosen incorrect option if available
         feedbackText = q.feedback[selectedAnswer];
       } else if (q.type === 'tf') {
         feedbackText = q.incorrectFeedback || "That wasn't the correct answer.";
       } else if (q.type === 'matching') {
         feedbackText = q.incorrectFeedback || "One or more matches are incorrect. Please review.";
       } else {
+        // Generic incorrect feedback if no specific one is found
         feedbackText = "That wasn't the correct answer. Try reviewing the section content.";
       }
       feedbackEl.innerHTML = `<span class="feedback-title text-red-700">Not Quite...</span> ${feedbackText}`;
       feedbackEl.className = 'mt-4 text-sm feedback-incorrect';
+
       if (remediationEl && q.sectionLink) {
           const targetSection = sections.find(s => String(s.id) == String(q.sectionLink));
           remediationEl.innerHTML = `Need a refresher? Review <a href="#" onclick="event.preventDefault(); navigateToSection(${q.sectionLink}); closeQuiz();" class="text-sky-600 hover:underline font-medium">Section ${q.sectionLink}: ${targetSection?.title || ''}</a>`;
@@ -1029,55 +1024,71 @@ function submitQuiz() {
       }
     }
   });
+
   if (!allAnswered) {
     if (firstUnansweredIndex !== -1) {
         const questionElement = quizContent.children[firstUnansweredIndex];
         questionElement?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     console.warn("Not all questions answered.");
+    // Re-enable inputs for unanswered questions
     quizData.forEach((q, index) => {
         if (currentQuizAnswers[index] === undefined || (q.type === 'matching' && Object.keys(currentQuizAnswers[index] || {}).length < q.items.length)) {
             document.getElementById(`q-${currentQuizId}-${index}`)?.querySelectorAll('input, select').forEach(opt => opt.disabled = false);
         }
     });
-    return; 
+    return; // Stop submission if not all questions are answered
   }
+
   quizAttempted = true;
   const result = {
     score: score,
     total: quizData.length,
     completed: true,
-    answers: { ...currentQuizAnswers } 
+    answers: { ...currentQuizAnswers } // Store a copy of the answers
   };
+
   if (currentQuizId === 'final-quiz') {
     state.finalQuizCompleted = true;
-    state.quizResults[currentQuizId] = result; 
+    state.quizResults[currentQuizId] = result; // Store final quiz result
     console.log(`Final Quiz Completed! Score: ${score}/${quizData.length}.`);
   } else {
-    state.quizResults[currentQuizId] = result; 
+    state.quizResults[currentQuizId] = result; // Store section quiz result
     console.log(`Section ${currentQuizId} Quiz Completed! Score: ${score}/${quizData.length}.`);
   }
-  saveState(); 
+
+  saveState(); // Save progress
+
+  // Update UI
   submitQuizBtn.classList.add('hidden');
-  resetQuizBtn.classList.remove('hidden'); 
-  closeQuizBtn.classList.remove('hidden'); 
-  renderSection(state.currentSectionId); 
-  updateNavButtons(); 
+  resetQuizBtn.classList.remove('hidden'); // Keep reset visible
+  closeQuizBtn.classList.remove('hidden'); // Show close button
+
+  renderSection(state.currentSectionId); // Re-render current section to show quiz completion status
+  updateNavButtons(); // Update navigation buttons (e.g., enable Next)
 }
 
 function resetQuiz() {
+  // For final quiz, also reset the completion flag
   if (currentQuizId === 'final-quiz') {
     state.finalQuizCompleted = false;
-    delete state.quizResults['final-quiz']; 
+    // Optionally, mark that a retake is happening if you need to track attempts
+    // state.quizResults['final-quiz'] = { ...state.quizResults['final-quiz'], retake: true };
+    delete state.quizResults['final-quiz']; // Or fully clear previous final quiz results
   }
+  // For section quizzes, just reopen it. Progress is stored per attempt.
+  // If you want to clear previous attempt for section quiz, do:
+  // delete state.quizResults[currentQuizId];
+
   saveState();
-  openQuiz(currentQuizId); 
+  openQuiz(currentQuizId); // Re-opens the quiz with fresh inputs
 }
 
 function closeQuiz() {
-  stopAudio(); 
+  stopAudio(); // Stop any pre-fetched audio
   quizModal.classList.add('hidden');
   currentQuizId = null;
+  // Re-render the current section to reflect any changes (e.g. if quiz was completed)
   renderSection(state.currentSectionId);
 }
 
@@ -1085,17 +1096,20 @@ function generateCertificate() {
   const nameInput = document.getElementById('certificateName');
   const outputDiv = document.getElementById('certificateOutput');
   const userName = nameInput.value.trim();
+
   if (!userName) {
     alert("Please enter your name for the certificate.");
     nameInput.focus();
     return;
   }
-  state.userName = userName; 
+  state.userName = userName; // Save name to state
   saveState();
+
   const dateFormatter = new Intl.DateTimeFormat(undefined, {
     year: 'numeric', month: 'long', day: 'numeric'
   });
   const completionDate = dateFormatter.format(new Date());
+
   outputDiv.innerHTML = `
     <div class="border-8 border-double border-sky-600 p-8 bg-gradient-to-br from-sky-50 to-blue-100 rounded-lg shadow-xl relative">
       <div class="absolute top-4 left-4 text-sky-400 text-3xl opacity-50"><i class="fas fa-certificate"></i></div>
@@ -1116,7 +1130,8 @@ function generateCertificate() {
   outputDiv.classList.remove('hidden');
 }
 
-let currentAudioSectionId = null; 
+let currentAudioSectionId = null; // Tracks which section's audio is loaded/playing
+
 function updateAudioPlayerButton(button, isPlaying, isPaused) {
     if (!button) return;
     if (isPlaying && !isPaused) {
@@ -1124,12 +1139,12 @@ function updateAudioPlayerButton(button, isPlaying, isPaused) {
         button.classList.add('playing');
         button.classList.remove('paused');
         button.title = "Pause audio playback";
-    } else if (isPlaying && isPaused) { 
+    } else if (isPlaying && isPaused) { // Audio is loaded and paused mid-playback
         button.innerHTML = '<i class="fas fa-play mr-1"></i> Resume Audio';
         button.classList.add('paused');
         button.classList.remove('playing');
         button.title = "Resume audio playback";
-    } else { 
+    } else { // Not playing or finished
         button.innerHTML = '<i class="fas fa-play mr-1"></i> Listen';
         button.classList.remove('playing', 'paused');
         button.title = "Listen to section audio";
@@ -1139,10 +1154,11 @@ function updateAudioPlayerButton(button, isPlaying, isPaused) {
 function stopAudio() {
     if (sectionAudioPlayer && !sectionAudioPlayer.paused) {
         sectionAudioPlayer.pause();
-        sectionAudioPlayer.currentTime = 0; 
+        sectionAudioPlayer.currentTime = 0; // Reset for next play
         console.log("Audio stopped.");
     }
-    currentAudioSectionId = null; 
+    currentAudioSectionId = null; // Clear the currently loaded audio section ID
+    // Reset all audio buttons in the DOM (in case user navigates away while audio from another section was playing/paused)
     document.querySelectorAll('.audio-player-btn').forEach(btn => updateAudioPlayerButton(btn, false, false));
 }
 
@@ -1153,12 +1169,16 @@ function toggleAudioPlayback(button, sectionId) {
         alert("Audio not available for this section.");
         return;
     }
+
+    // If trying to play audio for a different section, stop the current one first
     if (currentAudioSectionId !== null && currentAudioSectionId !== sectionId) {
-        stopAudio(); 
+        stopAudio(); // This will also reset button states
     }
+
     if (sectionAudioPlayer.src !== audioSrc || (sectionAudioPlayer.paused && sectionAudioPlayer.currentTime === 0)) {
+        // New audio or audio was stopped (not just paused)
         sectionAudioPlayer.src = audioSrc;
-        currentAudioSectionId = sectionId; 
+        currentAudioSectionId = sectionId; // Set current audio section
         sectionAudioPlayer.load();
         sectionAudioPlayer.play().then(() => {
             updateAudioPlayerButton(button, true, false);
@@ -1170,6 +1190,7 @@ function toggleAudioPlayback(button, sectionId) {
             currentAudioSectionId = null;
         });
     } else if (sectionAudioPlayer.paused) {
+        // Audio is paused, resume it
         sectionAudioPlayer.play().then(() => {
             updateAudioPlayerButton(button, true, false);
             console.log("Audio resumed.");
@@ -1178,14 +1199,16 @@ function toggleAudioPlayback(button, sectionId) {
             updateAudioPlayerButton(button, false, false);
         });
     } else {
+        // Audio is playing, pause it
         sectionAudioPlayer.pause();
-        updateAudioPlayerButton(button, true, true); 
+        updateAudioPlayerButton(button, true, true); // Mark as playing but paused
         console.log("Audio paused.");
     }
+
     sectionAudioPlayer.onended = () => {
         console.log("Audio ended.");
         updateAudioPlayerButton(button, false, false);
-        currentAudioSectionId = null; 
+        currentAudioSectionId = null; // Clear current audio section on end
     };
     sectionAudioPlayer.onerror = (e) => {
         console.error("Audio player error:", e);
@@ -1195,6 +1218,7 @@ function toggleAudioPlayback(button, sectionId) {
     };
 }
 
+
 function removeAudioPrefetch() {
     const existingPrefetch = document.getElementById('audio-prefetch-link');
     if (existingPrefetch) {
@@ -1203,15 +1227,17 @@ function removeAudioPrefetch() {
 }
 
 function prefetchNextAudio(currentQuizSectionId) {
-    removeAudioPrefetch(); 
+    removeAudioPrefetch(); // Remove any previous prefetch link
+
     const currentSectionIndex = sections.findIndex(s => String(s.id) === String(currentQuizSectionId));
-    if (currentSectionIndex === -1 || currentSectionIndex >= sections.length - 1) return; 
+    if (currentSectionIndex === -1 || currentSectionIndex >= sections.length - 1) return; // No next section or not found
+
     const nextSection = sections[currentSectionIndex + 1];
-    if (nextSection && nextSection.id) { 
+    if (nextSection && nextSection.id) { // Check if nextSection and its id exist
         const nextAudioSrc = sectionAudio[nextSection.id];
         if (nextAudioSrc) {
             const prefetchLink = document.createElement('link');
-            prefetchLink.id = 'audio-prefetch-link'; 
+            prefetchLink.id = 'audio-prefetch-link'; // Add an ID for easy removal
             prefetchLink.rel = 'prefetch';
             prefetchLink.href = nextAudioSrc;
             prefetchLink.as = 'audio';
