@@ -141,6 +141,13 @@ function getNumericSectionId(sectionId) {
     return order.indexOf(String(sectionId));     // 0‑based, -1 if not found
 }
 /* === All functions from the original <script> block go here === */
+ const tooltip = document.createElement('div');
+ tooltip.id = 'tooltip';
+ tooltip.role = 'dialog';
+ tooltip.ariaHidden = 'true';
+ document.body.appendChild(tooltip);
+
+ let openBtn = null;
 function renderSection(sectionId) {
   const section = sections.find(s => s.id == sectionId);
   if (!section) {
@@ -162,16 +169,6 @@ function renderSection(sectionId) {
   contentHtml += `<div class="readable-content space-y-4">`;
   
   let tooltip = document.getElementById('tooltip');
-  if (!tooltip) {
-    tooltip = document.createElement('div');
-    tooltip.id = 'tooltip';
-    tooltip.setAttribute('role', 'dialog');      // a11y: announce as pop‑up
-    tooltip.setAttribute('aria-hidden', 'true'); // hidden until opened
-    document.body.appendChild(tooltip);
-  }
-
-  // --- State -------------------------------------------------------------
-  let openBtn = null; // the .key‑term currently showing the tooltip
 
   // 2. Helpers ------------------------------------------------------------
   function positionTooltip(btn) {
@@ -206,23 +203,21 @@ function renderSection(sectionId) {
   }
 
   // 3. Progressive enhancement: turn any <span class="key-term"> into an accessible <button>
-  function enhanceKeyTerms(root = document) {
-    root.querySelectorAll('.key-term').forEach(el => {
-      // already upgraded
-      if (el.tagName === 'BUTTON') return;
-
-	const definition =
-		el.dataset.definition       // ① recognise data-definition
-			|| el.dataset.tooltip
-			|| el.getAttribute('title');
-    const btn = document.createElement('button');
-    btn.className = 'key-term';
-    if (definition) btn.dataset.tooltip = definition;  // ② always copy
-    btn.setAttribute('aria-haspopup', 'dialog');
-    btn.innerHTML = el.innerHTML; // keep inner content intact
-    el.replaceWith(btn);
-  });
-  }
+ function enhanceKeyTerms(root = document) {
+   root.querySelectorAll('.key-term').forEach(el => {
+     if (el.tagName === 'BUTTON') return;           // already upgraded
+     const definition =
+       el.dataset.definition ||
+       el.dataset.tooltip   ||
+       el.getAttribute('title');
+     const btn = document.createElement('button');
+     btn.className = 'key-term';
+     if (definition) btn.dataset.tooltip = definition;
+     btn.setAttribute('aria-haspopup', 'dialog');
+     btn.innerHTML = el.innerHTML;
+     el.replaceWith(btn);
+   });
+ }
 
   // 4. Global listeners ---------------------------------------------------
   document.addEventListener('click', e => {
@@ -244,15 +239,12 @@ function renderSection(sectionId) {
   });
 
   // 5. Initialise once DOM is ready, then observe content swaps ----------
-  document.addEventListener('DOMContentLoaded', () => {
-    enhanceKeyTerms();
-
-    // Whenever the training module swaps out #contentArea, upgrade new terms
-    const target = document.getElementById('contentArea');
-    if (!target) return;
-    const mo = new MutationObserver(() => enhanceKeyTerms(target));
-    mo.observe(target, { childList: true, subtree: true });
-  });
+ document.addEventListener('DOMContentLoaded', () => {
+   enhanceKeyTerms();                                      // upgrade what’s already on page
+   const target = document.getElementById('contentArea');
+   new MutationObserver(() => enhanceKeyTerms(target))
+     .observe(target, {childList:true, subtree:true});
+ });
 
   switch (String(section.id)) {
     case '1':
