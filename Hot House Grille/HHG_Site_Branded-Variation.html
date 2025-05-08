@@ -52,7 +52,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Removed .instant class */
 
         /* Footer base */
         .footer {
@@ -158,7 +157,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative"> 
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="logo-link active inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded" data-page="home">
+                    <a href="#" id="logoLink" class="logo-link active inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded" data-page="home">
                         <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp" alt="Hot House Grillé Logo" class="h-14">
                     </a>
                 </div>
@@ -633,6 +632,10 @@
             setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
         }
         updateNavActiveState('home'); 
+        // Ensure 'All Items' tab is active if starting on menu (unlikely but safe)
+        if (document.getElementById('menu')?.classList.contains('active')) {
+             filterAndAnimateMenu('all');
+        }
 
 
         // --- Core Functions ---
@@ -734,23 +737,10 @@
                  setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
             }
 
-            // Handle menu category filtering
+            // Handle menu category filtering - Ensure 'All Items' is shown by default on menu load
             if (pageId === 'menu') {
-                 // If page just changed to menu OR category target specified, filter to show correct items
-                 if (pageChanged || categoryTarget) {
-                     // Filter first (which hides/shows categories), then animate after delay
-                     filterAndAnimateMenu(categoryTarget || 'all'); 
-                 } else if (!categoryTarget && !pageChanged) {
-                     // If already on menu page and no specific category targeted
-                     const allButton = document.querySelector('#menu-tab-all');
-                     // If 'all' isn't active, make it active and animate
-                     if (!allButton || !allButton.classList.contains('tab-active')) { 
-                         filterAndAnimateMenu('all');
-                     } else {
-                          // If 'all' is already active, just ensure cards are animated (with delay)
-                          setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
-                     }
-                 }
+                 // Always filter to the target (or 'all') when showing the menu page
+                 filterAndAnimateMenu(categoryTarget || 'all'); 
              } else if (pageChanged) {
                  // If page changed to something other than menu, animate its cards after delay
                  setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
@@ -787,8 +777,24 @@
             });
         });
 
+        // Added listener specifically for the logo link
+        const logoLink = document.getElementById('logoLink');
+        if (logoLink) {
+            logoLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.dataset.page; // Should be 'home'
+                showPage(pageId);
+                 if (!mobileMenu.classList.contains('hidden')) { 
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Listener for other nav links (excluding logo)
         navLinks.forEach(link => {
-            if (link.dataset.page) { 
+            // Skip the logo link as it has its own listener now
+            if (link.dataset.page && link.id !== 'logoLink') { 
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const pageId = this.dataset.page;
@@ -809,6 +815,7 @@
             });
         }
 
+        // Event listener for menu category filter buttons
         if (menuTabButtons.length > 0) {
             menuTabButtons.forEach(button => {
                 button.addEventListener('click', function() {
