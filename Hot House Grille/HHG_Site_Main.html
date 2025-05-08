@@ -40,7 +40,8 @@
         .menu-card, .hotspot-card, .stagger-animate > div { /* Apply base hidden state to all animated cards */
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
+            /* Reduced transition duration for faster appearance */
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out, box-shadow 0.3s ease-out, transform 0.3s ease-out;
         }
         /* .visible class makes them appear */
         .menu-card.visible, .hotspot-card.visible, .stagger-animate > div.visible {
@@ -506,11 +507,19 @@
             const activePage = document.querySelector('.page.active');
             if (!activePage) return;
 
-            const cards = activePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div'); // Select all animatable cards/items
-            cards.forEach((card, index) => {
+            // Find cards only within the *visible* categories on the menu page, or all cards on other pages
+            let cardsToAnimate;
+            if (activePage.id === 'menu') {
+                cardsToAnimate = activePage.querySelectorAll('.menu-category[style*="display: block"] .menu-card, .menu-category[style*="display: block"] .stagger-animate > div');
+            } else {
+                 cardsToAnimate = activePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div');
+            }
+            
+            cardsToAnimate.forEach((card, index) => {
+                 // Use timeout 0 to ensure class is added after potential display changes from filtering
                  setTimeout(() => {
-                    card.classList.add('visible'); // Add visible class to trigger CSS transition
-                }, index * 50); // Apply stagger
+                    card.classList.add('visible'); 
+                }, 0); // No stagger delay needed here
             });
         }
 
@@ -551,7 +560,7 @@
                  homeLogoLink.classList.add('active');
              }
             
-            // Reset card visibility if the page changed
+            // Reset card visibility ONLY if the page actually changed
             if (pageChanged) { 
                  document.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => {
                     // FIX ❶ (applied): Remove .visible class, clear potential inline styles
@@ -559,8 +568,8 @@
                     el.style.opacity = ''; // Clear inline style if present
                     el.style.transform = ''; // Clear inline style if present
                  });
-                // Trigger animation for the newly shown page's cards
-                setTimeout(animateCardsOnLoad, 300); // Delay slightly for page transition
+                // Trigger animation for the newly shown page's cards after page transition
+                setTimeout(animateCardsOnLoad, 300); 
             }
 
             // Handle menu category filtering
@@ -576,12 +585,12 @@
                         categoryDiv.style.display = shouldShow ? 'block' : 'none';
 
                         // Reset visibility of cards within the category being shown/hidden
-                        // This happens *before* the animation call below
                         const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
                         Array.from(cardsInCat).forEach(el => {
+                            // FIX ❷ (applied): Only remove visible class, clear styles
                             el.classList.remove('visible');
-                            el.style.opacity = ''; // Clear potential inline style
-                            el.style.transform = ''; // Clear potential inline style
+                            el.style.opacity = ''; 
+                            el.style.transform = ''; 
                         });
                      });
                      // FIX ❷ (applied): Animate cards *after* filtering display changes
@@ -625,27 +634,30 @@
             });
         }
 
+        // Event listener for menu category filter buttons (simplified)
         if (menuTabButtons.length > 0) {
             menuTabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const categoryToShow = this.dataset.category;
+                    // Update button active states
                     menuTabButtons.forEach(btn => btn.classList.remove('!bg-amber-700', '!text-white', 'font-semibold'));
                     this.classList.add('!bg-amber-700', '!text-white', 'font-semibold');
 
+                     // Show/hide menu categories
                      menuCategories.forEach(categoryDiv => {
                         const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
                         const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
                         categoryDiv.style.display = shouldShow ? 'block' : 'none';
 
-                        // FIX ❷ Reset card visibility within the category being shown/hidden
+                        // Reset card visibility within the category
                         const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
                         Array.from(cardsInCat).forEach(el => {
                              el.classList.remove('visible');
-                             el.style.opacity = ''; // Clear potential inline style
-                             el.style.transform = ''; // Clear potential inline style
+                             el.style.opacity = ''; 
+                             el.style.transform = ''; 
                          });
                      });
-                     // FIX ❷ Animate cards *after* filtering display changes
+                     // Animate cards *after* filtering display changes
                      setTimeout(animateCardsOnLoad, 0); 
                 });
             });
@@ -664,8 +676,8 @@
               if (allButton) {
                  menuTabButtons.forEach(btn => btn.classList.remove('!bg-amber-700', '!text-white', 'font-semibold'));
                  allButton.classList.add('!bg-amber-700', '!text-white', 'font-semibold');
-                 // Optionally trigger animation here too if needed, though showPage might handle it
-                 // setTimeout(animateCardsOnLoad, 0); 
+                 // Trigger initial animation for menu page if starting there
+                 setTimeout(animateCardsOnLoad, 0); 
               }
          }
     });
