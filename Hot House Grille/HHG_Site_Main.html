@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Custom styles */
         body {
@@ -34,26 +34,45 @@
             display: block;
             opacity: 1;
         }
-        .hero-bg {
-            background-image: url('https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Interior_Main.jpg?updatedAt=1746701800811'); /* Using actual interior for a richer hero */
-            background-size: cover;
-            background-position: center;
-            position: relative;
+
+        /* HERO SECTION - LOGO CENTRIC */
+        .hero-section-logo-focus {
+            @apply bg-gradient-to-br from-amber-50 via-red-50 to-orange-50; /* Very subtle warm gradient */
+            /* Or a solid color: background-color: #FDFBF7; */
+            color: #3A3A3A; /* Dark text for contrast on light background */
+            border-radius: 0.5rem;
         }
-        .hero-bg::before { /* Overlay for better text readability */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.4);
-            border-radius: 0.5rem; /* Matches parent's rounded-lg */
+        .hero-section-logo-focus .hero-welcome-text-above {
+            @apply text-3xl sm:text-4xl md:text-5xl font-display text-amber-700; /* Classy amber color */
+            font-weight: 700;
         }
-        .hero-content {
-            position: relative; /* To ensure content is above overlay */
-            z-index: 10;
+        .hero-section-logo-focus .hero-logo-image {
+            /* Adjusted max-widths for ~10% of original full size */
+            @apply max-w-[2.5rem] sm:max-w-[3rem] md:max-w-[3.5rem] lg:max-w-[4rem] mx-auto; /* Responsive max width */
+            /* Consider adding a subtle drop shadow if needed: filter: drop-shadow(0 1px 2px rgba(0,0,0,0.05)); */
         }
+        .hero-section-logo-focus .hero-tagline-below {
+            @apply text-lg sm:text-xl md:text-2xl text-slate-700 max-w-xl lg:max-w-2xl mx-auto;
+            line-height: 1.6;
+        }
+        .button-primary-hero-animated {
+             @apply bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-10 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl text-xl relative overflow-hidden;
+             /* Base style for button */
+        }
+
+        /* Subtle edge animation for the button */
+        @keyframes subtleEdgeShine {
+            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.0); } /* Amber-400 with 0 opacity */
+            50% { box-shadow: 0 0 10px 5px rgba(245, 158, 11, 0.4); } /* Amber-500 with some opacity and spread */
+            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.0); }
+        }
+
+        .animate-edge-shine {
+            animation: subtleEdgeShine 2.5s ease-in-out 1; /* Play once */
+        }
+        /* END OF HERO SECTION STYLES */
+
+
         .menu-card, .hotspot-card {
             @apply bg-white shadow-lg rounded-lg p-6 transition-all duration-500 ease-out;
             opacity: 0;
@@ -73,9 +92,6 @@
         .menu-subcategory-title {
             @apply text-2xl font-display text-slate-700 mt-8 mb-4;
         }
-        .menu-item {
-            @apply mb-4;
-        }
         .menu-item-name {
             @apply text-xl font-semibold text-slate-800;
         }
@@ -85,7 +101,7 @@
         .menu-item-description {
             @apply text-sm text-gray-600 mt-1;
         }
-        .button-primary {
+        .button-primary { /* General primary button, not for hero */
             @apply bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg;
         }
         .button-secondary {
@@ -122,7 +138,8 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="nav-link active" data-page="home"> <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Logo.png?updatedAt=1746701149355" alt="Hot House Grillé Logo" class="h-14"> </a>
+                    <a href="#" class="nav-link active" data-page="home"> <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Logo.png?updatedAt=1746701149355" alt="Hot House Grillé Logo" class="h-14">
+                    </a>
                 </div>
                 <nav class="hidden md:flex space-x-4 items-center">
                     <a href="#" class="nav-link" data-page="home">Home</a>
@@ -149,14 +166,16 @@
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section id="home" class="page active">
-            <div class="hero-bg rounded-lg shadow-xl text-white p-8 md:p-16 flex flex-col items-center justify-center text-center min-h-[60vh] md:min-h-[70vh]">
-                <div class="hero-content">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display mb-4 drop-shadow-lg">Welcome to Hot House Grillé</h1>
-                    <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-2xl drop-shadow-md">Experience authentic Southern comfort, reimagined with a modern touch. Your new favorite spot in Sumiton!</p>
-                    <button class="button-primary text-xl" data-page-target="menu">View Our Menu</button>
+            <div class="hero-section-logo-focus shadow-xl p-8 md:p-12 lg:p-16 flex flex-col items-center justify-center text-center min-h-[70vh] md:min-h-[80vh]">
+                <div class="space-y-6 md:space-y-8">
+                    <p class="hero-welcome-text-above">Welcome to</p>
+                    <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Logo.png?updatedAt=1746701149355" alt="Hot House Grillé Logo" class="hero-logo-image">
+                    <p class="hero-tagline-below">
+                        Experience authentic Southern comfort, reimagined with a modern touch. Your new favorite spot in Sumiton!
+                    </p>
+                    <button id="heroMenuButton" class="button-primary-hero-animated" data-page-target="menu">View Our Menu</button>
                 </div>
             </div>
-
             <div class="my-12 md:my-16 text-center">
                 <h2 class="text-3xl md:text-4xl font-display text-slate-800 mb-6">A Taste of the South, Right Here in Sumiton</h2>
                 <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -399,7 +418,7 @@
                 </a>
             </div>
             <p class="text-sm font-semibold text-amber-300 mb-1">Proudly Veteran-Owned</p>
-            <p class="text-sm">&copy; <span id="currentYear"></span> Hot House Grillé. All Rights Reserved.</p>
+            <p class="text-sm">© <span id="currentYear"></span> Hot House Grillé. All Rights Reserved.</p>
             </div>
     </footer>
 
@@ -412,29 +431,37 @@
         const menuTabButtons = document.querySelectorAll('.menu-tab-button');
         const menuCategories = document.querySelectorAll('.menu-category');
         const homePageMenuButtons = document.querySelectorAll('[data-page-target="menu"]');
+        const heroMenuButton = document.getElementById('heroMenuButton');
+
+        // Animate hero button
+        if (heroMenuButton) {
+            setTimeout(() => {
+                heroMenuButton.classList.add('animate-edge-shine');
+                // Optional: Remove class after animation to allow re-trigger on hover/focus if desired
+                // setTimeout(() => heroMenuButton.classList.remove('animate-edge-shine'), 2500); // Match animation duration
+            }, 500); // Half a second delay
+        }
+
 
         // Function to animate cards into view
         function animateCardsOnLoad() {
             const cards = document.querySelectorAll('.menu-card, .hotspot-card');
             cards.forEach((card, index) => {
-                // Simple way to check if card is on active page, or always animate for simplicity here
-                // For true on-scroll, IntersectionObserver is better
                 if (card.closest('.page.active')) {
                      setTimeout(() => {
                         card.classList.add('visible');
-                    }, index * 100); // Stagger animation
+                    }, index * 50); 
                 }
             });
-             // Animate cards in stagger-animate containers
             document.querySelectorAll('.stagger-animate').forEach(container => {
                 if (container.closest('.page.active')) {
-                    const children = container.children;
-                    for (let i = 0; i < children.length; i++) {
-                        setTimeout(() => {
-                            children[i].style.opacity = '1';
-                            children[i].style.transform = 'translateY(0)';
-                        }, i * 120); // Stagger animation for items within a grid
-                    }
+                    const children = Array.from(container.children); 
+                    children.forEach((child, i) => {
+                         setTimeout(() => {
+                            child.style.opacity = '1';
+                            child.style.transform = 'translateY(0)';
+                        }, i * 100); 
+                    });
                 }
             });
         }
@@ -446,25 +473,23 @@
                 if (page.id === pageId) {
                     if (!page.classList.contains('active')) {
                         pageChanged = true;
-                        page.classList.remove('page-transition-exit', 'page-transition-exit-active');
+                        page.classList.remove('page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
                         page.style.display = 'block';
-                        requestAnimationFrame(() => {
-                            page.classList.add('active', 'page-transition-enter-active');
-                            page.classList.remove('page-transition-enter');
-                        });
+                        void page.offsetWidth; 
+                        page.classList.add('active', 'page-transition-enter-active');
                     }
                 } else if (page.classList.contains('active')) {
                     pageChanged = true;
+                    page.classList.remove('page-transition-enter', 'page-transition-enter-active');
                     page.classList.add('page-transition-exit-active');
-                    page.classList.remove('page-transition-enter-active');
                     page.addEventListener('transitionend', function handler() {
                         page.classList.remove('active', 'page-transition-exit-active');
                         page.style.display = 'none';
                         page.removeEventListener('transitionend', handler);
                     }, { once: true });
-                } else {
+                } else { 
                     page.style.display = 'none';
-                    page.classList.remove('active', 'page-transition-enter-active', 'page-transition-exit-active');
+                    page.classList.remove('active', 'page-transition-enter-active', 'page-transition-exit-active', 'page-transition-enter', 'page-transition-exit');
                 }
             });
 
@@ -472,32 +497,27 @@
                 link.classList.toggle('active', link.dataset.page === pageId);
             });
             
-            // If page changed or category target is specified, animate cards
             if (pageChanged || categoryTarget) {
-                 // Reset card animations for the new page
-                document.querySelectorAll('.menu-card.visible, .hotspot-card.visible, .stagger-animate > div').forEach(el => {
-                    el.classList.remove('visible');
+                document.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => {
+                    el.classList.remove('visible'); 
                     el.style.opacity = '0';
                     el.style.transform = 'translateY(20px)';
                 });
-                setTimeout(animateCardsOnLoad, 50); // Delay to allow page transition CSS to apply
+                setTimeout(animateCardsOnLoad, pageChanged ? 300 : 50); 
             }
 
 
             if (pageId === 'menu' && categoryTarget) {
                 const targetButton = document.querySelector(`.menu-tab-button[data-category="${categoryTarget}"]`);
                 if (targetButton) {
-                    // Wait for page transition to mostly complete before clicking tab
-                    setTimeout(() => targetButton.click(), 300);
+                    setTimeout(() => targetButton.click(), pageChanged ? 400 : 100);
                 } else {
-                     // Default to 'all' if specific category target button not found
                     const allButton = document.querySelector('.menu-tab-button[data-category="all"]');
-                    if (allButton) setTimeout(() => allButton.click(), 300);
+                    if (allButton) setTimeout(() => allButton.click(), pageChanged ? 400 : 100);
                 }
             } else if (pageId === 'menu' && !categoryTarget) {
-                 // If navigating to menu without a specific category, click 'all'
                 const allButton = document.querySelector('.menu-tab-button[data-category="all"]');
-                if (allButton) setTimeout(() => allButton.click(), 300);
+                if (allButton) setTimeout(() => allButton.click(), pageChanged ? 400 : 100);
             }
 
 
@@ -512,9 +532,9 @@
                 const targetPage = this.dataset.pageTarget;
                 const targetCategory = this.dataset.categoryTarget || null;
                 showPage(targetPage, targetCategory);
-                // Highlight the "Menu" tab in the main nav
                 navLinks.forEach(link => link.classList.remove('active'));
-                document.querySelector('.nav-link[data-page="menu"]').classList.add('active');
+                const menuNavLink = document.querySelector('.nav-link[data-page="menu"]');
+                if(menuNavLink) menuNavLink.classList.add('active');
             });
         });
 
@@ -524,7 +544,7 @@
                     e.preventDefault();
                     const pageId = this.dataset.page;
                     showPage(pageId);
-                    if (mobileMenu.classList.contains('block')) { // Check if mobile menu is open
+                    if (mobileMenu.classList.contains('block')) {
                         mobileMenu.classList.remove('block');
                         mobileMenu.classList.add('hidden');
                     }
@@ -554,22 +574,19 @@
                         
                         if (shouldShow) {
                             categoryDiv.style.display = 'block';
-                            // Animate cards within this category
                              const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
-                             cardsInCat.forEach(el => {
+                             Array.from(cardsInCat).forEach(el => { 
                                 el.style.opacity = '0';
                                 el.style.transform = 'translateY(20px)';
                              });
                             setTimeout(() => {
-                                cardsInCat.forEach((card, index) => {
+                                Array.from(cardsInCat).forEach((card, index) => { 
                                     setTimeout(() => {
                                         card.style.opacity = '1';
                                         card.style.transform = 'translateY(0)';
                                     }, index * 70);
                                 });
                             }, 50);
-
-
                         } else {
                             categoryDiv.style.display = 'none';
                         }
@@ -579,7 +596,7 @@
         }
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-        showPage('home'); // Show initial page and trigger animations
+        showPage('home'); 
     });
     </script>
 
