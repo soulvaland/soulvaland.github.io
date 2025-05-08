@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    {/* No-JS Fallback */}
     <noscript><style>.page{display:block!important;opacity:1!important} #mobile-menu-button{display:none!important;}</style></noscript>
     <style>
         /* Custom styles - Base styles and complex components/animations */
@@ -38,7 +39,6 @@
         .menu-card, .hotspot-card, .stagger-animate > div {
             opacity: 0;
             transform: translateY(20px);
-            /* Corrected transition shorthand - removed duplicate transform */
             transition: opacity 0.4s ease-out, transform 0.4s ease-out, box-shadow 0.3s ease-out;
         }
         .menu-card.visible, .hotspot-card.visible, .stagger-animate > div.visible {
@@ -110,7 +110,6 @@
             animation: none !important;
             opacity: 1 !important; /* Ensure visibility if animations disabled */
           }
-          /* Ensure initially hidden elements are shown if JS fails or motion is reduced */
            .page:not(.active) { display: block !important; opacity: 1 !important; }
            .menu-category.hidden { display: block !important; } /* Show all menu categories */
         }
@@ -568,6 +567,32 @@
             });
         }
 
+        // Helper function for menu filtering and animation
+        function filterAndAnimateMenu(categoryToShow) {
+            const targetButton = document.querySelector(`.menu-tab-button[data-category="${categoryToShow}"]`);
+            if (targetButton) {
+                // Update active button style using class
+                menuTabButtons.forEach(btn => btn.classList.remove('tab-active'));
+                targetButton.classList.add('tab-active'); 
+            }
+
+            menuCategories.forEach(categoryDiv => {
+                const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
+                const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
+                // Toggle hidden class instead of style.display
+                categoryDiv.classList.toggle('hidden', !shouldShow); 
+
+                // Reset visibility of cards within the category using class only
+                const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
+                Array.from(cardsInCat).forEach(el => {
+                    el.classList.remove('visible');
+                });
+            });
+            // Animate cards *after* filtering display changes
+            animateCardsOnLoad(); // Call immediately, no timeout needed here
+        }
+
+
         function showPage(pageId, categoryTarget = null) {
             let pageChanged = false;
             pages.forEach(page => {
@@ -607,41 +632,18 @@
                  homeLogoLink.classList.toggle('active', pageId === 'home');
              }
             
+            // Reset card visibility ONLY if the page actually changed
             if (pageChanged) { 
                  document.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => {
-                    // FIX ❶: Only remove class, don't touch inline styles
                     el.classList.remove('visible'); 
-                    // el.style.opacity = ''; // REMOVED
-                    // el.style.transform = ''; // REMOVED
                  });
-                setTimeout(animateCardsOnLoad, 300); 
+                 // Animate cards on the new page after transition starts
+                 setTimeout(animateCardsOnLoad, 50); // Small delay to allow transition to start
             }
 
+            // Handle menu category filtering using the helper function
             if (pageId === 'menu') {
-                 const targetButton = categoryTarget ? document.querySelector(`.menu-tab-button[data-category="${categoryTarget}"]`) : document.querySelector('.menu-tab-button[data-category="all"]');
-                 if (targetButton) {
-                    // Use class toggle for active state
-                    menuTabButtons.forEach(btn => btn.classList.remove('tab-active'));
-                    targetButton.classList.add('tab-active'); 
-
-                    const categoryToShow = targetButton.dataset.category;
-                     menuCategories.forEach(categoryDiv => {
-                        const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
-                        const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
-                        // Toggle hidden class instead of style.display
-                        categoryDiv.classList.toggle('hidden', !shouldShow); 
-
-                        // FIX ❷: Reset visibility of cards within the category using class only
-                        const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
-                        Array.from(cardsInCat).forEach(el => {
-                            el.classList.remove('visible');
-                            // el.style.opacity = ''; // REMOVED
-                            // el.style.transform = ''; // REMOVED
-                        });
-                     });
-                     // FIX ❷: Animate cards *after* filtering display changes
-                     setTimeout(animateCardsOnLoad, 0); 
-                 }
+                 filterAndAnimateMenu(categoryTarget || 'all');
              }
 
             if (pageChanged) {
@@ -666,7 +668,6 @@
                     showPage(pageId);
                     if (!mobileMenu.classList.contains('hidden')) { 
                         mobileMenu.classList.add('hidden');
-                        mobileMenu.classList.remove('block'); 
                         mobileMenuButton.setAttribute('aria-expanded', 'false');
                     }
                 });
@@ -681,28 +682,12 @@
             });
         }
 
+        // Event listener for menu category filter buttons now uses the helper
         if (menuTabButtons.length > 0) {
             menuTabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const categoryToShow = this.dataset.category;
-                    // Update button active states using class
-                    menuTabButtons.forEach(btn => btn.classList.remove('tab-active'));
-                    this.classList.add('tab-active');
-
-                     // Show/hide menu categories using hidden class
-                     menuCategories.forEach(categoryDiv => {
-                        const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
-                        const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
-                        categoryDiv.classList.toggle('hidden', !shouldShow);
-
-                        // FIX ❷ Reset card visibility within the category using class only
-                        const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
-                        Array.from(cardsInCat).forEach(el => {
-                             el.classList.remove('visible');
-                         });
-                     });
-                     // FIX ❷ Animate cards *after* filtering display changes
-                     setTimeout(animateCardsOnLoad, 0); 
+                    filterAndAnimateMenu(categoryToShow); 
                 });
             });
         }
@@ -710,8 +695,8 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
         
         // Initial page load setup
-        pages.forEach(p => p.classList.add('hidden')); // Ensure all pages start hidden
-        document.getElementById('home').classList.remove('hidden'); // Make sure home is not hidden initially
+        pages.forEach(p => p.classList.add('hidden')); 
+        document.getElementById('home').classList.remove('hidden'); 
         showPage('home'); 
         // FIX #1: Explicitly call animation after initial showPage
         animateCardsOnLoad(); 
@@ -722,7 +707,8 @@
               if (allButton) {
                  menuTabButtons.forEach(btn => btn.classList.remove('tab-active'));
                  allButton.classList.add('tab-active');
-                 setTimeout(animateCardsOnLoad, 0); 
+                 // Trigger initial animation for menu page if starting there
+                 animateCardsOnLoad(); 
               }
          }
     });
