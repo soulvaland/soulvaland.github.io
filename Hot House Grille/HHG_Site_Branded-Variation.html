@@ -17,7 +17,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <noscript><style>.page{display:block!important;opacity:1!important} #mobile-menu-button{display:none!important;} .menu-category{display:block!important;} .menu-card, .hotspot-card, .stagger-animate > div {opacity:1!important; transform: none !important;} #mobile-menu{display:none!important;}</style></noscript>
+    <noscript><style>.page{display:block!important;opacity:1!important} #mobile-menu-button{display:none!important;} .menu-category{display:block!important;} .menu-card, .hotspot-card, .stagger-animate > div {opacity:1!important; transform: none !important;} #mobile-menu{display:none!important;} #mobile-nav-animation-placeholder{display:none!important;}</style></noscript>
     <style>
         /* Custom styles */
         body {
@@ -29,18 +29,13 @@
         .font-display {
             font-family: 'Playfair Display', serif;
         }
-        /* Keep active styles separate for nav links */
         .nav-link.active {
              color: #B03C23;
              font-weight: 600;
              border-bottom: 2px solid #B03C23; 
              padding-bottom: 0.25rem; 
         }
-         /* Active state specifically for the logo link (no text styles needed) */
-        .logo-link.active {
-             /* Add a subtle indicator if desired, e.g., a faint ring */
-             /* box-shadow: 0 0 0 2px #B03C23; */
-        }
+        .logo-link.active { /* No visual change needed for logo active state */ }
         .page {
             opacity: 0;
             transition: opacity 0.7s ease-in-out;
@@ -58,6 +53,11 @@
         .menu-card.visible, .hotspot-card.visible, .stagger-animate > div.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        .menu-card.instant, .hotspot-card.instant, .stagger-animate > div.instant {
+             opacity: 1;
+             transform: translateY(0);
+             transition: none !important; 
         }
 
         /* Footer base */
@@ -120,21 +120,52 @@
           .stagger-animate > div,
           .page-transition-enter-active,
           .page-transition-exit-active,
-          .button-primary-hero-animated::before {
+          .button-primary-hero-animated::before,
+          .mobile-nav-anim-link { /* Target the animating links */
             transition-duration: 0.001s !important; 
             transform: none !important;
             animation: none !important;
             opacity: 1 !important;
           }
            .page:not(.active) { display: none !important; } 
+           #mobile-nav-animation-placeholder { display: none !important; } /* Hide animation placeholder */
         }
+
+        /* --- Mobile Nav Animation --- */
+        #mobile-nav-animation-placeholder {
+            /* Position near the top right, adjust as needed */
+            top: 1.25rem; /* Adjust to align vertically with hamburger */
+            right: 4rem; /* Adjust to position left of hamburger */
+            pointer-events: none; /* Prevent interaction */
+        }
+
+        @keyframes fly-to-hamburger {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                /* Translate towards top right corner, adjust values as needed */
+                transform: translate(50px, -10px) scale(0.1); 
+            }
+        }
+
+        .animate-links-to-hamburger .mobile-nav-anim-link {
+             animation: fly-to-hamburger 0.6s ease-in forwards;
+        }
+        /* Stagger animation delays for each link */
+        .animate-links-to-hamburger .mobile-nav-anim-link:nth-child(1) { animation-delay: 0s; }
+        .animate-links-to-hamburger .mobile-nav-anim-link:nth-child(2) { animation-delay: 0.08s; }
+        .animate-links-to-hamburger .mobile-nav-anim-link:nth-child(3) { animation-delay: 0.16s; }
+
 
     </style>
 </head>
 <body class="antialiased bg-[#F2EBDC]">
 
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative"> 
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#" class="logo-link active inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded" data-page="home">
@@ -158,6 +189,11 @@
                     </button>
                 </div>
             </div>
+            <div id="mobile-nav-animation-placeholder" class="absolute space-x-4 items-center hidden"> 
+                 <span class="mobile-nav-anim-link px-4 py-2 text-lg text-[#073A59] opacity-0">Home</span>
+                 <span class="mobile-nav-anim-link px-4 py-2 text-lg text-[#073A59] opacity-0">Menu</span>
+                 <span class="mobile-nav-anim-link px-4 py-2 text-lg text-[#073A59] opacity-0">About Us</span>
+            </div>
         </div>
         <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t border-gray-200">
             <ul aria-label="Main Navigation Mobile">
@@ -173,7 +209,7 @@
         <article id="home" class="page hidden active" aria-labelledby="home-heading"> 
             <div class="hero-section-logo-focus shadow-xl p-8 md:p-12 lg:p-16 flex flex-col items-center justify-center text-center min-h-[70vh] md:min-h-[80vh] bg-[#F2EBDC] text-[#073A59] rounded-lg">
                 <div class="space-y-6 md:space-y-8">
-                    <h2 id="home-heading" class="sr-only">Hot House Grille Home</h2> 
+                    <h1 id="home-heading" class="sr-only">Hot House Grille Home</h1> 
                     <p class="hero-welcome-text-above text-3xl sm:text-4xl md:text-5xl font-display text-[#073A59] font-semibold">Welcome to</p>
                     <img
                         src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_Medium.webp"
@@ -560,7 +596,10 @@
         const menuCategories = document.querySelectorAll('.menu-category');
         const homePageMenuButtons = document.querySelectorAll('[data-page-target="menu"]');
         const heroMenuButton = document.getElementById('heroMenuButton');
+        const mobileNavAnimationPlaceholder = document.getElementById('mobile-nav-animation-placeholder');
+        const mobileAnimLinks = mobileNavAnimationPlaceholder ? mobileNavAnimationPlaceholder.querySelectorAll('.mobile-nav-anim-link') : [];
         let menuFilterTimeout; 
+        let mobileNavAnimPlayed = false; // Flag to ensure animation only runs once
 
         // --- Initialization ---
         
@@ -569,6 +608,26 @@
                 heroMenuButton.classList.add('animate-shimmer');
             }, 500); 
         }
+
+        // Mobile Nav Animation Trigger
+        if (mobileNavAnimationPlaceholder && mobileAnimLinks.length > 0 && window.innerWidth < 768) { // Only run on mobile viewports
+             setTimeout(() => {
+                 if (!mobileNavAnimPlayed) {
+                     mobileNavAnimationPlaceholder.classList.remove('hidden');
+                     mobileNavAnimationPlaceholder.classList.add('flex'); // Make it visible
+                     mobileNavAnimationPlaceholder.classList.add('animate-links-to-hamburger');
+                     
+                     // Hide placeholder after animation completes (longest delay + duration)
+                     mobileAnimLinks[mobileAnimLinks.length - 1].addEventListener('animationend', () => {
+                         mobileNavAnimationPlaceholder.classList.add('hidden');
+                         mobileNavAnimationPlaceholder.classList.remove('flex');
+                     }, { once: true });
+
+                     mobileNavAnimPlayed = true; // Set flag
+                 }
+             }, 700); // Delay slightly longer for page elements to settle
+        }
+
 
         const currentYearSpan = document.getElementById('currentYear');
         if (currentYearSpan) {
@@ -580,14 +639,13 @@
         if(initialPage) {
             initialPage.classList.remove('hidden'); 
             initialPage.classList.add('active'); 
-            animateCardsOnLoad(true); // Pass true for initial load
+            animateCardsOnLoad(true); 
         }
         updateNavActiveState('home'); 
 
 
         // --- Core Functions ---
 
-        // Added 'isInitialLoad' parameter
         function animateCardsOnLoad(isInitialLoad = false) {
             const activePage = document.querySelector('.page.active');
             if (!activePage) return;
@@ -600,13 +658,12 @@
             }
             
             if (cardsToAnimate.length > 0) {
-                // Apply 'instant' class only on initial menu load, otherwise 'visible' for animation
+                // Apply 'instant' class only on initial menu load, otherwise 'visible'
                 const visibilityClass = (activePage.id === 'menu' && isInitialLoad) ? 'instant' : 'visible';
 
                 cardsToAnimate.forEach((card) => { 
-                    // Remove both potential classes first
                     card.classList.remove('visible', 'instant'); 
-                    // Force reflow before adding class
+                    // FIX: Force reflow before adding class
                     void card.offsetHeight; 
                     card.classList.add(visibilityClass); 
                 });
@@ -629,18 +686,19 @@
 
                 const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
                 Array.from(cardsInCat).forEach(el => {
-                    el.classList.remove('visible', 'instant'); // Reset both visibility classes
+                    el.classList.remove('visible', 'instant');
                 });
             });
             // Animate cards *after* filtering display changes (will use 'visible' class)
-            animateCardsOnLoad(false); // Pass false as it's not initial load
+            animateCardsOnLoad(false); 
         }
 
 
         function showPage(pageId, categoryTarget = null) {
             let pageChanged = false;
             let exitingPage = null;
-            const isInitialMenuLoad = pageId === 'menu' && !document.getElementById('menu').classList.contains('active');
+            // Determine if this is the very first time the menu page is being shown in this session
+            const isInitialMenuLoad = pageId === 'menu' && !document.getElementById('menu').classList.contains('active'); 
 
             pages.forEach(page => {
                 if (page.id === pageId) {
@@ -687,7 +745,7 @@
                     el.classList.remove('visible', 'instant'); 
                  });
                  // Animate cards on the new page after transition starts
-                 // Pass true to animateCardsOnLoad if it's the initial load of the menu page
+                 // Pass isInitialMenuLoad flag to the animator
                  setTimeout(() => animateCardsOnLoad(isInitialMenuLoad), 50); 
             }
 
@@ -695,7 +753,7 @@
             if (pageId === 'menu') {
                  // If page just changed to menu OR category target specified, filter/animate
                  if (pageChanged || categoryTarget) {
-                     // Use the helper, animation is handled inside/after it
+                     // Use the helper, animation (instant or fade) is handled inside/after it
                      setTimeout(() => filterAndAnimateMenu(categoryTarget || 'all'), 50); 
                  } else if (!categoryTarget && !pageChanged) {
                      // If already on menu page and no specific category targeted
@@ -703,7 +761,7 @@
                      if (!allButton || !allButton.classList.contains('tab-active')) {
                          filterAndAnimateMenu('all');
                      } else {
-                          // If 'all' is already active, just ensure cards are visible (maybe redundant but safe)
+                          // If 'all' is already active, just ensure cards are visible (use standard animation)
                           animateCardsOnLoad(false); 
                      }
                  }
