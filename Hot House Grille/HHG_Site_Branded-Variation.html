@@ -8,8 +8,6 @@
     <meta property="og:title" content="Hot House Grillé – Southern Kitchen">
     <meta property="og:description" content="Experience authentic Southern comfort, reimagined with a modern touch. Your new favorite spot in Sumiton!">
     <meta property="og:type" content="restaurant.restaurant">
-    <!-- <link rel="canonical" href="https://www.hothousegrille.com/"> -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -35,7 +33,7 @@
              border-bottom: 2px solid #B03C23; 
              padding-bottom: 0.25rem; 
         }
-        .logo-link.active { /* No visual change needed for logo active state */ }
+        .logo-link.active {} 
         .page {
             opacity: 0;
             transition: opacity 0.7s ease-in-out;
@@ -54,11 +52,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .menu-card.instant, .hotspot-card.instant, .stagger-animate > div.instant {
-             opacity: 1;
-             transform: translateY(0);
-             transition: none !important; 
-        }
+        /* Removed .instant class */
 
         /* Footer base */
         .footer {
@@ -121,22 +115,21 @@
           .page-transition-enter-active,
           .page-transition-exit-active,
           .button-primary-hero-animated::before,
-          .mobile-nav-anim-link { /* Target the animating links */
+          .mobile-nav-anim-link { 
             transition-duration: 0.001s !important; 
             transform: none !important;
             animation: none !important;
             opacity: 1 !important;
           }
            .page:not(.active) { display: none !important; } 
-           #mobile-nav-animation-placeholder { display: none !important; } /* Hide animation placeholder */
+           #mobile-nav-animation-placeholder { display: none !important; } 
         }
 
         /* --- Mobile Nav Animation --- */
         #mobile-nav-animation-placeholder {
-            /* Position near the top right, adjust as needed */
-            top: 1.25rem; /* Adjust to align vertically with hamburger */
-            right: 4rem; /* Adjust to position left of hamburger */
-            pointer-events: none; /* Prevent interaction */
+            top: 1.25rem; 
+            right: 4rem; 
+            pointer-events: none; 
         }
 
         @keyframes fly-to-hamburger {
@@ -146,19 +139,16 @@
             }
             100% {
                 opacity: 0;
-                /* Translate towards top right corner, adjust values as needed */
-                transform: translate(50px, -10px) scale(0.1); 
+                transform: translate(80px, -10px) scale(0.1); 
             }
         }
 
         .animate-links-to-hamburger .mobile-nav-anim-link {
-             animation: fly-to-hamburger 0.6s ease-in forwards;
+             animation: fly-to-hamburger 0.66s ease-in forwards;
         }
-        /* Stagger animation delays for each link */
         .animate-links-to-hamburger .mobile-nav-anim-link:nth-child(1) { animation-delay: 0s; }
         .animate-links-to-hamburger .mobile-nav-anim-link:nth-child(2) { animation-delay: 0.08s; }
         .animate-links-to-hamburger .mobile-nav-anim-link:nth-child(3) { animation-delay: 0.16s; }
-
 
     </style>
 </head>
@@ -599,7 +589,8 @@
         const mobileNavAnimationPlaceholder = document.getElementById('mobile-nav-animation-placeholder');
         const mobileAnimLinks = mobileNavAnimationPlaceholder ? mobileNavAnimationPlaceholder.querySelectorAll('.mobile-nav-anim-link') : [];
         let menuFilterTimeout; 
-        let mobileNavAnimPlayed = false; // Flag to ensure animation only runs once
+        let mobileNavAnimPlayed = false; 
+        const ANIMATION_DELAY = 500; // Delay in ms for card animations
 
         // --- Initialization ---
         
@@ -609,23 +600,22 @@
             }, 500); 
         }
 
-        // Mobile Nav Animation Trigger
-        if (mobileNavAnimationPlaceholder && mobileAnimLinks.length > 0 && window.innerWidth < 768) { // Only run on mobile viewports
-             setTimeout(() => {
+        // Mobile Nav Animation Trigger (Delayed)
+        if (mobileNavAnimationPlaceholder && mobileAnimLinks.length > 0 && window.innerWidth < 768) { 
+             setTimeout(() => { // Delay the start of the nav animation
                  if (!mobileNavAnimPlayed) {
                      mobileNavAnimationPlaceholder.classList.remove('hidden');
-                     mobileNavAnimationPlaceholder.classList.add('flex'); // Make it visible
+                     mobileNavAnimationPlaceholder.classList.add('flex'); 
                      mobileNavAnimationPlaceholder.classList.add('animate-links-to-hamburger');
                      
-                     // Hide placeholder after animation completes (longest delay + duration)
                      mobileAnimLinks[mobileAnimLinks.length - 1].addEventListener('animationend', () => {
                          mobileNavAnimationPlaceholder.classList.add('hidden');
                          mobileNavAnimationPlaceholder.classList.remove('flex');
                      }, { once: true });
 
-                     mobileNavAnimPlayed = true; // Set flag
+                     mobileNavAnimPlayed = true; 
                  }
-             }, 700); // Delay slightly longer for page elements to settle
+             }, 500); // Start animation 0.5s after page load
         }
 
 
@@ -639,14 +629,15 @@
         if(initialPage) {
             initialPage.classList.remove('hidden'); 
             initialPage.classList.add('active'); 
-            animateCardsOnLoad(true); 
+            // Delay initial card animation
+            setTimeout(() => animateCardsOnLoad(), ANIMATION_DELAY); 
         }
         updateNavActiveState('home'); 
 
 
         // --- Core Functions ---
 
-        function animateCardsOnLoad(isInitialLoad = false) {
+        function animateCardsOnLoad() { // Removed isInitialMenuLoad param
             const activePage = document.querySelector('.page.active');
             if (!activePage) return;
 
@@ -658,14 +649,11 @@
             }
             
             if (cardsToAnimate.length > 0) {
-                // Apply 'instant' class only on initial menu load, otherwise 'visible'
-                const visibilityClass = (activePage.id === 'menu' && isInitialLoad) ? 'instant' : 'visible';
-
+                 // Always use 'visible' for animation now
                 cardsToAnimate.forEach((card) => { 
-                    card.classList.remove('visible', 'instant'); 
-                    // FIX: Force reflow before adding class
-                    void card.offsetHeight; 
-                    card.classList.add(visibilityClass); 
+                    card.classList.remove('visible'); // Ensure it's reset first
+                    void card.offsetHeight; // Force reflow
+                    card.classList.add('visible'); 
                 });
             }
         }
@@ -686,19 +674,17 @@
 
                 const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
                 Array.from(cardsInCat).forEach(el => {
-                    el.classList.remove('visible', 'instant');
+                    el.classList.remove('visible'); // Reset visibility before potential animation
                 });
             });
-            // Animate cards *after* filtering display changes (will use 'visible' class)
-            animateCardsOnLoad(false); 
+            // Animate cards *after* filtering display changes, with delay
+            setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
         }
 
 
         function showPage(pageId, categoryTarget = null) {
             let pageChanged = false;
             let exitingPage = null;
-            // Determine if this is the very first time the menu page is being shown in this session
-            const isInitialMenuLoad = pageId === 'menu' && !document.getElementById('menu').classList.contains('active'); 
 
             pages.forEach(page => {
                 if (page.id === pageId) {
@@ -742,32 +728,31 @@
             // Reset card visibility ONLY if the page actually changed
             if (pageChanged && exitingPage) { 
                  exitingPage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => {
-                    el.classList.remove('visible', 'instant'); 
+                    el.classList.remove('visible'); 
                  });
-                 // Animate cards on the new page after transition starts
-                 // Pass isInitialMenuLoad flag to the animator
-                 setTimeout(() => animateCardsOnLoad(isInitialMenuLoad), 50); 
+                 // Trigger animation for the newly shown page's cards after delay
+                 setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
             }
 
             // Handle menu category filtering
             if (pageId === 'menu') {
                  // If page just changed to menu OR category target specified, filter/animate
                  if (pageChanged || categoryTarget) {
-                     // Use the helper, animation (instant or fade) is handled inside/after it
-                     setTimeout(() => filterAndAnimateMenu(categoryTarget || 'all'), 50); 
+                     // Filter first (which hides categories), then animate after delay
+                     filterAndAnimateMenu(categoryTarget || 'all'); 
                  } else if (!categoryTarget && !pageChanged) {
                      // If already on menu page and no specific category targeted
                      const allButton = document.querySelector('#menu-tab-all');
                      if (!allButton || !allButton.classList.contains('tab-active')) {
                          filterAndAnimateMenu('all');
                      } else {
-                          // If 'all' is already active, just ensure cards are visible (use standard animation)
-                          animateCardsOnLoad(false); 
+                          // If 'all' is already active, just ensure cards are animated (with delay)
+                          setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
                      }
                  }
              } else if (pageChanged) {
-                 // If page changed to something other than menu, animate its cards
-                 setTimeout(() => animateCardsOnLoad(false), 50); 
+                 // If page changed to something other than menu, animate its cards after delay
+                 setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
              }
 
             if (pageChanged) {
@@ -828,6 +813,7 @@
                 button.addEventListener('click', function() {
                     clearTimeout(menuFilterTimeout); 
                     const categoryToShow = this.dataset.category;
+                    // Debounce filtering slightly
                     menuFilterTimeout = setTimeout(() => {
                          filterAndAnimateMenu(categoryToShow); 
                     }, 50); 
