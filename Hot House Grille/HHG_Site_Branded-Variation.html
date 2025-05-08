@@ -166,7 +166,14 @@
                         <li><a href="#" class="nav-link px-4 py-2 text-lg hover:text-[#B03C23] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded" data-page="home">Home</a></li>
                         <li><a href="#" class="nav-link px-4 py-2 text-lg hover:text-[#B03C23] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded" data-page="menu">Menu</a></li>
                         <li><a href="#" class="nav-link px-4 py-2 text-lg hover:text-[#B03C23] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded" data-page="about">About Us</a></li>
-                        <li><a href="tel:205-255-6111" class="ml-4 py-2 px-4 text-sm bg-[#B03C23] hover:bg-[#912f1b] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]">Order To-Go: (205) 255-6111</a></li>
+                        <li>
+                            <a href="tel:205-255-6111" class="ml-4 py-2 px-4 text-sm bg-[#B03C23] hover:bg-[#912f1b] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] inline-flex items-center gap-2">
+                                <span>Order To-Go</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                </svg>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <div class="md:hidden">
@@ -280,7 +287,7 @@
             <p class="text-center text-lg text-[#073A59] mb-10">Fresh ingredients, Southern charm, and flavors that feel like home. <br class="hidden sm:inline">For to-go orders, please call <a href="tel:205-255-6111" class="text-[#B03C23] font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded">(205) 255-6111</a>.</p>
 
             <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Menu Categories">
-                <button id="menu-tab-all" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="all" role="tab" aria-selected="true" aria-controls="menu-panel-all">All Items</button>
+                <button id="menu-tab-all" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="all" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast menu-panel-lunch-dinner menu-panel-specials menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button> 
                 <button id="menu-tab-breakfast" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="breakfast" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast">Breakfast</button>
                 <button id="menu-tab-lunch-dinner" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="lunch-dinner" role="tab" aria-selected="false" aria-controls="menu-panel-lunch-dinner">Lunch & Dinner</button>
                 <button id="menu-tab-specials" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="specials" role="tab" aria-selected="false" aria-controls="menu-panel-specials">Daily Specials</button>
@@ -291,7 +298,6 @@
             </div>
 
             <div id="menu-items-container">
-                 <div id="menu-panel-all" class="hidden" role="tabpanel" aria-labelledby="menu-tab-all"></div> 
                  <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
@@ -558,7 +564,7 @@
 
     <footer class="footer mt-16 py-12 bg-[#011640] text-[#F2EBDC]">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp?updatedAt=1746704895487" alt="Hot House Grillé Logo" class="h-12 w-12 mx-auto mb-6" width="48" height="48">
+            <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp?updatedAt=1746704895487" alt="Hot House Grillé Logo" class="h-24 w-24 mx-auto mb-6">
             <p class="mb-2">Hot House Grillé</p>
             <p class="mb-2">605 Hwy 78, Sumiton, AL, United States, 35148</p>
             <p class="mb-4"><a href="tel:205-255-6111" class="hover:text-[#f2c7bd] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#011640] focus-visible:ring-[#F2EBDC] rounded">(205) 255-6111</a></p>
@@ -632,9 +638,9 @@
             setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
         }
         updateNavActiveState('home'); 
-        // Ensure 'All Items' tab is active if starting on menu (unlikely but safe)
+        // Ensure 'All Items' tab is active and categories shown if starting on menu
         if (document.getElementById('menu')?.classList.contains('active')) {
-             filterAndAnimateMenu('all');
+             filterAndAnimateMenu('all'); // This will show all and trigger animation
         }
 
 
@@ -677,7 +683,7 @@
 
                 const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
                 Array.from(cardsInCat).forEach(el => {
-                    el.classList.remove('visible');
+                    el.classList.remove('visible'); // Reset visibility before animation
                 });
             });
             // Animate cards *after* filtering display changes, with delay
@@ -740,7 +746,7 @@
             // Handle menu category filtering - Ensure 'All Items' is shown by default on menu load
             if (pageId === 'menu') {
                  // Always filter to the target (or 'all') when showing the menu page
-                 filterAndAnimateMenu(categoryTarget || 'all'); 
+                 filterAndAnimateMenu(categoryTarget || 'all'); // Filter first, animation called inside with delay
              } else if (pageChanged) {
                  // If page changed to something other than menu, animate its cards after delay
                  setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
@@ -777,12 +783,11 @@
             });
         });
 
-        // Added listener specifically for the logo link
         const logoLink = document.getElementById('logoLink');
         if (logoLink) {
             logoLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                const pageId = this.dataset.page; // Should be 'home'
+                const pageId = this.dataset.page; 
                 showPage(pageId);
                  if (!mobileMenu.classList.contains('hidden')) { 
                     mobileMenu.classList.add('hidden');
@@ -791,9 +796,7 @@
             });
         }
 
-        // Listener for other nav links (excluding logo)
         navLinks.forEach(link => {
-            // Skip the logo link as it has its own listener now
             if (link.dataset.page && link.id !== 'logoLink') { 
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -815,7 +818,6 @@
             });
         }
 
-        // Event listener for menu category filter buttons
         if (menuTabButtons.length > 0) {
             menuTabButtons.forEach(button => {
                 button.addEventListener('click', function() {
