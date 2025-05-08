@@ -52,7 +52,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Removed .instant class */
 
         /* Footer base */
         .footer {
@@ -292,7 +291,7 @@
             </div>
 
             <div id="menu-items-container">
-                <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
+                 <div id="menu-panel-all" class="hidden" role="tabpanel" aria-labelledby="menu-tab-all"></div> <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
@@ -558,7 +557,7 @@
 
     <footer class="footer mt-16 py-12 bg-[#011640] text-[#F2EBDC]">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp?updatedAt=1746704895487" alt="Hot House Grillé Logo" class="h-12 mx-auto mb-6" loading="lazy" width="150" height="150">
+            <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp?updatedAt=1746704895487" alt="Hot House Grillé Logo" class="h-12 w-12 mx-auto mb-6" width="48" height="48">
             <p class="mb-2">Hot House Grillé</p>
             <p class="mb-2">605 Hwy 78, Sumiton, AL, United States, 35148</p>
             <p class="mb-4"><a href="tel:205-255-6111" class="hover:text-[#f2c7bd] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#011640] focus-visible:ring-[#F2EBDC] rounded">(205) 255-6111</a></p>
@@ -590,7 +589,7 @@
         const mobileAnimLinks = mobileNavAnimationPlaceholder ? mobileNavAnimationPlaceholder.querySelectorAll('.mobile-nav-anim-link') : [];
         let menuFilterTimeout; 
         let mobileNavAnimPlayed = false; 
-        const ANIMATION_DELAY = 200; // Delay in ms for card animations
+        const ANIMATION_DELAY = 200; // Updated animation delay to 200ms
 
         // --- Initialization ---
         
@@ -602,7 +601,7 @@
 
         // Mobile Nav Animation Trigger (Delayed)
         if (mobileNavAnimationPlaceholder && mobileAnimLinks.length > 0 && window.innerWidth < 768) { 
-             setTimeout(() => { // Delay the start of the nav animation
+             setTimeout(() => { 
                  if (!mobileNavAnimPlayed) {
                      mobileNavAnimationPlaceholder.classList.remove('hidden');
                      mobileNavAnimationPlaceholder.classList.add('flex'); 
@@ -630,14 +629,14 @@
             initialPage.classList.remove('hidden'); 
             initialPage.classList.add('active'); 
             // Delay initial card animation
-            setTimeout(() => animateCardsOnLoad(), ANIMATION_DELAY); 
+            setTimeout(animateCardsOnLoad, ANIMATION_DELAY); 
         }
         updateNavActiveState('home'); 
 
 
         // --- Core Functions ---
 
-        function animateCardsOnLoad() { // Removed isInitialMenuLoad param
+        function animateCardsOnLoad() { 
             const activePage = document.querySelector('.page.active');
             if (!activePage) return;
 
@@ -651,7 +650,7 @@
             if (cardsToAnimate.length > 0) {
                  // Always use 'visible' for animation now
                 cardsToAnimate.forEach((card) => { 
-                    card.classList.remove('visible'); // Ensure it's reset first
+                    card.classList.remove('visible'); 
                     void card.offsetHeight; // Force reflow
                     card.classList.add('visible'); 
                 });
@@ -674,7 +673,7 @@
 
                 const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
                 Array.from(cardsInCat).forEach(el => {
-                    el.classList.remove('visible'); // Reset visibility before potential animation
+                    el.classList.remove('visible');
                 });
             });
             // Animate cards *after* filtering display changes, with delay
@@ -738,8 +737,7 @@
             if (pageId === 'menu') {
                  // If page just changed to menu OR category target specified, filter/animate
                  if (pageChanged || categoryTarget) {
-                     // Filter first (which hides categories), then animate after delay
-                     filterAndAnimateMenu(categoryTarget || 'all'); 
+                     filterAndAnimateMenu(categoryTarget || 'all'); // Filter first, animation called inside with delay
                  } else if (!categoryTarget && !pageChanged) {
                      // If already on menu page and no specific category targeted
                      const allButton = document.querySelector('#menu-tab-all');
