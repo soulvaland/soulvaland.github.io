@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot House Grillé - Southern Kitchen in Sumiton, AL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F8F5F2; /* A warm off-white for a classy base */
+            color: #3A3A3A; /* Dark grey for text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-link {
+            @apply px-4 py-2 text-lg hover:text-amber-600 transition-colors duration-300;
+        }
+        .nav-link.active {
+            @apply text-amber-700 font-semibold;
+        }
+        .page {
+            display: none; /* Hidden by default */
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
+        }
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+        .hero-bg {
+            background-image: url('https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Interior_Main.jpg?updatedAt=1746701800811'); /* Using actual interior for a richer hero */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-bg::before { /* Overlay for better text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+            border-radius: 0.5rem; /* Matches parent's rounded-lg */
+        }
+        .hero-content {
+            position: relative; /* To ensure content is above overlay */
+            z-index: 10;
+        }
+        .menu-card, .hotspot-card {
+            @apply bg-white shadow-lg rounded-lg p-6 transition-all duration-500 ease-out;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .menu-card.visible, .hotspot-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .menu-card:hover, .hotspot-card:hover {
+            @apply shadow-xl scale-105;
+        }
+
+        .menu-category-title {
+            @apply text-3xl font-display text-amber-700 mt-10 mb-6 border-b-2 border-amber-300 pb-2;
+        }
+        .menu-subcategory-title {
+            @apply text-2xl font-display text-slate-700 mt-8 mb-4;
+        }
+        .menu-item {
+            @apply mb-4;
+        }
+        .menu-item-name {
+            @apply text-xl font-semibold text-slate-800;
+        }
+        .menu-item-price {
+            @apply text-lg text-amber-600 font-semibold;
+        }
+        .menu-item-description {
+            @apply text-sm text-gray-600 mt-1;
+        }
+        .button-primary {
+            @apply bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg;
+        }
+        .button-secondary {
+            @apply bg-slate-700 hover:bg-slate-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg;
+        }
+        .footer {
+            background-color: #3A2E26; /* Dark brown for footer */
+            color: #F8F5F2; /* Light text for footer */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F8F5F2; }
+        ::-webkit-scrollbar-thumb { background: #c0a080; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a08060; }
+
+        /* Page Transitions */
+        .page-transition-enter { opacity: 0; transform: translateX(-20px); }
+        .page-transition-enter-active { opacity: 1; transform: translateX(0); transition: opacity 500ms ease-out, transform 500ms ease-out; }
+        .page-transition-exit { opacity: 1; transform: translateX(0); }
+        .page-transition-exit-active { opacity: 0; transform: translateX(20px); transition: opacity 500ms ease-in, transform 500ms ease-in; }
+
+        /* Staggered animation for cards */
+        .stagger-animate > div {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="nav-link active" data-page="home"> <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Logo.png?updatedAt=1746701149355" alt="Hot House Grillé Logo" class="h-14"> </a>
+                </div>
+                <nav class="hidden md:flex space-x-4 items-center">
+                    <a href="#" class="nav-link" data-page="home">Home</a>
+                    <a href="#" class="nav-link" data-page="menu">Menu</a>
+                    <a href="#" class="nav-link" data-page="about">About Us</a>
+                    <a href="tel:205-255-6111" class="button-primary ml-4 !py-2 !px-4 text-sm">Order To-Go: (205) 255-6111</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-slate-700 hover:text-amber-600 focus:outline-none">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t border-gray-200">
+            <a href="#" class="block nav-link text-center py-3 border-b" data-page="home">Home</a>
+            <a href="#" class="block nav-link text-center py-3 border-b" data-page="menu">Menu</a>
+            <a href="#" class="block nav-link text-center py-3" data-page="about">About Us</a>
+            <a href="tel:205-255-6111" class="block text-center bg-amber-600 text-white font-semibold py-3 px-6 transition-colors duration-300 hover:bg-amber-700 mt-2 mx-4 rounded-md mb-3">Order To-Go: (205) 255-6111</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section id="home" class="page active">
+            <div class="hero-bg rounded-lg shadow-xl text-white p-8 md:p-16 flex flex-col items-center justify-center text-center min-h-[60vh] md:min-h-[70vh]">
+                <div class="hero-content">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display mb-4 drop-shadow-lg">Welcome to Hot House Grillé</h1>
+                    <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-2xl drop-shadow-md">Experience authentic Southern comfort, reimagined with a modern touch. Your new favorite spot in Sumiton!</p>
+                    <button class="button-primary text-xl" data-page-target="menu">View Our Menu</button>
+                </div>
+            </div>
+
+            <div class="my-12 md:my-16 text-center">
+                <h2 class="text-3xl md:text-4xl font-display text-slate-800 mb-6">A Taste of the South, Right Here in Sumiton</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                    Located at 605 HWY 78 across from Walmart in Sumiton, our new restaurant is ready to serve you and your family!
+                    We blend traditional Southern recipes with a fresh, modern approach, creating a dining experience that's both comforting and exciting.
+                    For to-go orders, call us at <a href="tel:205-255-6111" class="text-amber-600 font-semibold hover:underline">(205) 255-6111</a>.
+                </p>
+            </div>
+
+            <section class="my-12 md:my-16">
+                <h2 class="text-3xl md:text-4xl font-display text-center text-slate-800 mb-10">Our Fan Favorites</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animate">
+                    <div class="hotspot-card">
+                        <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Food_Shrimp-Po-Boy.jpg?updatedAt=1746701800439" alt="Shrimp Po' Boy" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-display text-slate-800 mb-2">The Ty's Shrimp Po' Boy</h3>
+                            <p class="text-gray-600 mb-4">Our famous Shrimp Po' Boy, packed with flavor and fresh ingredients. A true taste of the South!</p>
+                            <button class="button-secondary text-sm" data-page-target="menu" data-category-target="lunch-dinner">Explore Menu</button>
+                        </div>
+                    </div>
+                    <div class="hotspot-card">
+                        <img src="https://placehold.co/600x400/CD853F/3A2E26?text=Sumiton+Smash+Burger&font=playfairdisplay" alt="Signature Burger" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-display text-slate-800 mb-2">The "Sumiton Smash" Burger</h3>
+                            <p class="text-gray-600 mb-4">Our juicy smash burger, loaded with flavor and your favorite toppings. A local legend!</p>
+                            <button class="button-secondary text-sm" data-page-target="menu" data-category-target="lunch-dinner">Explore Menu</button>
+                        </div>
+                    </div>
+                    <div class="hotspot-card">
+                        <img src="https://placehold.co/600x400/F5DEB3/3A2E26?text=Country+Fried+Steak+Plate&font=playfairdisplay" alt="Country Fried Steak" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-display text-slate-800 mb-2">Country Fried Steak Plate</h3>
+                            <p class="text-gray-600 mb-4">Crispy, golden, and served with creamy gravy and your choice of sides. Pure comfort food!</p>
+                            <button class="button-secondary text-sm" data-page-target="menu" data-category-target="lunch-dinner">Explore Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-12 md:my-16 bg-white shadow-lg rounded-lg p-8 md:p-10">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl font-display text-slate-800 mb-4">Visit Us</h2>
+                        <p class="text-lg text-gray-700 mb-2"><strong>Address:</strong> 605 Hwy 78, Sumiton, AL, United States, 35148</p>
+                        <p class="text-lg text-gray-700 mb-4"><strong>Phone:</strong> <a href="tel:205-255-6111" class="text-amber-600 hover:underline">(205) 255-6111</a></p>
+                        <h3 class="text-2xl font-display text-slate-700 mb-3">Hours of Operation</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Monday - Friday: 11:00 AM - 8:00 PM</li>
+                            <li>Saturday: 11:00 AM - 3:00 PM</li>
+                            <li>Sunday: Closed</li>
+                        </ul>
+                         <p class="text-md text-gray-600 mt-4">Dine-in & Take-out available.</p>
+                    </div>
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3320.5906208400003!2d-87.0490170847979!3d33.66785498071451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888866b89019016d%3A0x72c718494209358e!2s605%20US-78%2C%20Sumiton%2C%20AL%2035148%2C%20USA!5e0!3m2!1sen!2sin!4v1678886050105!5m2!1sen!2sin" width="100%" height="350" style="border:0; border-radius: 0.5rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="menu" class="page">
+            <h1 class="text-4xl md:text-5xl font-display text-center text-slate-800 my-8">Our Menu</h1>
+            <p class="text-center text-lg text-gray-700 mb-10">Fresh ingredients, Southern charm, and flavors that feel like home. <br class="hidden sm:inline">For to-go orders, please call <a href="tel:205-255-6111" class="text-amber-600 font-semibold hover:underline">(205) 255-6111</a>.</p>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="all">All Items</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="breakfast">Breakfast</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="lunch-dinner">Lunch & Dinner</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="specials">Daily Specials</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="sides">Sides & Extras</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="desserts">Desserts</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="kids">Kids Menu</button>
+                <button class="menu-tab-button button-secondary !py-2 !px-4 text-sm" data-category="beverages">Beverages</button>
+            </div>
+
+            <div id="menu-items-container">
+                <div class="menu-category" data-category-group="breakfast all">
+                    <h2 class="menu-category-title">Breakfast</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h3 class="menu-item-name">#1 The Baylor</h3><p class="menu-item-price">$6.79</p><p class="menu-item-description">Two eggs your way, choice of meat, 2 sides & hashbrowns.</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">#2 The Riley</h3><p class="menu-item-price">$6.79</p><p class="menu-item-description">Two pancakes, two eggs your way & choice of meat.</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">#3 The Bear</h3><p class="menu-item-price">$5.99</p><p class="menu-item-description">Scattered hashbrowns w/ diced ham, 3 slices of cheese, diced bell peppers, onions, & tomatoes.</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">#4 The Nicky Lee</h3><p class="menu-item-price">$4.99</p><p class="menu-item-description">Two lightly scrambled eggs & cheese on a steamed bun served with mayo, salt & pepper.</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Egg & Cheese Sandwich</h3><p class="menu-item-price">$4.09 (Combo $6.69)</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Sausage, Egg, & Cheese Sandwich</h3><p class="menu-item-price">$4.89 (Combo $7.49)</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Bacon, Egg, & Cheese Sandwich</h3><p class="menu-item-price">$4.89 (Combo $7.49)</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Cheese Omelette</h3><p class="menu-item-price">$5.49</p><p class="menu-item-description">Served with grits or gravy, biscuit or toast.</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">All Meat Omelette</h3><p class="menu-item-price">$8.99</p><p class="menu-item-description">Packed with sausage, bacon, and ham. Served with grits or gravy, biscuit or toast.</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Pancakes (Stack)</h3><p class="menu-item-price">$4.49 (w/ Sausage or Bacon $5.99)</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Sausage, Egg, & Cheese Biscuit</h3><p class="menu-item-price">$3.89 (Combo $6.49)</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Chicken Biscuit</h3><p class="menu-item-price">$3.49 (Combo $6.09)</p></div>
+                    </div>
+                </div>
+
+                <div class="menu-category" data-category-group="lunch-dinner all">
+                    <h2 class="menu-category-title">Lunch & Dinner</h2>
+                    <h3 class="menu-subcategory-title">Burgers</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h4 class="menu-item-name">Single Smash</h4><p class="menu-item-price">$2.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Double Smash</h4><p class="menu-item-price">$4.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Triple Smash</h4><p class="menu-item-price">$5.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Grilled Cheese Bacon Burger</h4><p class="menu-item-price">$5.89</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Chili Burger</h4><p class="menu-item-price">$5.89</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Garlic Burger</h4><p class="menu-item-price">$5.89</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title">Sandwiches</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h4 class="menu-item-name">Philly Steak</h4><p class="menu-item-price">$5.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Chicken Philly</h4><p class="menu-item-price">$5.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">The Ty's Shrimp Po' Boy</h4><p class="menu-item-price">$9.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Reuben</h4><p class="menu-item-price">$5.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Club Sandwich</h4><p class="menu-item-price">$5.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">BLT</h4><p class="menu-item-price">$4.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Crispy Chicken Sandwich</h4><p class="menu-item-price">$5.29</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Tuna Melt</h4><p class="menu-item-price">$5.89</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title">Plates & Baskets</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h4 class="menu-item-name">Hamburger Steak Plate</h4><p class="menu-item-price">$9.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Country Fried Steak Plate</h4><p class="menu-item-price">$7.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Chicken Basket (Fingers & Fries)</h4><p class="menu-item-price">$8.59</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Shrimp Basket (Shrimp & Fries)</h4><p class="menu-item-price">$8.79</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title">Hot Wings</h3>
+                     <p class="text-gray-600 mb-4 text-center">Flavors: Mild, Hot, Lemon Pepper, Garlic Pepper, Barbecue, Sweet Chili, Stingin' Honey Garlic</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h4 class="menu-item-name">Traditional Wings (6 Pcs)</h4><p class="menu-item-price">$8.09</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Boneless Wings (6 Pcs)</h4><p class="menu-item-price">$6.99</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Traditional Wings (10 Pcs)</h4><p class="menu-item-price">$12.99</p></div>
+                    </div>
+                     <h3 class="menu-subcategory-title">Salads</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h4 class="menu-item-name">Chef Salad</h4><p class="menu-item-price">$10.59</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Char-Grille Chicken Salad</h4><p class="menu-item-price">$10.59</p></div>
+                        <div class="menu-card"><h4 class="menu-item-name">Crispy Chicken Salad</h4><p class="menu-item-price">$10.59</p></div>
+                    </div>
+                </div>
+
+                <div class="menu-category" data-category-group="specials all">
+                    <h2 class="menu-category-title">Daily Specials</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h3 class="menu-item-name">Monday: The Ems Meatball Sub</h3><p class="menu-item-price">$7.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Tuesday: Taco Salad / The Kates Chicken Bacon Quesadilla</h3><p class="menu-item-price">$9.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Wednesday: Cajun Bowl / The Brody Ribeye on Sourdough</h3><p class="menu-item-price">$7.99 / $9.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Thursday: Chicken Alfredo / The Abram Turkey Fo-Boy</h3><p class="menu-item-price">$7.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Friday: Shrimp & Grits / The Ty Shrimp Po-Boy</h3><p class="menu-item-price">$9.99</p></div>
+                    </div>
+                </div>
+                
+                <div class="menu-category" data-category-group="sides all">
+                    <h2 class="menu-category-title">Sides & Extras</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h3 class="menu-item-name">Fries</h3><p class="menu-item-price">$2.49</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Tots</h3><p class="menu-item-price">$2.49</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Onion Rings</h3><p class="menu-item-price">$3.49</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Slaw</h3><p class="menu-item-price">$2.19</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Pasta Salad</h3><p class="menu-item-price">$2.19</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Mashed Potatoes & Gravy</h3><p class="menu-item-price">$2.19</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Bacon Ranch Fries</h3><p class="menu-item-price">$3.89</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Chili Cheese Fries</h3><p class="menu-item-price">$3.89</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Side Salad</h3><p class="menu-item-price">$2.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Extra Bacon (1 pc)</h3><p class="menu-item-price">$0.95</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Extra Cheese Slice</h3><p class="menu-item-price">$0.59</p></div>
+                    </div>
+                     <p class="text-center text-md text-gray-700 mt-6">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
+                </div>
+
+
+                <div class="menu-category" data-category-group="desserts all">
+                    <h2 class="menu-category-title">Desserts</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h3 class="menu-item-name">Brownies</h3><p class="menu-item-price">$1.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Ambrosia</h3><p class="menu-item-price">$1.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Fruit Cup (Fresh)</h3><p class="menu-item-price">$2.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Parfait (Blueberry or Strawberry)</h3><p class="menu-item-price">$4.99</p></div>
+                    </div>
+                </div>
+                 <div class="menu-category" data-category-group="kids all">
+                    <h2 class="menu-category-title">Kids Menu</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h3 class="menu-item-name">Grilled Cheese & Fries</h3><p class="menu-item-price">$3.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Hot Dog & Fries</h3><p class="menu-item-price">$4.19</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Chicken Fingers & Fries</h3><p class="menu-item-price">$4.19</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Burger & Fries</h3><p class="menu-item-price">$4.19</p></div>
+                    </div>
+                </div>
+                <div class="menu-category" data-category-group="beverages all">
+                    <h2 class="menu-category-title">Beverages</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card"><h3 class="menu-item-name">Fountain Drink (Coke Products)</h3><p class="menu-item-price">Med $2.19 / Lg $2.59</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Community Iced Tea (Sweet/Unsweet)</h3><p class="menu-item-price">Med $2.19 / Lg $2.59</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Dasani Bottled Water</h3><p class="menu-item-price">$1.99</p></div>
+                        <div class="menu-card"><h3 class="menu-item-name">Barq's Root Beer (Bottle)</h3><p class="menu-item-price">$2.29</p></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-10">*Menu items and prices are subject to change. Please confirm when ordering.</p>
+        </section>
+
+        <section id="about" class="page">
+            <h1 class="text-4xl md:text-5xl font-display text-center text-slate-800 my-8">About Hot House Grillé</h1>
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                    <h2 class="text-3xl font-display text-slate-800">Our Story</h2>
+                    <p>Hot House Grillé was born from a passion for authentic Southern cooking and a dream to create a welcoming space for the Sumiton community. Opened in October 2024, we're excited to share our favorite family recipes and create new memories with you. We are a <strong class="text-amber-700">Proudly Veteran-Owned Business</strong>, committed to serving those who serve and our entire community with dedication and heart.</p>
+                    <p>We believe in fresh ingredients, hearty portions, and service with a smile. Whether you're joining us for a quick lunch, a family dinner, or grabbing a to-go meal, we aim to make every experience at Hot House Grillé a delightful one.</p>
+                    <h2 class="text-3xl font-display text-slate-800 mt-6">What We Offer</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Delicious Southern Restaurant and Cafe fare.</li>
+                        <li>Comfortable indoor dining.</li>
+                        <li>Outdoor seating to enjoy the Alabama weather.</li>
+                        <li>A welcoming Kids' Menu for our younger guests.</li>
+                        <li>Convenient Dine-in and Take-out options.</li>
+                        <li>A warm welcome for everyone, including our local heroes and service members!</li>
+                    </ul>
+                    <p>Come on down to 605 Hwy 78 (across from Walmart) and see what we're cooking up!</p>
+                </div>
+                <div class="space-y-6">
+                    <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Interior_Main.jpg?updatedAt=1746701800811" alt="Interior of Hot House Grillé" class="rounded-lg shadow-xl w-full">
+                    <p class="text-center text-sm text-gray-500">Our welcoming dining space.</p>
+                    <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Interior_ServiceMembers_Police.jpg?updatedAt=1746701800568" alt="Interior of Hot House Grillé with local service members" class="rounded-lg shadow-xl w-full">
+                    <p class="text-center text-sm text-gray-500">Proud to serve our community heroes.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer mt-16 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Logo.png?updatedAt=1746701149355" alt="Hot House Grillé Logo" class="h-12 mx-auto mb-6">
+            <p class="mb-2">Hot House Grillé</p>
+            <p class="mb-2">605 Hwy 78, Sumiton, AL, United States, 35148</p>
+            <p class="mb-4"><a href="tel:205-255-6111" class="hover:text-amber-400 transition-colors">(205) 255-6111</a></p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.facebook.com/profile.php?id=61566493861772" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors" aria-label="Facebook">
+                    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="https://www.snapchat.com/place/hot-house-grill/bd4e616e-8d87-11ef-b9e5-533dd9620140" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition-colors" aria-label="Snapchat">
+                    <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 16.5c-3.03 0-5.5-2.47-5.5-5.5S8.97 7.5 12 7.5s5.5 2.47 5.5 5.5-2.47 5.5-5.5 5.5zm0-9c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5z"/></svg>
+                </a>
+            </div>
+            <p class="text-sm font-semibold text-amber-300 mb-1">Proudly Veteran-Owned</p>
+            <p class="text-sm">&copy; <span id="currentYear"></span> Hot House Grillé. All Rights Reserved.</p>
+            </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuTabButtons = document.querySelectorAll('.menu-tab-button');
+        const menuCategories = document.querySelectorAll('.menu-category');
+        const homePageMenuButtons = document.querySelectorAll('[data-page-target="menu"]');
+
+        // Function to animate cards into view
+        function animateCardsOnLoad() {
+            const cards = document.querySelectorAll('.menu-card, .hotspot-card');
+            cards.forEach((card, index) => {
+                // Simple way to check if card is on active page, or always animate for simplicity here
+                // For true on-scroll, IntersectionObserver is better
+                if (card.closest('.page.active')) {
+                     setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 100); // Stagger animation
+                }
+            });
+             // Animate cards in stagger-animate containers
+            document.querySelectorAll('.stagger-animate').forEach(container => {
+                if (container.closest('.page.active')) {
+                    const children = container.children;
+                    for (let i = 0; i < children.length; i++) {
+                        setTimeout(() => {
+                            children[i].style.opacity = '1';
+                            children[i].style.transform = 'translateY(0)';
+                        }, i * 120); // Stagger animation for items within a grid
+                    }
+                }
+            });
+        }
+
+
+        function showPage(pageId, categoryTarget = null) {
+            let pageChanged = false;
+            pages.forEach(page => {
+                if (page.id === pageId) {
+                    if (!page.classList.contains('active')) {
+                        pageChanged = true;
+                        page.classList.remove('page-transition-exit', 'page-transition-exit-active');
+                        page.style.display = 'block';
+                        requestAnimationFrame(() => {
+                            page.classList.add('active', 'page-transition-enter-active');
+                            page.classList.remove('page-transition-enter');
+                        });
+                    }
+                } else if (page.classList.contains('active')) {
+                    pageChanged = true;
+                    page.classList.add('page-transition-exit-active');
+                    page.classList.remove('page-transition-enter-active');
+                    page.addEventListener('transitionend', function handler() {
+                        page.classList.remove('active', 'page-transition-exit-active');
+                        page.style.display = 'none';
+                        page.removeEventListener('transitionend', handler);
+                    }, { once: true });
+                } else {
+                    page.style.display = 'none';
+                    page.classList.remove('active', 'page-transition-enter-active', 'page-transition-exit-active');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.page === pageId);
+            });
+            
+            // If page changed or category target is specified, animate cards
+            if (pageChanged || categoryTarget) {
+                 // Reset card animations for the new page
+                document.querySelectorAll('.menu-card.visible, .hotspot-card.visible, .stagger-animate > div').forEach(el => {
+                    el.classList.remove('visible');
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                });
+                setTimeout(animateCardsOnLoad, 50); // Delay to allow page transition CSS to apply
+            }
+
+
+            if (pageId === 'menu' && categoryTarget) {
+                const targetButton = document.querySelector(`.menu-tab-button[data-category="${categoryTarget}"]`);
+                if (targetButton) {
+                    // Wait for page transition to mostly complete before clicking tab
+                    setTimeout(() => targetButton.click(), 300);
+                } else {
+                     // Default to 'all' if specific category target button not found
+                    const allButton = document.querySelector('.menu-tab-button[data-category="all"]');
+                    if (allButton) setTimeout(() => allButton.click(), 300);
+                }
+            } else if (pageId === 'menu' && !categoryTarget) {
+                 // If navigating to menu without a specific category, click 'all'
+                const allButton = document.querySelector('.menu-tab-button[data-category="all"]');
+                if (allButton) setTimeout(() => allButton.click(), 300);
+            }
+
+
+            if (pageChanged) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        homePageMenuButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.dataset.pageTarget;
+                const targetCategory = this.dataset.categoryTarget || null;
+                showPage(targetPage, targetCategory);
+                // Highlight the "Menu" tab in the main nav
+                navLinks.forEach(link => link.classList.remove('active'));
+                document.querySelector('.nav-link[data-page="menu"]').classList.add('active');
+            });
+        });
+
+        navLinks.forEach(link => {
+            if (link.dataset.page) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    showPage(pageId);
+                    if (mobileMenu.classList.contains('block')) { // Check if mobile menu is open
+                        mobileMenu.classList.remove('block');
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function () {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden', !isHidden);
+                mobileMenu.classList.toggle('block', isHidden);
+            });
+        }
+
+        if (menuTabButtons.length > 0) {
+            menuTabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const categoryToShow = this.dataset.category;
+
+                    menuTabButtons.forEach(btn => btn.classList.remove('!bg-amber-700', '!text-white', 'font-semibold'));
+                    this.classList.add('!bg-amber-700', '!text-white', 'font-semibold');
+
+                    menuCategories.forEach(categoryDiv => {
+                        const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
+                        const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
+                        
+                        if (shouldShow) {
+                            categoryDiv.style.display = 'block';
+                            // Animate cards within this category
+                             const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
+                             cardsInCat.forEach(el => {
+                                el.style.opacity = '0';
+                                el.style.transform = 'translateY(20px)';
+                             });
+                            setTimeout(() => {
+                                cardsInCat.forEach((card, index) => {
+                                    setTimeout(() => {
+                                        card.style.opacity = '1';
+                                        card.style.transform = 'translateY(0)';
+                                    }, index * 70);
+                                });
+                            }, 50);
+
+
+                        } else {
+                            categoryDiv.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        showPage('home'); // Show initial page and trigger animations
+    });
+    </script>
+
+</body>
+</html>
