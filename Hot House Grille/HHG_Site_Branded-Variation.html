@@ -52,6 +52,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Removed .instant class */
 
         /* Footer base */
         .footer {
@@ -291,7 +292,8 @@
             </div>
 
             <div id="menu-items-container">
-                 <div id="menu-panel-all" class="hidden" role="tabpanel" aria-labelledby="menu-tab-all"></div> <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
+                 <div id="menu-panel-all" class="hidden" role="tabpanel" aria-labelledby="menu-tab-all"></div> 
+                 <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
@@ -589,7 +591,7 @@
         const mobileAnimLinks = mobileNavAnimationPlaceholder ? mobileNavAnimationPlaceholder.querySelectorAll('.mobile-nav-anim-link') : [];
         let menuFilterTimeout; 
         let mobileNavAnimPlayed = false; 
-        const ANIMATION_DELAY = 200; // Updated animation delay to 200ms
+        const ANIMATION_DELAY = 200; // Animation delay set to 200ms
 
         // --- Initialization ---
         
@@ -599,7 +601,6 @@
             }, 500); 
         }
 
-        // Mobile Nav Animation Trigger (Delayed)
         if (mobileNavAnimationPlaceholder && mobileAnimLinks.length > 0 && window.innerWidth < 768) { 
              setTimeout(() => { 
                  if (!mobileNavAnimPlayed) {
@@ -614,7 +615,7 @@
 
                      mobileNavAnimPlayed = true; 
                  }
-             }, 500); // Start animation 0.5s after page load
+             }, 500); 
         }
 
 
@@ -648,7 +649,7 @@
             }
             
             if (cardsToAnimate.length > 0) {
-                 // Always use 'visible' for animation now
+                // Always use 'visible' for animation
                 cardsToAnimate.forEach((card) => { 
                     card.classList.remove('visible'); 
                     void card.offsetHeight; // Force reflow
@@ -735,13 +736,15 @@
 
             // Handle menu category filtering
             if (pageId === 'menu') {
-                 // If page just changed to menu OR category target specified, filter/animate
+                 // If page just changed to menu OR category target specified, filter to show correct items
                  if (pageChanged || categoryTarget) {
-                     filterAndAnimateMenu(categoryTarget || 'all'); // Filter first, animation called inside with delay
+                     // Filter first (which hides/shows categories), then animate after delay
+                     filterAndAnimateMenu(categoryTarget || 'all'); 
                  } else if (!categoryTarget && !pageChanged) {
                      // If already on menu page and no specific category targeted
                      const allButton = document.querySelector('#menu-tab-all');
-                     if (!allButton || !allButton.classList.contains('tab-active')) {
+                     // If 'all' isn't active, make it active and animate
+                     if (!allButton || !allButton.classList.contains('tab-active')) { 
                          filterAndAnimateMenu('all');
                      } else {
                           // If 'all' is already active, just ensure cards are animated (with delay)
