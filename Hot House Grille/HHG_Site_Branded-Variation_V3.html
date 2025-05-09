@@ -298,11 +298,12 @@
             </section>
         </article>
 
-        <article id="menu" class="page hidden" aria-labelledby="menu-heading">
+        <article id="menu" class="page hidden" aria-labelledby="menu-heading"> 
             <h1 id="menu-heading" class="text-4xl md:text-5xl font-display text-center text-[#011640] my-8">Our Menu</h1>
             <p class="text-center text-lg text-[#073A59] mb-10">Fresh ingredients, Southern charm, and flavors that feel like home. <br class="hidden sm:inline">For to-go orders, please call <a href="tel:205-255-6111" class="text-[#B03C23] font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded">(205) 255-6111</a>.</p>
+
             <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Menu Categories">
-                <button id="menu-tab-all" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="all" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast menu-panel-lunch-dinner menu-panel-specials menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button>
+                <button id="menu-tab-all" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="all" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast menu-panel-lunch-dinner menu-panel-specials menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button> 
                 <button id="menu-tab-breakfast" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="breakfast" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast">Breakfast</button>
                 <button id="menu-tab-lunch-dinner" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="lunch-dinner" role="tab" aria-selected="false" aria-controls="menu-panel-lunch-dinner">Lunch & Dinner</button>
                 <button id="menu-tab-specials" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="specials" role="tab" aria-selected="false" aria-controls="menu-panel-specials">Daily Specials</button>
@@ -311,14 +312,270 @@
                 <button id="menu-tab-kids" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="kids" role="tab" aria-selected="false" aria-controls="menu-panel-kids">Kids Menu</button>
                 <button id="menu-tab-beverages" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="beverages" role="tab" aria-selected="false" aria-controls="menu-panel-beverages">Beverages</button>
             </div>
-            <div id="menu-items-container">
-                </div>
-            <p class="text-center text-sm text-gray-500 mt-10">*Menu items and prices are subject to change. Please confirm when ordering.</p>
-        </article>
 
-        <article id="about" class="page hidden" aria-labelledby="about-heading">
+            <div id="menu-items-container">
+                 <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#1 The Baylor</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Two eggs your way, choice of meat, 2 sides & hashbrowns.</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#2 The Riley</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Two pancakes, two eggs your way & choice of meat.</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#3 The Bear</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Scattered hashbrowns w/ diced ham, 3 slices of cheese, diced bell peppers, onions, & tomatoes.</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#4 The Nicky Lee</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Two lightly scrambled eggs & cheese on a steamed bun served with mayo, salt & pepper.</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Breakfast Sandwiches</h3>
+                    <p class="text-sm text-[#073A59] text-center mb-4">Served w/ two eggs your way, and double meat on white bread, Texas Toast or a Bun</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.09 (Combo $6.69)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Omelettes</h3>
+                    <p class="text-sm text-[#073A59] text-center mb-4">Served with grits or gravy, biscuit or toast</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Cheese Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Western Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">All Meat Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Breakfast Biscuits</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.09 (Combo $5.69)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.39 (Combo $6.99)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Butter Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19 (Combo $3.79)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage or Bacon Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99 (Combo $4.59)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49 (Combo $5.09)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken or Steak Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Single Gravy Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.89</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Double Gravy Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.29</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Pancakes</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pancakes (Stack)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Stack w/ Sausage or Bacon</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                    </div>
+                </div>
+
+                <div id="menu-panel-lunch-dinner" class="menu-category hidden" data-category-group="lunch-dinner all" role="tabpanel" aria-labelledby="menu-tab-lunch-dinner">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Lunch & Dinner</h2>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Burgers</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Single Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Double Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Triple Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese Bacon Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Garlic Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grill ½ lb</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.09</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Sandwiches (Hot)</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Steak</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Philly</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Patty Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Frisco Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grille Chicken</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Crispy Chicken</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.29</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Turkey Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Reuben</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Pimento Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Thick Bologna</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ty's Shrimp Po' Boy</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
+                    </div>
+                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Sandwiches (Cold)</h3>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Club Sandwich</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">BLT</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.79</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.79</p></div>
+                    </div>
+                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Wraps</h3>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Buffalo Chicken Wrap</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Turkey Cobb Wrap</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p></div>
+                     </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Plates & Baskets</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hamburger Steak Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Country Fried Steak Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Salad Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Basket (Fingers & Fries)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Shrimp Basket (Shrimp & Fries)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.79</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Hot Wings</h3>
+                     <p class="text-[#073A59] mb-4 text-center">Flavors: Mild, Hot, Lemon Pepper, Garlic Pepper, Barbecue, Sweet Chili, Stingin' Honey Garlic</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (6 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.09</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (6 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (10 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$12.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (10 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$11.79</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (15 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$18.79</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (15 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$17.49</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (20 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$23.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (20 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$22.59</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (50 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$57.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (50 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$55.99</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Hot Dogs</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Regular Hot Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.79</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Kraut Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili & Cheese Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.19</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Polish Sausage</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Corn Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.89</p></div>
+                    </div>
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Salads</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Southwestern Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chef Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grille Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tossed Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon & Ranch Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Caesar Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Crispy Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+                    </div>
+                </div>
+
+                <div id="menu-panel-specials" class="menu-category hidden" data-category-group="specials all" role="tabpanel" aria-labelledby="menu-tab-specials">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Daily Specials</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Monday: The Ems Meatball Sub</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tuesday: Taco Salad / The Kates Chicken Bacon Quesadilla</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Wednesday: Cajun Bowl / The Brody Ribeye on Sourdough</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99 / $9.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Thursday: Chicken Alfredo / The Abram Turkey Fo-Boy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Friday: Shrimp & Grits / The Ty Shrimp Po-Boy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
+                    </div>
+                </div>
+                
+                <div id="menu-panel-sides" class="menu-category hidden" data-category-group="sides all" role="tabpanel" aria-labelledby="menu-tab-sides">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Sides & Extras</h2>
+                    
+                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Standard Sides</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tots</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Onion Rings</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pasta Salad</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Mashed Potatoes & Gravy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chips</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.75</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Veggie</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Side Salad</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grits</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hashbrowns</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Corned Beef Hash</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.69</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Fruit (Breakfast)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Gravy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19</p></div>
+                    </div>
+
+                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Loaded Fries</h3>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Ranch Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Cheese Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p></div>
+                     </div>
+
+                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Extras</h3>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili (2oz)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dressing</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (1 pc)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.95</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tender</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Toast</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.79</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sliced Cheese</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Shredded Cheese</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fried Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Boiled Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.39</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Steak (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Patty (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Texas Toast</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bun</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tomatoes</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.35</p></div>
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Scrambled Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p></div>
+                    </div>
+                     <p class="text-center text-md text-[#073A59] mt-6">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
+                </div>
+
+
+                <div id="menu-panel-desserts" class="menu-category hidden" data-category-group="desserts all" role="tabpanel" aria-labelledby="menu-tab-desserts">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Desserts</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Brownies</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ambrosia</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fruit Cup (Fresh)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Parfait (Blueberry or Strawberry)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p></div>
+                    </div>
+                </div>
+                <div id="menu-panel-kids" class="menu-category hidden" data-category-group="kids all" role="tabpanel" aria-labelledby="menu-tab-kids">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Kids Menu</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Dog & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Fingers & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Burger & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p></div>
+                    </div>
+                </div>
+                <div id="menu-panel-beverages" class="menu-category hidden" data-category-group="beverages all" role="tabpanel" aria-labelledby="menu-tab-beverages">
+                    <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Beverages</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fountain Drink (Coke Products)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Community Iced Tea (Sweet/Unsweet)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dasani Bottled Water</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Barq's Root Beer (Bottle)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-10">*Menu items and prices are subject to change. Please confirm when ordering.</p>
+        </article> 
+
+        <article id="about" class="page hidden" aria-labelledby="about-heading"> 
             <h1 id="about-heading" class="text-4xl md:text-5xl font-display text-center text-[#011640] my-8">About Hot House Grillé</h1>
-        </article>
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div class="space-y-6 text-lg text-[#073A59] leading-relaxed">
+                    <h2 class="text-3xl font-display text-[#011640]">Our Story</h2>
+                    <p>Hot House Grillé was born from a passion for authentic Southern cooking and a dream to create a welcoming space for the Sumiton community. Opened in October 2024, we're excited to share our favorite family recipes and create new memories with you. We are a <strong class="text-[#B03C23]">Proudly Veteran-Owned Business</strong>, committed to serving those who serve and our entire community with dedication and heart.</p>
+                    <p>We believe in fresh ingredients, hearty portions, and service with a smile. Whether you're joining us for a quick lunch, a family dinner, or grabbing a to-go meal, we aim to make every experience at Hot House Grillé a delightful one.</p>
+                    <h2 class="text-3xl font-display text-[#011640] mt-6">What We Offer</h2>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Delicious Southern Restaurant and Cafe fare.</li>
+                        <li>Comfortable indoor dining.</li>
+                        <li>Outdoor seating to enjoy the Alabama weather.</li>
+                        <li>A welcoming Kids' Menu for our younger guests.</li>
+                        <li>Convenient Dine-in and Take-out options.</li>
+                        <li>A warm welcome for everyone, including our local heroes and service members!</li>
+                    </ul>
+                    <p>Come on down to 605 Hwy 78 (across from Walmart) and see what we're cooking up!</p>
+                </div>
+                <div class="space-y-6">
+                    <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Interior_Main.jpg?updatedAt=1746701800811" alt="Interior of Hot House Grillé" class="rounded-lg shadow-xl w-full" loading="lazy" width="800" height="600">
+                    <p class="text-center text-sm text-gray-500 mt-2">Our welcoming dining space.</p>
+                    <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/HHG_Interior_ServiceMembers_Police.jpg?updatedAt=1746701800568" alt="Interior of Hot House Grillé with local service members" class="rounded-lg shadow-xl w-full" loading="lazy" width="800" height="600">
+                    <p class="text-center text-sm text-gray-500 mt-2">Proud to serve our community heroes.</p>
+                </div>
+            </div>
+        </article> 
     </main>
 
     <footer class="footer mt-16 py-12 bg-[#011640] text-[#F2EBDC]">
