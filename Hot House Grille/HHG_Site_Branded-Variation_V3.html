@@ -299,255 +299,521 @@
         </article>
 
         <article id="menu" class="page hidden" aria-labelledby="menu-heading"> 
+
             <h1 id="menu-heading" class="text-4xl md:text-5xl font-display text-center text-[#011640] my-8">Our Menu</h1>
+
             <p class="text-center text-lg text-[#073A59] mb-10">Fresh ingredients, Southern charm, and flavors that feel like home. <br class="hidden sm:inline">For to-go orders, please call <a href="tel:205-255-6111" class="text-[#B03C23] font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] rounded">(205) 255-6111</a>.</p>
 
+
+
             <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Menu Categories">
+
                 <button id="menu-tab-all" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="all" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast menu-panel-lunch-dinner menu-panel-specials menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button> 
+
                 <button id="menu-tab-breakfast" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="breakfast" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast">Breakfast</button>
+
                 <button id="menu-tab-lunch-dinner" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="lunch-dinner" role="tab" aria-selected="false" aria-controls="menu-panel-lunch-dinner">Lunch & Dinner</button>
+
                 <button id="menu-tab-specials" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="specials" role="tab" aria-selected="false" aria-controls="menu-panel-specials">Daily Specials</button>
+
                 <button id="menu-tab-sides" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="sides" role="tab" aria-selected="false" aria-controls="menu-panel-sides">Sides & Extras</button>
+
                 <button id="menu-tab-desserts" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="desserts" role="tab" aria-selected="false" aria-controls="menu-panel-desserts">Desserts</button>
+
                 <button id="menu-tab-kids" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="kids" role="tab" aria-selected="false" aria-controls="menu-panel-kids">Kids Menu</button>
+
                 <button id="menu-tab-beverages" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="beverages" role="tab" aria-selected="false" aria-controls="menu-panel-beverages">Beverages</button>
+
             </div>
 
+
+
             <div id="menu-items-container">
+
                  <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#1 The Baylor</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Two eggs your way, choice of meat, 2 sides & hashbrowns.</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#2 The Riley</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Two pancakes, two eggs your way & choice of meat.</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#3 The Bear</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Scattered hashbrowns w/ diced ham, 3 slices of cheese, diced bell peppers, onions, & tomatoes.</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#4 The Nicky Lee</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Two lightly scrambled eggs & cheese on a steamed bun served with mayo, salt & pepper.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#1 The Baylor</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Start your day right! Two fresh eggs cooked just how you like 'em, your favorite breakfast meat, two homestyle sides, and crispy hashbrowns.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#2 The Riley</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A classic pairing: two fluffy pancakes, two eggs cooked to order, and your choice of savory breakfast meat.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#3 The Bear</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty scramble of golden hashbrowns loaded with diced ham, three kinds of cheese, sweet bell peppers, onions, and fresh tomatoes.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">#4 The Nicky Lee</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Simple perfection: two lightly scrambled eggs and melted cheese nestled in a warm, steamed bun with a touch of mayo, salt, and pepper.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Breakfast Sandwiches</h3>
-                    <p class="text-sm text-[#073A59] text-center mb-4">Served w/ two eggs your way, and double meat on white bread, Texas Toast or a Bun</p>
+
+                    <p class="text-sm text-[#073A59] text-center mb-4">All our breakfast sandwiches feature two farm-fresh eggs your way and a generous double portion of meat, served on your choice of classic white bread, hearty Texas Toast, or a soft bun. Make it a combo with a side and drink!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.09 (Combo $6.69)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.09 (Combo $6.69)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A timeless classic: fluffy eggs and melted cheese creating the perfect, simple start.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Savory sausage, fluffy eggs, and melted cheese – a truly satisfying morning staple.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fluffy eggs, and gooey melted cheese. Need we say more?</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern favorite! Thick-cut bologna paired with eggs and cheese for a hearty bite.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Legendary Conecuh sausage adds its signature smoky spice to this delightful egg and cheese creation.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Sandwich</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, savory ham joins fluffy eggs and melted cheese for a classic, fulfilling sandwich.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Omelettes</h3>
-                    <p class="text-sm text-[#073A59] text-center mb-4">Served with grits or gravy, biscuit or toast</p>
+
+                    <p class="text-sm text-[#073A59] text-center mb-4">Our fluffy three-egg omelettes are packed with your favorite fillings and served with creamy grits or savory gravy, plus a warm biscuit or toast.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Cheese Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Western Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">All Meat Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Cheese Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Simply delicious: a fluffy omelette filled generously with your favorite melted cheese.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Hearty crumbled sausage and melted cheese folded into a perfectly cooked omelette.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy, savory bacon bits and melted cheese make this omelette an irresistible choice.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A breakfast champion! Diced ham and a generous helping of melted cheese.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Western Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Packed with flavor: diced ham, bell peppers, onions, and melted cheese create this classic delight.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">All Meat Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">For the true carnivore: loaded with sausage, bacon, ham, and melted cheese.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Omelette</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A taste of Philly in the South! Tender steak, sautéed peppers, onions, and melted cheese.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Breakfast Biscuits</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Warm, fluffy, and made with love. Grab one on its own or make it a satisfying combo!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.09 (Combo $5.69)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.39 (Combo $6.99)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Butter Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19 (Combo $3.79)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage or Bacon Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99 (Combo $4.59)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49 (Combo $5.09)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken or Steak Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Single Gravy Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.89</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Double Gravy Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.29</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.09 (Combo $5.69)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A simple yet perfect pairing of fluffy egg and melted cheese on our signature biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty start with savory sausage, fluffy egg, and melted cheese piled on a warm biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fresh egg, and melted cheese on a fluffy biscuit – a morning must-have!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.39 (Combo $6.99)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A taste of Southern tradition: thick-cut bologna with egg and cheese on our classic biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">The unbeatable flavor of Conecuh sausage meets egg and cheese in this premium biscuit experience.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Savory ham, fluffy egg, and melted cheese on a warm, tender biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Butter Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19 (Combo $3.79)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Pure comfort: a warm, fluffy biscuit served with creamy butter.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage or Bacon Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99 (Combo $4.59)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of savory sausage or crispy bacon nestled in a warm, fluffy biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49 (Combo $5.09)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern classic! Thick-sliced bologna served hot on our signature biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Experience the legendary taste of Conecuh sausage, perfectly paired with our fluffy biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, savory ham piled onto a warm, buttery biscuit. Simple and satisfying.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken or Steak Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of a tender, seasoned chicken breast or savory steak on a warm biscuit.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Single Gravy Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A fluffy, open-faced biscuit generously smothered in our rich, savory country gravy.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Double Gravy Biscuit</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Twice the comfort! Two open-faced biscuits drowning in our delicious country gravy.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Pancakes</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Light, fluffy, and golden brown – the perfect canvas for syrup and butter!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pancakes (Stack)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Stack w/ Sausage or Bacon</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pancakes (Stack)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A generous stack of our signature fluffy pancakes, served with butter and warm syrup.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Stack w/ Sausage or Bacon</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our fluffy pancake stack accompanied by your choice of savory sausage or crispy bacon.</p></div>
+
                     </div>
+
                 </div>
+
+
 
                 <div id="menu-panel-lunch-dinner" class="menu-category hidden" data-category-group="lunch-dinner all" role="tabpanel" aria-labelledby="menu-tab-lunch-dinner">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Lunch & Dinner</h2>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Burgers</h3>
+                    <p class="text-sm text-[#073A59] text-center mb-4">Our burgers are smashed fresh and seasoned to perfection, served on a toasted bun with your choice of classic toppings. Make it a combo!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Single Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Double Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Triple Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese Bacon Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Garlic Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grill ½ lb</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.09</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Single Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">One perfectly smashed and seasoned all-beef patty, a true classic made our way.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Double Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Twice the flavor! Two of our signature smashed patties for a satisfyingly beefy burger.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Triple Smash</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">For the ultimate appetite: three juicy smashed patties stacked high with flavor.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese Bacon Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">The best of both worlds! A juicy burger patty and crispy bacon sandwiched between two golden grilled cheese sandwiches.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty smashed patty smothered in our savory house-made chili and topped with cheese.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Garlic Burger</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">For garlic lovers! Our signature smashed patty infused with rich garlic flavor and savory seasonings.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grill ½ lb</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.09</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hefty half-pound of char-grilled perfection, delivering a smoky, juicy burger experience.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Sandwiches (Hot)</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Served hot and fresh, these sandwiches are packed with flavor. Perfect for a satisfying lunch or dinner.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Steak</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Philly</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Patty Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Frisco Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grille Chicken</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Crispy Chicken</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.29</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Turkey Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Reuben</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Pimento Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Thick Bologna</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ty's Shrimp Po' Boy</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Steak</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Thinly sliced steak, grilled with peppers and onions, topped with melted provolone cheese on a toasted hoagie.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Philly</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Tender grilled chicken, sautéed peppers and onions, smothered in melted cheese on a toasted hoagie.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Patty Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A juicy burger patty with grilled onions and melted Swiss cheese, served on grilled rye bread.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Frisco Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A unique twist! A seasoned burger patty with Swiss cheese and tangy Frisco sauce on grilled sourdough.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grille Chicken</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A tender, juicy chicken breast char-grilled to perfection, served on a toasted bun with lettuce and tomato.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Crispy Chicken</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Golden-fried crispy chicken breast served on a toasted bun with your favorite toppings.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our creamy tuna salad and melted cheese grilled between two slices of your favorite bread.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Turkey Melt</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Sliced turkey breast and melted cheese, grilled to perfection for a warm and comforting sandwich.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Reuben</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A deli classic! Corned beef, Swiss cheese, sauerkraut, and Thousand Island dressing on grilled rye bread.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Pimento Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Creamy, tangy homemade pimento cheese served on your choice of bread – a true Southern comfort!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Classic comfort: savory ham and melted cheese served hot on your choice of bread.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Thick Bologna</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern staple! A generous slice of thick-cut bologna, grilled and served on a bun.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Golden, gooey, and perfectly grilled. The ultimate comfort food for all ages.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ty's Shrimp Po' Boy</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our fan-favorite! Crispy fried shrimp piled high on a toasted hoagie with lettuce, tomato, and our special sauce.</p></div>
+
                     </div>
+
                      <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Sandwiches (Cold)</h3>
+                      <p class="text-sm text-[#073A59] text-center mb-4">Freshly prepared and perfect for a lighter meal, our cold sandwiches are made with quality ingredients.</p>
+
                      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Club Sandwich</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">BLT</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.79</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.79</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Club Sandwich</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A triple-decker classic loaded with turkey, ham, bacon, lettuce, tomato, and mayo.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">BLT</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fresh lettuce, and juicy tomato with a touch of mayo on toasted bread.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our homemade chicken salad, made with tender chicken and a creamy dressing, served on your choice of bread.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$5.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Flaky tuna mixed with a light, creamy dressing, perfect for a refreshing sandwich.</p></div>
+
                     </div>
+
                      <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Wraps</h3>
+                      <p class="text-sm text-[#073A59] text-center mb-4">Enjoy our delicious fillings rolled into a soft tortilla for a convenient and tasty meal.</p>
+
                      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Buffalo Chicken Wrap</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Turkey Cobb Wrap</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Buffalo Chicken Wrap</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Spicy buffalo chicken, crisp lettuce, and creamy ranch or blue cheese dressing, all wrapped up.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Turkey Cobb Wrap</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">All the flavors of a Cobb salad – turkey, bacon, egg, tomato, and cheese – in a convenient wrap.</p></div>
+
                      </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Plates & Baskets</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Hearty and satisfying, our plates and baskets offer a full meal experience with your favorite Southern comforts.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hamburger Steak Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Country Fried Steak Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Salad Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Basket (Fingers & Fries)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Shrimp Basket (Shrimp & Fries)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.79</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hamburger Steak Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A generous, juicy hamburger steak smothered in rich gravy and onions, served with your choice of two sides.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Country Fried Steak Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Tender steak, breaded and fried to a golden crisp, then ladled with creamy country gravy. Served with two sides.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A generous scoop of our fresh tuna salad served on a bed of lettuce with tomato slices and your choice of side.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Salad Plate</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our delicious homemade chicken salad, served chilled with fresh lettuce, tomato, and a side.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Basket (Fingers & Fries)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy, golden chicken fingers served with a generous portion of our seasoned fries and your choice of dipping sauce.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Shrimp Basket (Shrimp & Fries)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Plump, juicy shrimp fried to a perfect golden brown, served with crispy fries and cocktail or tartar sauce.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Hot Wings</h3>
-                     <p class="text-[#073A59] mb-4 text-center">Flavors: Mild, Hot, Lemon Pepper, Garlic Pepper, Barbecue, Sweet Chili, Stingin' Honey Garlic</p>
+
+                     <p class="text-[#073A59] mb-4 text-center">Crispy, juicy, and tossed in your favorite sauce! Choose from: Mild, Hot, Lemon Pepper, Garlic Pepper, Barbecue, Sweet Chili, or Stingin' Honey Garlic.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (6 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.09</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (6 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (10 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$12.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (10 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$11.79</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (15 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$18.79</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (15 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$17.49</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (20 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$23.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (20 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$22.59</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (50 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$57.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (50 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$55.99</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (6 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$8.09</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Six classic bone-in wings, fried crispy and tossed in your signature sauce choice.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (6 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$6.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Six tender, all-white meat boneless wings, perfectly sauced and ready to enjoy.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (10 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$12.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Ten classic bone-in wings, perfect for sharing or satisfying a bigger craving.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (10 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$11.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Ten pieces of our tender boneless wings, tossed in your favorite flavorful sauce.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (15 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$18.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A generous helping of fifteen classic bone-in wings, ideal for a hungry group.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (15 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$17.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Fifteen pieces of easy-to-eat boneless wings, sauced just the way you like.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (20 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$23.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Party time! Twenty classic bone-in wings ready for your next get-together.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (20 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$22.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A feast of twenty tender boneless wings, perfect for game day or any hungry crowd.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Traditional Wings (50 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$57.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">The ultimate wing experience! Fifty classic bone-in wings for your biggest celebrations.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boneless Wings (50 Pcs)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$55.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Fifty pieces of our delicious boneless wings, enough to make everyone happy!</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Hot Dogs</h3>
+                    <p class="text-sm text-[#073A59] text-center mb-4">Classic American hot dogs, grilled to perfection and served on a soft bun with your choice of tasty toppings.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Regular Hot Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.79</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Kraut Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili & Cheese Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.19</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Polish Sausage</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Corn Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.89</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Regular Hot Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A juicy, grilled all-beef hot dog served on a soft bun. Simple, classic, delicious.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our classic hot dog topped with creamy, tangy coleslaw for a Southern twist.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Kraut Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A zesty favorite! Our grilled hot dog topped with warm, tangy sauerkraut.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili & Cheese Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty classic! Our grilled hot dog smothered in savory chili and melted cheese.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Polish Sausage</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A robust, flavorful Polish sausage, grilled and served on a bun with your choice of toppings.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Corn Dog</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A carnival classic! A sweet cornbread batter fried golden brown around a tasty hot dog.</p></div>
+
                     </div>
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Salads</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Fresh, crisp, and full of flavor. Our salads are a lighter option without sacrificing taste.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Southwestern Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chef Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grille Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tossed Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon & Ranch Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Caesar Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Crispy Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Southwestern Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A vibrant mix of crisp greens, seasoned chicken or beef, black beans, corn, cheese, and a zesty Southwestern dressing.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chef Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty salad loaded with ham, turkey, cheese, hard-boiled eggs, tomatoes, and cucumbers on a bed of fresh greens.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Char-Grille Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, smoky char-grilled chicken breast, sliced atop a bed of mixed greens with your favorite veggies and dressing.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tossed Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A simple yet satisfying mix of fresh, crisp lettuce, ripe tomatoes, cucumbers, and your choice of dressing.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon & Ranch Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon crumbles and shredded cheese over fresh greens, drizzled with creamy ranch dressing. Add chicken for a full meal!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Caesar Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crisp romaine lettuce, Parmesan cheese, and crunchy croutons tossed in a creamy Caesar dressing. Add grilled chicken for a classic!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Crispy Chicken Salad</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$10.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Golden, crispy chicken tenders, sliced and served over a bed of fresh mixed greens with your favorite toppings and dressing.</p></div>
+
                     </div>
+
                 </div>
+
+
 
                 <div id="menu-panel-specials" class="menu-category hidden" data-category-group="specials all" role="tabpanel" aria-labelledby="menu-tab-specials">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Daily Specials</h2>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Ask about today's special creation! Our chefs are always cooking up something new and exciting with a Southern flair.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Monday: The Ems Meatball Sub</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tuesday: Taco Salad / The Kates Chicken Bacon Quesadilla</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Wednesday: Cajun Bowl / The Brody Ribeye on Sourdough</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99 / $9.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Thursday: Chicken Alfredo / The Abram Turkey Fo-Boy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Friday: Shrimp & Grits / The Ty Shrimp Po-Boy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Monday: The Ems Meatball Sub</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Juicy homemade meatballs simmered in marinara, topped with melted cheese, served on a toasted sub roll. A comforting start to the week!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tuesday: Taco Salad / The Kates Chicken Bacon Quesadilla</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Choose between a hearty taco salad with all the fixings, or Kate's favorite: a cheesy chicken and bacon quesadilla, grilled to perfection.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Wednesday: Cajun Bowl / The Brody Ribeye on Sourdough</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99 / $9.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Spice up your hump day with a flavorful Cajun Bowl, or indulge in The Brody: a tender ribeye steak sandwich on toasted sourdough.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Thursday: Chicken Alfredo / The Abram Turkey Fo-Boy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Creamy Chicken Alfredo pasta to warm your soul, or try The Abram: a delicious turkey "faux" po' boy, packed with flavor.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Friday: Shrimp & Grits / The Ty Shrimp Po-Boy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Celebrate Friday with classic Southern Shrimp & Grits, or grab our famous Ty's Shrimp Po' Boy, loaded with crispy shrimp.</p></div>
+
                     </div>
+
                 </div>
+
                 
+
                 <div id="menu-panel-sides" class="menu-category hidden" data-category-group="sides all" role="tabpanel" aria-labelledby="menu-tab-sides">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Sides & Extras</h2>
+
                     
+
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Standard Sides</h3>
+                    <p class="text-sm text-[#073A59] text-center mb-4">Perfect pairings for your main course, or great for a little something extra!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tots</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Onion Rings</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pasta Salad</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Mashed Potatoes & Gravy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chips</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.75</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Veggie</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Side Salad</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grits</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hashbrowns</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Corned Beef Hash</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.69</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Fruit (Breakfast)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Gravy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Classic, crispy, golden-brown fries, lightly salted.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tots</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy on the outside, fluffy on the inside – a delightful potato treat!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Onion Rings</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Thick-cut onion rings, battered and fried to a perfect golden crunch.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pasta Salad</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A cool and refreshing pasta salad, lightly dressed with fresh veggies.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Creamy, tangy, and crisp coleslaw – a perfect Southern side.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Mashed Potatoes & Gravy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Fluffy mashed potatoes smothered in our rich, savory house gravy.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chips</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.75</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A bag of your favorite crispy potato chips.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Veggie</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Today's selection of fresh, seasonal vegetables, cooked to perfection.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Side Salad</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A smaller version of our tossed salad with mixed greens, tomatoes, cucumbers, and your choice of dressing.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grits</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Creamy, stone-ground Southern grits, a breakfast staple.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hashbrowns</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Shredded potatoes griddled to a crispy golden brown.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Corned Beef Hash</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.69</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A savory mix of diced corned beef and potatoes, griddled just right.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Fruit (Breakfast)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A refreshing cup of assorted fresh seasonal fruit.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Gravy</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our rich and savory country-style gravy, perfect for dipping!</p></div>
+
                     </div>
+
+
 
                      <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Loaded Fries</h3>
+                      <p class="text-sm text-[#073A59] text-center mb-4">Take our crispy fries to the next level with these mouthwatering toppings!</p>
+
                      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Ranch Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Cheese Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Ranch Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Our crispy fries loaded with melted cheese, savory bacon bits, and a drizzle of creamy ranch dressing.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Cheese Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty helping of our crispy fries smothered in savory house-made chili and topped with melted cheese.</p></div>
+
                      </div>
 
+
+
                      <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Extras</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Add a little something extra to complete your meal or satisfy that specific craving.</p>
+
                      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili (2oz)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dressing</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (1 pc)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.95</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tender</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Toast</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.79</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sliced Cheese</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Shredded Cheese</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fried Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Boiled Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.39</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Steak (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Patty (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Texas Toast</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bun</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tomatoes</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.35</p></div>
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Scrambled Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili (2oz)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A small side of our hearty, house-made chili.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dressing</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of our delicious salad dressings.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (1 pc)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.95</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A single strip of our perfectly crispy bacon.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tender</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">One of our golden-fried chicken tenders.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Toast</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.79</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A slice of perfectly toasted bread, great with any meal.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sliced Cheese</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Add a slice of your favorite cheese to anything!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Shredded Cheese</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A sprinkle of our shredded cheese blend.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fried Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A perfectly fried egg, cooked just the way you like it.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Boiled Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A hard-boiled egg, a simple and nutritious addition.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side portion of our savory breakfast sausage patties or links.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Several strips of our crispy, perfectly cooked bacon.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our classic thick-cut grilled bologna.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.39</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Enjoy the distinct, smoky flavor of Conecuh sausage as a side.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A satisfying side of our tender, savory ham.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side portion of our seasoned grilled or crispy chicken.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Steak (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our tender, savory breakfast steak.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Patty (Side)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our flavorful Philly-style steak patty.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Texas Toast</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A thick slice of buttery, toasted Texas Toast.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bun</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A soft, toasted bun, perfect for any sandwich creation.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tomatoes</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$0.35</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Slices of fresh, ripe tomato.</p></div>
+
+                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Scrambled Egg</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our fluffy, perfectly scrambled eggs.</p></div>
+
                     </div>
+
                      <p class="text-center text-md text-[#073A59] mt-6">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
+
                 </div>
+
+
+
 
 
                 <div id="menu-panel-desserts" class="menu-category hidden" data-category-group="desserts all" role="tabpanel" aria-labelledby="menu-tab-desserts">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Desserts</h2>
+                     <p class="text-sm text-[#073A59] text-center mb-4">End your meal on a sweet note with one of our delightful homemade desserts!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Brownies</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ambrosia</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fruit Cup (Fresh)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Parfait (Blueberry or Strawberry)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Brownies</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Rich, fudgy, and chocolatey homemade brownies. The perfect sweet treat!</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ambrosia</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A delightful Southern classic! A sweet and creamy fruit salad with coconut and marshmallows.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fruit Cup (Fresh)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A refreshing cup of mixed, fresh seasonal fruit. A light and healthy dessert option.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Parfait (Blueberry or Strawberry)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Layers of creamy yogurt, sweet blueberry or strawberry compote, and crunchy granola. A beautiful and tasty dessert.</p></div>
+
                     </div>
+
                 </div>
+
                 <div id="menu-panel-kids" class="menu-category hidden" data-category-group="kids all" role="tabpanel" aria-labelledby="menu-tab-kids">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Kids Menu</h2>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Kid-approved favorites, perfectly portioned for smaller appetites. All served with fries!</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Dog & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Fingers & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Burger & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$3.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Ooey-gooey melted cheese between toasted bread, served with a side of crispy fries.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Dog & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A classic kid-friendly hot dog on a soft bun, served with a side of crispy fries.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Fingers & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy, golden chicken fingers perfect for dipping, served with a side of fries.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Burger & Fries</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p><p class="menu-item-description text-sm text-[#073A59] mt-1">A juicy kid-sized burger, plain or with cheese, served with a side of crispy fries.</p></div>
+
                     </div>
+
                 </div>
+
                 <div id="menu-panel-beverages" class="menu-category hidden" data-category-group="beverages all" role="tabpanel" aria-labelledby="menu-tab-beverages">
+
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Beverages</h2>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Quench your thirst with our selection of refreshing drinks.</p>
+
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fountain Drink (Coke Products)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Community Iced Tea (Sweet/Unsweet)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dasani Bottled Water</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p></div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Barq's Root Beer (Bottle)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fountain Drink (Coke Products)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Choose from a variety of ice-cold Coca-Cola fountain drinks.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Community Iced Tea (Sweet/Unsweet)</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Freshly brewed Community Iced Tea, served sweet or unsweetened to your liking.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dasani Bottled Water</h3><p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Pure, crisp Dasani bottled water.</p></div>
+
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105"><h4 class="menu-item-name text-xl font-semibold text-[#011640]">Barq's Root Beer (Bottle)</h4><p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p><p class="menu-item-description text-sm text-[#073A59] mt-1">Enjoy the classic, bold flavor of Barq's Root Beer in a chilled bottle.</p></div>
+
                     </div>
+
                 </div>
+
             </div>
+
             <p class="text-center text-sm text-gray-500 mt-10">*Menu items and prices are subject to change. Please confirm when ordering.</p>
+
         </article> 
 
         <article id="about" class="page hidden" aria-labelledby="about-heading"> 
