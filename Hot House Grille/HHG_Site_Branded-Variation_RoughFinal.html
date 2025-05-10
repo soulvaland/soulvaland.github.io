@@ -370,25 +370,24 @@
             <div class="flex justify-center items-center space-x-3 mb-10" role="radiogroup" aria-labelledby="view-switcher-label">
                 <span id="view-switcher-label" class="sr-only">Select menu view style</span>
                 <button id="card-view-btn" type="button"
-						class="view-toggle-button py-2 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-colors duration-300 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] bg-gray-200 text-[#073A59] border border-transparent hover:bg-gray-300"
-						aria-pressed="true" data-view="card">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-						<path d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v10H5V5z" />
-					</svg>
-					Card View
-				</button>
-				<button id="list-view-btn" type="button"
-						class="view-toggle-button py-2 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-colors duration-300 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] bg-gray-200 text-[#073A59] border border-transparent hover:bg-gray-300"
-						aria-pressed="false" data-view="list">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-					  <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-					</svg>
-					List View
-				</button>
+                        class="view-toggle-button py-2 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-colors duration-300 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] bg-gray-200 text-[#073A59] border border-transparent hover:bg-gray-300"
+                        aria-pressed="true" data-view="card">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v10H5V5z" />
+                    </svg>
+                    Card View
+                </button>
+                <button id="list-view-btn" type="button"
+                        class="view-toggle-button py-2 px-4 text-xs sm:text-sm font-semibold rounded-lg transition-colors duration-300 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] bg-gray-200 text-[#073A59] border border-transparent hover:bg-gray-300"
+                        aria-pressed="false" data-view="list">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    List View
+                </button>
             </div>
 
             <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" aria-label="Menu Categories">
-
                 <button id="menu-tab-all" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="all" role="tab" aria-selected="true" aria-controls="menu-panel-breakfast menu-panel-lunch-dinner menu-panel-specials menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button> 
                 <button id="menu-tab-breakfast" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="breakfast" role="tab" aria-selected="false" aria-controls="menu-panel-breakfast">Breakfast</button>
                 <button id="menu-tab-lunch-dinner" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="lunch-dinner" role="tab" aria-selected="false" aria-controls="menu-panel-lunch-dinner">Lunch & Dinner</button>
@@ -399,35 +398,33 @@
                 <button id="menu-tab-beverages" type="button" class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category="beverages" role="tab" aria-selected="false" aria-controls="menu-panel-beverages">Beverages</button>
             </div>
 
-            <div id="menu-items-container"> <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
+            <div id="menu-items-container">
+                <div id="menu-panel-breakfast" class="menu-category hidden" data-category-group="breakfast all" role="tabpanel" aria-labelledby="menu-tab-breakfast">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
+                    
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">#1 The Baylor</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">#1 The Baylor</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Start your day right! Two fresh eggs cooked just how you like 'em, your favorite breakfast meat, two homestyle sides, and crispy hashbrowns.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">#2 The Riley</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">#2 The Riley</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A classic pairing: two fluffy pancakes, two eggs cooked to order, and your choice of savory breakfast meat.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">#3 The Bear</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">#3 The Bear</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty scramble of golden hashbrowns loaded with diced ham, three kinds of cheese, sweet bell peppers, onions, and fresh tomatoes.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">#4 The Nicky Lee</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">#4 The Nicky Lee</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Simple perfection: two lightly scrambled eggs and melted cheese nestled in a warm, steamed bun with a touch of mayo, salt, and pepper.</p>
                         </div>
@@ -438,43 +435,37 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Sandwich</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.09 (Combo $6.69)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.09 (Combo $6.69)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A timeless classic: fluffy eggs and melted cheese creating the perfect, simple start.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Sandwich</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Savory sausage, fluffy eggs, and melted cheese – a truly satisfying morning staple.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Sandwich</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fluffy eggs, and gooey melted cheese. Need we say more?</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Sandwich</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern favorite! Thick-cut bologna paired with eggs and cheese for a hearty bite.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Sandwich</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Legendary Conecuh sausage adds its signature smoky spice to this delightful egg and cheese creation.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Sandwich</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, savory ham joins fluffy eggs and melted cheese for a classic, fulfilling sandwich.</p>
                         </div>
@@ -485,50 +476,43 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Cheese Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.49</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Cheese Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Simply delicious: a fluffy omelette filled generously with your favorite melted cheese.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Hearty crumbled sausage and melted cheese folded into a perfectly cooked omelette.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy, savory bacon bits and melted cheese make this omelette an irresistible choice.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A breakfast champion! Diced ham and a generous helping of melted cheese.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Western Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.49</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Western Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Packed with flavor: diced ham, bell peppers, onions, and melted cheese create this classic delight.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">All Meat Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">All Meat Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">For the true carnivore: loaded with sausage, bacon, ham, and melted cheese.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Omelette</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A taste of Philly in the South! Tender steak, sautéed peppers, onions, and melted cheese.</p>
                         </div>
@@ -539,98 +523,97 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Biscuit</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.09 (Combo $5.69)</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Biscuit</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.09 (Combo $5.69)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A simple yet perfect pairing of fluffy egg and melted cheese on our signature biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty start with savory sausage, fluffy egg, and melted cheese piled on a warm biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fresh egg, and melted cheese on a fluffy biscuit – a morning must-have!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.39 (Combo $6.99)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A taste of Southern tradition: thick-cut bologna with egg and cheese on our classic biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">The unbeatable flavor of Conecuh sausage meets egg and cheese in this premium biscuit experience.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Savory ham, fluffy egg, and melted cheese on a warm, tender biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Butter Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Butter Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19 (Combo $3.79)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Pure comfort: a warm, fluffy biscuit served with creamy butter.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage or Bacon Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage or Bacon Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99 (Combo $4.59)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of savory sausage or crispy bacon nestled in a warm, fluffy biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49 (Combo $5.09)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern classic! Thick-sliced bologna served hot on our signature biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Experience the legendary taste of Conecuh sausage, perfectly paired with our fluffy biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, savory ham piled onto a warm, buttery biscuit. Simple and satisfying.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken or Steak Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken or Steak Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of a tender, seasoned chicken breast or savory steak on a warm biscuit.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Single Gravy Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Single Gravy Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.89</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A fluffy, open-faced biscuit generously smothered in our rich, savory country gravy.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Double Gravy Biscuit</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Double Gravy Biscuit</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.29</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Twice the comfort! Two open-faced biscuits drowning in our delicious country gravy.</p>
@@ -642,22 +625,21 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pancakes (Stack)</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Pancakes (Stack)</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A generous stack of our signature fluffy pancakes, served with butter and warm syrup.</p>
                          </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Stack w/ Sausage or Bacon</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Stack w/ Sausage or Bacon</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Our fluffy pancake stack accompanied by your choice of savory sausage or crispy bacon.</p>
                          </div>
                     </div>
                 </div> <div id="menu-panel-lunch-dinner" class="menu-category hidden" data-category-group="lunch-dinner all" role="tabpanel" aria-labelledby="menu-tab-lunch-dinner">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Lunch & Dinner</h2>
-					<p class="text-sm text-[#073A59] text-center mb-8">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
+                    <p class="text-sm text-[#073A59] text-center mb-8">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
+                    
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Burgers</h3>
                     <p class="text-sm text-[#073A59] text-center mb-4">Our burgers are smashed fresh and seasoned to perfection, served on a toasted bun with your choice of classic toppings. Make it a combo!</p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
@@ -851,7 +833,7 @@
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Wraps</h3>
                     <p class="text-sm text-[#073A59] text-center mb-4">Enjoy our delicious fillings rolled into a soft tortilla for a convenient and tasty meal.</p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
+                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
                                 <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Buffalo Chicken Wrap</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.59</p>
@@ -1092,19 +1074,18 @@
                 </div> <div id="menu-panel-specials" class="menu-category hidden" data-category-group="specials all" role="tabpanel" aria-labelledby="menu-tab-specials">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Daily Specials</h2>
                     <p class="text-sm text-[#073A59] text-center mb-8">Discover a new favorite every day of the week! Our daily specials feature unique, chef-inspired dishes crafted with the freshest ingredients, offering a taste of Southern creativity. Don't forget, many specials include bread and can be made into a combo!</p>
+                    
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4 ml-2">Monday</h3>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ems Meatball Sub</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ems Meatball Sub</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Juicy, homemade meatballs simmered in a rich marinara sauce, tucked into a toasted sub roll and topped with melted provolone. A hearty and comforting start to your week!</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Meatballs & Penne</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Meatballs & Penne</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Our savory homemade meatballs and classic penne pasta tossed in a robust marinara sauce, served with a side of garlic bread. A true Italian-American classic with a Southern touch.</p>
                         </div>
@@ -1114,15 +1095,13 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Kates Chicken Bacon Quesadilla</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Kates Chicken Bacon Quesadilla</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A fiesta of flavors! Grilled chicken, crispy bacon, and melted cheese folded into a warm, toasted tortilla. Served with salsa and sour cream for dipping.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Taco Salad</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Taco Salad</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A vibrant and satisfying salad featuring seasoned ground beef or chicken, crisp lettuce, diced tomatoes, shredded cheese, and crunchy tortilla strips, all topped with your choice of dressing.</p>
                         </div>
@@ -1132,15 +1111,13 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Brody Ribeye on Sourdough</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Brody Ribeye on Sourdough</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Indulge in a tender, juicy ribeye steak, perfectly grilled and served on toasted sourdough bread with your favorite fixings. A premium sandwich experience!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Cajun Bowl</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Cajun Bowl</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A flavorful bowl packed with Southern and Cajun inspiration! Often features andouille sausage, chicken, rice, and a kick of spice. Ask for today's specific creation!</p>
                         </div>
@@ -1150,15 +1127,13 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Abram Turkey Focaccia</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Abram Turkey Focaccia</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Sliced roasted turkey breast, provolone cheese, lettuce, tomato, and a creamy aioli served on warm, herbed focaccia bread. A delightfully modern twist on a turkey sandwich.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Alfredo</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Alfredo</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Tender grilled chicken and fettuccine pasta tossed in a rich, creamy Alfredo sauce, finished with a sprinkle of Parmesan. Pure comfort in a bowl.</p>
                         </div>
@@ -1168,323 +1143,303 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ty Shrimp Po-Boy</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">The Ty Shrimp Po-Boy</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Our famous crispy fried shrimp piled high on a toasted hoagie roll with crisp lettuce, juicy tomatoes, and our signature tangy remoulade sauce. A Friday favorite!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Shrimp & Grits</h4>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Shrimp & Grits</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$9.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A true taste of the South! Plump, savory shrimp and a rich, flavorful sauce served over creamy, stone-ground grits. An unforgettably delicious classic.</p>
                         </div>
                     </div>
                 </div> <div id="menu-panel-sides" class="menu-category hidden" data-category-group="sides all" role="tabpanel" aria-labelledby="menu-tab-sides">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Sides & Extras</h2>
+                    
                     <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Standard Sides</h3>
                     <p class="text-sm text-[#073A59] text-center mb-4">Perfect pairings for your main course, or great for a little something extra!</p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Classic, crispy, golden-brown fries, lightly salted.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tots</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tots</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy on the outside, fluffy on the inside – a delightful potato treat!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Onion Rings</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Onion Rings</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Thick-cut onion rings, battered and fried to a perfect golden crunch.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Pasta Salad</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Pasta Salad</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A cool and refreshing pasta salad, lightly dressed with fresh veggies.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Slaw</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Creamy, tangy, and crisp coleslaw – a perfect Southern side.</p>
                         </div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
+						                    <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Mashed Potatoes & Gravy</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p>
-                            </div>
-                            <p class="menu-item-description text-sm text-[#073A59] mt-1">Fluffy mashed potatoes smothered in our rich, savory house gravy.</p>
-                        </div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-                            <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chips</h3>
-                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.75</p>
-                            </div>
-                            <p class="menu-item-description text-sm text-[#073A59] mt-1">A bag of your favorite crispy potato chips.</p>
-                        </div>
-                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-                            <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Veggie</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Veggie</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Today's selection of fresh, seasonal vegetables, cooked to perfection.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Side Salad</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Side Salad</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A smaller version of our tossed salad with mixed greens, tomatoes, cucumbers, and your choice of dressing.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grits</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grits</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Creamy, stone-ground Southern grits, a breakfast staple.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hashbrowns</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hashbrowns</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Shredded potatoes griddled to a crispy golden brown.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Corned Beef Hash</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Corned Beef Hash</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.69</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A savory mix of diced corned beef and potatoes, griddled just right.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Fruit (Breakfast)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Fresh Fruit (Breakfast)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A refreshing cup of assorted fresh seasonal fruit.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Gravy</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Gravy</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our rich and savory country-style gravy, perfect for dipping!</p>
                         </div>
-                    </div>
-
-                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Loaded Fries</h3>
-                    <p class="text-sm text-[#073A59] text-center mb-4">Take our crispy fries to the next level with these mouthwatering toppings!</p>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                    </div> <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Loaded Fries</h3>
+                      <p class="text-sm text-[#073A59] text-center mb-4">Take our crispy fries to the next level with these mouthwatering toppings!</p>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Ranch Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Ranch Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Our crispy fries loaded with melted cheese, savory bacon bits, and a drizzle of creamy ranch dressing.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Cheese Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili Cheese Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty helping of our crispy fries smothered in savory house-made chili and topped with melted cheese.</p>
                         </div>
-                    </div>
-
-                    <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Extras</h3>
-                    <p class="text-sm text-[#073A59] text-center mb-4">Add a little something extra to complete your meal or satisfy that specific craving.</p>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
+                     </div> <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Extras</h3>
+                     <p class="text-sm text-[#073A59] text-center mb-4">Add a little something extra to complete your meal or satisfy that specific craving.</p>
+                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chili (2oz)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chili (2oz)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A small side of our hearty, house-made chili.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dressing</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Dressing</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of our delicious salad dressings.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (1 pc)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (1 pc)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.95</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A single strip of our perfectly crispy bacon.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tender</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tender</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">One of our golden-fried chicken tenders.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Toast</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Toast</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.79</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A slice of perfectly toasted bread, great with any meal.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sliced Cheese</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sliced Cheese</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.59</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Add a slice of your favorite cheese to anything!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Shredded Cheese</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Shredded Cheese</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A sprinkle of our shredded cheese blend.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fried Egg</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Fried Egg</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A perfectly fried egg, cooked just the way you like it.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Boiled Egg</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Boiled Egg</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A hard-boiled egg, a simple and nutritious addition.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side portion of our savory breakfast sausage patties or links.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Several strips of our crispy, perfectly cooked bacon.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our classic thick-cut grilled bologna.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.39</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Enjoy the distinct, smoky flavor of Conecuh sausage as a side.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ham (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A satisfying side of our tender, savory ham.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side portion of our seasoned grilled or crispy chicken.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Steak (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Steak (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our tender, savory breakfast steak.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Patty (Side)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Patty (Side)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our flavorful Philly-style steak patty.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Texas Toast</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Texas Toast</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A thick slice of buttery, toasted Texas Toast.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Bun</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bun</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.69</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A soft, toasted bun, perfect for any sandwich creation.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Tomatoes</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tomatoes</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$0.35</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Slices of fresh, ripe tomato.</p>
                         </div>
                          <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Scrambled Egg</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Scrambled Egg</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.29</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A side of our fluffy, perfectly scrambled eggs.</p>
                         </div>
-                    </div>
-                    <p class="text-center text-md text-[#073A59] mt-6">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
+                    </div> <p class="text-center text-md text-[#073A59] mt-6">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
                 </div> <div id="menu-panel-desserts" class="menu-category hidden" data-category-group="desserts all" role="tabpanel" aria-labelledby="menu-tab-desserts">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Desserts</h2>
                     <p class="text-sm text-[#073A59] text-center mb-4">End your meal on a sweet note with one of our delightful homemade desserts!</p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Brownies</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Brownies</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Rich, fudgy, and chocolatey homemade brownies. The perfect sweet treat!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Ambrosia</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ambrosia</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A delightful Southern classic! A sweet and creamy fruit salad with coconut and marshmallows.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fruit Cup (Fresh)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Fruit Cup (Fresh)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A refreshing cup of mixed, fresh seasonal fruit. A light and healthy dessert option.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Parfait (Blueberry or Strawberry)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Parfait (Blueberry or Strawberry)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Layers of creamy yogurt, sweet blueberry or strawberry compote, and crunchy granola. A beautiful and tasty dessert.</p>
@@ -1497,68 +1452,68 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese & Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Grilled Cheese & Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Ooey-gooey melted cheese between toasted bread, served with a side of crispy fries.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Dog & Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Hot Dog & Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A classic kid-friendly hot dog on a soft bun, served with a side of crispy fries.</p>
                         </div>
                        <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Fingers & Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken Fingers & Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy, golden chicken fingers perfect for dipping, served with a side of our classic fries.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Burger & Fries</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Burger & Fries</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.19</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">A juicy kid-sized burger, cooked just right and served with a side of our tasty fries. Cheese available upon request!</p>
-                        </div>	
+                        </div>    
                     </div>
-				</div>
+                </div> 
 				<div id="menu-panel-beverages" class="menu-category hidden" data-category-group="beverages all" role="tabpanel" aria-labelledby="menu-tab-beverages">
                     <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Beverages</h2>
                     <p class="text-sm text-[#073A59] text-center mb-4">Quench your thirst with our selection of refreshing drinks.</p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Fountain Drink (Coke Products)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Fountain Drink (Coke Products)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Choose your favorite from our selection of ice-cold Coca-Cola fountain drinks. Free refills on dine-in!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Community Iced Tea (Sweet/Unsweet)</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Community Iced Tea (Sweet/Unsweet)</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">Med $2.19 / Lg $2.59</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Freshly brewed Community Iced Tea, a Southern staple. Get it sweet or unsweetened. Free refills on dine-in!</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h3 class="menu-item-name text-xl font-semibold text-[#011640]">Dasani Bottled Water</h3>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Dasani Bottled Water</h4>
                                 <p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Pure, crisp, and refreshing Dasani bottled water to keep you hydrated.</p>
                         </div>
                         <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
                             <div class="menu-item-name-price-group">
-                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Barq's Root Beer (Bottle)</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p>
+                                <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Barq's Root Beer (Bottle)</h4>
+                                <p class="menu-item-price text-lg text-[#952E19] font-bold">$2.29</p>
                             </div>
                             <p class="menu-item-description text-sm text-[#073A59] mt-1">Enjoy the classic, bold flavor and bite of Barq's Root Beer, served in a chilled bottle.</p>
                         </div>
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
 		</article>
 		<article id="about" class="page hidden" aria-labelledby="about-heading"> 
             <h1 id="about-heading" class="text-4xl md:text-5xl font-display text-center text-[#011640] my-8">About Hot House Grillé</h1>
@@ -1608,380 +1563,357 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-		// --- DOM Element Variables ---
-		// Navigation links for page switching
-		const navLinks = document.querySelectorAll('.nav-link');
-		// All page content articles
-		const pages = document.querySelectorAll('.page');
-		// Mobile menu toggle button
-		const mobileMenuButton = document.getElementById('mobile-menu-button');
-		// Mobile menu navigation list
-		const mobileMenu = document.getElementById('mobile-menu');
-		// Filter buttons for menu categories
-		const menuTabButtons = document.querySelectorAll('.menu-tab-button');
-		// Containers for each menu category's items
-		const menuCategories = document.querySelectorAll('.menu-category');
-		// Buttons on the home page that link to the menu page
-		const homePageMenuButtons = document.querySelectorAll('[data-page-target="menu"]');
-		// Hero button on the home page
-		const heroMenuButton = document.getElementById('heroMenuButton');
-		// Container for all menu items (used for list/card view toggle)
-		const menuItemsContainer = document.getElementById('menu-items-container');
-		// Button to switch to card view for menu items
-		const cardViewBtn = document.getElementById('card-view-btn');
-		// Button to switch to list view for menu items
-		const listViewBtn = document.getElementById('list-view-btn');
-		// Span for the current year in the footer
-		const currentYearSpan = document.getElementById('currentYear');
+		document.addEventListener('DOMContentLoaded', function () {
+			// --- DOM Element Variables ---
+			const navLinks = document.querySelectorAll('.nav-link'); // General selector, will be refined for specific contexts
+			const desktopNavLinks = document.querySelectorAll('header nav.hidden.md\\:flex .nav-link'); // Desktop nav links
+			const pages = document.querySelectorAll('.page');
+			const mobileMenuButton = document.getElementById('mobile-menu-button');
+			const mobileMenu = document.getElementById('mobile-menu');
+			const mobileNavLinksInMenu = mobileMenu ? mobileMenu.querySelectorAll('.nav-link') : []; // Links specifically inside the mobile menu
+			const menuTabButtons = document.querySelectorAll('.menu-tab-button');
+			const menuCategories = document.querySelectorAll('.menu-category');
+			const homePageMenuButtons = document.querySelectorAll('[data-page-target="menu"]');
+			const heroMenuButton = document.getElementById('heroMenuButton');
+			const menuItemsContainer = document.getElementById('menu-items-container');
+			const cardViewBtn = document.getElementById('card-view-btn');
+			const listViewBtn = document.getElementById('list-view-btn');
+			const currentYearSpan = document.getElementById('currentYear');
+			const logoLink = document.getElementById('logoLink');
 
-		// --- State Variables ---
-		// Timeout ID for debouncing menu filter clicks
-		let menuFilterTimeout;
-		// Flag to ensure tap hint animation plays only once per session
-		let tapHintPlayed = false;
-		// Stores the current view mode for the menu ('card' or 'list')
-		let currentMenuView = 'card'; // Default to card view
 
-		// --- Constants for Durations & Delays (in milliseconds) ---
-		const PAGE_TRANSITION_DURATION = 500; // Matches CSS transition for pages
-		const PAGE_TRANSITION_FALLBACK_BUFFER = 100; // Extra buffer for transitionend fallback
-		const HERO_BUTTON_SHIMMER_DELAY = 500;
-		const TAP_HINT_APPEAR_DELAY = 700; // Delay before tap hint animation starts
-		const TAP_HINT_ANIMATION_DURATION_TOTAL = (1700 * 3) + 500; // CSS: (duration * iterations) + delay
-		const INITIAL_HOME_CARD_ANIMATION_DELAY = 250;
-		const MENU_CARD_ANIMATION_DELAY = 50; // Delay before animating menu cards after filtering/view change
-		const MENU_FILTER_DEBOUNCE_DELAY = 50; // Debounce delay for menu category filter clicks
+			// --- State Variables ---
+			let menuFilterTimeout;
+			let tapHintPlayed = false;
+			let currentMenuView = 'card';
 
-		// --- Initialization ---
+			// --- Constants for Durations & Delays (in milliseconds) ---
+			const PAGE_TRANSITION_DURATION = 500;
+			const PAGE_TRANSITION_FALLBACK_BUFFER = 100;
+			const HERO_BUTTON_SHIMMER_DELAY = 500;
+			const TAP_HINT_APPEAR_DELAY = 700;
+			const TAP_HINT_ANIMATION_DURATION_TOTAL = (1700 * 3) + 500;
+			const INITIAL_HOME_CARD_ANIMATION_DELAY = 250;
+			const MENU_CARD_ANIMATION_DELAY = 50;
+			const MENU_FILTER_DEBOUNCE_DELAY = 50;
 
-		// Initialize hero button shimmer effect if the button exists
-		if (heroMenuButton) {
-			setTimeout(() => {
-				heroMenuButton.classList.add('animate-shimmer');
-			}, HERO_BUTTON_SHIMMER_DELAY);
-		}
-
-		// Initialize and play mobile menu tap hint animation if applicable
-		if (mobileMenuButton && window.innerWidth < 768 && !tapHintPlayed) {
-			setTimeout(() => {
-				mobileMenuButton.classList.add('tap-hint-animation');
-				tapHintPlayed = true; // Mark as played to prevent re-playing in the same session
-				// Remove the animation class after it has completed its cycles
-				setTimeout(() => {
-					if (mobileMenuButton) { // Check if button still exists (good practice)
-						 mobileMenuButton.classList.remove('tap-hint-animation');
-					}
-				}, TAP_HINT_ANIMATION_DURATION_TOTAL);
-			}, TAP_HINT_APPEAR_DELAY);
-		}
-
-		// Set the current year in the footer
-		if (currentYearSpan) {
-			currentYearSpan.textContent = new Date().getFullYear();
-		}
-
-		// Initial page setup: hide all pages, then show the designated initial page (home)
-		pages.forEach(p => p.classList.add('hidden'));
-		const initialPage = document.getElementById('home');
-		if (initialPage) {
-			initialPage.classList.remove('hidden');
-			initialPage.classList.add('active');
-			// Animate cards on the initial page after a short delay
-			setTimeout(animateCardsOnLoad, INITIAL_HOME_CARD_ANIMATION_DELAY);
-		} else {
-			console.error("Initial page 'home' not found. Site may not display correctly.");
-		}
-		updateNavActiveState('home'); // Set the 'home' nav link as active
-
-		// If the menu page is somehow marked active on load (e.g., from a previous state or direct URL - though not handled here),
-		// ensure its 'All Items' filter is active and items are shown.
-		if (document.getElementById('menu')?.classList.contains('active')) {
-			 filterAndAnimateMenu('all');
-		}
-
-		// Initialize menu view toggle buttons to reflect the default view ('card')
-		updateViewToggleButtons();
-
-		// --- Core Functions ---
-
-		/**
-		 * Animates cards (menu items, fan favorites, etc.) into view on the currently active page.
-		 * It adds a 'visible' class which triggers CSS transitions.
-		 */
-		function animateCardsOnLoad() {
-			const activePage = document.querySelector('.page.active');
-			if (!activePage) return; // Exit if no page is active
-
-			let cardsToAnimate;
-			// Select cards based on whether it's the menu page (with categories) or another page
-			if (activePage.id === 'menu') {
-				 cardsToAnimate = activePage.querySelectorAll('.menu-category:not(.hidden) .menu-card, .menu-category:not(.hidden) .stagger-animate > div');
-			} else {
-				 cardsToAnimate = activePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div');
+			// --- Helper function to get all focusable elements within a parent ---
+			function getFocusableElements(parentElement) {
+				if (!parentElement) return [];
+				return Array.from(
+					parentElement.querySelectorAll(
+						'a[href]:not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"]), textarea:not([disabled]):not([tabindex="-1"]), input[type="text"]:not([disabled]):not([tabindex="-1"]), input[type="radio"]:not([disabled]):not([tabindex="-1"]), input[type="checkbox"]:not([disabled]):not([tabindex="-1"]), select:not([disabled]):not([tabindex="-1"])'
+					)
+				).filter(el => el.offsetParent !== null); // Ensure elements are visible and part of the layout
 			}
 
-			if (cardsToAnimate.length > 0) {
-				cardsToAnimate.forEach((card) => {
-					card.classList.remove('visible'); // Ensure visibility is reset
-					void card.offsetHeight;          // Force browser reflow to re-trigger animation
-					card.classList.add('visible');  // Add class to trigger animation
+			// --- Mobile Menu Focus Management Variables & Functions ---
+			let focusableElementsInMobileMenu = [];
+			let firstFocusableElementInMobileMenu;
+			let lastFocusableElementInMobileMenu;
+
+			/**
+			 * Opens the mobile menu, sets ARIA attributes, focuses the first item,
+			 * and sets up the focus trap.
+			 */
+			function openMobileMenu() {
+				if (!mobileMenu || !mobileMenuButton) return;
+
+				mobileMenu.classList.remove('hidden');
+				mobileMenuButton.setAttribute('aria-expanded', 'true');
+
+				focusableElementsInMobileMenu = getFocusableElements(mobileMenu);
+				if (focusableElementsInMobileMenu.length > 0) {
+					firstFocusableElementInMobileMenu = focusableElementsInMobileMenu[0];
+					lastFocusableElementInMobileMenu = focusableElementsInMobileMenu[focusableElementsInMobileMenu.length - 1];
+					firstFocusableElementInMobileMenu.focus(); // Focus the first item
+				} else {
+					// If no focusable items, focus the menu button itself (or the menu container if appropriate)
+					// For now, we'll rely on the button keeping focus if nothing else is focusable.
+				}
+				document.addEventListener('keydown', handleMobileMenuFocusTrap);
+			}
+
+			/**
+			 * Closes the mobile menu, sets ARIA attributes, removes the focus trap,
+			 * and returns focus to the menu button.
+			 */
+			function closeMobileMenu() {
+				if (!mobileMenu || !mobileMenuButton) return;
+
+				mobileMenu.classList.add('hidden');
+				mobileMenuButton.setAttribute('aria-expanded', 'false');
+				document.removeEventListener('keydown', handleMobileMenuFocusTrap);
+				mobileMenuButton.focus(); // Return focus to the menu button
+			}
+
+			/**
+			 * Handles keyboard navigation (Tab and Shift+Tab) to trap focus within the mobile menu.
+			 * @param {KeyboardEvent} e - The keyboard event.
+			 */
+			function handleMobileMenuFocusTrap(e) {
+				if (!mobileMenu || mobileMenu.classList.contains('hidden')) {
+					document.removeEventListener('keydown', handleMobileMenuFocusTrap); // Cleanup if menu somehow closed
+					return;
+				}
+
+				const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+				if (!isTabPressed) {
+					return;
+				}
+
+				// Re-query focusable elements in case visibility changed (though less likely in this simple menu)
+				focusableElementsInMobileMenu = getFocusableElements(mobileMenu);
+				if (focusableElementsInMobileMenu.length === 0) return;
+				firstFocusableElementInMobileMenu = focusableElementsInMobileMenu[0];
+				lastFocusableElementInMobileMenu = focusableElementsInMobileMenu[focusableElementsInMobileMenu.length - 1];
+
+
+				if (e.shiftKey) { // Shift + Tab
+					if (document.activeElement === firstFocusableElementInMobileMenu) {
+						lastFocusableElementInMobileMenu.focus();
+						e.preventDefault();
+					}
+				} else { // Tab
+					if (document.activeElement === lastFocusableElementInMobileMenu) {
+						firstFocusableElementInMobileMenu.focus();
+						e.preventDefault();
+					}
+				}
+			}
+
+			// --- Initialization ---
+			if (heroMenuButton) {
+				setTimeout(() => {
+					heroMenuButton.classList.add('animate-shimmer');
+				}, HERO_BUTTON_SHIMMER_DELAY);
+			}
+
+			if (mobileMenuButton && window.innerWidth < 768 && !tapHintPlayed) {
+				setTimeout(() => {
+					mobileMenuButton.classList.add('tap-hint-animation');
+					tapHintPlayed = true;
+					setTimeout(() => {
+						if (mobileMenuButton) {
+							 mobileMenuButton.classList.remove('tap-hint-animation');
+						}
+					}, TAP_HINT_ANIMATION_DURATION_TOTAL);
+				}, TAP_HINT_APPEAR_DELAY);
+			}
+
+			if (currentYearSpan) {
+				currentYearSpan.textContent = new Date().getFullYear();
+			}
+
+			pages.forEach(p => p.classList.add('hidden'));
+			const initialPage = document.getElementById('home');
+			if (initialPage) {
+				initialPage.classList.remove('hidden');
+				initialPage.classList.add('active');
+				setTimeout(animateCardsOnLoad, INITIAL_HOME_CARD_ANIMATION_DELAY);
+			} else {
+				console.error("Initial page 'home' not found. Site may not display correctly.");
+			}
+			updateNavActiveState('home');
+
+			if (document.getElementById('menu')?.classList.contains('active')) {
+				 filterAndAnimateMenu('all');
+			}
+			updateViewToggleButtons();
+
+			// --- Core Functions (Copied from Phase 1, ensure they are up-to-date) ---
+			function animateCardsOnLoad() {
+				const activePage = document.querySelector('.page.active');
+				if (!activePage) return;
+				let cardsToAnimate;
+				if (activePage.id === 'menu') {
+					 cardsToAnimate = activePage.querySelectorAll('.menu-category:not(.hidden) .menu-card, .menu-category:not(.hidden) .stagger-animate > div');
+				} else {
+					 cardsToAnimate = activePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div');
+				}
+				if (cardsToAnimate.length > 0) {
+					cardsToAnimate.forEach((card) => {
+						card.classList.remove('visible');
+						void card.offsetHeight;
+						card.classList.add('visible');
+					});
+				}
+			}
+
+			function updateViewToggleButtons() {
+				if (!cardViewBtn || !listViewBtn) return;
+				const isActive = (button, view) => currentMenuView === view;
+				const activeClasses = ['bg-[#B03C23]', 'text-white', 'border-[#011640]', 'hover:bg-[#912f1b]']; // Added active hover
+				const inactiveClasses = ['bg-gray-200', 'text-[#073A59]', 'border-transparent', 'hover:bg-gray-300'];
+
+				cardViewBtn.setAttribute('aria-pressed', String(isActive(cardViewBtn, 'card')));
+				(isActive(cardViewBtn, 'card') ? activeClasses : inactiveClasses).forEach((cls, i) => {
+					cardViewBtn.classList.toggle(cls, isActive(cardViewBtn, 'card'));
+					cardViewBtn.classList.toggle((isActive(cardViewBtn, 'card') ? inactiveClasses : activeClasses)[i], !isActive(cardViewBtn, 'card'));
+				});
+
+
+				listViewBtn.setAttribute('aria-pressed', String(isActive(listViewBtn, 'list')));
+				 (isActive(listViewBtn, 'list') ? activeClasses : inactiveClasses).forEach((cls, i) => {
+					listViewBtn.classList.toggle(cls, isActive(listViewBtn, 'list'));
+					listViewBtn.classList.toggle((isActive(listViewBtn, 'list') ? inactiveClasses : activeClasses)[i], !isActive(listViewBtn, 'list'));
 				});
 			}
-		}
 
-		/**
-		 * Updates the visual state (active/inactive) of the Card View and List View toggle buttons
-		 * by adding/removing Tailwind CSS classes.
-		 */
-		function updateViewToggleButtons() {
-			if (!cardViewBtn || !listViewBtn) return; // Safety check
 
-			// Define classes for the active state
-			const activeBgClass = 'bg-[#B03C23]';
-			const activeTextClass = 'text-white';
-			const activeBorderClass = 'border-[#011640]'; // Example: darker border for active
-			const activeHoverBgClass = 'hover:bg-[#912f1b]'; // Example: darker red on hover when active
-
-			// Define classes for the inactive state (these should match the button's default HTML classes)
-			const inactiveBgClass = 'bg-gray-200';
-			const inactiveTextClass = 'text-[#073A59]';
-			const inactiveBorderClass = 'border-transparent';
-			const inactiveHoverBgClass = 'hover:bg-gray-300';
-
-			// Card View Button
-			if (currentMenuView === 'card') {
-				cardViewBtn.setAttribute('aria-pressed', 'true');
-				cardViewBtn.classList.remove(inactiveBgClass, inactiveTextClass, inactiveBorderClass, inactiveHoverBgClass);
-				cardViewBtn.classList.add(activeBgClass, activeTextClass, activeBorderClass, activeHoverBgClass);
-
-				listViewBtn.setAttribute('aria-pressed', 'false');
-				listViewBtn.classList.remove(activeBgClass, activeTextClass, activeBorderClass, activeHoverBgClass);
-				listViewBtn.classList.add(inactiveBgClass, inactiveTextClass, inactiveBorderClass, inactiveHoverBgClass);
-			} else { // List view
-				listViewBtn.setAttribute('aria-pressed', 'true');
-				listViewBtn.classList.remove(inactiveBgClass, inactiveTextClass, inactiveBorderClass, inactiveHoverBgClass);
-				listViewBtn.classList.add(activeBgClass, activeTextClass, activeBorderClass, activeHoverBgClass);
-
-				cardViewBtn.setAttribute('aria-pressed', 'false');
-				cardViewBtn.classList.remove(activeBgClass, activeTextClass, activeBorderClass, activeHoverBgClass);
-				cardViewBtn.classList.add(inactiveBgClass, inactiveTextClass, inactiveBorderClass, inactiveHoverBgClass);
-			}
-		}
-
-		/**
-		 * Sets the menu view to either 'card' or 'list'.
-		 * @param {string} viewType - The desired view type ('card' or 'list').
-		 */
-		function setMenuView(viewType) {
-			if (currentMenuView === viewType || !menuItemsContainer) return; // No change or container missing
-
-			currentMenuView = viewType;
-			updateViewToggleButtons(); // Update button appearance
-
-			// Toggle the 'list-view' class on the main menu items container
-			menuItemsContainer.classList.toggle('list-view', viewType === 'list');
-
-			// Re-filter and animate menu items to apply the new view and re-trigger animations
-			const activeFilterButton = document.querySelector('.menu-tab-button.tab-active') || document.getElementById('menu-tab-all');
-			const currentCategory = activeFilterButton ? activeFilterButton.dataset.category : 'all';
-			filterAndAnimateMenu(currentCategory);
-		}
-
-		/**
-		 * Filters menu items by category and triggers animations for the visible items.
-		 * @param {string} categoryToShow - The category to display (e.g., 'breakfast', 'all').
-		 */
-		function filterAndAnimateMenu(categoryToShow) {
-			// Update active state for category filter buttons
-			const targetButton = document.querySelector(`.menu-tab-button[data-category="${categoryToShow}"]`);
-			menuTabButtons.forEach(btn => {
-				const isSelected = btn === targetButton;
-				btn.classList.toggle('tab-active', isSelected);
-				btn.setAttribute('aria-selected', String(isSelected));
-			});
-
-			// Show/hide menu categories based on the selected filter
-			menuCategories.forEach(categoryDiv => {
-				const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
-				const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
-				categoryDiv.classList.toggle('hidden', !shouldShow);
-
-				// Reset visibility of cards within this category before re-animating
-				const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
-				Array.from(cardsInCat).forEach(el => el.classList.remove('visible'));
-			});
-
-			// Animate the newly visible cards after a short delay
-			setTimeout(animateCardsOnLoad, MENU_CARD_ANIMATION_DELAY);
-		}
-
-		/**
-		 * Handles the display and transition of pages.
-		 * @param {string} pageId - The ID of the page to show.
-		 * @param {string|null} categoryTarget - Optional: If navigating to the menu, a specific category to filter by.
-		 */
-		function showPage(pageId, categoryTarget = null) {
-			const currentlyActivePage = document.querySelector('.page.active');
-			const targetPage = document.getElementById(pageId);
-
-			if (!targetPage) {
-				console.error('Target page not found:', pageId);
-				return;
+			function setMenuView(viewType) {
+				if (currentMenuView === viewType || !menuItemsContainer) return;
+				currentMenuView = viewType;
+				updateViewToggleButtons();
+				menuItemsContainer.classList.toggle('list-view', viewType === 'list');
+				const activeFilterButton = document.querySelector('.menu-tab-button.tab-active') || document.getElementById('menu-tab-all');
+				const currentCategory = activeFilterButton ? activeFilterButton.dataset.category : 'all';
+				filterAndAnimateMenu(currentCategory);
 			}
 
-			const isSamePage = currentlyActivePage === targetPage;
-
-			// If navigating to the menu page and it's already active, just re-filter/animate
-			if (isSamePage && pageId === 'menu') {
-				filterAndAnimateMenu(categoryTarget || 'all');
-				return;
+			function filterAndAnimateMenu(categoryToShow) {
+				const targetButton = document.querySelector(`.menu-tab-button[data-category="${categoryToShow}"]`);
+				menuTabButtons.forEach(btn => {
+					const isSelected = btn === targetButton;
+					btn.classList.toggle('tab-active', isSelected);
+					btn.setAttribute('aria-selected', String(isSelected));
+				});
+				menuCategories.forEach(categoryDiv => {
+					const categoryGroups = categoryDiv.dataset.categoryGroup.split(' ');
+					const shouldShow = categoryGroups.includes(categoryToShow) || categoryToShow === 'all';
+					categoryDiv.classList.toggle('hidden', !shouldShow);
+					const cardsInCat = categoryDiv.querySelectorAll('.menu-card, .stagger-animate > div');
+					Array.from(cardsInCat).forEach(el => el.classList.remove('visible'));
+				});
+				setTimeout(animateCardsOnLoad, MENU_CARD_ANIMATION_DELAY);
 			}
-			// If it's the same page but not the menu, or no target page, do nothing further
-			if (isSamePage) return;
 
-			// --- Page is changing ---
+			function showPage(pageId, categoryTarget = null) {
+				const currentlyActivePage = document.querySelector('.page.active');
+				const targetPage = document.getElementById(pageId);
+				if (!targetPage) {
+					console.error('Target page not found:', pageId);
+					return;
+				}
+				const isSamePage = currentlyActivePage === targetPage;
+				if (isSamePage && pageId === 'menu') {
+					filterAndAnimateMenu(categoryTarget || 'all');
+					return;
+				}
+				if (isSamePage) return;
 
-			// Prepare the target page for entry animation
-			targetPage.classList.remove('hidden');
-			targetPage.classList.remove('page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
-			void targetPage.offsetWidth; // Force reflow for transition
+				targetPage.classList.remove('hidden', 'page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
+				void targetPage.offsetWidth;
 
-			// Animate out the currently active page
-			if (currentlyActivePage) {
-				// Reset visibility of cards on the outgoing page
-				currentlyActivePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => el.classList.remove('visible'));
-				currentlyActivePage.classList.remove('page-transition-enter', 'page-transition-enter-active');
-				currentlyActivePage.classList.add('page-transition-exit', 'page-transition-exit-active');
+				if (currentlyActivePage) {
+					currentlyActivePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => el.classList.remove('visible'));
+					currentlyActivePage.classList.remove('page-transition-enter', 'page-transition-enter-active');
+					currentlyActivePage.classList.add('page-transition-exit', 'page-transition-exit-active');
+					const exitHandler = () => {
+						if (currentlyActivePage) {
+							currentlyActivePage.classList.remove('active', 'page-transition-exit', 'page-transition-exit-active');
+							currentlyActivePage.classList.add('hidden');
+							currentlyActivePage.removeEventListener('transitionend', exitHandler);
+						}
+					};
+					currentlyActivePage.addEventListener('transitionend', exitHandler, { once: true });
+					setTimeout(() => { if (currentlyActivePage && currentlyActivePage.classList.contains('active')) exitHandler(); }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+				}
 
-				const exitHandler = () => {
-					if (currentlyActivePage) { // Check if it still exists (e.g., not removed by other logic)
-						currentlyActivePage.classList.remove('active', 'page-transition-exit', 'page-transition-exit-active');
-						currentlyActivePage.classList.add('hidden');
-						currentlyActivePage.removeEventListener('transitionend', exitHandler);
+				targetPage.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
+				let entryHandlerRun = false;
+				const entryHandler = () => {
+					if (entryHandlerRun) return;
+					entryHandlerRun = true;
+					if (pageId === 'menu') filterAndAnimateMenu(categoryTarget || 'all');
+					else animateCardsOnLoad();
+					if (targetPage) targetPage.removeEventListener('transitionend', entryHandler);
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+					const newHeading = targetPage.querySelector('h1');
+					if (newHeading) {
+						newHeading.setAttribute('tabindex', '-1');
+						newHeading.focus({ preventScroll: true });
 					}
 				};
-				currentlyActivePage.addEventListener('transitionend', exitHandler, { once: true });
-				// Fallback timeout in case transitionend event doesn't fire
-				setTimeout(() => {
-					if (currentlyActivePage && currentlyActivePage.classList.contains('active')) {
-						exitHandler(); // Force cleanup
-					}
-				}, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+				targetPage.addEventListener('transitionend', entryHandler, { once: true });
+				setTimeout(() => { if (!entryHandlerRun && targetPage && targetPage.classList.contains('active') && targetPage.classList.contains('page-transition-enter-active')) entryHandler(); }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+				updateNavActiveState(pageId);
 			}
 
-			// Animate in the target page
-			targetPage.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
-			let entryHandlerRun = false; // Flag to ensure entry handler runs only once
+			function updateNavActiveState(activePageId) {
+				 navLinks.forEach(link => link.classList.toggle('active', link.dataset.page === activePageId));
+				 if (logoLink) logoLink.classList.toggle('active', activePageId === 'home');
+			}
 
-			const entryHandler = () => {
-				if (entryHandlerRun) return;
-				entryHandlerRun = true;
-
-				// After target page transition finishes, animate its content
-				if (pageId === 'menu') {
-					filterAndAnimateMenu(categoryTarget || 'all');
-				} else {
-					animateCardsOnLoad();
-				}
-
-				if (targetPage) targetPage.removeEventListener('transitionend', entryHandler);
-
-				// Scroll to top and set focus for accessibility
-				window.scrollTo({ top: 0, behavior: 'smooth' });
-				const newHeading = targetPage.querySelector('h1'); // Assumes each page has an H1
-				if (newHeading) {
-					newHeading.setAttribute('tabindex', '-1'); // Make it focusable
-					newHeading.focus({ preventScroll: true }); // Focus without scrolling page
-				}
-			};
-			targetPage.addEventListener('transitionend', entryHandler, { once: true });
-			// Fallback timeout for entry transition
-			setTimeout(() => {
-				if (!entryHandlerRun && targetPage && targetPage.classList.contains('active') && targetPage.classList.contains('page-transition-enter-active')) {
-					entryHandler(); // Force content animation
-				}
-			}, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
-
-			updateNavActiveState(pageId); // Update navigation link styles
-		}
-
-		/**
-		 * Updates the active state styling for navigation links.
-		 * @param {string} activePageId - The ID of the currently active page.
-		 */
-		function updateNavActiveState(activePageId) {
-			 navLinks.forEach(link => link.classList.toggle('active', link.dataset.page === activePageId));
-			 const homeLogoLink = document.querySelector('header a[data-page="home"]'); // Specifically target the logo link
-			 if (homeLogoLink) homeLogoLink.classList.toggle('active', activePageId === 'home');
-		}
-
-		// --- Event Listeners Setup ---
-
-		// Home page buttons that navigate to the menu
-		homePageMenuButtons.forEach(button => {
-			button.addEventListener('click', function(e) {
-				e.preventDefault();
-				showPage(this.dataset.pageTarget, this.dataset.categoryTarget || null);
-			});
-		});
-
-		// Logo link navigation
-		if (logoLink) {
-			logoLink.addEventListener('click', function(e) {
-				e.preventDefault();
-				showPage(this.dataset.page);
-				// If mobile menu is open, close it
-				if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-					mobileMenu.classList.add('hidden');
-					if (mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
-				}
-			});
-		}
-
-		// Main navigation links (desktop and mobile)
-		navLinks.forEach(link => {
-			// Ensure it's a page navigation link and not the logo (already handled)
-			if (link.dataset.page && link.id !== 'logoLink') {
-				link.addEventListener('click', function (e) {
+			// --- Event Listeners Setup ---
+			homePageMenuButtons.forEach(button => {
+				button.addEventListener('click', function(e) {
 					e.preventDefault();
-					showPage(this.dataset.page);
-					// If mobile menu is open, close it
+					showPage(this.dataset.pageTarget, this.dataset.categoryTarget || null);
+				});
+			});
+
+			if (logoLink) {
+				logoLink.addEventListener('click', function(e) {
+					e.preventDefault();
 					if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-						mobileMenu.classList.add('hidden');
-						if (mobileMenuButton) mobileMenuButton.setAttribute('aria-expanded', 'false');
+						closeMobileMenu(); // Close mobile menu if open
+					}
+					showPage(this.dataset.page);
+				});
+			}
+
+			// Desktop navigation links
+			desktopNavLinks.forEach(link => {
+				if (link.dataset.page) {
+					link.addEventListener('click', function (e) {
+						e.preventDefault();
+						showPage(this.dataset.page);
+						// Desktop links don't need to manage mobile menu state directly here
+					});
+				}
+			});
+
+			// Mobile navigation links (inside the mobile menu)
+			mobileNavLinksInMenu.forEach(link => {
+				if (link.dataset.page) {
+					link.addEventListener('click', function (e) {
+						e.preventDefault();
+						const pageId = this.dataset.page;
+						closeMobileMenu(); // Close menu and return focus to button
+						showPage(pageId);    // Then navigate; showPage will handle focus on new content
+					});
+				}
+			});
+
+			// Mobile menu button toggle
+			if (mobileMenuButton && mobileMenu) {
+				mobileMenuButton.addEventListener('click', function () {
+					const isHidden = mobileMenu.classList.contains('hidden');
+					if (isHidden) {
+						openMobileMenu();
+					} else {
+						closeMobileMenu();
 					}
 				});
 			}
+
+			if (menuTabButtons.length > 0) {
+				menuTabButtons.forEach(button => {
+					button.addEventListener('click', function() {
+						clearTimeout(menuFilterTimeout);
+						const categoryToShow = this.dataset.category;
+						menuFilterTimeout = setTimeout(() => filterAndAnimateMenu(categoryToShow), MENU_FILTER_DEBOUNCE_DELAY);
+					});
+				});
+			}
+
+			if (cardViewBtn && listViewBtn) {
+				cardViewBtn.addEventListener('click', () => setMenuView('card'));
+				listViewBtn.addEventListener('click', () => setMenuView('list'));
+			}
 		});
 
-		// Mobile menu button toggle
-		if (mobileMenuButton && mobileMenu) {
-			mobileMenuButton.addEventListener('click', function () {
-				const isHidden = mobileMenu.classList.contains('hidden');
-				mobileMenu.classList.toggle('hidden', !isHidden);
-				mobileMenuButton.setAttribute('aria-expanded', String(!isHidden));
-			});
-		}
-
-		// Menu category filter tabs
-		if (menuTabButtons.length > 0) {
-			menuTabButtons.forEach(button => {
-				button.addEventListener('click', function() {
-					clearTimeout(menuFilterTimeout); // Clear any existing timeout
-					const categoryToShow = this.dataset.category;
-					// Debounce the filter action slightly to prevent rapid re-renders
-					menuFilterTimeout = setTimeout(() => filterAndAnimateMenu(categoryToShow), MENU_FILTER_DEBOUNCE_DELAY);
-				});
-			});
-		}
-
-		// Menu view toggle buttons (Card/List)
-		if (cardViewBtn && listViewBtn) {
-			cardViewBtn.addEventListener('click', () => setMenuView('card'));
-			listViewBtn.addEventListener('click', () => setMenuView('list'));
-		}
-	});
 
     </script>
 
