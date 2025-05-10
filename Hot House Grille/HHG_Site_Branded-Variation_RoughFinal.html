@@ -1565,12 +1565,12 @@
     <script>
 		document.addEventListener('DOMContentLoaded', function () {
 			// --- DOM Element Variables ---
-			const navLinks = document.querySelectorAll('.nav-link'); // General selector, will be refined for specific contexts
-			const desktopNavLinks = document.querySelectorAll('header nav.hidden.md\\:flex .nav-link'); // Desktop nav links
+			const navLinks = document.querySelectorAll('.nav-link');
+			const desktopNavLinks = document.querySelectorAll('header nav.hidden.md\\:flex .nav-link');
 			const pages = document.querySelectorAll('.page');
 			const mobileMenuButton = document.getElementById('mobile-menu-button');
 			const mobileMenu = document.getElementById('mobile-menu');
-			const mobileNavLinksInMenu = mobileMenu ? mobileMenu.querySelectorAll('.nav-link') : []; // Links specifically inside the mobile menu
+			const mobileNavLinksInMenu = mobileMenu ? mobileMenu.querySelectorAll('.nav-link') : [];
 			const menuTabButtons = document.querySelectorAll('.menu-tab-button');
 			const menuCategories = document.querySelectorAll('.menu-category');
 			const homePageMenuButtons = document.querySelectorAll('[data-page-target="menu"]');
@@ -1581,7 +1581,6 @@
 			const currentYearSpan = document.getElementById('currentYear');
 			const logoLink = document.getElementById('logoLink');
 
-
 			// --- State Variables ---
 			let menuFilterTimeout;
 			let tapHintPlayed = false;
@@ -1589,10 +1588,10 @@
 
 			// --- Constants for Durations & Delays (in milliseconds) ---
 			const PAGE_TRANSITION_DURATION = 500;
-			const PAGE_TRANSITION_FALLBACK_BUFFER = 100;
+			const PAGE_TRANSITION_FALLBACK_BUFFER = 100; // Extra buffer for transitionend fallback
 			const HERO_BUTTON_SHIMMER_DELAY = 500;
 			const TAP_HINT_APPEAR_DELAY = 700;
-			const TAP_HINT_ANIMATION_DURATION_TOTAL = (1700 * 3) + 500;
+			const TAP_HINT_ANIMATION_DURATION_TOTAL = (1700 * 3) + 500; // CSS: (duration * iterations) + delay
 			const INITIAL_HOME_CARD_ANIMATION_DELAY = 250;
 			const MENU_CARD_ANIMATION_DELAY = 50;
 			const MENU_FILTER_DEBOUNCE_DELAY = 50;
@@ -1604,7 +1603,7 @@
 					parentElement.querySelectorAll(
 						'a[href]:not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"]), textarea:not([disabled]):not([tabindex="-1"]), input[type="text"]:not([disabled]):not([tabindex="-1"]), input[type="radio"]:not([disabled]):not([tabindex="-1"]), input[type="checkbox"]:not([disabled]):not([tabindex="-1"]), select:not([disabled]):not([tabindex="-1"])'
 					)
-				).filter(el => el.offsetParent !== null); // Ensure elements are visible and part of the layout
+				).filter(el => el.offsetParent !== null);
 			}
 
 			// --- Mobile Menu Focus Management Variables & Functions ---
@@ -1612,69 +1611,46 @@
 			let firstFocusableElementInMobileMenu;
 			let lastFocusableElementInMobileMenu;
 
-			/**
-			 * Opens the mobile menu, sets ARIA attributes, focuses the first item,
-			 * and sets up the focus trap.
-			 */
 			function openMobileMenu() {
 				if (!mobileMenu || !mobileMenuButton) return;
-
 				mobileMenu.classList.remove('hidden');
 				mobileMenuButton.setAttribute('aria-expanded', 'true');
-
 				focusableElementsInMobileMenu = getFocusableElements(mobileMenu);
 				if (focusableElementsInMobileMenu.length > 0) {
 					firstFocusableElementInMobileMenu = focusableElementsInMobileMenu[0];
 					lastFocusableElementInMobileMenu = focusableElementsInMobileMenu[focusableElementsInMobileMenu.length - 1];
-					firstFocusableElementInMobileMenu.focus(); // Focus the first item
-				} else {
-					// If no focusable items, focus the menu button itself (or the menu container if appropriate)
-					// For now, we'll rely on the button keeping focus if nothing else is focusable.
+					firstFocusableElementInMobileMenu.focus();
 				}
 				document.addEventListener('keydown', handleMobileMenuFocusTrap);
 			}
 
-			/**
-			 * Closes the mobile menu, sets ARIA attributes, removes the focus trap,
-			 * and returns focus to the menu button.
-			 */
 			function closeMobileMenu() {
 				if (!mobileMenu || !mobileMenuButton) return;
-
 				mobileMenu.classList.add('hidden');
 				mobileMenuButton.setAttribute('aria-expanded', 'false');
 				document.removeEventListener('keydown', handleMobileMenuFocusTrap);
-				mobileMenuButton.focus(); // Return focus to the menu button
+				mobileMenuButton.focus();
 			}
 
-			/**
-			 * Handles keyboard navigation (Tab and Shift+Tab) to trap focus within the mobile menu.
-			 * @param {KeyboardEvent} e - The keyboard event.
-			 */
 			function handleMobileMenuFocusTrap(e) {
 				if (!mobileMenu || mobileMenu.classList.contains('hidden')) {
-					document.removeEventListener('keydown', handleMobileMenuFocusTrap); // Cleanup if menu somehow closed
+					document.removeEventListener('keydown', handleMobileMenuFocusTrap);
 					return;
 				}
-
 				const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
-				if (!isTabPressed) {
-					return;
-				}
+				if (!isTabPressed) return;
 
-				// Re-query focusable elements in case visibility changed (though less likely in this simple menu)
 				focusableElementsInMobileMenu = getFocusableElements(mobileMenu);
 				if (focusableElementsInMobileMenu.length === 0) return;
 				firstFocusableElementInMobileMenu = focusableElementsInMobileMenu[0];
 				lastFocusableElementInMobileMenu = focusableElementsInMobileMenu[focusableElementsInMobileMenu.length - 1];
 
-
-				if (e.shiftKey) { // Shift + Tab
+				if (e.shiftKey) {
 					if (document.activeElement === firstFocusableElementInMobileMenu) {
 						lastFocusableElementInMobileMenu.focus();
 						e.preventDefault();
 					}
-				} else { // Tab
+				} else {
 					if (document.activeElement === lastFocusableElementInMobileMenu) {
 						firstFocusableElementInMobileMenu.focus();
 						e.preventDefault();
@@ -1684,27 +1660,20 @@
 
 			// --- Initialization ---
 			if (heroMenuButton) {
-				setTimeout(() => {
-					heroMenuButton.classList.add('animate-shimmer');
-				}, HERO_BUTTON_SHIMMER_DELAY);
+				setTimeout(() => heroMenuButton.classList.add('animate-shimmer'), HERO_BUTTON_SHIMMER_DELAY);
 			}
-
 			if (mobileMenuButton && window.innerWidth < 768 && !tapHintPlayed) {
 				setTimeout(() => {
 					mobileMenuButton.classList.add('tap-hint-animation');
 					tapHintPlayed = true;
 					setTimeout(() => {
-						if (mobileMenuButton) {
-							 mobileMenuButton.classList.remove('tap-hint-animation');
-						}
+						if (mobileMenuButton) mobileMenuButton.classList.remove('tap-hint-animation');
 					}, TAP_HINT_ANIMATION_DURATION_TOTAL);
 				}, TAP_HINT_APPEAR_DELAY);
 			}
-
 			if (currentYearSpan) {
 				currentYearSpan.textContent = new Date().getFullYear();
 			}
-
 			pages.forEach(p => p.classList.add('hidden'));
 			const initialPage = document.getElementById('home');
 			if (initialPage) {
@@ -1715,13 +1684,12 @@
 				console.error("Initial page 'home' not found. Site may not display correctly.");
 			}
 			updateNavActiveState('home');
-
 			if (document.getElementById('menu')?.classList.contains('active')) {
 				 filterAndAnimateMenu('all');
 			}
 			updateViewToggleButtons();
 
-			// --- Core Functions (Copied from Phase 1, ensure they are up-to-date) ---
+			// --- Core Functions ---
 			function animateCardsOnLoad() {
 				const activePage = document.querySelector('.page.active');
 				if (!activePage) return;
@@ -1742,24 +1710,22 @@
 
 			function updateViewToggleButtons() {
 				if (!cardViewBtn || !listViewBtn) return;
-				const isActive = (button, view) => currentMenuView === view;
-				const activeClasses = ['bg-[#B03C23]', 'text-white', 'border-[#011640]', 'hover:bg-[#912f1b]']; // Added active hover
+				const isActive = (view) => currentMenuView === view; // Simplified isActive
+				const activeClasses = ['bg-[#B03C23]', 'text-white', 'border-[#011640]', 'hover:bg-[#912f1b]'];
 				const inactiveClasses = ['bg-gray-200', 'text-[#073A59]', 'border-transparent', 'hover:bg-gray-300'];
 
-				cardViewBtn.setAttribute('aria-pressed', String(isActive(cardViewBtn, 'card')));
-				(isActive(cardViewBtn, 'card') ? activeClasses : inactiveClasses).forEach((cls, i) => {
-					cardViewBtn.classList.toggle(cls, isActive(cardViewBtn, 'card'));
-					cardViewBtn.classList.toggle((isActive(cardViewBtn, 'card') ? inactiveClasses : activeClasses)[i], !isActive(cardViewBtn, 'card'));
+				cardViewBtn.setAttribute('aria-pressed', String(isActive('card')));
+				(isActive('card') ? activeClasses : inactiveClasses).forEach((cls, i) => {
+					cardViewBtn.classList.toggle(cls, isActive('card'));
+					cardViewBtn.classList.toggle((isActive('card') ? inactiveClasses : activeClasses)[i], !isActive('card'));
 				});
 
-
-				listViewBtn.setAttribute('aria-pressed', String(isActive(listViewBtn, 'list')));
-				 (isActive(listViewBtn, 'list') ? activeClasses : inactiveClasses).forEach((cls, i) => {
-					listViewBtn.classList.toggle(cls, isActive(listViewBtn, 'list'));
-					listViewBtn.classList.toggle((isActive(listViewBtn, 'list') ? inactiveClasses : activeClasses)[i], !isActive(listViewBtn, 'list'));
+				listViewBtn.setAttribute('aria-pressed', String(isActive('list')));
+				(isActive('list') ? activeClasses : inactiveClasses).forEach((cls, i) => {
+					listViewBtn.classList.toggle(cls, isActive('list'));
+					listViewBtn.classList.toggle((isActive('list') ? inactiveClasses : activeClasses)[i], !isActive('list'));
 				});
 			}
-
 
 			function setMenuView(viewType) {
 				if (currentMenuView === viewType || !menuItemsContainer) return;
@@ -1788,55 +1754,112 @@
 				setTimeout(animateCardsOnLoad, MENU_CARD_ANIMATION_DELAY);
 			}
 
+			// --- NEW: Helper function for page-out animation ---
+			/**
+			 * Handles the animation and cleanup for the page that is transitioning out.
+			 * @param {HTMLElement} pageElement - The page element to animate out.
+			 */
+			function animatePageOut(pageElement) {
+				if (!pageElement) return;
+
+				// Reset visibility of cards on the outgoing page
+				pageElement.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => el.classList.remove('visible'));
+				// Apply exit animation classes
+				pageElement.classList.remove('page-transition-enter', 'page-transition-enter-active');
+				pageElement.classList.add('page-transition-exit', 'page-transition-exit-active');
+
+				const exitHandler = () => {
+					pageElement.classList.remove('active', 'page-transition-exit', 'page-transition-exit-active');
+					pageElement.classList.add('hidden');
+					pageElement.removeEventListener('transitionend', exitHandler);
+				};
+				pageElement.addEventListener('transitionend', exitHandler, { once: true });
+				// Fallback timeout in case transitionend event doesn't fire
+				setTimeout(() => {
+					if (pageElement.classList.contains('active')) { // Check if still active (i.e., handler didn't run)
+						exitHandler();
+					}
+				}, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+			}
+
+			// --- NEW: Helper function for page-in animation and post-transition actions ---
+			/**
+			 * Handles the animation for the page that is transitioning in and subsequent actions.
+			 * @param {HTMLElement} targetPageElement - The page element to animate in.
+			 * @param {string} pageId - The ID of the target page.
+			 * @param {string|null} categoryTarget - Optional category for menu page.
+			 */
+			function animatePageIn(targetPageElement, pageId, categoryTarget) {
+				if (!targetPageElement) return;
+
+				// Prepare for entry animation
+				targetPageElement.classList.remove('hidden', 'page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
+				void targetPageElement.offsetWidth; // Force reflow
+				targetPageElement.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
+
+				let entryHandlerRun = false;
+				const entryHandler = () => {
+					if (entryHandlerRun) return;
+					entryHandlerRun = true;
+
+					// Perform actions after the page has transitioned in
+					if (pageId === 'menu') {
+						filterAndAnimateMenu(categoryTarget || 'all');
+					} else {
+						animateCardsOnLoad();
+					}
+
+					targetPageElement.removeEventListener('transitionend', entryHandler);
+
+					// Scroll to top and set focus for accessibility
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+					const newHeading = targetPageElement.querySelector('h1');
+					if (newHeading) {
+						newHeading.setAttribute('tabindex', '-1');
+						newHeading.focus({ preventScroll: true });
+					}
+				};
+				targetPageElement.addEventListener('transitionend', entryHandler, { once: true });
+				// Fallback timeout
+				setTimeout(() => {
+					if (!entryHandlerRun && targetPageElement.classList.contains('active') && targetPageElement.classList.contains('page-transition-enter-active')) {
+						entryHandler();
+					}
+				}, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+			}
+
+			// --- REFACTORED: showPage function ---
+			/**
+			 * Handles the display and transition of pages.
+			 * @param {string} pageId - The ID of the page to show.
+			 * @param {string|null} categoryTarget - Optional: If navigating to the menu, a specific category to filter by.
+			 */
 			function showPage(pageId, categoryTarget = null) {
 				const currentlyActivePage = document.querySelector('.page.active');
 				const targetPage = document.getElementById(pageId);
+
+				// Initial checks: if target page doesn't exist, or if it's the same page (unless it's menu needing re-filter)
 				if (!targetPage) {
 					console.error('Target page not found:', pageId);
 					return;
 				}
 				const isSamePage = currentlyActivePage === targetPage;
 				if (isSamePage && pageId === 'menu') {
+					// If it's the menu page and already active, just re-filter/animate based on categoryTarget
 					filterAndAnimateMenu(categoryTarget || 'all');
 					return;
 				}
-				if (isSamePage) return;
+				if (isSamePage) return; // If same page and not menu, do nothing
 
-				targetPage.classList.remove('hidden', 'page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
-				void targetPage.offsetWidth;
-
+				// Animate out the current page, if one is active
 				if (currentlyActivePage) {
-					currentlyActivePage.querySelectorAll('.menu-card, .hotspot-card, .stagger-animate > div').forEach(el => el.classList.remove('visible'));
-					currentlyActivePage.classList.remove('page-transition-enter', 'page-transition-enter-active');
-					currentlyActivePage.classList.add('page-transition-exit', 'page-transition-exit-active');
-					const exitHandler = () => {
-						if (currentlyActivePage) {
-							currentlyActivePage.classList.remove('active', 'page-transition-exit', 'page-transition-exit-active');
-							currentlyActivePage.classList.add('hidden');
-							currentlyActivePage.removeEventListener('transitionend', exitHandler);
-						}
-					};
-					currentlyActivePage.addEventListener('transitionend', exitHandler, { once: true });
-					setTimeout(() => { if (currentlyActivePage && currentlyActivePage.classList.contains('active')) exitHandler(); }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+					animatePageOut(currentlyActivePage);
 				}
 
-				targetPage.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
-				let entryHandlerRun = false;
-				const entryHandler = () => {
-					if (entryHandlerRun) return;
-					entryHandlerRun = true;
-					if (pageId === 'menu') filterAndAnimateMenu(categoryTarget || 'all');
-					else animateCardsOnLoad();
-					if (targetPage) targetPage.removeEventListener('transitionend', entryHandler);
-					window.scrollTo({ top: 0, behavior: 'smooth' });
-					const newHeading = targetPage.querySelector('h1');
-					if (newHeading) {
-						newHeading.setAttribute('tabindex', '-1');
-						newHeading.focus({ preventScroll: true });
-					}
-				};
-				targetPage.addEventListener('transitionend', entryHandler, { once: true });
-				setTimeout(() => { if (!entryHandlerRun && targetPage && targetPage.classList.contains('active') && targetPage.classList.contains('page-transition-enter-active')) entryHandler(); }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+				// Animate in the new target page and handle post-transition actions
+				animatePageIn(targetPage, pageId, categoryTarget);
+
+				// Update navigation link styles
 				updateNavActiveState(pageId);
 			}
 
@@ -1857,36 +1880,32 @@
 				logoLink.addEventListener('click', function(e) {
 					e.preventDefault();
 					if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-						closeMobileMenu(); // Close mobile menu if open
+						closeMobileMenu();
 					}
 					showPage(this.dataset.page);
 				});
 			}
 
-			// Desktop navigation links
 			desktopNavLinks.forEach(link => {
-				if (link.dataset.page) {
+				if (link.dataset.page) { // Ensure it's a page navigation link
 					link.addEventListener('click', function (e) {
 						e.preventDefault();
 						showPage(this.dataset.page);
-						// Desktop links don't need to manage mobile menu state directly here
 					});
 				}
 			});
 
-			// Mobile navigation links (inside the mobile menu)
 			mobileNavLinksInMenu.forEach(link => {
 				if (link.dataset.page) {
 					link.addEventListener('click', function (e) {
 						e.preventDefault();
 						const pageId = this.dataset.page;
-						closeMobileMenu(); // Close menu and return focus to button
-						showPage(pageId);    // Then navigate; showPage will handle focus on new content
+						closeMobileMenu(); 
+						showPage(pageId);
 					});
 				}
 			});
 
-			// Mobile menu button toggle
 			if (mobileMenuButton && mobileMenu) {
 				mobileMenuButton.addEventListener('click', function () {
 					const isHidden = mobileMenu.classList.contains('hidden');
@@ -1913,6 +1932,7 @@
 				listViewBtn.addEventListener('click', () => setMenuView('list'));
 			}
 		});
+
 
 
     </script>
