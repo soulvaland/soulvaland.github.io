@@ -2,6 +2,8 @@
 module.exports = {
   content: [
     "./*.html", // Scans all .html files in the current directory
+	"./js/**/*.js",   // ← add this
+	"./input.css"     // optional but helps if you embed arbitrary classes there
   ],
   theme: {
     extend: {
