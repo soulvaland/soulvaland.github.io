@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuButton = document.getElementById('mobile-menu-button'); 
     const mobileMenuDrawer = document.getElementById('m3-mobile-menu'); 
     
-    const mobileNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : []; // Get all list items
+    const mobileNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : [];
 
     const menuTabButtons = document.querySelectorAll('.menu-tab-button');
     const menuCategories = document.querySelectorAll('.menu-category');
@@ -32,21 +32,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Constants ---
     const PAGE_TRANSITION_DURATION = 500;
     const PAGE_TRANSITION_FALLBACK_BUFFER = 100;
-    const INITIAL_HOME_CARD_ANIMATION_DELAY = 250;
-    const MENU_CARD_ANIMATION_DELAY = 50;
-    const MENU_FILTER_DEBOUNCE_DELAY = 50;
+    // const INITIAL_HOME_CARD_ANIMATION_DELAY = 250; // Will re-evaluate animations later
+    // const MENU_CARD_ANIMATION_DELAY = 50;
+    // const MENU_FILTER_DEBOUNCE_DELAY = 50;
 
     // --- Initialization ---
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
-    // Ensure drawer is closed on initial load (JS can also enforce this)
+    // Ensure drawer is closed on initial load
     if (mobileMenuDrawer) {
-        mobileMenuDrawer.opened = false;
+        mobileMenuDrawer.opened = false; // Explicitly set to closed
     }
     if (mobileMenuButton) {
-        mobileMenuButton.selected = false;
+        mobileMenuButton.selected = false; // Ensure button state matches drawer
         mobileMenuButton.setAttribute('aria-expanded', 'false');
     }
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error(`Initial page '${initialPageId}' not found.`);
     }
     updateNavActiveState(initialPageId);
-    updateMobileDrawerNavActiveState(initialPageId); // Initialize drawer active state
+    updateMobileDrawerNavActiveState(initialPageId);
 
 
     if (document.getElementById('menu')?.classList.contains('active')) {
@@ -72,12 +72,60 @@ document.addEventListener('DOMContentLoaded', function () {
     // updateViewToggleButtons(); 
 
     // --- Core Functions ---
-    function animateCardsOnLoad() { /* ... existing ... */ }
-    function updateViewToggleButtons() { /* ... existing ... */ }
-    function setMenuView(viewType) { /* ... existing ... */ }
-    function filterAndAnimateMenu(categoryToShow) { /* ... existing ... */ }
-    function animatePageOut(pageElement) { /* ... existing ... */ }
-    function animatePageIn(targetPageElement, pageId, categoryTarget) { /* ... existing ... */ }
+    function animateCardsOnLoad() { /* ... placeholder ... */ }
+    function updateViewToggleButtons() { /* ... placeholder ... */ }
+    function setMenuView(viewType) { /* ... placeholder ... */ }
+    function filterAndAnimateMenu(categoryToShow) { /* ... placeholder ... */ }
+    
+    function animatePageOut(pageElement) { 
+        if (!pageElement) return;
+        pageElement.classList.remove('page-transition-enter', 'page-transition-enter-active');
+        pageElement.classList.add('page-transition-exit', 'page-transition-exit-active');
+
+        const exitHandler = () => {
+            pageElement.classList.remove('active', 'page-transition-exit', 'page-transition-exit-active');
+            pageElement.classList.add('hidden');
+            pageElement.removeEventListener('transitionend', exitHandler);
+        };
+        pageElement.addEventListener('transitionend', exitHandler, { once: true });
+        setTimeout(() => {
+            if (pageElement.classList.contains('active')) { 
+                exitHandler();
+            }
+        }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+    }
+
+    function animatePageIn(targetPageElement, pageId, categoryTarget) { 
+        if (!targetPageElement) return;
+        targetPageElement.classList.remove('hidden', 'page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
+        void targetPageElement.offsetWidth; 
+        targetPageElement.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
+
+        let entryHandlerRun = false;
+        const entryHandler = () => {
+            if (entryHandlerRun) return;
+            entryHandlerRun = true;
+
+            // if (pageId === 'menu') { // Logic for menu page can be added later
+            //     // filterAndAnimateMenu(categoryTarget || 'all');
+            // } else {
+            //     // animateCardsOnLoad(); 
+            // }
+            targetPageElement.removeEventListener('transitionend', entryHandler);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const newHeading = targetPageElement.querySelector('h1');
+            if (newHeading && newHeading.focus) {
+                newHeading.setAttribute('tabindex', '-1');
+                newHeading.focus({ preventScroll: true });
+            }
+        };
+        targetPageElement.addEventListener('transitionend', entryHandler, { once: true });
+        setTimeout(() => {
+            if (!entryHandlerRun && targetPageElement.classList.contains('active') && targetPageElement.classList.contains('page-transition-enter-active')) {
+                entryHandler();
+            }
+        }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+    }
 
     function showPage(pageId, categoryTarget = null) {
         const currentlyActivePage = document.querySelector('.page.active');
@@ -88,11 +136,11 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         const isSamePage = currentlyActivePage === targetPage;
-        if (isSamePage && pageId === 'menu' && categoryTarget) {
-            // filterAndAnimateMenu(categoryTarget);
-            return;
-        }
-        if (isSamePage && !categoryTarget) return; // Avoid re-animating if already on the page
+        // if (isSamePage && pageId === 'menu' && categoryTarget) { // Menu logic later
+        //     // filterAndAnimateMenu(categoryTarget);
+        //     return;
+        // }
+        if (isSamePage && !categoryTarget) return; 
 
         if (currentlyActivePage) {
             animatePageOut(currentlyActivePage);
@@ -120,14 +168,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateMobileDrawerNavActiveState(activePageId) {
         if (!mobileNavLinksInDrawer || mobileNavLinksInDrawer.length === 0) return;
         mobileNavLinksInDrawer.forEach(item => {
-            // Only apply to items that are for page navigation
             if (item.dataset.page) { 
                 const isSelected = item.dataset.page === activePageId;
-                item.selected = isSelected;
-                item.activated = isSelected; 
+                item.selected = isSelected; // For MWC md-list-item
+                item.activated = isSelected; // For visual styling in MWC
                 item.setAttribute('aria-current', isSelected ? 'page' : 'false');
             } else {
-                // For non-page links like tel, ensure they are not marked selected
                 item.selected = false;
                 item.activated = false;
                 item.removeAttribute('aria-current');
@@ -135,11 +181,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // --- Event Listeners Setup ---
     mwcNavElements.forEach(navElement => {
         navElement.addEventListener('click', function (e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default for both <a> and <md-text-button>
             const pageId = this.dataset.page;
             if (pageId) {
                 showPage(pageId);
@@ -157,7 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (mobileMenuButton && mobileMenuDrawer) {
         mobileMenuButton.addEventListener('click', function () {
             mobileMenuDrawer.opened = !mobileMenuDrawer.opened;
-            // MWC icon button 'selected' state can be used for toggle visual
             mobileMenuButton.selected = mobileMenuDrawer.opened; 
             mobileMenuButton.setAttribute('aria-expanded', mobileMenuDrawer.opened.toString());
         });
@@ -168,33 +212,19 @@ document.addEventListener('DOMContentLoaded', function () {
             item.addEventListener('click', function(e) {
                 const pageId = this.dataset.page;
                 if (pageId) {
-                    // e.preventDefault(); // Already type="button", so default is not navigation
+                    // md-list-item with type="button" doesn't navigate by default
                     showPage(pageId);
-                    if (mobileMenuDrawer) {
-                        mobileMenuDrawer.opened = false; 
-                        if(mobileMenuButton) {
-                            mobileMenuButton.selected = false;
-                            mobileMenuButton.setAttribute('aria-expanded', 'false');
-                        }
+                }
+                // For md-list-item type="link", it will navigate via href.
+                // We always close the drawer.
+                if (mobileMenuDrawer) {
+                    mobileMenuDrawer.opened = false; 
+                    if(mobileMenuButton) {
+                        mobileMenuButton.selected = false;
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
                     }
-                } else if (this.type === 'link' && this.href) {
-                    // For md-list-item type="link", it navigates automatically.
-                    // We just need to close the drawer.
-                    if (mobileMenuDrawer) {
-                        mobileMenuDrawer.opened = false; 
-                        if(mobileMenuButton) {
-                            mobileMenuButton.selected = false;
-                            mobileMenuButton.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                    // Allow default link behavior to proceed if not handled by showPage
-                    // return true; // Not strictly needed
                 }
             });
         });
     }
-    
-    // Menu Tabs, Card/List view buttons - to be refactored
-    // if (menuTabButtons.length > 0) { ... }
-    // if (cardViewBtn && listViewBtn) { ... }
 });
