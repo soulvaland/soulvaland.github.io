@@ -32,63 +32,53 @@
 <body class="antialiased light bg-m3-background text-m3-on-background">
 
     <md-top-app-bar-fixed class="sticky top-0 z-50">
-        <div slot="headline" class="flex-shrink-0">
-            <a href="#" id="logoLink" class="logo-link active inline-block" data-page="home">
-                <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp" alt="Hot House Grillé Logo">
-            </a>
-        </div>
-
-        <div slot="actions" class="flex items-center">
-            <nav class="hidden md:flex items-center" aria-label="Main Navigation">
-                <ul class="flex items-center">
-                    <li>
-                        <md-text-button id="nav-home" data-page="home">Home</md-text-button>
-                    </li>
-                    <li>
-                        <md-text-button id="nav-menu" data-page="menu">Menu</md-text-button>
-                    </li>
-                    <li>
-                        <md-text-button id="nav-about" data-page="about">About Us</md-text-button>
-                    </li>
-                    <li>
-                        <md-filled-button href="tel:205-255-6111" class="ml-3">
-                             <md-icon slot="icon">call</md-icon>
-                             Order To-Go
-                        </md-filled-button>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="md:hidden">
-                <md-icon-button id="mobile-menu-button" aria-controls="m3-mobile-menu" aria-expanded="false" aria-label="Open main menu">
-                    <md-icon>menu</md-icon>
-                </md-icon-button>
-            </div>
-        </div>
+      <md-icon-button
+          slot="navigationIcon"
+          id="mobile-menu-button"
+          class="md:hidden" /* Show only on small screens */
+          aria-label="Open main menu"
+          aria-controls="mobileDrawer"  /* Pointing to the new drawer ID */
+          aria-expanded="false">
+        <md-icon>menu</md-icon>
+      </md-icon-button>
+    
+      <a slot="headline" id="logoLink" data-page="home" class="inline-block"> <img src="https://ik.imagekit.io/tjdq0y8qw/Hot%20House%20Grille/Webp%20Logos/HHG_Logo_tiny.webp" alt="Hot House Grillé logo" class="h-10"> </a>
+    
+      <nav class="hidden md:flex items-center" slot="actionItems">
+        <md-text-button id="nav-home"  data-page="home">Home</md-text-button>
+        <md-text-button id="nav-menu"  data-page="menu">Menu</md-text-button>
+        <md-text-button id="nav-about" data-page="about">About Us</md-text-button>
+        
+        <md-filled-tonal-button
+            href="tel:205-255-6111" class="ml-2"> {/* Added a small margin */}
+          <md-icon slot="icon">call</md-icon>
+          Order To-Go
+        </md-filled-tonal-button>
+      </nav>
     </md-top-app-bar-fixed>
 
-    <md-navigation-drawer type="modal" id="m3-mobile-menu">
-        <div slot="header" class="p-4"> 
-             <h2 class="md-typescale-title-large">Menu</h2>
+    <md-navigation-drawer type="modal" id="mobileDrawer"> <div slot="header" class="p-4">
+            <h2 class="md-typescale-title-large">Menu</h2>
         </div>
-        <md-list-item class="mobile-nav-link" type="button" data-page="home">
-            <md-icon slot="start">home</md-icon>
-            Home
-        </md-list-item>
-        <md-list-item class="mobile-nav-link" type="button" data-page="menu">
-            <md-icon slot="start">restaurant_menu</md-icon>
-            Menu
-        </md-list-item>
-        <md-list-item class="mobile-nav-link" type="button" data-page="about">
-            <md-icon slot="start">info</md-icon>
-            About Us
-        </md-list-item>
-        <md-list-item class="mobile-nav-link" type="link" href="tel:205-255-6111">
-            <md-icon slot="start">call</md-icon>
-            Order To-Go
-        </md-list-item>
+        <md-list>
+            <md-list-item class="mobile-nav-link" type="button" data-page="home">
+                <md-icon slot="start">home</md-icon>
+                Home
+            </md-list-item>
+            <md-list-item class="mobile-nav-link" type="button" data-page="menu">
+                <md-icon slot="start">restaurant_menu</md-icon>
+                Menu
+            </md-list-item>
+            <md-list-item class="mobile-nav-link" type="button" data-page="about">
+                <md-icon slot="start">info</md-icon>
+                About Us
+            </md-list-item>
+            <md-list-item class="mobile-nav-link" type="link" href="tel:205-255-6111">
+                <md-icon slot="start">call</md-icon>
+                Order To-Go
+            </md-list-item>
+        </md-list>
     </md-navigation-drawer>
-
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <article id="home" class="page hidden active" aria-labelledby="home-heading">

@@ -7,7 +7,10 @@
 /* Material 3 Foundational Theming                                            */
 /* -------------------------------------------------------------------------- */
 .light {
-  /* Color, Type, Shape tokens defined here or in material-theme-light.css */
+  /* --- COLOR TOKENS --- */
+  /* From material-theme-light.css */
+
+  /* --- M3 TYPE SCALE TOKENS --- */
   --md-sys-typescale-brand-font-family-name: 'Playfair Display';
   --md-sys-typescale-brand-font-family-style: normal;
   --md-sys-typescale-plain-font-family-name: 'Lato';
@@ -51,7 +54,7 @@
   --md-sys-typescale-headline-small-letter-spacing: 0rem;
   /* Title Large */
   --md-sys-typescale-title-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-title-large-font-weight: 700; /* Lato Bold */
+  --md-sys-typescale-title-large-font-weight: 700; 
   --md-sys-typescale-title-large-font-size: 1.375rem;
   --md-sys-typescale-title-large-line-height: 1.75rem;
   --md-sys-typescale-title-large-letter-spacing: 0rem;
@@ -69,7 +72,7 @@
   --md-sys-typescale-title-small-letter-spacing: 0.00625rem;
   /* Body Large */
   --md-sys-typescale-body-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-body-large-font-weight: 400; /* Lato Regular */
+  --md-sys-typescale-body-large-font-weight: 400; 
   --md-sys-typescale-body-large-font-size: 1rem;
   --md-sys-typescale-body-large-line-height: 1.5rem;
   --md-sys-typescale-body-large-letter-spacing: 0.03125rem;
@@ -87,7 +90,7 @@
   --md-sys-typescale-body-small-letter-spacing: 0.025rem;
   /* Label Large */
   --md-sys-typescale-label-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-label-large-font-weight: 500; /* Lato Medium */
+  --md-sys-typescale-label-large-font-weight: 500; 
   --md-sys-typescale-label-large-font-size: 0.875rem;
   --md-sys-typescale-label-large-line-height: 1.25rem;
   --md-sys-typescale-label-large-letter-spacing: 0.00625rem;
@@ -178,55 +181,64 @@
   }
 
   md-top-app-bar-fixed {
-     /* MWC Top App Bar uses --md-sys-color-surface by default for its container.
-        If you want it to be --md-sys-color-surface-container, you can set it: */
-     /* --md-top-app-bar-container-color: var(--md-sys-color-surface-container); */
-     /* Default height is 64px. */
+     /* MWC Top App Bar uses --md-sys-color-surface by default.
+        The Material Theme Builder often generates a specific surface-container color
+        for top app bars, so this ensures it uses that. Adjust as needed. */
+     --md-top-app-bar-container-color: var(--md-sys-color-surface-container);
   }
 
   md-top-app-bar-fixed [slot="headline"] {
     display: flex;
     align-items: center;
-    /* Default start padding for headline is 16px if no nav icon, 4px if nav icon. */
-    /* We don't have a nav icon, so 16px is fine or let component default. */
-    /* padding-inline-start: 16px;  */
   }
   md-top-app-bar-fixed [slot="headline"] img {
-    height: 32px; /* M3 spec for logo/icon in small top app bar */
+    height: var(--md-sys-typescale-headline-small-line-height, 32px); /* Match M3 spec for icon/logo in top app bar */
+    /* Or a fixed value like 32px or 40px depending on top-app-bar variant */
     width: auto;
-    /* Tailwind's h-14 on the img tag might override this if not removed. */
+    /* Ensure no extra Tailwind height/width classes on the img tag itself */
   }
 
-  md-top-app-bar-fixed div[slot="actions"] {
+  /* Spacing for action items, as suggested in your patch */
+  md-top-app-bar-fixed [slot="actionItems"] {
+    margin-inline-start: .25rem; 
+  }
+  /* Further ensure the nav wrapper inside actionItems behaves */
+  md-top-app-bar-fixed nav[slot="actionItems"] { /* If nav is the direct child with the slot */
     display: flex;
     align-items: center;
-    gap: 4px; /* Gap between the desktop nav group and the mobile menu icon group */
-    /* Default end padding for actions is 4px if last is icon, 12px otherwise. */
-    /* padding-inline-end: 4px; */
+    gap: .25rem; /* Use gap for spacing between MWC buttons */
   }
-  
-  md-top-app-bar-fixed div[slot="actions"] > nav > ul {
-    gap: 4px; /* Gap between individual md-text-buttons in desktop nav */
+  /* If the nav is inside a div that has slot="actionItems" */
+  div[slot="actionItems"] > nav {
+    display: flex; /* Ensures the nav itself uses flex for its ul */
+    align-items: center;
+  }
+  div[slot="actionItems"] > nav > ul {
+      display: flex; /* Ensures ul is flex for li items */
+      align-items: center;
+      gap: 0.25rem; /* Or remove if MWC button margins are enough */
   }
 
 
   md-navigation-drawer {
-     --md-navigation-drawer-container-width: 280px; /* Make drawer a bit narrower */
-     /* The drawer uses surface colors from your theme by default.
-        Its scrim (overlay) also uses theme colors. */
+     --md-navigation-drawer-container-width: 280px; 
   }
-
   md-navigation-drawer [slot="header"] {
      padding: 16px;
      border-bottom: 1px solid var(--md-sys-color-outline-variant);
   }
-  md-navigation-drawer [slot="header"] .md-typescale-title-large { /* Target the class if used */
+  md-navigation-drawer [slot="header"] .md-typescale-title-large {
     color: var(--md-sys-color-on-surface-variant);
-    margin: 0; /* Remove any default heading margins */
+    margin: 0; 
   }
+  /* md-list-item active state is handled by its 'selected' and 'activated' properties.
+     It will use theme colors (e.g., secondary-container for background, on-secondary-container for text/icon)
+     by default when selected.
+  */
 }
 
 @layer utilities {
+  /* Example utility class, add more if needed */
   .text-m3-label-large {
     font-family: var(--md-sys-typescale-label-large-font-family-name);
     font-weight: var(--md-sys-typescale-label-large-font-weight);

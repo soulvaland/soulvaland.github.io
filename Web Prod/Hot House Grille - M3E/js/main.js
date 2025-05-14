@@ -3,15 +3,18 @@
 import '@material/web/all.js'; // Imports all MWC components
 import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
 
+// This is good: applies MWC typography helper classes globally (.md-typescale-body-large etc.)
 document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
 
 document.addEventListener('DOMContentLoaded', function () {
     // --- DOM Element Variables ---
     const pages = document.querySelectorAll('.page');
-    const mobileMenuButton = document.getElementById('mobile-menu-button'); 
-    const mobileMenuDrawer = document.getElementById('m3-mobile-menu'); 
+    const mobileMenuButton = document.getElementById('mobile-menu-button'); // <md-icon-button slot="navigationIcon">
+    const mobileMenuDrawer = document.getElementById('mobileDrawer');     // <md-navigation-drawer id="mobileDrawer">
     
-    const mobileNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : [];
+    // Get all <md-list-item> elements from the new drawer that have a data-page attribute
+    const mobileNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item[data-page]')) : [];
+    const allNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : []; // All items for click handling
 
     const menuTabButtons = document.querySelectorAll('.menu-tab-button');
     const menuCategories = document.querySelectorAll('.menu-category');
@@ -21,9 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const cardViewBtn = document.getElementById('card-view-btn');
     const listViewBtn = document.getElementById('list-view-btn');
     const currentYearSpan = document.getElementById('currentYear');
-    const logoLink = document.getElementById('logoLink');
+    const logoLink = document.getElementById('logoLink'); // <a slot="headline" id="logoLink">
 
-    const mwcNavElements = document.querySelectorAll('md-top-app-bar-fixed md-text-button[data-page], md-top-app-bar-fixed a#logoLink[data-page]');
+    // Query for all navigable items in the top app bar (logo and md-text-buttons with data-page)
+    // Note: Your patch puts md-text-buttons directly as slot="actionItems"
+    const topBarNavElements = document.querySelectorAll(
+        'md-top-app-bar-fixed a#logoLink[data-page], md-top-app-bar-fixed md-text-button[slot="actionItems"][data-page]'
+    );
+
 
     // --- State Variables ---
     let menuFilterTimeout;
@@ -32,9 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Constants ---
     const PAGE_TRANSITION_DURATION = 500;
     const PAGE_TRANSITION_FALLBACK_BUFFER = 100;
-    // const INITIAL_HOME_CARD_ANIMATION_DELAY = 250; // Will re-evaluate animations later
-    // const MENU_CARD_ANIMATION_DELAY = 50;
-    // const MENU_FILTER_DEBOUNCE_DELAY = 50;
 
     // --- Initialization ---
     if (currentYearSpan) {
@@ -43,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ensure drawer is closed on initial load
     if (mobileMenuDrawer) {
-        mobileMenuDrawer.opened = false; // Explicitly set to closed
+        mobileMenuDrawer.opened = false;
     }
     if (mobileMenuButton) {
-        mobileMenuButton.selected = false; // Ensure button state matches drawer
+        mobileMenuButton.selected = false; 
         mobileMenuButton.setAttribute('aria-expanded', 'false');
     }
 
@@ -58,59 +63,38 @@ document.addEventListener('DOMContentLoaded', function () {
     if (initialPage) {
         initialPage.classList.remove('hidden');
         initialPage.classList.add('active');
-        // setTimeout(animateCardsOnLoad, INITIAL_HOME_CARD_ANIMATION_DELAY); 
     } else {
         console.error(`Initial page '${initialPageId}' not found.`);
     }
-    updateNavActiveState(initialPageId);
-    updateMobileDrawerNavActiveState(initialPageId);
+    updateTopBarNavActiveState(initialPageId); // For desktop/top-bar links
+    updateMobileDrawerNavActiveState(initialPageId); // For drawer links
 
 
-    if (document.getElementById('menu')?.classList.contains('active')) {
-        // filterAndAnimateMenu('all'); 
-    }
-    // updateViewToggleButtons(); 
-
-    // --- Core Functions ---
-    function animateCardsOnLoad() { /* ... placeholder ... */ }
-    function updateViewToggleButtons() { /* ... placeholder ... */ }
-    function setMenuView(viewType) { /* ... placeholder ... */ }
-    function filterAndAnimateMenu(categoryToShow) { /* ... placeholder ... */ }
-    
+    // --- Core Functions (Page Transitions, Menu Logic - Keep for now, will be refined later) ---
     function animatePageOut(pageElement) { 
         if (!pageElement) return;
+        // Your existing page out animation logic
         pageElement.classList.remove('page-transition-enter', 'page-transition-enter-active');
         pageElement.classList.add('page-transition-exit', 'page-transition-exit-active');
-
         const exitHandler = () => {
             pageElement.classList.remove('active', 'page-transition-exit', 'page-transition-exit-active');
             pageElement.classList.add('hidden');
             pageElement.removeEventListener('transitionend', exitHandler);
         };
         pageElement.addEventListener('transitionend', exitHandler, { once: true });
-        setTimeout(() => {
-            if (pageElement.classList.contains('active')) { 
-                exitHandler();
-            }
-        }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+        setTimeout(() => { if (pageElement.classList.contains('active')) { exitHandler(); } }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
     }
 
     function animatePageIn(targetPageElement, pageId, categoryTarget) { 
         if (!targetPageElement) return;
+        // Your existing page in animation logic
         targetPageElement.classList.remove('hidden', 'page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
         void targetPageElement.offsetWidth; 
         targetPageElement.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
-
         let entryHandlerRun = false;
         const entryHandler = () => {
             if (entryHandlerRun) return;
             entryHandlerRun = true;
-
-            // if (pageId === 'menu') { // Logic for menu page can be added later
-            //     // filterAndAnimateMenu(categoryTarget || 'all');
-            // } else {
-            //     // animateCardsOnLoad(); 
-            // }
             targetPageElement.removeEventListener('transitionend', entryHandler);
             window.scrollTo({ top: 0, behavior: 'smooth' });
             const newHeading = targetPageElement.querySelector('h1');
@@ -120,11 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
         targetPageElement.addEventListener('transitionend', entryHandler, { once: true });
-        setTimeout(() => {
-            if (!entryHandlerRun && targetPageElement.classList.contains('active') && targetPageElement.classList.contains('page-transition-enter-active')) {
-                entryHandler();
-            }
-        }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
+        setTimeout(() => { if (!entryHandlerRun && targetPageElement.classList.contains('active') && targetPageElement.classList.contains('page-transition-enter-active')) { entryHandler(); } }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
     }
 
     function showPage(pageId, categoryTarget = null) {
@@ -136,33 +116,26 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         const isSamePage = currentlyActivePage === targetPage;
-        // if (isSamePage && pageId === 'menu' && categoryTarget) { // Menu logic later
-        //     // filterAndAnimateMenu(categoryTarget);
-        //     return;
-        // }
         if (isSamePage && !categoryTarget) return; 
 
         if (currentlyActivePage) {
             animatePageOut(currentlyActivePage);
         }
         animatePageIn(targetPage, pageId, categoryTarget);
-        updateNavActiveState(pageId); 
+        updateTopBarNavActiveState(pageId); 
         updateMobileDrawerNavActiveState(pageId); 
     }
 
-    function updateNavActiveState(activePageId) {
-        mwcNavElements.forEach(button => {
+    // Updated for top bar elements
+    function updateTopBarNavActiveState(activePageId) {
+        topBarNavElements.forEach(button => { // Use the new selector for top bar items
             const isSelected = button.dataset.page === activePageId;
-            button.classList.toggle('nav-link-m3-active', isSelected);
-            if (button.tagName.startsWith('MD-')) { 
-                 button.setAttribute('aria-current', isSelected ? 'page' : 'false');
-            } else if (button.tagName === 'A') { 
-                 button.setAttribute('aria-current', isSelected ? 'page' : 'false');
+            button.classList.toggle('nav-link-m3-active', isSelected); // Custom class for MWC text buttons
+            if (button.tagName === 'A') { // For the logo link
+                button.classList.toggle('logo-link-m3-active', isSelected && button.id === 'logoLink');
             }
+            button.setAttribute('aria-current', isSelected ? 'page' : 'false');
         });
-         if (logoLink) { 
-            logoLink.classList.toggle('logo-link-m3-active', activePageId === 'home');
-        }
     }
 
     function updateMobileDrawerNavActiveState(activePageId) {
@@ -170,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileNavLinksInDrawer.forEach(item => {
             if (item.dataset.page) { 
                 const isSelected = item.dataset.page === activePageId;
-                item.selected = isSelected; // For MWC md-list-item
-                item.activated = isSelected; // For visual styling in MWC
+                item.selected = isSelected; 
+                item.activated = isSelected; 
                 item.setAttribute('aria-current', isSelected ? 'page' : 'false');
             } else {
                 item.selected = false;
@@ -181,10 +154,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
     // --- Event Listeners Setup ---
-    mwcNavElements.forEach(navElement => {
+
+    // Top Bar Navigation (Desktop links + Logo)
+    topBarNavElements.forEach(navElement => {
         navElement.addEventListener('click', function (e) {
-            e.preventDefault(); // Prevent default for both <a> and <md-text-button>
+            e.preventDefault(); 
             const pageId = this.dataset.page;
             if (pageId) {
                 showPage(pageId);
@@ -192,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
+    // Home page buttons that navigate to menu (will be MWC later)
     homePageMenuButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -199,24 +176,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Hamburger button to toggle M3 Navigation Drawer
     if (mobileMenuButton && mobileMenuDrawer) {
         mobileMenuButton.addEventListener('click', function () {
             mobileMenuDrawer.opened = !mobileMenuDrawer.opened;
-            mobileMenuButton.selected = mobileMenuDrawer.opened; 
+            mobileMenuButton.selected = mobileMenuDrawer.opened; // Visual toggle for icon button
             mobileMenuButton.setAttribute('aria-expanded', mobileMenuDrawer.opened.toString());
         });
     }
 
-    if (mobileNavLinksInDrawer) {
-        mobileNavLinksInDrawer.forEach(item => {
+    // Links within the M3 Navigation Drawer
+    if (allNavLinksInDrawer) { // Iterate over ALL items to handle clicks
+        allNavLinksInDrawer.forEach(item => {
             item.addEventListener('click', function(e) {
                 const pageId = this.dataset.page;
-                if (pageId) {
-                    // md-list-item with type="button" doesn't navigate by default
+                if (pageId) { // If it's a page navigation item
+                    // md-list-item type="button" doesn't navigate by default
                     showPage(pageId);
                 }
-                // For md-list-item type="link", it will navigate via href.
-                // We always close the drawer.
+                // For both type="button" (page nav) and type="link" (external/tel), close drawer
                 if (mobileMenuDrawer) {
                     mobileMenuDrawer.opened = false; 
                     if(mobileMenuButton) {
@@ -224,6 +202,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         mobileMenuButton.setAttribute('aria-expanded', 'false');
                     }
                 }
+                // If it was type="link" with an href, default action will proceed after this.
+                // If type="button", we've handled it.
             });
         });
     }
