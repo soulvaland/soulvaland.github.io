@@ -24,14 +24,14 @@
     <script type="importmap">
     {
       "imports": {
-        "@material/web/": "/node_modules/@material/web/",
-        "lit/": "/node_modules/lit/",
-        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
-        "tslib": "/node_modules/tslib/tslib.es6.js"
+        "@material/web/": "https://esm.run/@material/web/",
+        "lit/": "https://esm.run/lit/", /* Also map lit if MWC depends on it directly via esm.run */
+        "@lit/reactive-element": "https://esm.run/@lit/reactive-element",
+        "@lit/reactive-element/": "https://esm.run/@lit/reactive-element/",
+        "tslib": "https://esm.run/tslib"
       }
     }
     </script>
-
 </head>
 <body class="antialiased light bg-m3-background text-m3-on-background">
 
