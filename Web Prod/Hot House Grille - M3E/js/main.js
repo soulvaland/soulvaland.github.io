@@ -8,11 +8,10 @@ document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
 document.addEventListener('DOMContentLoaded', function () {
     // --- DOM Element Variables ---
     const pages = document.querySelectorAll('.page');
-    const mobileMenuButton = document.getElementById('mobile-menu-button'); // <md-icon-button>
-    const mobileMenuDrawer = document.getElementById('m3-mobile-menu'); // <md-navigation-drawer>
+    const mobileMenuButton = document.getElementById('mobile-menu-button'); 
+    const mobileMenuDrawer = document.getElementById('m3-mobile-menu'); 
     
-    // Select navigation links within the new M3 drawer
-    const mobileNavLinksInDrawer = mobileMenuDrawer ? mobileMenuDrawer.querySelectorAll('md-list-item[data-page]') : [];
+    const mobileNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : []; // Get all list items
 
     const menuTabButtons = document.querySelectorAll('.menu-tab-button');
     const menuCategories = document.querySelectorAll('.menu-category');
@@ -42,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
+    // Ensure drawer is closed on initial load (JS can also enforce this)
+    if (mobileMenuDrawer) {
+        mobileMenuDrawer.opened = false;
+    }
+    if (mobileMenuButton) {
+        mobileMenuButton.selected = false;
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+    }
+
+
     pages.forEach(p => p.classList.add('hidden'));
     const initialPageId = 'home';
     const initialPage = document.getElementById(initialPageId);
@@ -54,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error(`Initial page '${initialPageId}' not found.`);
     }
     updateNavActiveState(initialPageId);
+    updateMobileDrawerNavActiveState(initialPageId); // Initialize drawer active state
+
 
     if (document.getElementById('menu')?.classList.contains('active')) {
         // filterAndAnimateMenu('all'); 
@@ -81,21 +92,21 @@ document.addEventListener('DOMContentLoaded', function () {
             // filterAndAnimateMenu(categoryTarget);
             return;
         }
-        if (isSamePage) return;
+        if (isSamePage && !categoryTarget) return; // Avoid re-animating if already on the page
 
         if (currentlyActivePage) {
             animatePageOut(currentlyActivePage);
         }
         animatePageIn(targetPage, pageId, categoryTarget);
-        updateNavActiveState(pageId); // Update desktop nav active state
-        updateMobileDrawerNavActiveState(pageId); // Update mobile drawer nav active state
+        updateNavActiveState(pageId); 
+        updateMobileDrawerNavActiveState(pageId); 
     }
 
     function updateNavActiveState(activePageId) {
         mwcNavElements.forEach(button => {
             const isSelected = button.dataset.page === activePageId;
             button.classList.toggle('nav-link-m3-active', isSelected);
-            if (button.tagName.startsWith('MD-')) { // MWC elements
+            if (button.tagName.startsWith('MD-')) { 
                  button.setAttribute('aria-current', isSelected ? 'page' : 'false');
             } else if (button.tagName === 'A') { 
                  button.setAttribute('aria-current', isSelected ? 'page' : 'false');
@@ -106,15 +117,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // NEW: Function to update active state for mobile drawer items
     function updateMobileDrawerNavActiveState(activePageId) {
-        if (!mobileNavLinksInDrawer) return;
+        if (!mobileNavLinksInDrawer || mobileNavLinksInDrawer.length === 0) return;
         mobileNavLinksInDrawer.forEach(item => {
-            const isSelected = item.dataset.page === activePageId;
-            // md-list-item uses the 'selected' attribute and 'activated' for visual styling
-            item.selected = isSelected;
-            item.activated = isSelected; // Often used for visual indication
-            item.setAttribute('aria-current', isSelected ? 'page' : 'false');
+            // Only apply to items that are for page navigation
+            if (item.dataset.page) { 
+                const isSelected = item.dataset.page === activePageId;
+                item.selected = isSelected;
+                item.activated = isSelected; 
+                item.setAttribute('aria-current', isSelected ? 'page' : 'false');
+            } else {
+                // For non-page links like tel, ensure they are not marked selected
+                item.selected = false;
+                item.activated = false;
+                item.removeAttribute('aria-current');
+            }
         });
     }
 
@@ -137,45 +154,46 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Mobile Menu Button (md-icon-button) toggles the M3 Navigation Drawer
     if (mobileMenuButton && mobileMenuDrawer) {
         mobileMenuButton.addEventListener('click', function () {
             mobileMenuDrawer.opened = !mobileMenuDrawer.opened;
-            mobileMenuButton.selected = mobileMenuDrawer.opened; // Toggle selected state of icon button
+            // MWC icon button 'selected' state can be used for toggle visual
+            mobileMenuButton.selected = mobileMenuDrawer.opened; 
             mobileMenuButton.setAttribute('aria-expanded', mobileMenuDrawer.opened.toString());
         });
     }
 
-    // Navigation links within the M3 Mobile Drawer
     if (mobileNavLinksInDrawer) {
         mobileNavLinksInDrawer.forEach(item => {
             item.addEventListener('click', function(e) {
-                // For md-list-item with type="button" or if it's a link
-                if (this.dataset.page) {
-                    e.preventDefault(); // Prevent default if it's a link type also handled by JS
-                    const pageId = this.dataset.page;
+                const pageId = this.dataset.page;
+                if (pageId) {
+                    // e.preventDefault(); // Already type="button", so default is not navigation
                     showPage(pageId);
                     if (mobileMenuDrawer) {
-                        mobileMenuDrawer.opened = false; // Close drawer after selection
-                        if(mobileMenuButton) mobileMenuButton.selected = false;
-                    }
-                }
-                // If type="link" and has href, it will navigate automatically.
-                // But if we want to close drawer, we might need to handle it.
-                // For simplicity, data-page driven items will close the drawer.
-                else if (this.type === 'link' && this.href) {
-                     if (mobileMenuDrawer) {
                         mobileMenuDrawer.opened = false; 
-                        if(mobileMenuButton) mobileMenuButton.selected = false;
+                        if(mobileMenuButton) {
+                            mobileMenuButton.selected = false;
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
                     }
+                } else if (this.type === 'link' && this.href) {
+                    // For md-list-item type="link", it navigates automatically.
+                    // We just need to close the drawer.
+                    if (mobileMenuDrawer) {
+                        mobileMenuDrawer.opened = false; 
+                        if(mobileMenuButton) {
+                            mobileMenuButton.selected = false;
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                    // Allow default link behavior to proceed if not handled by showPage
+                    // return true; // Not strictly needed
                 }
             });
         });
     }
     
-    // Call initial active state for mobile drawer as well
-    updateMobileDrawerNavActiveState(initialPageId);
-
     // Menu Tabs, Card/List view buttons - to be refactored
     // if (menuTabButtons.length > 0) { ... }
     // if (cardViewBtn && listViewBtn) { ... }
