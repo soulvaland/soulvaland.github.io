@@ -12,10 +12,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" as="style" onload="this.onload=null,this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap"></noscript>
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
     <link rel="stylesheet" href="./css/material-theme-light.css">
+    
     <link href="./css/style.css" rel="stylesheet">
+    
     <noscript><style>.page{display:block!important;opacity:1!important}#mobile-menu-button{display:none!important}.menu-category{display:block!important}.hotspot-card,.menu-card,.stagger-animate>div{opacity:1!important;transform:none!important}#mobile-menu{display:none!important}</style></noscript>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "/node_modules/@material/web/",
+        "lit/": "/node_modules/lit/",
+        "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+        "tslib": "/node_modules/tslib/tslib.es6.js"
+      }
+    }
+    </script>
+
 </head>
 <body class="antialiased light bg-m3-background text-m3-on-background">
 
@@ -27,7 +43,8 @@
         </div>
 
         <nav class="hidden md:flex items-center" aria-label="Main Navigation" slot="actions">
-            <ul class="flex items-center"> <li>
+            <ul class="flex items-center">
+                <li>
                     <md-text-button id="nav-home" data-page="home">Home</md-text-button>
                 </li>
                 <li>
@@ -36,12 +53,12 @@
                 <li>
                     <md-text-button id="nav-about" data-page="about">About Us</md-text-button>
                 </li>
-               <!-- <li>
-                    <md-filled-button href="tel:205-255-6111" class="ml-3"> 
+                <li>
+                    <md-filled-button href="tel:205-255-6111" class="ml-3">
                          <md-icon slot="icon">call</md-icon>
                          Order To-Go
                     </md-filled-button>
-                </li> -->
+                </li>
             </ul>
         </nav>
 
@@ -50,8 +67,7 @@
                 <md-icon>menu</md-icon>
             </md-icon-button>
         </div>
-
-        </md-top-app-bar-fixed>
+    </md-top-app-bar-fixed>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <article id="home" class="page hidden active" aria-labelledby="home-heading">
@@ -182,7 +198,8 @@
         </div>
     </footer>
 
-    <div id="mobile-menu" class="md:hidden hidden bg-m3-surface-container-high shadow-lg border-t border-m3-outline"> <ul aria-label="Main Navigation Mobile">
+    <div id="mobile-menu" class="md:hidden hidden bg-m3-surface-container-high shadow-lg border-t border-m3-outline"> 
+        <ul aria-label="Main Navigation Mobile">
             <li><a href="#" class="block nav-link text-center py-3 border-b border-m3-outline px-4 text-lg hover:text-m3-primary transition-colors duration-300" data-page="home">Home</a></li>
             <li><a href="#" class="block nav-link text-center py-3 border-b border-m3-outline px-4 text-lg hover:text-m3-primary transition-colors duration-300" data-page="menu">Menu</a></li>
             <li><a href="#" class="block nav-link text-center py-3 px-4 text-lg hover:text-m3-primary transition-colors duration-300" data-page="about">About Us</a></li>
