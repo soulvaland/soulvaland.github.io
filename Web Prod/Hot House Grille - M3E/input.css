@@ -181,43 +181,31 @@
   }
 
   md-top-app-bar-fixed {
-     /* MWC Top App Bar uses --md-sys-color-surface by default.
-        The Material Theme Builder often generates a specific surface-container color
-        for top app bars, so this ensures it uses that. Adjust as needed. */
      --md-top-app-bar-container-color: var(--md-sys-color-surface-container);
+     /* This ensures proper vertical alignment for items in all slots */
+     align-items: center; 
   }
 
   md-top-app-bar-fixed [slot="headline"] {
-    display: flex;
-    align-items: center;
+    display: flex; /* Already flex, good */
+    align-items: center; /* Already centered, good */
   }
   md-top-app-bar-fixed [slot="headline"] img {
-    height: var(--md-sys-typescale-headline-small-line-height, 32px); /* Match M3 spec for icon/logo in top app bar */
-    /* Or a fixed value like 32px or 40px depending on top-app-bar variant */
+    height: 32px; /* Or 40px (h-10) as per your patch, if it fits M3 guidelines */
     width: auto;
-    /* Ensure no extra Tailwind height/width classes on the img tag itself */
   }
 
-  /* Spacing for action items, as suggested in your patch */
-  md-top-app-bar-fixed [slot="actionItems"] {
-    margin-inline-start: .25rem; 
+  /* Styling for action items based on your patch */
+  md-top-app-bar-fixed [slot="actionItems"] { /* This now targets each MWC button directly */
+    margin-inline-start: 0.25rem; /* space between action items */
   }
-  /* Further ensure the nav wrapper inside actionItems behaves */
-  md-top-app-bar-fixed nav[slot="actionItems"] { /* If nav is the direct child with the slot */
-    display: flex;
-    align-items: center;
-    gap: .25rem; /* Use gap for spacing between MWC buttons */
-  }
-  /* If the nav is inside a div that has slot="actionItems" */
-  div[slot="actionItems"] > nav {
-    display: flex; /* Ensures the nav itself uses flex for its ul */
-    align-items: center;
-  }
-  div[slot="actionItems"] > nav > ul {
-      display: flex; /* Ensures ul is flex for li items */
-      align-items: center;
-      gap: 0.25rem; /* Or remove if MWC button margins are enough */
-  }
+  /* If you wrapped desktop actions in a <nav class="hidden md:flex items-center" slot="actionItemsContainer"> */
+  /* Then you'd style the container and its children */
+  /* md-top-app-bar-fixed nav[slot="actionItemsContainer"] { */
+  /* display: flex; */ /* Handled by Tailwind's md:flex */
+  /* align-items: center; */
+  /* gap: 0.25rem; */ /* Spacing between buttons within the nav */
+  /* } */
 
 
   md-navigation-drawer {
@@ -231,14 +219,9 @@
     color: var(--md-sys-color-on-surface-variant);
     margin: 0; 
   }
-  /* md-list-item active state is handled by its 'selected' and 'activated' properties.
-     It will use theme colors (e.g., secondary-container for background, on-secondary-container for text/icon)
-     by default when selected.
-  */
 }
 
 @layer utilities {
-  /* Example utility class, add more if needed */
   .text-m3-label-large {
     font-family: var(--md-sys-typescale-label-large-font-family-name);
     font-weight: var(--md-sys-typescale-label-large-font-weight);

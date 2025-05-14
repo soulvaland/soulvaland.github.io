@@ -1,9 +1,8 @@
 // js/main.js
 
-import '@material/web/all.js'; // Imports all MWC components
+import '@material/web/all.js'; // Imports all MWC components (includes navigation-drawer, list, list-item)
 import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
 
-// This is good: applies MWC typography helper classes globally (.md-typescale-body-large etc.)
 document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,9 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuButton = document.getElementById('mobile-menu-button'); // <md-icon-button slot="navigationIcon">
     const mobileMenuDrawer = document.getElementById('mobileDrawer');     // <md-navigation-drawer id="mobileDrawer">
     
-    // Get all <md-list-item> elements from the new drawer that have a data-page attribute
-    const mobileNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item[data-page]')) : [];
-    const allNavLinksInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : []; // All items for click handling
+    // All <md-list-item> in the new drawer, including those for page nav and other links
+    const allListItemsInDrawer = mobileMenuDrawer ? Array.from(mobileMenuDrawer.querySelectorAll('md-list-item')) : [];
 
     const menuTabButtons = document.querySelectorAll('.menu-tab-button');
     const menuCategories = document.querySelectorAll('.menu-category');
@@ -27,9 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoLink = document.getElementById('logoLink'); // <a slot="headline" id="logoLink">
 
     // Query for all navigable items in the top app bar (logo and md-text-buttons with data-page)
-    // Note: Your patch puts md-text-buttons directly as slot="actionItems"
     const topBarNavElements = document.querySelectorAll(
-        'md-top-app-bar-fixed a#logoLink[data-page], md-top-app-bar-fixed md-text-button[slot="actionItems"][data-page]'
+        'md-top-app-bar-fixed a#logoLink[data-page], md-top-app-bar-fixed md-text-button[slot="actionItems"][data-page], md-top-app-bar-fixed md-filled-tonal-button[slot="actionItems"][href^="tel:"]'
     );
 
 
@@ -55,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mobileMenuButton.setAttribute('aria-expanded', 'false');
     }
 
-
     pages.forEach(p => p.classList.add('hidden'));
     const initialPageId = 'home';
     const initialPage = document.getElementById(initialPageId);
@@ -66,14 +62,13 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error(`Initial page '${initialPageId}' not found.`);
     }
-    updateTopBarNavActiveState(initialPageId); // For desktop/top-bar links
-    updateMobileDrawerNavActiveState(initialPageId); // For drawer links
+    updateTopBarNavActiveState(initialPageId); 
+    updateMobileDrawerNavActiveState(initialPageId); 
 
 
     // --- Core Functions (Page Transitions, Menu Logic - Keep for now, will be refined later) ---
-    function animatePageOut(pageElement) { 
+    function animatePageOut(pageElement) { /* ... same as before ... */ 
         if (!pageElement) return;
-        // Your existing page out animation logic
         pageElement.classList.remove('page-transition-enter', 'page-transition-enter-active');
         pageElement.classList.add('page-transition-exit', 'page-transition-exit-active');
         const exitHandler = () => {
@@ -85,9 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => { if (pageElement.classList.contains('active')) { exitHandler(); } }, PAGE_TRANSITION_DURATION + PAGE_TRANSITION_FALLBACK_BUFFER);
     }
 
-    function animatePageIn(targetPageElement, pageId, categoryTarget) { 
+    function animatePageIn(targetPageElement, pageId, categoryTarget) { /* ... same as before ... */
         if (!targetPageElement) return;
-        // Your existing page in animation logic
         targetPageElement.classList.remove('hidden', 'page-transition-exit', 'page-transition-exit-active', 'page-transition-enter');
         void targetPageElement.offsetWidth; 
         targetPageElement.classList.add('active', 'page-transition-enter', 'page-transition-enter-active');
@@ -126,27 +120,28 @@ document.addEventListener('DOMContentLoaded', function () {
         updateMobileDrawerNavActiveState(pageId); 
     }
 
-    // Updated for top bar elements
     function updateTopBarNavActiveState(activePageId) {
-        topBarNavElements.forEach(button => { // Use the new selector for top bar items
-            const isSelected = button.dataset.page === activePageId;
-            button.classList.toggle('nav-link-m3-active', isSelected); // Custom class for MWC text buttons
-            if (button.tagName === 'A') { // For the logo link
-                button.classList.toggle('logo-link-m3-active', isSelected && button.id === 'logoLink');
+        topBarNavElements.forEach(button => {
+            if (button.dataset.page) { // Only apply to page navigation buttons
+                const isSelected = button.dataset.page === activePageId;
+                button.classList.toggle('nav-link-m3-active', isSelected);
+                 if (button.tagName === 'A' && button.id === 'logoLink') {
+                    button.classList.toggle('logo-link-m3-active', isSelected);
+                }
+                button.setAttribute('aria-current', isSelected ? 'page' : 'false');
             }
-            button.setAttribute('aria-current', isSelected ? 'page' : 'false');
         });
     }
 
     function updateMobileDrawerNavActiveState(activePageId) {
-        if (!mobileNavLinksInDrawer || mobileNavLinksInDrawer.length === 0) return;
-        mobileNavLinksInDrawer.forEach(item => {
+        if (!allListItemsInDrawer || allListItemsInDrawer.length === 0) return;
+        allListItemsInDrawer.forEach(item => {
             if (item.dataset.page) { 
                 const isSelected = item.dataset.page === activePageId;
                 item.selected = isSelected; 
                 item.activated = isSelected; 
                 item.setAttribute('aria-current', isSelected ? 'page' : 'false');
-            } else {
+            } else { // For items like tel link
                 item.selected = false;
                 item.activated = false;
                 item.removeAttribute('aria-current');
@@ -154,11 +149,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // --- Event Listeners Setup ---
-
-    // Top Bar Navigation (Desktop links + Logo)
     topBarNavElements.forEach(navElement => {
+        // For md-filled-tonal-button with href, we don't want to preventDefault if it's a tel link
+        if (navElement.tagName === 'MD-FILLED-TONAL-BUTTON' && navElement.href) {
+            // Let default behavior handle tel: links
+            return; 
+        }
         navElement.addEventListener('click', function (e) {
             e.preventDefault(); 
             const pageId = this.dataset.page;
@@ -168,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
-    // Home page buttons that navigate to menu (will be MWC later)
     homePageMenuButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -176,25 +172,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Hamburger button to toggle M3 Navigation Drawer
+    // Hamburger button to toggle M3 Navigation Drawer (Task 3B from your roadmap)
     if (mobileMenuButton && mobileMenuDrawer) {
         mobileMenuButton.addEventListener('click', function () {
-            mobileMenuDrawer.opened = !mobileMenuDrawer.opened;
-            mobileMenuButton.selected = mobileMenuDrawer.opened; // Visual toggle for icon button
+            mobileMenuDrawer.opened = !mobileMenuDrawer.opened; // Correctly toggles the MWC drawer
+            mobileMenuButton.selected = mobileMenuDrawer.opened; 
             mobileMenuButton.setAttribute('aria-expanded', mobileMenuDrawer.opened.toString());
         });
     }
 
     // Links within the M3 Navigation Drawer
-    if (allNavLinksInDrawer) { // Iterate over ALL items to handle clicks
-        allNavLinksInDrawer.forEach(item => {
+    if (allListItemsInDrawer) { 
+        allListItemsInDrawer.forEach(item => {
             item.addEventListener('click', function(e) {
                 const pageId = this.dataset.page;
-                if (pageId) { // If it's a page navigation item
+                if (pageId) { 
                     // md-list-item type="button" doesn't navigate by default
                     showPage(pageId);
                 }
                 // For both type="button" (page nav) and type="link" (external/tel), close drawer
+                // The MWC drawer closes itself on item click if it's standard behavior (often modal drawers do)
+                // If not, or to be explicit:
                 if (mobileMenuDrawer) {
                     mobileMenuDrawer.opened = false; 
                     if(mobileMenuButton) {
@@ -202,8 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         mobileMenuButton.setAttribute('aria-expanded', 'false');
                     }
                 }
-                // If it was type="link" with an href, default action will proceed after this.
-                // If type="button", we've handled it.
             });
         });
     }
