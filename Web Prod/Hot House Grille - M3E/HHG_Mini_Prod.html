@@ -53,11 +53,33 @@
         </nav>
 
         <div class="md:hidden" slot="actions">
-            <md-icon-button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open main menu">
+            <md-icon-button id="mobile-menu-button" aria-controls="m3-mobile-menu" aria-expanded="false" aria-label="Open main menu">
                 <md-icon>menu</md-icon>
             </md-icon-button>
         </div>
     </md-top-app-bar-fixed>
+
+    <md-navigation-drawer type="modal" id="m3-mobile-menu">
+        <div slot="header" class="p-4">
+             <h2 class="md-typescale-title-large">Menu</h2> </div>
+        <md-list-item class="mobile-nav-link" type="button" data-page="home">
+            <md-icon slot="start">home</md-icon>
+            Home
+        </md-list-item>
+        <md-list-item class="mobile-nav-link" type="button" data-page="menu">
+            <md-icon slot="start">restaurant_menu</md-icon>
+            Menu
+        </md-list-item>
+        <md-list-item class="mobile-nav-link" type="button" data-page="about">
+            <md-icon slot="start">info</md-icon>
+            About Us
+        </md-list-item>
+        <md-list-item class="mobile-nav-link" type="link" href="tel:205-255-6111">
+            <md-icon slot="start">call</md-icon>
+            Order To-Go
+        </md-list-item>
+    </md-navigation-drawer>
+
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <article id="home" class="page hidden active" aria-labelledby="home-heading">
@@ -187,14 +209,6 @@
             <p class="text-sm">© <span id="currentYear"></span> Hot House Grillé. All Rights Reserved.</p>
         </div>
     </footer>
-
-    <div id="mobile-menu" class="md:hidden hidden bg-m3-surface-container-high shadow-lg border-t border-m3-outline"> 
-        <ul aria-label="Main Navigation Mobile">
-            <li><a href="#" class="block nav-link text-center py-3 border-b border-m3-outline px-4 text-lg hover:text-m3-primary transition-colors duration-300" data-page="home">Home</a></li>
-            <li><a href="#" class="block nav-link text-center py-3 border-b border-m3-outline px-4 text-lg hover:text-m3-primary transition-colors duration-300" data-page="menu">Menu</a></li>
-            <li><a href="#" class="block nav-link text-center py-3 px-4 text-lg hover:text-m3-primary transition-colors duration-300" data-page="about">About Us</a></li>
-        </ul>
-    </div>
 
     <script src="./js/main.js" type="module" defer></script>
 </body>

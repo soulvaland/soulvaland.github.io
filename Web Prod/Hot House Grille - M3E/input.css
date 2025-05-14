@@ -1,9 +1,6 @@
 /* input.css */
 
-/* Tell Tailwind v4 where to find your configuration file */
 @config "./tailwind.config.js";
-
-/* Import Tailwind's v4 styles (replaces old @tailwind directives) */
 @import "tailwindcss";
 
 /* -------------------------------------------------------------------------- */
@@ -12,7 +9,6 @@
 .light {
   /* --- COLOR TOKENS --- */
   /* These are primarily in your material-theme-light.css */
-  /* Ensure that file is linked in your HTML before this generated style.css */
 
   /* --- M3 TYPE SCALE TOKENS --- */
   --md-sys-typescale-brand-font-family-name: 'Playfair Display';
@@ -64,13 +60,13 @@
   --md-sys-typescale-title-large-letter-spacing: 0rem;
   /* Title Medium */
   --md-sys-typescale-title-medium-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-title-medium-font-weight: 700;
+  --md-sys-typescale-title-medium-font-weight: 500; /* M3 uses Medium for Title Medium */
   --md-sys-typescale-title-medium-font-size: 1rem;
   --md-sys-typescale-title-medium-line-height: 1.5rem;
   --md-sys-typescale-title-medium-letter-spacing: 0.009375rem;
   /* Title Small */
   --md-sys-typescale-title-small-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-title-small-font-weight: 700;
+  --md-sys-typescale-title-small-font-weight: 500; /* M3 uses Medium for Title Small */
   --md-sys-typescale-title-small-font-size: 0.875rem;
   --md-sys-typescale-title-small-line-height: 1.25rem;
   --md-sys-typescale-title-small-letter-spacing: 0.00625rem;
@@ -94,19 +90,19 @@
   --md-sys-typescale-body-small-letter-spacing: 0.025rem;
   /* Label Large */
   --md-sys-typescale-label-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-label-large-font-weight: 700; /* M3 often uses Medium (500) for labels, adjust if Lato 700 is too bold */
+  --md-sys-typescale-label-large-font-weight: 500; 
   --md-sys-typescale-label-large-font-size: 0.875rem;
   --md-sys-typescale-label-large-line-height: 1.25rem;
   --md-sys-typescale-label-large-letter-spacing: 0.00625rem;
   /* Label Medium */
   --md-sys-typescale-label-medium-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-label-medium-font-weight: 700; /* Medium (500) */
+  --md-sys-typescale-label-medium-font-weight: 500;
   --md-sys-typescale-label-medium-font-size: 0.75rem;
   --md-sys-typescale-label-medium-line-height: 1rem;
   --md-sys-typescale-label-medium-letter-spacing: 0.03125rem;
   /* Label Small */
   --md-sys-typescale-label-small-font-family-name: var(--md-sys-typescale-plain-font-family-name);
-  --md-sys-typescale-label-small-font-weight: 700; /* Medium (500) */
+  --md-sys-typescale-label-small-font-weight: 500;
   --md-sys-typescale-label-small-font-size: 0.6875rem;
   --md-sys-typescale-label-small-line-height: 1rem;
   --md-sys-typescale-label-small-letter-spacing: 0.03125rem;
@@ -164,66 +160,92 @@
     color: var(--md-sys-color-primary);
     text-decoration: none;
   }
-  :where(.light, .dark) a:hover,
-  :where(.light, .dark) a:focus {
-    /* text-decoration: underline; M3 often doesn't underline on hover for text buttons */
-    /* color: var(--md-sys-color-primary); */ /* Hover state handled by MWC */
-  }
 }
 
 @layer components {
   .page {
-    background-color: var(--md-sys-color-surface-container-lowest); /* Example: pure white */
+    background-color: var(--md-sys-color-surface-container-lowest);
     color: var(--md-sys-color-on-surface);
     opacity: 0;
-    transition: opacity .5s ease-out; /* Will be updated to M3 motion tokens later */
+    transition: opacity .5s ease-out;
   }
   .page.active {
     opacity: 1;
   }
 
-  /* Active state for MWC navigation text buttons */
   md-text-button.nav-link-m3-active {
     --md-text-button-label-text-color: var(--md-sys-color-primary);
-    /* If you want an indicator, you might need to add a pseudo-element or a bottom border */
-    /* border-bottom: 2px solid var(--md-sys-color-primary); */ /* Example, adjust padding if used */
   }
 
-   /* Active state for the logo link (if it's just an <a> tag) */
   a#logoLink.logo-link-m3-active {
-    /* Example: Add a subtle visual cue if needed, or ensure it stands out if other nav items fade */
-    /* For an image logo, active state is often just remaining fully opaque or slightly scaled */
+    /* No specific style needed unless visual cue desired */
   }
 
-  /* Styling for the md-top-app-bar-fixed itself if needed, though it usually themes well */
   md-top-app-bar-fixed {
-    --md-sys-color-surface: var(--md-sys-color-surface-container); /* Or surface, surface-container, etc. */
-    --md-sys-color-on-surface: var(--md-sys-color-on-surface);
-    /* Ensure proper height if default isn't what you want, though usually it's fine */
-    /* min-height: 64px; /* M3 small top app bar height */
+    /* MWC should pick up theme vars automatically */
+    /* --md-sys-color-surface: var(--md-sys-color-surface-container); */
   }
 
-  /* Ensure logo in headline slot is vertically centered */
   md-top-app-bar-fixed [slot="headline"] {
     display: flex;
     align-items: center;
+    padding-inline-start: 16px; 
   }
   md-top-app-bar-fixed [slot="headline"] img {
-    max-height: 40px; /* Adjust based on M3 spec for icons/logos in app bar (usually 24-40px) */
+    height: 32px; 
+    width: auto;
   }
 
-
-  /* Adjust spacing for action items if Tailwind's space-x is removed/too much */
+  md-top-app-bar-fixed nav[slot="actions"] {
+    display: flex; 
+    align-items: center;
+  }
   md-top-app-bar-fixed nav[slot="actions"] ul {
     display: flex;
     align-items: center;
-    gap: 0.25rem; /* Adjust gap as needed, MWC buttons have some internal padding */
+    gap: 0.25rem; 
+    padding-inline-end: 4px; 
   }
+  md-top-app-bar-fixed div[slot="actions"] { 
+     padding-inline-end: 4px; 
+  }
+
+  /* Styling for the M3 Navigation Drawer and its items */
+  md-navigation-drawer {
+    /* The drawer will use surface colors from your theme by default */
+    /* You can override specific parts if needed, e.g., width */
+    /* --md-navigation-drawer-container-width: 280px; */ /* Default is 360px */
+  }
+
+  md-navigation-drawer [slot="header"] {
+    /* Styles for the optional header in the drawer */
+    /* background-color: var(--md-sys-color-surface-container-high); */
+    /* border-bottom: 1px solid var(--md-sys-color-outline-variant); */
+  }
+
+  md-navigation-drawer md-list-item.mobile-nav-link {
+    /* --md-list-item-label-text-font: var(--md-sys-typescale-label-large-font-family-name); */
+    /* --md-list-item-label-text-size: var(--md-sys-typescale-label-large-font-size); */
+    /* --md-list-item-label-text-weight: var(--md-sys-typescale-label-large-font-weight); */
+    /* MWC list items generally use label-large typography by default */
+  }
+
+  /* Active state for md-list-item in the drawer */
+  /* MWC md-list-item uses `selected` and `activated` attributes/properties for styling */
+  /* The JS will set these. The component itself should style based on these. */
+  /* If you need to override: */
+  /*
+  md-navigation-drawer md-list-item[selected],
+  md-navigation-drawer md-list-item[activated] {
+    --md-list-item-label-text-color: var(--md-sys-color-primary);
+    --md-list-item-leading-icon-color: var(--md-sys-color-primary);
+    background-color: var(--md-sys-color-secondary-container); // Example active background
+    --md-list-item-container-color: var(--md-sys-color-secondary-container); // Newer MWC might use this
+  }
+  */
 }
 
-/* Any remaining utility overrides or new utilities can go into @layer utilities */
 @layer utilities {
-  /* Example: if you need to force a specific M3 type style with a utility */
   .text-m3-label-large {
     font-family: var(--md-sys-typescale-label-large-font-family-name);
     font-weight: var(--md-sys-typescale-label-large-font-weight);
