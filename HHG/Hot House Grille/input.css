@@ -394,7 +394,8 @@ button:focus-visible, a:focus-visible {
       background-color: var(--md-sys-color-surface);
   }
 
-  h1, .m3-headline-large { 
+  /* Default heading styles - these can remain as base styles */
+  h1 { 
     font-family: var(--md-sys-typescale-headline-large-font-family-name), serif;
     font-size: var(--md-sys-typescale-headline-large-font-size);
     font-weight: var(--md-sys-typescale-headline-large-font-weight);
@@ -403,7 +404,7 @@ button:focus-visible, a:focus-visible {
     margin-bottom: 0.5em; 
   }
 
-  h2, .m3-headline-medium {
+  h2 {
     font-family: var(--md-sys-typescale-headline-medium-font-family-name), serif;
     font-size: var(--md-sys-typescale-headline-medium-font-size);
     font-weight: var(--md-sys-typescale-headline-medium-font-weight);
@@ -412,7 +413,7 @@ button:focus-visible, a:focus-visible {
     margin-bottom: 0.5em;
   }
 
-  h3, .m3-title-large {
+  h3 {
     font-family: var(--md-sys-typescale-title-large-font-family-name), serif;
     font-size: var(--md-sys-typescale-title-large-font-size);
     font-weight: var(--md-sys-typescale-title-large-font-weight);
@@ -421,7 +422,7 @@ button:focus-visible, a:focus-visible {
     margin-bottom: 0.4em;
   }
 
-  h4, .m3-title-medium {
+  h4 {
     font-family: var(--md-sys-typescale-title-medium-font-family-name), sans-serif;
     font-size: var(--md-sys-typescale-title-medium-font-size);
     font-weight: var(--md-sys-typescale-title-medium-font-weight);
@@ -431,7 +432,7 @@ button:focus-visible, a:focus-visible {
     margin-bottom: 0.3em;
   }
 
-  h5, .m3-title-small {
+  h5 {
     font-family: var(--md-sys-typescale-title-small-font-family-name), sans-serif;
     font-size: var(--md-sys-typescale-title-small-font-size);
     font-weight: var(--md-sys-typescale-title-small-font-weight);
@@ -441,7 +442,7 @@ button:focus-visible, a:focus-visible {
     margin-bottom: 0.3em;
   }
 
-  h6, .m3-label-large { 
+  h6 {
     font-family: var(--md-sys-typescale-label-large-font-family-name), sans-serif;
     font-size: var(--md-sys-typescale-label-large-font-size);
     font-weight: var(--md-sys-typescale-label-large-font-weight);
@@ -451,7 +452,7 @@ button:focus-visible, a:focus-visible {
     margin-bottom: 0.3em;
   }
 
-  p, .m3-body-large { 
+  p {
     font-family: var(--md-sys-typescale-body-large-font-family-name), sans-serif;
     font-size: var(--md-sys-typescale-body-large-font-size);
     font-weight: var(--md-sys-typescale-body-large-font-weight);
