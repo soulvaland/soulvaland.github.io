@@ -1,0 +1,234 @@
+/* input.css */
+
+/* Tell Tailwind v4 where to find your configuration file */
+@config "./tailwind.config.js";
+
+/* Import Tailwind's v4 styles (replaces old @tailwind directives) */
+@import "tailwindcss";
+
+/* -------------------------------------------------------------------------- */
+/* Material 3 Foundational Theming                                            */
+/* -------------------------------------------------------------------------- */
+.light {
+  /* --- COLOR TOKENS --- */
+  /* These are primarily in your material-theme-light.css */
+  /* Ensure that file is linked in your HTML before this generated style.css */
+
+  /* --- M3 TYPE SCALE TOKENS --- */
+  --md-sys-typescale-brand-font-family-name: 'Playfair Display';
+  --md-sys-typescale-brand-font-family-style: normal;
+  --md-sys-typescale-plain-font-family-name: 'Lato';
+  --md-sys-typescale-plain-font-family-style: normal;
+
+  /* Display Large */
+  --md-sys-typescale-display-large-font-family-name: var(--md-sys-typescale-brand-font-family-name);
+  --md-sys-typescale-display-large-font-weight: 700;
+  --md-sys-typescale-display-large-font-size: 3.5625rem;
+  --md-sys-typescale-display-large-line-height: 4rem;
+  --md-sys-typescale-display-large-letter-spacing: -0.015625rem;
+  /* Display Medium */
+  --md-sys-typescale-display-medium-font-family-name: var(--md-sys-typescale-brand-font-family-name);
+  --md-sys-typescale-display-medium-font-weight: 700;
+  --md-sys-typescale-display-medium-font-size: 2.8125rem;
+  --md-sys-typescale-display-medium-line-height: 3.25rem;
+  --md-sys-typescale-display-medium-letter-spacing: 0rem;
+  /* Display Small */
+  --md-sys-typescale-display-small-font-family-name: var(--md-sys-typescale-brand-font-family-name);
+  --md-sys-typescale-display-small-font-weight: 700;
+  --md-sys-typescale-display-small-font-size: 2.25rem;
+  --md-sys-typescale-display-small-line-height: 2.75rem;
+  --md-sys-typescale-display-small-letter-spacing: 0rem;
+  /* Headline Large */
+  --md-sys-typescale-headline-large-font-family-name: var(--md-sys-typescale-brand-font-family-name);
+  --md-sys-typescale-headline-large-font-weight: 700;
+  --md-sys-typescale-headline-large-font-size: 2rem;
+  --md-sys-typescale-headline-large-line-height: 2.5rem;
+  --md-sys-typescale-headline-large-letter-spacing: 0rem;
+  /* Headline Medium */
+  --md-sys-typescale-headline-medium-font-family-name: var(--md-sys-typescale-brand-font-family-name);
+  --md-sys-typescale-headline-medium-font-weight: 700;
+  --md-sys-typescale-headline-medium-font-size: 1.75rem;
+  --md-sys-typescale-headline-medium-line-height: 2.25rem;
+  --md-sys-typescale-headline-medium-letter-spacing: 0rem;
+  /* Headline Small */
+  --md-sys-typescale-headline-small-font-family-name: var(--md-sys-typescale-brand-font-family-name);
+  --md-sys-typescale-headline-small-font-weight: 700;
+  --md-sys-typescale-headline-small-font-size: 1.5rem;
+  --md-sys-typescale-headline-small-line-height: 2rem;
+  --md-sys-typescale-headline-small-letter-spacing: 0rem;
+  /* Title Large */
+  --md-sys-typescale-title-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-title-large-font-weight: 700;
+  --md-sys-typescale-title-large-font-size: 1.375rem;
+  --md-sys-typescale-title-large-line-height: 1.75rem;
+  --md-sys-typescale-title-large-letter-spacing: 0rem;
+  /* Title Medium */
+  --md-sys-typescale-title-medium-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-title-medium-font-weight: 700;
+  --md-sys-typescale-title-medium-font-size: 1rem;
+  --md-sys-typescale-title-medium-line-height: 1.5rem;
+  --md-sys-typescale-title-medium-letter-spacing: 0.009375rem;
+  /* Title Small */
+  --md-sys-typescale-title-small-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-title-small-font-weight: 700;
+  --md-sys-typescale-title-small-font-size: 0.875rem;
+  --md-sys-typescale-title-small-line-height: 1.25rem;
+  --md-sys-typescale-title-small-letter-spacing: 0.00625rem;
+  /* Body Large */
+  --md-sys-typescale-body-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-body-large-font-weight: 400;
+  --md-sys-typescale-body-large-font-size: 1rem;
+  --md-sys-typescale-body-large-line-height: 1.5rem;
+  --md-sys-typescale-body-large-letter-spacing: 0.03125rem;
+  /* Body Medium */
+  --md-sys-typescale-body-medium-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-body-medium-font-weight: 400;
+  --md-sys-typescale-body-medium-font-size: 0.875rem;
+  --md-sys-typescale-body-medium-line-height: 1.25rem;
+  --md-sys-typescale-body-medium-letter-spacing: 0.015625rem;
+  /* Body Small */
+  --md-sys-typescale-body-small-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-body-small-font-weight: 400;
+  --md-sys-typescale-body-small-font-size: 0.75rem;
+  --md-sys-typescale-body-small-line-height: 1rem;
+  --md-sys-typescale-body-small-letter-spacing: 0.025rem;
+  /* Label Large */
+  --md-sys-typescale-label-large-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-label-large-font-weight: 700; /* M3 often uses Medium (500) for labels, adjust if Lato 700 is too bold */
+  --md-sys-typescale-label-large-font-size: 0.875rem;
+  --md-sys-typescale-label-large-line-height: 1.25rem;
+  --md-sys-typescale-label-large-letter-spacing: 0.00625rem;
+  /* Label Medium */
+  --md-sys-typescale-label-medium-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-label-medium-font-weight: 700; /* Medium (500) */
+  --md-sys-typescale-label-medium-font-size: 0.75rem;
+  --md-sys-typescale-label-medium-line-height: 1rem;
+  --md-sys-typescale-label-medium-letter-spacing: 0.03125rem;
+  /* Label Small */
+  --md-sys-typescale-label-small-font-family-name: var(--md-sys-typescale-plain-font-family-name);
+  --md-sys-typescale-label-small-font-weight: 700; /* Medium (500) */
+  --md-sys-typescale-label-small-font-size: 0.6875rem;
+  --md-sys-typescale-label-small-line-height: 1rem;
+  --md-sys-typescale-label-small-letter-spacing: 0.03125rem;
+
+  /* --- M3 SHAPE SCALE TOKENS (CORNERS) --- */
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-extra-small-top: 4px 4px 0 0;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-large-end: 0px 16px 16px 0px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-extra-large-top: 28px 28px 0 0;
+  --md-sys-shape-corner-full: 9999px;
+}
+
+@layer base {
+  :where(.light, .dark) {
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    font-family: var(--md-sys-typescale-body-medium-font-family-name, 'Lato', sans-serif);
+    font-size: var(--md-sys-typescale-body-medium-font-size, 1rem);
+    line-height: var(--md-sys-typescale-body-medium-line-height, 1.5);
+    font-weight: var(--md-sys-typescale-body-medium-font-weight, 400);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :where(.light, .dark) h1 {
+    font-family: var(--md-sys-typescale-display-large-font-family-name);
+    font-weight: var(--md-sys-typescale-display-large-font-weight);
+    font-size: var(--md-sys-typescale-display-large-font-size);
+    line-height: var(--md-sys-typescale-display-large-line-height);
+    letter-spacing: var(--md-sys-typescale-display-large-letter-spacing);
+    color: var(--md-sys-color-on-surface);
+  }
+  :where(.light, .dark) h2 {
+    font-family: var(--md-sys-typescale-headline-medium-font-family-name);
+    font-weight: var(--md-sys-typescale-headline-medium-font-weight);
+    font-size: var(--md-sys-typescale-headline-medium-font-size);
+    line-height: var(--md-sys-typescale-headline-medium-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-medium-letter-spacing);
+    color: var(--md-sys-color-on-surface);
+  }
+  :where(.light, .dark) h3 {
+    font-family: var(--md-sys-typescale-title-large-font-family-name);
+    font-weight: var(--md-sys-typescale-title-large-font-weight);
+    font-size: var(--md-sys-typescale-title-large-font-size);
+    line-height: var(--md-sys-typescale-title-large-line-height);
+    letter-spacing: var(--md-sys-typescale-title-large-letter-spacing);
+    color: var(--md-sys-color-on-surface);
+  }
+  :where(.light, .dark) a {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+  }
+  :where(.light, .dark) a:hover,
+  :where(.light, .dark) a:focus {
+    /* text-decoration: underline; M3 often doesn't underline on hover for text buttons */
+    /* color: var(--md-sys-color-primary); */ /* Hover state handled by MWC */
+  }
+}
+
+@layer components {
+  .page {
+    background-color: var(--md-sys-color-surface-container-lowest); /* Example: pure white */
+    color: var(--md-sys-color-on-surface);
+    opacity: 0;
+    transition: opacity .5s ease-out; /* Will be updated to M3 motion tokens later */
+  }
+  .page.active {
+    opacity: 1;
+  }
+
+  /* Active state for MWC navigation text buttons */
+  md-text-button.nav-link-m3-active {
+    --md-text-button-label-text-color: var(--md-sys-color-primary);
+    /* If you want an indicator, you might need to add a pseudo-element or a bottom border */
+    /* border-bottom: 2px solid var(--md-sys-color-primary); */ /* Example, adjust padding if used */
+  }
+
+   /* Active state for the logo link (if it's just an <a> tag) */
+  a#logoLink.logo-link-m3-active {
+    /* Example: Add a subtle visual cue if needed, or ensure it stands out if other nav items fade */
+    /* For an image logo, active state is often just remaining fully opaque or slightly scaled */
+  }
+
+  /* Styling for the md-top-app-bar-fixed itself if needed, though it usually themes well */
+  md-top-app-bar-fixed {
+    --md-sys-color-surface: var(--md-sys-color-surface-container); /* Or surface, surface-container, etc. */
+    --md-sys-color-on-surface: var(--md-sys-color-on-surface);
+    /* Ensure proper height if default isn't what you want, though usually it's fine */
+    /* min-height: 64px; /* M3 small top app bar height */
+  }
+
+  /* Ensure logo in headline slot is vertically centered */
+  md-top-app-bar-fixed [slot="headline"] {
+    display: flex;
+    align-items: center;
+  }
+  md-top-app-bar-fixed [slot="headline"] img {
+    max-height: 40px; /* Adjust based on M3 spec for icons/logos in app bar (usually 24-40px) */
+  }
+
+
+  /* Adjust spacing for action items if Tailwind's space-x is removed/too much */
+  md-top-app-bar-fixed nav[slot="actions"] ul {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem; /* Adjust gap as needed, MWC buttons have some internal padding */
+  }
+}
+
+/* Any remaining utility overrides or new utilities can go into @layer utilities */
+@layer utilities {
+  /* Example: if you need to force a specific M3 type style with a utility */
+  .text-m3-label-large {
+    font-family: var(--md-sys-typescale-label-large-font-family-name);
+    font-weight: var(--md-sys-typescale-label-large-font-weight);
+    font-size: var(--md-sys-typescale-label-large-font-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-letter-spacing);
+  }
+}

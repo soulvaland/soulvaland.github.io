@@ -1,0 +1,219 @@
+/* Tell Tailwind v4 where to find your configuration file */
+@config "./tailwind.config.js";
+
+/* Import Tailwind's v4 styles (replaces old @tailwind directives) */
+@import "tailwindcss";
+
+/* Your Custom Styles */
+
+body {
+    /* Base body styles are best applied via Tailwind utility classes
+       on the <body> tag in your HTML, using your tailwind.config.js theme.
+       Example: <body class="font-sans bg-brand-beige text-brand-nav-blue antialiased overflow-x-hidden"> */
+    /* overflow-x: hidden; /* Or use class="overflow-x-hidden" on body */
+}
+
+/*
+   If 'font-display' is defined in your tailwind.config.js theme,
+   you can remove this custom class and just use `class="font-display"` in your HTML.
+*/
+.font-display {
+    font-family: 'Playfair Display', 'serif'; /* Ensure your theme config matches this */
+}
+
+@layer components {
+    /* Active state for navigation links */
+    .nav-link.active {
+        /* Using theme colors and standard utilities */
+        @apply text-brand-red font-semibold border-b-2 border-brand-red pb-1;
+    }
+
+    /* Active state for menu category filter tabs */
+    .tab-active {
+        /* Using theme colors and ! prefix for important utilities */
+        @apply !bg-brand-red !text-white !font-semibold;
+        /* For properties not directly mappable to a simple utility with !important,
+           or complex values, plain CSS is fine.
+           The border-bottom here is an example.
+           Alternatively, if brand-dark-blue is in your config, you could try:
+           @apply !border-b-[3px] !border-brand-dark-blue;
+           However, complex !important rules can sometimes be clearer in plain CSS.
+        */
+        border-bottom: 3px solid #011640 !important; /* Kept as plain CSS for clarity with !important */
+        margin-bottom: -3px !important; /* Kept as plain CSS for clarity with !important */
+    }
+}
+
+/* Page visibility and opacity transitions (JS controlled) */
+.page {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+}
+.page.active {
+    opacity: 1;
+}
+
+/* Card base styles & entry animations (JS controlled) */
+.menu-card, .hotspot-card, .stagger-animate > div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, box-shadow 0.3s ease-out;
+}
+.menu-card.visible, .hotspot-card.visible, .stagger-animate > div.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Shimmer Animation for Hero Button */
+.button-primary-hero-animated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    z-index: 1;
+    animation: shimmer 3s ease-in-out 1;
+    animation-play-state: paused;
+}
+.button-primary-hero-animated span {
+    position: relative;
+    z-index: 2;
+}
+@keyframes shimmer {
+    0% { left: -100%; }
+    20%, 100% { left: 150%; }
+}
+.animate-shimmer::before {
+    animation-play-state: running;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    @apply bg-brand-beige; /* Using theme color */
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-brand-scrollbar-thumb; /* Using theme color */
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-scrollbar-thumb-hover; /* Using theme color */
+}
+
+/* Page Transition Animation Classes (JS controlled) */
+.page-transition-enter {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.page-transition-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+.page-transition-exit-active {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 500ms ease-in, transform 500ms ease-in;
+}
+
+/* Custom Focus Visible Styles */
+button:focus-visible, a:focus-visible {
+    outline: 2px solid #B03C23; /* theme('colors.brand-red') */
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(176, 60, 35, 0.3); /* theme('colors.brand-red') with alpha */
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .menu-card,
+  .hotspot-card,
+  .stagger-animate > div,
+  .page-transition-enter-active,
+  .page-transition-exit-active,
+  .button-primary-hero-animated::before,
+  #mobile-menu-button.tap-hint-animation::after {
+    transition-duration: 0.001s !important;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+  }
+   .page:not(.active) {
+       display: none !important;
+    }
+}
+
+/* List View Specific Styles for Menu Items */
+#menu-items-container.list-view .stagger-animate {
+    @apply flex flex-col gap-2;
+}
+#menu-items-container.list-view .menu-card {
+    @apply flex flex-col w-full py-3 px-4 mb-0 border-b border-brand-gray-300 rounded-none shadow-none; /* Used theme color */
+}
+@media (min-width: 768px) { /* md breakpoint */
+    #menu-items-container.list-view .menu-card {
+        @apply md:flex-row md:justify-between md:items-center;
+    }
+    #menu-items-container.list-view .menu-item-name-price-group {
+        @apply md:mr-4 md:flex-shrink-0;
+    }
+    #menu-items-container.list-view .menu-item-description {
+       @apply md:text-left;
+    }
+}
+#menu-items-container.list-view .menu-item-name {
+    @apply text-lg mb-0.5;
+}
+#menu-items-container.list-view .menu-item-price {
+    @apply text-base text-brand-price mb-1;
+}
+#menu-items-container.list-view .menu-item-description {
+    @apply text-sm text-brand-gray-700 mt-0; /* Used theme color */
+    line-height: 1.4;
+}
+
+/* Hamburger Tap Hint Animation */
+#mobile-menu-button {
+    position: relative;
+}
+#mobile-menu-button.tap-hint-animation::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: theme('colors.brand-red / 60%'); /* Using theme color with opacity */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: tapHint 1.7s ease-out 3;
+    animation-delay: 0.5s;
+    pointer-events: none;
+}
+@keyframes tapHint {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.9;
+    }
+}
