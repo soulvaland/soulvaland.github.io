@@ -62,3 +62,17 @@ if (menuContainer && gridBtn && listBtn) {
   // default to grid view
   setView('grid');
 }
+
+/* ──────────────────────────────────────────────────────────
+   4. Scroll triggered animations
+   ────────────────────────────────────────────────────────── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.1});
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
