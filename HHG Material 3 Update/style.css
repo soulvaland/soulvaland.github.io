@@ -1,0 +1,123 @@
+/* ───────────────────────────────────────────────
+   0. Global resets & base typography
+   ─────────────────────────────────────────────── */
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Roboto',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background:var(--md-sys-color-surface,#FFF);
+  color:var(--md-sys-color-on-surface,#1C1B1F);
+}
+h1,h2,h3,h4,h5,h6{margin:0 0 .5em}
+p{margin:0 0 1em}
+
+/* ───────────────────────────────────────────────
+   1.  Responsive Navigation
+   ─────────────────────────────────────────────── */
+.desktop-nav{display:flex;gap:1rem;align-items:center;}
+.mobile-only{display:none;}          /* hide hamburger on desktop */
+
+/* below 900 px = mobile/tablet */
+@media (max-width:900px){
+  .desktop-nav{display:none!important;} /* hide horizontal links */
+  .mobile-only{display:inline-flex!important;}
+}
+
+/* hide the drawer on desktop (modal only on mobile) */
+@media (min-width:901px){
+  md-navigation-drawer[type="modal"]{display:none;}
+}
+
+/* link aesthetics in the horizontal nav */
+.desktop-nav a{
+  text-decoration:none;
+  color:inherit;
+  font-weight:500;
+  padding:.25rem .75rem;
+  border-radius:6px;
+  transition:background .14s;
+}
+.desktop-nav a[aria-current="page"]{
+  background:#f2e8e3;
+  color:#B03C23;
+}
+.desktop-nav a:hover{background:#f7ede8}
+
+/* App-bar theming */
+md-top-app-bar{
+  --md-top-app-bar-container-color:#FFFFFF;
+  --md-top-app-bar-title-text-color:#B03C23;
+}
+
+/* Drawer (optional tweak) */
+md-list-item{font-size:1.14rem;}
+
+/* ───────────────────────────────────────────────
+   2. Hero section
+   ─────────────────────────────────────────────── */
+.hero-section{
+  padding:3rem 1rem;
+  background:#F2EBDC;
+  text-align:center;
+}
+.hero-section img{max-width:330px;width:100%;border-radius:12px;margin:0 auto 2rem}
+
+/* ───────────────────────────────────────────────
+   3. Menu page – grid vs list
+   ─────────────────────────────────────────────── */
+.menu-page{padding:16px;}
+.menu-controls{display:flex;justify-content:flex-end;gap:8px;margin:8px 0 16px}
+
+#menu-items-container.grid-view .menu-category{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:16px;
+}
+#menu-items-container.list-view .menu-category{display:block}
+
+/* card / list element */
+.food-item{
+  background:#FFFFFF;
+  color:#1C1B1F;
+  border-radius:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,.1);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.food-img{width:100%;height:auto;object-fit:cover}
+.food-info{padding:16px;}
+.food-info h3{font-size:1.25rem;margin:0 0 .25em}
+.food-desc{font-size:.95rem;margin:0 0 .5em;color:#49454F}
+.food-price{font-weight:500}
+
+#menu-items-container.list-view .food-item{
+  flex-direction:row;border-radius:0;box-shadow:none;
+  border-bottom:1px solid var(--md-sys-color-outline,#E0E0E0);
+}
+#menu-items-container.list-view .food-img{width:80px;margin:8px;border-radius:0}
+#menu-items-container.list-view .food-info{padding:8px 16px}
+
+/* ───────────────────────────────────────────────
+   4. About page layout
+   ─────────────────────────────────────────────── */
+.about-page{padding:16px;}
+.about-section{
+  display:flex;gap:2rem;align-items:center;margin:2rem 0;
+}
+.about-section img{width:100%;max-width:500px;border-radius:12px}
+@media(max-width:768px){
+  .about-section{flex-direction:column;}
+}
+
+/* ───────────────────────────────────────────────
+   5. Footer
+   ─────────────────────────────────────────────── */
+footer{
+  background:#011640;
+  color:#F2EBDC;
+  padding:2.5rem 1rem 1rem;
+  text-align:center;
+}
+footer a{color:#F2EBDC;text-decoration:none}
+footer a:hover{text-decoration:underline}
