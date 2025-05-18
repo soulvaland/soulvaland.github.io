@@ -1,0 +1,34 @@
+/* src/components/WealthTracker.css */
+/* .wealth-tracker-container and .section-header are now handled by Card.jsx and Card.css */
+
+.wealth-inputs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
+.currency-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.currency-item label {
+  /* Uses .form-label from common.css */
+  /* Overrides for specific styling: */
+  margin-bottom: 5px;
+  font-size: var(--fs-base); /* Larger label for currency */
+  color: var(--accent-neutral); /* Gold-ish color for wealth labels */
+  font-weight: var(--fw-bold);
+  font-family: var(--font-fantasy); /* Fantasy font for GP/SP/CP */
+}
+
+.currency-item input {
+  /* Uses .form-input from common.css */
+  /* Specific overrides: */
+  width: 80px;
+  text-align: center;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+} 

@@ -1,0 +1,77 @@
+/* src/components/TraitsDrawbacks.css */
+.item-section {
+  margin-bottom: 20px;
+}
+
+.item-section:last-child {
+  margin-bottom: 0;
+}
+
+.subsection-header {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: var(--fs-md);
+  font-family: var(--font-fantasy);
+  color: var(--accent-neutral); 
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.add-item-form {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-item-form input[type="text"],
+.add-item-form textarea {
+  /* Uses .form-input and .form-textarea from common.css */
+  width: 100%; /* Full width within the form */
+  box-sizing: border-box;
+}
+
+.add-item-form textarea {
+  /* .form-textarea already handles min-height, resize */
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-entry { 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px;
+  background-color: var(--bg-subsection);
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--border-secondary);
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-name {
+  font-family: var(--font-fantasy);
+  font-weight: var(--fw-normal);
+  color: var(--accent-primary);
+  font-size: var(--fs-md);
+}
+
+.item-description {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  margin-top: 5px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* .remove-button and .action-button styles are in src/styles/common.css */
+.action-button {
+  /* Specific alignment for this component if needed, else remove */
+  align-self: flex-start; 
+} 

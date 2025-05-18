@@ -1,0 +1,49 @@
+/* src/components/CharacterManagement.css */
+.management-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.management-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.management-section h4 {
+  font-family: var(--font-fantasy);
+  color: var(--accent-neutral);
+  font-size: var(--fs-md);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.management-section .action-button {
+  margin-right: 10px;
+  margin-bottom: 10px; /* For spacing if they wrap */
+}
+
+.save-button {
+    background-color: var(--accent-status-positive);
+}
+.save-button:hover {
+    background-color: var(--accent-status-positive-hover, #00b371); /* Define this var or use a direct value */
+}
+
+.load-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.load-controls .form-select {
+  flex-grow: 1;
+}
+
+.info-text {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 10px;
+} 

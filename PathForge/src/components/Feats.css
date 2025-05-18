@@ -1,0 +1,58 @@
+/* src/components/Feats.css */
+.add-feat-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.add-feat-section input[type="text"] {
+  /* Uses .form-input from common.css */
+  flex-grow: 1;
+}
+
+.add-feat-section textarea {
+  /* Uses .form-textarea from common.css */
+  flex-basis: 100%; 
+  min-height: 60px;
+  resize: vertical;
+  margin-top: 5px; 
+}
+
+.feats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; 
+  padding: 12px;
+  background-color: var(--bg-subsection);
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--border-secondary);
+}
+
+.feat-info {
+  flex-grow: 1;
+}
+
+.feat-name {
+  font-family: var(--font-fantasy);
+  font-weight: var(--fw-normal);
+  color: var(--accent-primary);
+  font-size: var(--fs-md);
+}
+
+.feat-description {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  margin-top: 5px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* .remove-button, .action-button, .hex-button are in src/styles/common.css */ 

@@ -1,0 +1,69 @@
+/* src/components/CharacterBio.css */
+.bio-section {
+  margin-bottom: 20px; /* Increased margin */
+}
+
+.bio-section:last-child {
+  margin-bottom: 0;
+}
+
+.bio-section label {
+  /* .form-label is applied in JSX */
+  /* Specific overrides for Bio labels: */
+  font-family: var(--font-fantasy);
+  font-size: var(--fs-lg); /* Larger labels for these sections */
+  color: var(--accent-magic); /* Magic accent for Bio section titles */
+  margin-bottom: 8px;
+}
+
+.bio-section textarea {
+  /* .form-textarea is applied in JSX */
+  /* Specific overrides for Bio textareas: */
+  min-height: 120px; 
+  font-size: var(--fs-base);
+  line-height: 1.6;
+}
+
+/* Scroll-like container styling */
+.scroll-like-container {
+  padding: 15px; /* Increased padding */
+  border: 2px solid var(--accent-magic); 
+  border-radius: var(--card-border-radius); /* Consistent with card */
+  background-image: 
+    linear-gradient(to bottom, var(--bg-card) 0%, var(--bg-subsection) 20%, var(--bg-subsection) 80%, var(--bg-card) 100%);
+  box-shadow: 0 0 10px var(--accent-magic-luminous, rgba(144, 96, 222, 0.3)), 
+              inset 0 0 8px rgba(0,0,0,0.5); /* Enhanced inner shadow */
+  position: relative; 
+}
+
+.scroll-like-container textarea {
+  /* Specific styling for textarea within scroll-like container */
+  border: 1px solid var(--border-primary); /* Stronger border inside scroll */
+  background-color: var(--bg-input); 
+  color: var(--text-primary);
+}
+
+/* Optional: Add pseudo-elements for scroll "ends" if desired for a more physical scroll look */
+/*
+.scroll-like-container::before,
+.scroll-like-container::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; 
+  height: 10px; 
+  background-color: #4a4e56; 
+  border: 1px solid #333;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.scroll-like-container::before {
+  top: -5px;
+}
+
+.scroll-like-container::after {
+  bottom: -5px;
+}
+*/ 

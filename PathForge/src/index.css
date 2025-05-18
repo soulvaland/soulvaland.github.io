@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=MedievalSharp&display=swap');
+
+/* src/index.css */
+:root {
+  /* Color Palette - Neo-arcane Minimalism */
+  --bg-deep-muted: #1a1d24; /* Very dark, slightly desaturated blue/grey */
+  --bg-card: #23272f; /* Background for cards, slightly lighter */
+  --bg-card-header: #2a2e37; /* Header of cards */
+  --bg-subsection: #2c313a; /* Background for subsections within cards */
+  --bg-input: #1f2229; /* Input field backgrounds */
+
+  --text-primary: #e0e0e0; /* Primary text color, off-white for readability */
+  --text-secondary: #a0a0a0; /* Secondary text, for labels, less important info */
+  --text-header: #c0c8d0; /* Header text on dark backgrounds */
+
+  --accent-primary: #4f90f0; /* Bright blue for primary actions/highlights */
+  --accent-primary-hover: #3a78d0;
+  --accent-magic: #9060de; /* Purple/violet for magical elements */
+  --accent-magic-luminous: rgba(144, 96, 222, 0.7);
+  --accent-status-positive: #79ffc1; /* Greenish for positive status/prepared */
+  --accent-status-negative: #ff6b6b; /* Reddish for negative status/remove */
+  --accent-neutral: #ffc107; /* Yellow/gold for neutral warnings or highlights */
+
+  --border-primary: #353a45; /* Borders for cards and elements */
+  --border-secondary: #4a505a; /* Fainter borders or dividers */
+
+  /* Typography */
+  --font-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-fantasy: 'MedievalSharp', cursive; /* For headers and flavour text */
+
+  /* Font Sizes & Weights - can be adjusted */
+  --fs-sm: 0.85em;
+  --fs-base: 1em;
+  --fs-md: 1.15em;
+  --fs-lg: 1.3em;
+  --fs-xl: 1.5em;
+  --fs-xxl: 2em;
+
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* Other UI variables */
+  --card-border-radius: 8px;
+  --input-border-radius: 4px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans-serif);
+  font-weight: var(--fw-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-deep-muted);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: var(--bg-card);
+  padding: 0.2em 0.4em;
+  border-radius: var(--input-border-radius);
+  font-size: 0.9em;
+}
+
+/* General Header Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-fantasy);
+  color: var(--text-header);
+  font-weight: var(--fw-normal); /* MedievalSharp is already quite bold */
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: var(--fs-xxl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+h4 { font-size: var(--fs-md); }
+
+/* Links */
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--accent-primary-hover);
+}
+
+/* Input and select default styling using variables */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+textarea,
+select {
+  font-family: var(--font-sans-serif);
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--input-border-radius);
+  padding: 0.5em 0.75em;
+  font-size: var(--fs-base);
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(var(--accent-primary-rgb, 79, 144, 240), 0.25); /* Define --accent-primary-rgb if needed or use hex with opacity */
+}
+
+/* More global styles will be added here based on the design philosophy */ 

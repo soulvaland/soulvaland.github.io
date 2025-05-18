@@ -1,0 +1,56 @@
+/* src/components/Auth.css */
+.auth-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-secondary);
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  font-weight: var(--fw-normal);
+}
+
+.auth-button {
+  /* Uses .action-button styles from common.css, but can have specific overrides */
+  padding: 6px 12px; /* Slightly smaller padding for header buttons */
+  font-size: var(--fs-sm);
+  background-color: transparent; /* Make it look less like a main action button */
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.auth-button:hover {
+  background-color: var(--accent-primary-luminous, rgba(79, 144, 240, 0.1));
+  color: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+.login-button {
+  /* Specific styles if different from generic auth-button */
+}
+
+.logout-button {
+  border-color: var(--accent-status-negative);
+  color: var(--accent-status-negative);
+}
+
+.logout-button:hover {
+  background-color: var(--accent-status-negative-luminous, rgba(255, 107, 107, 0.1));
+  color: var(--accent-status-negative-hover, #c82333);
+  border-color: var(--accent-status-negative-hover, #c82333);
+} 

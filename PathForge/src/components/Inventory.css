@@ -1,0 +1,138 @@
+/* src/components/Inventory.css */
+.add-item-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.add-item-section h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: var(--fs-md);
+  font-family: var(--font-fantasy);
+  color: var(--text-header);
+}
+
+.item-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap; /* Allow inputs to wrap on smaller screens */
+}
+
+.item-name-input {
+  /* .form-input from common.css is base */
+  flex-grow: 2; /* Name takes more space */
+  min-width: 150px;
+}
+
+.item-quantity-input,
+.item-weight-input {
+  /* .form-input from common.css is base */
+  flex-grow: 1;
+  min-width: 80px;
+  max-width: 100px;
+}
+
+.add-item-section input[type="text"],
+.add-item-section input[type="number"] {
+  /* Using .form-input from common.css */
+  /* Specific overrides handled by .item-name-input etc. */
+}
+
+.item-description-input {
+  /* .form-textarea from common.css is base */
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.items-list-container {
+  margin-top: 15px;
+}
+
+.inventory-header-row,
+.inventory-item-row {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1fr 1fr 0.5fr; /* Adjust for Name, Qty, Wt, Total Wt, Actions */
+  gap: 10px;
+  padding: 8px 5px;
+  border-bottom: 1px solid var(--border-secondary);
+  align-items: center;
+}
+
+.inventory-header-row {
+  font-weight: var(--fw-bold);
+  color: var(--text-header);
+  background-color: var(--bg-subsection);
+}
+
+.inventory-item-row:last-child {
+  border-bottom: none;
+}
+
+.inventory-item-row:hover {
+  background-color: var(--bg-card-header); /* Slightly darker hover */
+}
+
+.inv-name, .inv-qty, .inv-weight, .inv-total-weight, .inv-actions {
+  font-size: var(--fs-sm);
+}
+.inv-qty, .inv-weight, .inv-total-weight { 
+    text-align: right; 
+    font-weight: var(--fw-bold); /* Make numbers stand out */
+    color: var(--text-primary);
+}
+.inv-actions { text-align: center; }
+.inv-name { color: var(--text-primary); }
+
+.item-full-description {
+  grid-column: 1 / -1; /* Span all columns */
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  padding: 8px 10px;
+  background-color: var(--bg-input); /* Darker for notes */
+  border-top: 1px dashed var(--border-secondary);
+  margin-top: 8px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  border-radius: var(--input-border-radius);
+}
+
+.empty-inventory-message {
+  padding: 10px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.total-weight-section {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-primary); /* Stronger border */
+  text-align: right;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--accent-neutral); /* Use neutral accent for total weight */
+}
+
+/* Shared button styles are in src/styles/common.css */
+
+.remove-button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.remove-button:hover {
+  background: #c82333;
+} 

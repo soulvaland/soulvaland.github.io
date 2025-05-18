@@ -1,0 +1,36 @@
+/* src/components/Languages.css */
+.add-language-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.add-language-section input[type="text"] {
+  /* Uses .form-input from common.css */
+  flex-grow: 1;
+}
+
+.languages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px; /* Adjusted padding */
+  background-color: var(--bg-subsection);
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--border-secondary);
+}
+
+.language-name {
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+  font-family: var(--font-fantasy); /* Use fantasy font for languages */
+}
+
+/* .action-button and .remove-button styles are in src/styles/common.css */ 

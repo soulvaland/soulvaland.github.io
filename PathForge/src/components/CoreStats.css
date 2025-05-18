@@ -1,0 +1,136 @@
+/* src/components/CoreStats.css */
+/* .core-stats-container and .section-header are now handled by Card.jsx and Card.css */
+
+.stat-section {
+  margin-bottom: 20px;
+  padding: 15px; /* Increased padding */
+  border: 1px solid var(--border-secondary); 
+  border-radius: 6px; /* Slightly smaller radius than card */
+  background-color: var(--bg-subsection);
+}
+
+.subsection-header {
+  margin-top: 0;
+  margin-bottom: 15px; /* Increased margin */
+  font-size: var(--fs-md); /* Use font size variable */
+  color: var(--accent-neutral); /* Neutral accent for these headers */
+  font-family: var(--font-fantasy); /* Fantasy for subsection titles */
+  border-bottom: 1px solid var(--border-secondary);
+  padding-bottom: 8px;
+}
+
+/* HP Section */
+.hp-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hp-inputs label {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+.hp-inputs input {
+  /* Uses .form-input and applies specific sizing/text-align */
+  width: 70px;
+  text-align: center;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-bold);
+}
+.hp-inputs span {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+}
+
+/* Ability Scores Section */
+.ability-scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.ability-score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--border-primary); /* Stronger border for these items */
+  border-radius: var(--input-border-radius);
+  background-color: var(--bg-card); /* Use main card bg for contrast */
+  /* Ornate Frame for stats - subtle beveled effect */
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.3), 
+              0 1px 1px rgba(255,255,255,0.05), 
+              0 0 0 1px var(--border-secondary); /* Inner border for bevel */
+}
+
+.ability-score-item label {
+  font-family: var(--font-fantasy); /* Fantasy for score names */
+  font-weight: var(--fw-normal);
+  margin-bottom: 8px;
+  font-size: var(--fs-md);
+  color: var(--accent-primary);
+}
+
+.ability-score-item input {
+  /* Uses .form-input and applies specific sizing/text-align */
+  width: 60px;
+  text-align: center;
+  font-size: var(--fs-lg); /* Prominent numbers */
+  font-weight: var(--fw-black);
+  color: var(--text-primary); /* Ensure high contrast for numbers */
+}
+
+.ability-modifier {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  margin-top: 8px;
+  font-weight: var(--fw-bold);
+}
+
+/* AC Section */
+.ac-inputs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.ac-inputs label, .save-item label {
+  font-size: var(--fs-sm);
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+}
+.ac-inputs input, .save-item input {
+  /* Uses .form-input and applies specific sizing/text-align */
+  width: 70px;
+  text-align: center;
+  font-weight: var(--fw-bold);
+}
+
+/* Saves Section */
+.saves-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.save-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--input-border-radius);
+  background-color: var(--bg-card);
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.3), 
+              0 1px 1px rgba(255,255,255,0.05),
+              0 0 0 1px var(--border-secondary);
+}
+
+.save-item label {
+    font-family: var(--font-fantasy);
+    font-weight: var(--fw-normal);
+    font-size: var(--fs-md);
+    color: var(--accent-primary);
+} 
