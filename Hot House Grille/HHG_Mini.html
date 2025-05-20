@@ -105,10 +105,10 @@ Located at 605 HWY 78 across from Walmart in Sumiton, our new restaurant is read
 </div>
 </div>
 <div class="hotspot-card bg-white rounded-xl shadow-xl overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col">
-<img src="https://placehold.co/600x400/F5DEB3/3A2E26?text=Country+Fried+Steak+Plate&font=playfairdisplay" alt="Country Fried Steak" class="w-full h-64 object-cover" onerror='this.onerror=null,this.src="https://placehold.co/600x400/EAEAEA/333333?text=Image+Not+Found"' loading=lazy width=600 height=400>
+<img src="https://placehold.co/600x400/F5DEB3/3A2E26?text=The+Cajun+Bowl&font=playfairdisplay" alt="The Cajun Bowl" class="w-full h-64 object-cover" onerror='this.onerror=null,this.src="https://placehold.co/600x400/EAEAEA/333333?text=Image+Not+Found"' loading=lazy width=600 height=400>
 <div class="p-6 flex flex-col flex-grow">
-<h3 class="text-2xl font-display text-[#011640] mb-2">Country Fried Steak</h3>
-<p class="text-[#073A59] mb-4 flex-grow">Crispy, golden, and served with creamy gravy and your choice of sides. Pure comfort food!</p>
+<h3 class="text-2xl font-display text-[#011640] mb-2">The Cajun Bowl</h3>
+<p class="text-[#073A59] mb-4 flex-grow">A flavorful bowl packed with Southern and Cajun inspiration! Often features andouille sausage, chicken, rice, and a kick of spice. Ask for today's specific creation!</p>
 <button type=button class="button-secondary text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23] mt-auto self-start" data-page-target=menu data-category-target=lunch-dinner>Explore Menu</button>
 </div>
 </div>
@@ -153,249 +153,16 @@ List View
 </button>
 </div>
 <div class="flex flex-wrap justify-center gap-2 mb-10" role=tablist aria-label="Menu Categories">
-<button id=menu-tab-all type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=all role=tab aria-selected=true aria-controls="menu-panel-breakfast menu-panel-lunch-dinner menu-panel-specials menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button>
-<button id=menu-tab-breakfast type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=breakfast role=tab aria-selected=false aria-controls=menu-panel-breakfast>Breakfast</button>
-<button id=menu-tab-lunch-dinner type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=lunch-dinner role=tab aria-selected=false aria-controls=menu-panel-lunch-dinner>Lunch & Dinner</button>
+<button id=menu-tab-all type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=all role=tab aria-selected=true aria-controls="menu-panel-specials menu-panel-lunch-dinner menu-panel-sides menu-panel-desserts menu-panel-kids menu-panel-beverages">All Items</button>
 <button id=menu-tab-specials type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=specials role=tab aria-selected=false aria-controls=menu-panel-specials>Daily Specials</button>
+<button id=menu-tab-lunch-dinner type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=lunch-dinner role=tab aria-selected=false aria-controls=menu-panel-lunch-dinner>Lunch & Dinner</button>
 <button id=menu-tab-sides type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=sides role=tab aria-selected=false aria-controls=menu-panel-sides>Sides & Extras</button>
 <button id=menu-tab-desserts type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=desserts role=tab aria-selected=false aria-controls=menu-panel-desserts>Desserts</button>
 <button id=menu-tab-kids type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=kids role=tab aria-selected=false aria-controls=menu-panel-kids>Kids Menu</button>
 <button id=menu-tab-beverages type=button class="menu-tab-button py-2 px-4 text-sm bg-[#011640] hover:bg-[#073A59] text-white font-bold rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#B03C23]" data-category=beverages role=tab aria-selected=false aria-controls=menu-panel-beverages>Beverages</button>
 </div>
 <div id=menu-items-container>
-<div id=menu-panel-breakfast class="menu-category hidden" data-category-group="breakfast all" role=tabpanel aria-labelledby=menu-tab-breakfast>
-<h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Breakfast</h2>
-<h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Specials</h3>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">#1 The Baylor</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Start your day right! Two fresh eggs cooked just how you like 'em, your favorite breakfast meat, two homestyle sides, and crispy hashbrowns.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">#2 The Riley</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.79</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A classic pairing: two fluffy pancakes, two eggs cooked to order, and your choice of savory breakfast meat.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">#3 The Bear</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty scramble of golden hashbrowns loaded with diced ham, three kinds of cheese, sweet bell peppers, onions, and fresh tomatoes.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">#4 The Nicky Lee</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Simple perfection: two lightly scrambled eggs and melted cheese nestled in a warm, steamed bun with a touch of mayo, salt, and pepper.</p>
-</div>
-</div>
-<h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Breakfast Sandwiches</h3>
-<p class="text-sm text-[#073A59] text-center mb-4">All our breakfast sandwiches feature two farm-fresh eggs your way and a generous double portion of meat, served on your choice of classic white bread, hearty Texas Toast, or a soft bun. Make it a combo with a side and drink!</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.09 (Combo $6.69)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A timeless classic: fluffy eggs and melted cheese creating the perfect, simple start.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Savory sausage, fluffy eggs, and melted cheese – a truly satisfying morning staple.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.89 (Combo $7.49)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fluffy eggs, and gooey melted cheese. Need we say more?</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern favorite! Thick-cut bologna paired with eggs and cheese for a hearty bite.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Legendary Conecuh sausage adds its signature smoky spice to this delightful egg and cheese creation.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Sandwich</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$6.39 (Combo $8.99)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, savory ham joins fluffy eggs and melted cheese for a classic, fulfilling sandwich.</p>
-</div>
-</div>
-<h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Omelettes</h3>
-<p class="text-sm text-[#073A59] text-center mb-4">Our fluffy three-egg omelettes are packed with your favorite fillings and served with creamy grits or savory gravy, plus a warm biscuit or toast.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Cheese Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.49</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Simply delicious: a fluffy omelette filled generously with your favorite melted cheese.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Hearty crumbled sausage and melted cheese folded into a perfectly cooked omelette.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy, savory bacon bits and melted cheese make this omelette an irresistible choice.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham & Cheese Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A breakfast champion! Diced ham and a generous helping of melted cheese.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Western Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.49</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Packed with flavor: diced ham, bell peppers, onions, and melted cheese create this classic delight.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">All Meat Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">For the true carnivore: loaded with sausage, bacon, ham, and melted cheese.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Philly Omelette</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$8.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A taste of Philly in the South! Tender steak, sautéed peppers, onions, and melted cheese.</p>
-</div>
-</div>
-<h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Breakfast Biscuits</h3>
-<p class="text-sm text-[#073A59] text-center mb-4">Warm, fluffy, and made with love. Grab one on its own or make it a satisfying combo!</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Egg & Cheese Biscuit</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$3.09 (Combo $5.69)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A simple yet perfect pairing of fluffy egg and melted cheese on our signature biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage, Egg, & Cheese Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty start with savory sausage, fluffy egg, and melted cheese piled on a warm biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bacon, Egg, & Cheese Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$3.89 (Combo $6.49)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Crispy bacon, fresh egg, and melted cheese on a fluffy biscuit – a morning must-have!</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna, Egg, & Cheese Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$4.39 (Combo $6.99)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A taste of Southern tradition: thick-cut bologna with egg and cheese on our classic biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh, Egg, & Cheese Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">The unbeatable flavor of Conecuh sausage meets egg and cheese in this premium biscuit experience.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham, Egg, & Cheese Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$5.39 (Combo $7.99)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Savory ham, fluffy egg, and melted cheese on a warm, tender biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Butter Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$1.19 (Combo $3.79)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Pure comfort: a warm, fluffy biscuit served with creamy butter.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Sausage or Bacon Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$1.99 (Combo $4.59)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of savory sausage or crispy bacon nestled in a warm, fluffy biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Bologna Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$2.49 (Combo $5.09)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A Southern classic! Thick-sliced bologna served hot on our signature biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Conecuh Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Experience the legendary taste of Conecuh sausage, perfectly paired with our fluffy biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Ham Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Tender, savory ham piled onto a warm, buttery biscuit. Simple and satisfying.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Chicken or Steak Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$3.49 (Combo $6.09)</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Your choice of a tender, seasoned chicken breast or savory steak on a warm biscuit.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Single Gravy Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$2.89</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A fluffy, open-faced biscuit generously smothered in our rich, savory country gravy.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Double Gravy Biscuit</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$4.29</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Twice the comfort! Two open-faced biscuits drowning in our delicious country gravy.</p>
-</div>
-</div>
-<h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Pancakes</h3>
-<p class="text-sm text-[#073A59] text-center mb-4">Light, fluffy, and golden brown – the perfect canvas for syrup and butter!</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-animate">
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Pancakes (Stack)</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A generous stack of our signature fluffy pancakes, served with butter and warm syrup.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Stack w/ Sausage or Bacon</h4> <p class="menu-item-price text-lg text-[#952E19] font-bold">$5.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Our fluffy pancake stack accompanied by your choice of savory sausage or crispy bacon.</p>
-</div>
-</div>
-</div> <div id=menu-panel-lunch-dinner class="menu-category hidden" data-category-group="lunch-dinner all" role=tabpanel aria-labelledby=menu-tab-lunch-dinner>
+<div id=menu-panel-lunch-dinner class="menu-category hidden" data-category-group="lunch-dinner all" role=tabpanel aria-labelledby=menu-tab-lunch-dinner>
 <h2 class="menu-category-title text-3xl font-display text-[#B03C23] mt-10 mb-6 border-b-2 border-[#f2c7bd] pb-2">Lunch & Dinner</h2>
 <p class="text-sm text-[#073A59] text-center mb-8">Make any eligible item a combo (add fries/tots & drink) for $4.19!</p>
 <h3 class="menu-subcategory-title text-2xl font-display text-[#011640] mt-8 mb-4">Burgers</h3>
@@ -615,13 +382,6 @@ List View
 </div>
 <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
 <div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Country Fried Steak Plate</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$7.99</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">Tender steak, breaded and fried to a golden crisp, then ladled with creamy country gravy. Served with two sides.</p>
-</div>
-<div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
 <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Tuna Salad Plate</h4>
 <p class="menu-item-price text-lg text-[#952E19] font-bold">$7.49</p>
 </div>
@@ -755,12 +515,6 @@ List View
 <p class="menu-item-description text-sm text-[#073A59] mt-1">A hearty classic! Our grilled hot dog smothered in savory chili and melted cheese.</p>
 </div>
 <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
-<div class=menu-item-name-price-group>
-<h4 class="menu-item-name text-xl font-semibold text-[#011640]">Polish Sausage</h4>
-<p class="menu-item-price text-lg text-[#952E19] font-bold">$4.49</p>
-</div>
-<p class="menu-item-description text-sm text-[#073A59] mt-1">A robust, flavorful Polish sausage, grilled and served on a bun with your choice of toppings.</p>
-</div>
 <div class="menu-card bg-white shadow-lg rounded-lg p-6 hover:shadow-xl hover:scale-105">
 <div class=menu-item-name-price-group>
 <h4 class="menu-item-name text-xl font-semibold text-[#011640]">Corn Dog</h4>
