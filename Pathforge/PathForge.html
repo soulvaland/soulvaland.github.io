@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder Character Sheet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="pathfinder_styles.css"> 
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/> 
+</head>
+<body>
+    <div class="relative flex size-full min-h-screen flex-col justify-between group/design-root">
+        <div class="flex-grow overflow-y-auto pb-28">
+            <header class="sticky top-0 z-20 flex items-center bg-[#0d1117]/80 backdrop-blur-md p-4 pb-3 justify-between border-b border-[#243447]">
+                <div class="w-12">
+                    <button id="share-sheet-btn" title="Share Sheet (Copy Link)" class="action-button h-8 w-8 owner-edit-btn">
+                        <span class="material-icons" style="font-size: 18px;">share</span>
+                    </button>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-center text-[#e0e0e0] flex-1 header-font">Pathfinder Character Sheet</h1>
+                <div class="flex w-12 items-center justify-end">
+                    <button id="settings-btn" title="Settings" class="flex items-center justify-center rounded-full h-10 w-10 text-[#93acc8] hover:text-white hover:bg-[#1a2532] transition-colors">
+                        <span class="material-icons">settings</span>
+                    </button>
+                </div>
+            </header>
+
+            <section class="p-4 @container">
+                <div class="flex flex-col items-center gap-4 mb-6">
+                    <div class="relative">
+                        <div id="char-image-display" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 border-2 border-[#1873dc]" style='background-image: url("https://placehold.co/128x128/1a2532/93acc8?text=Char");'>
+                        </div>
+                        <button id="edit-image-btn" title="Edit Image" class="absolute bottom-0 right-0 action-button h-8 w-8 owner-edit-btn">
+                            <span class="material-icons" style="font-size: 18px;">edit</span>
+                        </button>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center">
+                        <p id="char-name" class="text-[#e0e0e0] text-3xl font-bold leading-tight tracking-tight header-font owner-edit-target">Alistair Thorne</p>
+                        <p id="char-class-level" class="text-[#93acc8] text-md font-normal leading-normal owner-edit-target">Level 5 Ranger</p>
+                        <p id="char-alignment" class="text-[#93acc8] text-sm font-normal leading-normal owner-edit-target">Neutral Good</p>
+                        <div class="text-[#93acc8] text-sm font-normal leading-normal mt-1 space-y-0.5">
+                            <p id="char-details-line1" class="owner-edit-target"><strong>Deity:</strong> Erastil <span class="mx-1">|</span> <strong>Age:</strong> 28 <span class="mx-1">|</span> <strong>Gender:</strong> Male</p>
+                            <p id="char-details-line2" class="owner-edit-target"><strong>Height:</strong> 6'0" <span class="mx-1">|</span> <strong>Weight:</strong> 180 lbs</p>
+                            <p id="char-details-line3" class="owner-edit-target"><strong>Hair:</strong> Brown <span class="mx-1">|</span> <strong>Eyes:</strong> Green</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pb-2">
+                <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight mb-3 header-font card-header-physical">Attributes</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="ornate-stat-card owner-edit-target">
+                        <p class="stat-label">Strength</p><p class="stat-value"><span id="attr-strength-score">16</span> <span id="attr-strength-mod" class="text-lg text-[#93acc8]">(+3)</span></p>
+                    </div>
+                    <div class="ornate-stat-card owner-edit-target">
+                        <p class="stat-label">Dexterity</p><p class="stat-value"><span id="attr-dexterity-score">14</span> <span id="attr-dexterity-mod" class="text-lg text-[#93acc8]">(+2)</span></p>
+                    </div>
+                    <div class="ornate-stat-card owner-edit-target">
+                        <p class="stat-label">Constitution</p><p class="stat-value"><span id="attr-constitution-score">15</span> <span id="attr-constitution-mod" class="text-lg text-[#93acc8]">(+2)</span></p>
+                    </div>
+                    <div class="ornate-stat-card owner-edit-target">
+                        <p class="stat-label">Intelligence</p><p class="stat-value"><span id="attr-intelligence-score">12</span> <span id="attr-intelligence-mod" class="text-lg text-[#93acc8]">(+1)</span></p>
+                    </div>
+                    <div class="ornate-stat-card owner-edit-target">
+                        <p class="stat-label">Wisdom</p><p class="stat-value"><span id="attr-wisdom-score">13</span> <span id="attr-wisdom-mod" class="text-lg text-[#93acc8]">(+1)</span></p>
+                    </div>
+                    <div class="ornate-stat-card owner-edit-target">
+                        <p class="stat-label">Charisma</p><p class="stat-value"><span id="attr-charisma-score">10</span> <span id="attr-charisma-mod" class="text-lg text-[#93acc8]">(+0)</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pt-6 pb-2">
+                <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight mb-3 header-font card-header-physical">Key Stats</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label">HP</p> <p id="stat-hp" class="stat-value">45/45</p></div>
+                    <div class="stat-card items-center owner-edit-target">
+                         <div class="flex items-center gap-1"><span class="material-icons text-2xl text-[#93acc8]">security</span><p class="stat-label">AC</p></div>
+                         <p id="stat-ac" class="stat-value">18</p>
+                    </div>
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label">Initiative</p><p id="stat-initiative" class="stat-value">+2</p></div>
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label">BAB</p><p id="stat-bab" class="stat-value">+5</p></div>
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label">Speed</p><p id="stat-speed" class="stat-value">30 ft</p></div>
+                    <div class="stat-card items-center col-span-1 owner-edit-target"><p class="stat-label">Wealth</p><p id="stat-wealth" class="stat-value-small">1200 GP</p></div>
+                </div>
+                <div class="grid grid-cols-3 gap-3 mt-3">
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label accent-physical">Fortitude</p><p id="stat-fortitude" class="stat-value">+7</p></div>
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label accent-physical">Reflex</p><p id="stat-reflex" class="stat-value">+6</p></div>
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label accent-mental">Will</p><p id="stat-will" class="stat-value">+3</p></div>
+                </div>
+                 <div class="grid grid-cols-2 gap-3 mt-3">
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label">CMB</p><p id="stat-cmb" class="stat-value">+8</p></div>
+                    <div class="stat-card items-center owner-edit-target"><p class="stat-label">CMD</p><p id="stat-cmd" class="stat-value">20</p></div>
+                </div>
+            </section>
+
+            <section class="px-4 pt-6 pb-2">
+                <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight mb-3 header-font">Bio & Details</h2>
+                <div class="content-card">
+                    <h3 class="text-lg font-semibold text-[#e0e0e0] mb-1 header-font">Appearance</h3>
+                    <div id="bio-appearance-text" class="scroll-like-container owner-edit-target">A rugged individual...</div>
+                </div>
+                <div class="content-card">
+                    <h3 class="text-lg font-semibold text-[#e0e0e0] mb-1 header-font">Personality</h3>
+                    <div id="bio-personality-text" class="scroll-like-container owner-edit-target">Stoic and observant...</div>
+                </div>
+                <div class="content-card">
+                    <h3 class="text-lg font-semibold text-[#e0e0e0] mb-1 header-font">Background</h3>
+                    <div id="bio-background-text" class="scroll-like-container owner-edit-target">Orphaned at a young age...</div>
+                </div>
+            </section>
+
+            <section class="px-4 pt-6 pb-2">
+                <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight mb-3 header-font">Capabilities</h2>
+                <div class="content-card">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-lg font-semibold text-[#e0e0e0] header-font">Languages</h3>
+                        <button id="add-language-btn" class="action-button action-button-sm owner-edit-btn">
+                            <span class="material-icons">add</span> Add
+                        </button>
+                    </div>
+                    <ul id="languages-list" class="list-disc list-inside text-[#b0c4de] text-sm space-y-1">
+
+                    </ul>
+                </div>
+                <div class="content-card">
+                     <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-lg font-semibold text-[#e0e0e0] header-font">Traits & Drawbacks</h3>
+                        <button id="add-trait-btn" class="action-button action-button-sm owner-edit-btn">
+                            <span class="material-icons">add</span> Add
+                        </button>
+                    </div>
+                    <ul id="traits-drawbacks-list" class="list-disc list-inside text-[#b0c4de] text-sm space-y-1">
+
+                    </ul>
+                </div>
+            </section>
+
+            <section class="px-4 pt-6 pb-2">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight header-font card-header-skill">Skills</h2>
+                    <button id="add-custom-skill-btn" class="action-button action-button-sm owner-edit-btn">
+                        <span class="material-icons">add</span> Custom Skill
+                    </button>
+                </div>
+                <div class="content-card">
+                    <div id="skills-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                    </div>
+                </div>
+            </section>
+
+            <section class="px-4 pt-6 pb-4">
+                 <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight header-font">Feats</h2>
+                     <button id="add-feat-btn" class="action-button action-button-sm owner-edit-btn">
+                        <span class="material-icons">add</span> Add Feat
+                    </button>
+                </div>
+                <div class="content-card">
+                    <ul id="feats-list-container" class="space-y-2 text-sm">
+                    </ul>
+                </div>
+            </section>
+
+            <section id="spellcasting-section" class="px-4 pt-6 pb-4 hidden">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-[#e0e0e0] text-xl font-semibold tracking-tight header-font card-header-mental">Spellcasting</h2>
+                    <button id="add-spell-btn" class="action-button action-button-sm owner-edit-btn">
+                        <span class="material-icons">add</span> Add Spell
+                    </button>
+                </div>
+                <div class="content-card">
+                    <p id="spell-caster-level" class="text-[#93acc8]">Caster Level: N/A</p>
+                    <div class="mt-2">
+                        <h4 class="text-md font-semibold text-[#c0c0c0] mb-1">Spells Known:</h4>
+                        <ul id="spells-known-list" class="list-disc list-inside text-[#b0c4de] text-sm space-y-1">
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+        </div> 
+
+        <nav class="fixed bottom-0 left-0 right-0 bg-[#111922]/90 backdrop-blur-md border-t border-[#243447] shadow-top z-10">
+            <div class="flex justify-around items-center px-2 pt-2 pb-safe-bottom">
+                <a id="nav-overview-btn" class="flex flex-col items-center justify-center gap-1 text-[#1873dc] p-2 rounded-md w-1/5" href="#">
+                    <span class="material-icons">home</span><span class="text-xs font-medium">Overview</span>
+                </a>
+                <a id="nav-combat-btn" class="flex flex-col items-center justify-center gap-1 text-[#93acc8] hover:text-[#1873dc] p-2 rounded-md w-1/5 transition-colors" href="#">
+                    <span class="material-icons">shield</span><span class="text-xs font-medium">Combat</span>
+                </a>
+                <a id="nav-spells-btn" class="flex flex-col items-center justify-center gap-1 text-[#93acc8] hover:text-[#1873dc] p-2 rounded-md w-1/5 transition-colors" href="#">
+                    <span class="material-icons">menu_book</span><span class="text-xs font-medium">Spells</span>
+                </a>
+                <a id="nav-inventory-btn" class="flex flex-col items-center justify-center gap-1 text-[#93acc8] hover:text-[#1873dc] p-2 rounded-md w-1/5 transition-colors" href="#">
+                    <span class="material-icons">inventory_2</span><span class="text-xs font-medium">Inventory</span>
+                </a>
+                <a id="nav-roll-btn" class="flex flex-col items-center justify-center gap-1 text-[#93acc8] hover:text-[#1873dc] p-2 rounded-md w-1/5 transition-colors" href="#">
+                    <span class="material-icons">casino</span><span class="text-xs font-medium">Roll</span>
+                </a>
+            </div>
+            <div class="h-env-safe-area-bottom bg-[#111922]/90"></div>
+        </nav>
+    </div>
+
+    <div id="global-message-container"></div>
+
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <p>Settings content will go here. For example, toggling features, theme options, etc.</p>
+            {/* Example: <label><input type="checkbox" id="enable-spellcasting-checkbox-modal"> Enable Spellcasting</label> */}
+            <div class="modal-actions">
+                <button id="settings-modal-close-btn" class="cancel-btn">Close</button>
+                {/* <button id="settings-modal-save-btn" class="confirm-btn">Save Settings</button> */}
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="character-sheet.js" defer></script>
+</body>
+</html>
