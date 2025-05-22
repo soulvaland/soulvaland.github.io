@@ -3631,12 +3631,57 @@ function renderAttacks() {
 
         const bonusP = document.createElement('p');
         bonusP.className = 'col-span-2 text-center text-lg font-semibold';
-        bonusP.textContent = attack.attackBonus || '-';
+        // Try to evaluate attack bonus string
+        let evaluatedBonus = evaluateDynamicFieldValue(attack.attackBonus);
+        // If it's a simple number after evaluation, format it. Otherwise, display as is (e.g. for "+7/+2")
+        // A more robust check would be to see if original string contains non-numeric/non-placeholder evaluatable chars.
+        if (typeof evaluatedBonus === 'number' && !isNaN(evaluatedBonus) && !attack.attackBonus.includes('/')) {
+            bonusP.textContent = formatModifier(evaluatedBonus); 
+        } else {
+            bonusP.textContent = attack.attackBonus || '-';
+        }
         li.appendChild(bonusP);
 
         const damageP = document.createElement('p');
         damageP.className = 'col-span-2 text-center';
-        damageP.textContent = attack.damage || '-';
+        let finalDamageString = attack.damage || '-';
+        if (typeof attack.damage === 'string') {
+            // Try to split dice from static modifiers, e.g., "1d8 + @STR_MOD + 2"
+            // This regex attempts to find the first dice expression (e.g., XdY or dY)
+            const diceMatch = attack.damage.match(/^\s*(\d*d\d+([\+\-]\d+)?)/i);
+            let dicePart = '';
+            let modifierString = attack.damage;
+
+            if (diceMatch && diceMatch[0]) {
+                dicePart = diceMatch[0].trim();
+                modifierString = attack.damage.substring(dicePart.length).trim();
+            }
+            
+            // If there's a modifier string part, evaluate it
+            let evaluatedModifier = 0;
+            if (modifierString) {
+                // Ensure it starts with a + or - if it's not empty, for evaluateDynamicFieldValue
+                // Or if it's just a placeholder like @STR_MOD
+                if (!modifierString.match(/^\s*[\+\-]/) && modifierString.match(/@/)) {
+                     // If it contains a placeholder but no leading operator, assume it's an addition
+                    evaluatedModifier = evaluateDynamicFieldValue(modifierString); 
+                } else {
+                    evaluatedModifier = evaluateDynamicFieldValue(modifierString);
+                }
+            }
+            
+            if (dicePart) {
+                finalDamageString = dicePart;
+                if (evaluatedModifier !== 0 || (modifierString && !isNaN(parseFloat(modifierString)))) { // Check if modifier part was valid or originally a number
+                    finalDamageString += ` ${formatModifier(evaluatedModifier)}`;
+                }
+            } else {
+                // No dice part, try to evaluate the whole string as a modifier
+                evaluatedModifier = evaluateDynamicFieldValue(attack.damage);
+                finalDamageString = (typeof evaluatedModifier === 'number' && !isNaN(evaluatedModifier)) ? String(evaluatedModifier) : (attack.damage || '-');
+            }
+        }
+        damageP.textContent = finalDamageString;
         li.appendChild(damageP);
 
         const critP = document.createElement('p');
