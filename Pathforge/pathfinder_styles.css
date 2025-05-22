@@ -110,6 +110,14 @@ body {
 }
 .action-button-sm .material-icons { font-size: 16px; margin-right: 4px; }
 
+/* Small Destructive Action Button Style (e.g., for Delete) */
+.action-button-sm.destructive-btn-sm {
+    background-color: #e53e3e; /* Red-600 from Tailwind palette */
+    color: white;
+}
+.action-button-sm.destructive-btn-sm:hover {
+    background-color: #c53030; /* Red-700 from Tailwind palette */
+}
 
 /* --- Scroll-like Containers for Bio --- */
 .scroll-like-container {
@@ -135,10 +143,27 @@ body {
 .shadow-top { box-shadow: 0 -2px 10px rgba(0,0,0,0.2); }
 
 /* --- Editing State --- */
-.editing {
-    border: 1px dashed #1873dc;
-    padding: 2px;
+.editing { /* This class is added to the input field itself by makeEditable */
+    /* Styles for the input field itself are mostly handled inline by makeEditable for now */
+    /* but you could add base styles here if preferred */
 }
+
+/* Style for owner-edit-targets when edit mode is active */
+body.edit-mode-active .owner-edit-target {
+    cursor: pointer;
+    /* outline: 1px dashed rgba(24, 115, 220, 0.5); Subtle dashed outline */
+    /* transition: outline 0.2s ease-in-out; */
+    padding: 2px; /* Add some padding to make hover/click target slightly bigger */
+    margin: -2px; /* Counteract padding to maintain layout */
+    border-radius: 3px;
+}
+
+body.edit-mode-active .owner-edit-target:hover {
+    /* outline-color: rgba(24, 115, 220, 1); Stronger outline on hover */
+    background-color: rgba(24, 115, 220, 0.1); /* Slight background tint */
+    box-shadow: 0 0 0 1px rgba(24, 115, 220, 0.7); /* Use box-shadow for a border-like effect */
+}
+
 /* Hide edit buttons if not owner */
 body:not(.is-owner) .owner-edit-btn {
     display: none !important;
@@ -168,10 +193,11 @@ body:not(.is-owner) .owner-edit-btn {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    display: none; /* Hidden by default */
+    /* display: none;  Removed so that visibility controlled by .hidden class */
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2000; /* Ensure it's above other content */
+    z-index: 2000;
 }
 
 .modal-content {
@@ -245,4 +271,73 @@ body:not(.is-owner) .owner-edit-btn {
 /* Ensure clickable elements have a pointer cursor */
 [onclick], button, a, input[type="button"], input[type="submit"], .clickable {
     cursor: pointer;
+}
+
+/* Animation for Edit Mode Button Hint */
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0 rgba(24, 115, 220, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(24, 115, 220, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(24, 115, 220, 0); }
+}
+
+.pulse-hint {
+    animation: pulse-animation 2s infinite;
+}
+
+/* Styles for Collapsible Skills Section */
+.skills-section-header {
+    /* cursor: pointer; is already in the HTML */
+    user-select: none; /* Prevent text selection on click */
+}
+
+.skills-content {
+    overflow: hidden;
+    transition: maxHeight 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+    /* opacity transition added for smoother visual appearance */
+}
+
+/* Alignment Modal Specific Styles */
+.alignment-grid-button {
+    /* Ensure buttons fill their grid cell and have some padding */
+    width: 100%; 
+    padding: 0.75rem 0.5rem; /* Adjust padding as needed for text fit */
+    text-align: center;
+    border-width: 1px; /* Explicitly define border for consistent look */
+    /* Inherits colors from action-button-secondary, override hover/active below */
+}
+
+.alignment-grid-button:hover {
+    background-color: #1f2937; /* Slightly lighter than modal bg, or your preferred hover */
+    border-color: #1873dc; /* Accent color border on hover */
+    color: #e0e0e0; /* Ensure text is light on hover */
+}
+
+.alignment-grid-button:active {
+    background-color: #1873dc; /* Accent color background on active/click */
+    color: #ffffff; /* White text on active */
+    border-color: #1873dc;
+}
+
+/* If you want to ensure the text doesn't wrap too much, you might need this too */
+.alignment-grid-button {
+    white-space: nowrap; /* Keeps text on one line if possible */
+    overflow: hidden;    /* Hides text that overflows */
+    text-overflow: ellipsis; /* Adds ... for overflowed text */
+    font-size: 0.8rem; /* Slightly smaller font if names are long */
+}
+
+/* Ensure dropdown text in modals is readable */
+.modal-content select {
+    color: #1f2937; /* A dark gray, Tailwind's gray-800 */
+}
+
+/* Specific override for point buy total points if needed */
+#point-buy-total-points {
+    color: #1f2937;
+}
+
+/* Style for selected option if possible (browser support varies) */
+.modal-content select option {
+    color: #1f2937;
+    background-color: #ffffff; /* Ensure option background is white if needed */
 }
