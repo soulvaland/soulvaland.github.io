@@ -115,7 +115,8 @@ let state = {
   finalQuizCompleted: false,
   userName: '',
   timelineInteractedS3: false,
-  highestSectionUnlocked: 1
+  highestSectionUnlocked: 1,
+  adminMode: false  // NEW: Admin/Teacher mode for content review
 };
 
 /* === DOM Cache === */
@@ -219,13 +220,22 @@ function loadState() {
         ...parsedState,
         quizResults: parsedState.quizResults || {},
         timelineInteractedS3: parsedState.timelineInteractedS3 || false,
-        highestSectionUnlocked: parsedState.highestSectionUnlocked || 1
+        highestSectionUnlocked: parsedState.highestSectionUnlocked || 1,
+        adminMode: parsedState.adminMode || false
       };
+    }
+    
+    // Check URL parameters for admin mode
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('admin') === 'true' || urlParams.get('teacher') === 'true') {
+      state.adminMode = true;
+      console.log('Admin/Teacher mode activated via URL parameter');
     }
   } catch (error) {
     console.error("Failed to parse saved state, resetting:", error);
     localStorage.removeItem(STORAGE_KEY);
     state.highestSectionUnlocked = 1;
+    state.adminMode = false;
   }
 }
 
@@ -252,7 +262,8 @@ function resetModule() {
       finalQuizCompleted: false,
       userName: '',
       timelineInteractedS3: false,
-      highestSectionUnlocked: 1
+      highestSectionUnlocked: 1,
+      adminMode: false
     };
     
     navigateToSection(1);
@@ -264,6 +275,26 @@ function resetModule() {
     console.error('Failed to reset module:', error);
     showErrorMessage('Failed to reset module. Please refresh the page.');
   }
+}
+
+/* === Admin Mode Functions === */
+function toggleAdminMode() {
+  state.adminMode = !state.adminMode;
+  saveState();
+  updateSidebarAccess();
+  updateNavButtons();
+  
+  // Update admin button text
+  const adminBtn = document.getElementById('adminModeBtn');
+  if (adminBtn) {
+    adminBtn.textContent = state.adminMode ? 'Exit Review Mode' : 'Review Mode';
+    adminBtn.classList.toggle('bg-orange-500', state.adminMode);
+    adminBtn.classList.toggle('hover:bg-orange-600', state.adminMode);
+    adminBtn.classList.toggle('bg-blue-500', !state.adminMode);
+    adminBtn.classList.toggle('hover:bg-blue-600', !state.adminMode);
+  }
+  
+  console.log(`${state.adminMode ? 'Enabled' : 'Disabled'} admin/teacher review mode`);
 }
 
 /* === Progress Management === */
@@ -288,7 +319,8 @@ function updateSidebarAccess() {
     const linkSectionId = link.getAttribute('data-section');
     const numericLinkSectionId = getNumericSectionId(linkSectionId);
 
-    if (numericLinkSectionId <= numericHighestUnlocked) {
+    // In admin mode, unlock everything
+    if (state.adminMode || numericLinkSectionId <= numericHighestUnlocked) {
       // Unlock the link
       link.classList.remove('disabled-link');
       link.removeAttribute('tabindex');
@@ -366,7 +398,9 @@ function updateNavButtons() {
   DOM.prevBtn.disabled = currentIndex === 0;
   
   let canProceed = true;
-  if (currentSection) {
+  
+  // In admin mode, always allow proceeding
+  if (!state.adminMode && currentSection) {
     if (currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) {
       canProceed = false;
       if (currentSection.id === 3 && !state.timelineInteractedS3) {
@@ -392,14 +426,14 @@ function updateNavButtons() {
   
   const previousSectionIndex = currentIndex > 0 ? currentIndex - 1 : -1;
   const previousSection = previousSectionIndex !== -1 ? sections[previousSectionIndex] : null;
-  const shouldHighlight = previousSection &&
+  const shouldHighlight = !state.adminMode && previousSection &&
                           previousSection.quiz &&
                           state.quizResults[previousSection.id]?.completed &&
                           canProceed && 
                           currentIndex < sections.length - 1; 
   
   DOM.nextBtn.classList.toggle('highlight-next', shouldHighlight);
-  DOM.nextBtn.disabled = currentIndex === sections.length - 1 || !canProceed;
+  DOM.nextBtn.disabled = currentIndex === sections.length - 1 || (!state.adminMode && !canProceed);
 }
 
 /* === Event Handlers === */
@@ -413,7 +447,8 @@ function handleSidebarLinkClick(e) {
   
   const numericHighestUnlocked = getNumericSectionId(state.highestSectionUnlocked);
 
-  if (!linkElement.classList.contains('disabled-link') && numericTargetId <= numericHighestUnlocked) {
+  // Allow navigation in admin mode or if section is unlocked
+  if (state.adminMode || (!linkElement.classList.contains('disabled-link') && numericTargetId <= numericHighestUnlocked)) {
     navigateToSection(sectionId);
   } else {
     console.log(`Section ${sectionId} is locked.`);
@@ -430,24 +465,26 @@ function handlePrevNext(direction) {
   
   if (direction === 'next') {
     const currentSection = sections[currentIndex];
-    let canProceed = true;
+    let canProceed = state.adminMode; // Always allow in admin mode
 
-    if (currentSection && currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) {
+    if (!state.adminMode && currentSection && currentSection.id !== 1 && currentSection.quiz && !state.quizResults[currentSection.id]?.completed) {
       canProceed = false;
       if (currentSection.id === 3 && !state.timelineInteractedS3) canProceed = false;
     }
     
-    if (currentSection && currentSection.id === 'final-quiz' && !state.finalQuizCompleted) {
+    if (!state.adminMode && currentSection && currentSection.id === 'final-quiz' && !state.finalQuizCompleted) {
       canProceed = false;
     }
 
     if (currentIndex < sections.length - 1 && canProceed) {
       const nextSection = sections[currentIndex + 1];
       if (nextSection) {
-        updateHighestUnlocked(nextSection.id);
+        if (!state.adminMode) {
+          updateHighestUnlocked(nextSection.id);
+        }
         navigateToSection(nextSection.id);
       }
-    } else if (!canProceed) {
+    } else if (!canProceed && !state.adminMode) {
       if (currentSection && currentSection.quiz) {
         if (currentSection.id === 3 && !state.timelineInteractedS3) {
           alert(`Please explore the timeline in "${currentSection.title}" before proceeding.`);
@@ -682,6 +719,23 @@ function renderSection(sectionId) {
 
   let contentHtml = `<div class="bg-white p-8 rounded-lg shadow space-y-6">`;
   contentHtml += audioButtonHtml;
+  
+  // Add admin mode indicator
+  if (state.adminMode) {
+    contentHtml += `<div class="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg flex justify-between items-center">
+      <span class="text-orange-700 font-medium"><i class="fas fa-eye mr-2"></i>Review Mode Active</span>
+      <button id="adminModeBtn" class="px-3 py-1 text-sm text-white bg-orange-500 rounded hover:bg-orange-600 transition">Exit Review Mode</button>
+    </div>`;
+  } else {
+    // Show admin mode toggle for section 1 (welcome)
+    if (section.id === 1) {
+      contentHtml += `<div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg flex justify-between items-center">
+        <span class="text-blue-700 text-sm">Need to review all content?</span>
+        <button id="adminModeBtn" class="px-3 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600 transition">Review Mode</button>
+      </div>`;
+    }
+  }
+  
   contentHtml += `<h3 class="text-2xl font-semibold mb-4 text-sky-700">${section.title}</h3>`;
   contentHtml += `<div class="readable-content space-y-4">`;
 
@@ -795,7 +849,16 @@ function generateQuizSection(section) {
   let quizHtml = `<hr class="my-8 border-gray-300">`;
   quizHtml += `<h4 class="text-lg font-semibold mb-4 text-center text-gray-700">Check Your Understanding</h4>`;
   
-  if (section.id === 3 && !state.timelineInteractedS3) {
+  // Show admin mode info
+  if (state.adminMode) {
+    quizHtml += `<div class="mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg text-center">
+      <p class="text-orange-700 text-sm font-medium">
+        <i class="fas fa-eye mr-1"></i> Review Mode Active - All content accessible for preview
+      </p>
+    </div>`;
+  }
+  
+  if (section.id === 3 && !state.timelineInteractedS3 && !state.adminMode) {
     quizHtml += `<p class="text-center text-gray-600 italic mt-4">Please click on an era in the timeline above to learn more and unlock the quiz.</p>`;
   } else {
     const quizResult = state.quizResults[section.id];
@@ -1205,6 +1268,27 @@ function closeQuiz() {
   renderSection(state.currentSectionId);
 }
 
+/* === Quiz Escape Functions === */
+function handleQuizEscape(event) {
+  // Close quiz on Escape key
+  if (event.key === 'Escape' && !DOM.quizModal.classList.contains('hidden')) {
+    closeQuiz();
+    return;
+  }
+  
+  // Close tooltip on Escape key
+  if (event.key === 'Escape') {
+    closeTooltip();
+  }
+}
+
+function handleQuizModalClick(event) {
+  // Close quiz when clicking outside the modal content
+  if (event.target === DOM.quizModal) {
+    closeQuiz();
+  }
+}
+
 /* === Certificate Generation === */
 function generateCertificate() {
   const nameInput = document.getElementById('certificateName');
@@ -1292,6 +1376,11 @@ function attachEventListeners() {
     DOM.resetModuleBtn.addEventListener('click', resetModule);
   }
 
+  // Quiz modal escape functionality
+  if (DOM.quizModal) {
+    DOM.quizModal.addEventListener('click', handleQuizModalClick);
+  }
+
   // Content area event delegation
   if (DOM.contentArea) {
     DOM.contentArea.addEventListener('click', handleContentClick);
@@ -1306,9 +1395,15 @@ function attachEventListeners() {
   // Global click handler for sidebar and tooltips
   document.addEventListener('click', handleGlobalClick);
   
-  // Keyboard handlers
+  // Keyboard handlers (updated to include quiz escape)
+  document.addEventListener('keydown', handleQuizEscape);
+
+  // Admin mode activation with Ctrl+Shift+A
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeTooltip();
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+      e.preventDefault();
+      toggleAdminMode();
+    }
   });
 
   // Touch/swipe handlers
@@ -1347,7 +1442,11 @@ function handleContentClick(event) {
     generateCertificate();
   } else if (target.matches('#beginModuleBtn')) {
     navigateToSection(2);
-    updateHighestUnlocked(2);
+    if (!state.adminMode) {
+      updateHighestUnlocked(2);
+    }
+  } else if (target.matches('#adminModeBtn')) {
+    toggleAdminMode();
   } else if (target.matches('.sim-prompt-submit')) {
     event.preventDefault();
     const responseTargetId = target.getAttribute('data-response-target');
@@ -1870,3 +1969,72 @@ function injectTimeline() {
 
 /* === Module Initialization === */
 document.addEventListener('DOMContentLoaded', initializeApp);
+
+/* === CSS Injection for Dropdown Width Fix === */
+function injectDropdownWidthFix() {
+  const style = document.createElement('style');
+  style.textContent = `
+    /* Fix for matching question dropdown width */
+    .matching-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+      width: 100%;
+    }
+    .matching-term {
+      flex-basis: 40%;
+      font-weight: 500;
+      min-width: 0;
+      word-wrap: break-word;
+    }
+    .matching-select {
+      flex: 1;
+      min-width: 0;
+      max-width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      background-color: white;
+      cursor: pointer;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+    .matching-select:disabled {
+      background-color: #f3f4f6;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    .matching-select.answer-correct {
+      border-color: #4ade80 !important;
+      background-color: #dcfce7 !important;
+    }
+    .matching-select.answer-incorrect {
+      border-color: #fca5a5 !important;
+      background-color: #fee2e2 !important;
+    }
+    .matching-select.border-red-400 {
+      border-color: #f87171 !important;
+    }
+    
+    /* Responsive adjustments for small screens */
+    @media (max-width: 640px) {
+      .matching-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+      .matching-term {
+        flex-basis: auto;
+        text-align: left;
+      }
+      .matching-select {
+        width: 100%;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Inject the CSS fix immediately
+injectDropdownWidthFix();
