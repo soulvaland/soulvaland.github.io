@@ -992,6 +992,7 @@ function updateTimelineDetails(eventId, eventDetails) {
 		updateNavButtons();                 // so the NEXT button lights up
 
         if (state.currentSectionId === 3) {
+			renderSection(3); // Re-render the section to show the quiz
         }
     }
   } else {
