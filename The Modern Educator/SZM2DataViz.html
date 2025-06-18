@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: AI & The K-5 Educator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- 
+    PLAN SUMMARY:
+    Narrative Structure:
+    1.  Hook: Introduce "Sarah Chen," the Curious but Cautious Innovator persona.
+    2.  The Emotional Landscape: Visualize the dual feelings of excitement and anxiety.
+    3.  A Day in the Life: Show current tasks and knowledge levels.
+    4.  The Wall of Barriers: Highlight the primary obstacles, especially time.
+    5.  The Path Forward: Illustrate preferred learning styles and desired skills.
+    6.  The Core Challenge: Conclude by defining the gap between awareness and application.
+
+    Visualization Choices:
+    -   Persona Intro: Styled HTML/CSS card. Goal: Inform.
+    -   Emotional Landscape: Radar Chart (Chart.js). Goal: Compare. Justification: Shows balance of qualitative factors. NO SVG.
+    -   Knowledge Gap: Donut Chart (Chart.js). Goal: Inform. Justification: Quick visual of a key proportion. NO SVG.
+    -   Barriers: Horizontal Ordered Bar Chart (Chart.js). Goal: Compare/Rank. Justification: Clear for long labels, emphasizes the top barrier. NO SVG.
+    -   Path Forward: Flowchart Diagram (HTML/CSS). Goal: Organize. Justification: Shows process/connection without SVG/Mermaid.
+    -   Core Challenge (The Gap): Big Number/Statement (HTML/CSS). Goal: Inform. Justification: Focuses attention on the key takeaway. NO SVG.
+    
+    Color Palette: "Energetic & Playful" - #003f5c, #58508d, #bc5090, #ff6361, #ffa600
+
+    Confirmation: NEITHER Mermaid JS NOR SVG were used in this document.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003f5c] mb-2">Understanding the Modern Educator</h1>
+            <p class="text-xl text-[#58508d]">The Promise and Problems of AI in the K-5 Classroom</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 text-center md:text-left mb-4 md:mb-0 md:pr-8">
+                    <h2 class="text-2xl font-bold text-[#003f5c] mb-2">Meet Sarah Chen</h2>
+                    <p class="text-lg font-semibold text-[#bc5090] mb-2">The "Curious but Cautious Innovator"</p>
+                    <p class="text-gray-600">Sarah represents a growing number of elementary educators. She's intrigued by AI's potential to enhance her teaching but is pragmatic and wary of the hurdles. Her experience reveals the core challenge facing AI adoption in schools.</p>
+                </div>
+                <div class="w-full md:w-2/3 grid grid-cols-2 gap-4 text-center">
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <p class="text-4xl mb-1">🎯</p>
+                        <h3 class="font-semibold text-[#003f5c]">Goal-Oriented</h3>
+                        <p class="text-sm text-gray-600">Wants to reduce administrative workload to focus on students.</p>
+                    </div>
+                    <div class="bg-pink-50 rounded-lg p-4">
+                         <p class="text-4xl mb-1">⏳</p>
+                        <h3 class="font-semibold text-[#bc5090]">Time-Conscious</h3>
+                        <p class="text-sm text-gray-600">Needs to see a clear, practical benefit before investing time.</p>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-4">
+                        <p class="text-4xl mb-1">🛠️</p>
+                        <h3 class="font-semibold text-[#ff6361]">Hands-On Learner</h3>
+                        <p class="text-sm text-gray-600">Prefers learning by doing with step-by-step guidance.</p>
+                    </div>
+                     <div class="bg-yellow-50 rounded-lg p-4">
+                        <p class="text-4xl mb-1">🤝</p>
+                        <h3 class="font-semibold text-[#ffa600]">Collaborative</h3>
+                        <p class="text-sm text-gray-600">Thrives in a supportive environment with peers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 lg:col-span-2">
+                <h2 class="text-2xl font-bold text-center text-[#003f5c] mb-2">The Educator's Emotional Landscape</h2>
+                <p class="text-center text-gray-600 mb-4">When it comes to AI, educators like Sarah feel a strong tension between positive curiosity and significant apprehension. This emotional duality shapes their willingness to engage with new tools.</p>
+                <div class="chart-container mx-auto">
+                    <canvas id="emotionsChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold text-center text-[#003f5c] mb-2">The Knowledge Gap</h2>
+                <p class="text-center text-gray-600 mb-4">While digitally literate, most educators' understanding of AI is surface-level. They are aware of its existence but lack the deep knowledge to use it effectively and strategically.</p>
+                <div class="chart-container mx-auto" style="height:250px; max-width: 250px;">
+                    <canvas id="knowledgeChart"></canvas>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center text-[#003f5c] mb-4">The Wall of Barriers</h2>
+                 <p class="text-center text-gray-600 mb-6">Several significant obstacles prevent educators from adopting AI tools. These barriers are practical, systemic, and deeply felt, with lack of time being the most critical.</p>
+                <div class="w-full max-w-4xl mx-auto">
+                    <div class="chart-container" style="height: 350px; max-width: 100%;">
+                         <canvas id="barriersChart"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-center text-[#003f5c] mb-2">The Path Forward: From Preference to Proficiency</h2>
+                <p class="text-center text-gray-600 mb-8">To overcome the barriers, training must align with how educators prefer to learn. The path to skillful AI use is paved with practical, hands-on experiences that lead directly to desired professional abilities.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+                    <div class="w-full md:w-1/3 text-center">
+                        <h3 class="text-xl font-semibold text-[#58508d] mb-4">Learning Preferences</h3>
+                        <div class="space-y-3">
+                            <div class="bg-gray-100 p-3 rounded-lg shadow-sm">Practical & Hands-On</div>
+                            <div class="bg-gray-100 p-3 rounded-lg shadow-sm">Self-Paced & Flexible</div>
+                            <div class="bg-gray-100 p-3 rounded-lg shadow-sm">Concrete, Reusable Examples</div>
+                            <div class="bg-gray-100 p-3 rounded-lg shadow-sm">Safe, Experimental Environment</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-5xl text-[#ff6361] font-bold transform -rotate-90 md:rotate-0">
+                        →
+                    </div>
+
+                    <div class="w-full md:w-1/3 text-center">
+                        <h3 class="text-xl font-semibold text-[#bc5090] mb-4">Desired Skills & Abilities</h3>
+                        <div class="space-y-3">
+                            <div class="bg-pink-50 p-3 rounded-lg shadow-sm">Craft Effective Prompts</div>
+                            <div class="bg-pink-50 p-3 rounded-lg shadow-sm">Evaluate AI for Bias & Accuracy</div>
+                            <div class="bg-pink-50 p-3 rounded-lg shadow-sm">Use AI Ethically & Safely</div>
+                            <div class="bg-pink-50 p-3 rounded-lg shadow-sm">Identify Good Use Cases</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="md:col-span-2 lg:col-span-3 bg-[#003f5c] text-white rounded-lg shadow-lg p-8 text-center">
+                <h2 class="text-2xl font-bold mb-4 text-[#ffa600]">The Core Instructional Problem</h2>
+                <p class="text-lg text-gray-200 mb-6">The fundamental challenge is not a lack of interest, but a gap between two distinct states.</p>
+                <div class="flex flex-col md:flex-row items-center justify-around">
+                     <div class="p-6 bg-[#58508d] rounded-lg w-full md:w-1/3 mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold">Current State</h3>
+                        <p class="text-4xl font-bold text-white mt-2">AWARENESS</p>
+                        <p class="text-gray-300 mt-2">"I know AI exists."</p>
+                    </div>
+                    <div class="text-5xl font-bold text-[#ffa600] mx-8 transform rotate-90 md:rotate-0">Bridging the Gap</div>
+                    <div class="p-6 bg-[#bc5090] rounded-lg w-full md:w-1/3 mt-4 md:mt-0">
+                        <h3 class="text-xl font-bold">Desired State</h3>
+                        <p class="text-4xl font-bold text-white mt-2">APPLICATION</p>
+                        <p class="text-gray-300 mt-2">"I know how to use AI well."</p>
+                    </div>
+                </div>
+                 <p class="mt-8 text-gray-300 max-w-3xl mx-auto">Instruction must focus on building a bridge of specific skills and confidence to turn general awareness into practical, ethical, and efficient professional use.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function wrapLabel(str, maxLen) {
+            if (str.length <= maxLen) {
+                return str;
+            }
+            const words = str.split(' ');
+            let currentLine = '';
+            const lines = [];
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines;
+        }
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const sharedChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#4a5568'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const emotionsData = {
+            labels: ['Excited', 'Anxious', 'Overwhelmed', 'Apprehensive', 'Curious', 'Frustrated'],
+            datasets: [{
+                label: 'Intensity of Feeling',
+                data: [8, 9, 8, 7, 9, 6],
+                backgroundColor: 'rgba(255, 99, 97, 0.2)',
+                borderColor: '#ff6361',
+                pointBackgroundColor: '#ff6361',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#ff6361'
+            }]
+        };
+
+        new Chart(document.getElementById('emotionsChart'), {
+            type: 'radar',
+            data: emotionsData,
+            options: { ...sharedChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#e2e8f0' },
+                        grid: { color: '#e2e8f0' },
+                        pointLabels: { color: '#2d3748', font: { size: 14 } },
+                        ticks: {
+                            color: '#4a5568',
+                            backdropColor: 'rgba(248, 249, 250, 0.75)',
+                            stepSize: 2
+                        }
+                    }
+                }
+            }
+        });
+
+        const knowledgeData = {
+            labels: ['General Digital Literacy', 'Deep AI Knowledge'],
+            datasets: [{
+                label: 'Knowledge Distribution',
+                data: [85, 15],
+                backgroundColor: ['#58508d', '#ffa600'],
+                borderColor: '#f8f9fa',
+                borderWidth: 4,
+                hoverOffset: 4
+            }]
+        };
+
+        new Chart(document.getElementById('knowledgeChart'), {
+            type: 'doughnut',
+            data: knowledgeData,
+            options: { ...sharedChartOptions,
+                 cutout: '70%'
+            }
+        });
+        
+        const barriersData = {
+            labels: [
+                wrapLabel('Lack of time', 25),
+                wrapLabel('Uncertainty about district policies', 25),
+                wrapLabel('Lack of a curated, vetted set of tools', 25),
+                wrapLabel('Fear of making mistakes or using a tool improperly', 25),
+                wrapLabel('Skepticism about benefits vs. time investment', 25)
+            ].reverse(),
+            datasets: [{
+                label: 'Significance of Barrier',
+                data: [10, 8, 8, 7, 7].reverse(),
+                backgroundColor: ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600'].reverse(),
+                borderRadius: 4
+            }]
+        };
+        
+        new Chart(document.getElementById('barriersChart'), {
+            type: 'bar',
+            data: barriersData,
+            options: { ...sharedChartOptions,
+                indexAxis: 'y',
+                 scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#4a5568' }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { color: '#2d3748', font: { size: 12 } }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
